@@ -1,39 +1,23 @@
-import React, { Component, PropTypes } from 'react';
-import { createContainer } from 'meteor/react-meteor-data';
+import React, { Component, PropTypes } from 'react'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import injectTapEventPlugin from 'react-tap-event-plugin';
+// Needed for onTouchTap
+// http://stackoverflow.com/a/34015469/988941
+injectTapEventPlugin();
 
-import { Tasks } from '../api/tasks.js';
-
-import Task from './Task.jsx';
+import Nav from './Nav'
 
 // App component - represents the whole app
 class App extends Component {
-  renderTasks() {
-    return this.props.tasks.map((task) => (
-      <Task key={task._id} task={task} />
-    ));
-  }
-
   render() {
     return (
-      <div className="container">
-        <header>
-          <h1>Todo List</h1>
-        </header>
-
-        <ul>
-          {this.renderTasks()}
-        </ul>
+      <div>
+        <MuiThemeProvider>
+          <Nav />
+        </MuiThemeProvider>
       </div>
     );
   }
 }
 
-App.propTypes = {
-  tasks: PropTypes.array.isRequired,
-};
-
-export default createContainer(() => {
-  return {
-    tasks: Tasks.find({}).fetch(),
-  };
-}, App);
+export default App
