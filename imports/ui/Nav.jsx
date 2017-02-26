@@ -39,12 +39,12 @@ export default class Nav extends React.Component {
 
   handleMenuOne = () => {
     this.setState({open: false})
-    this.setState({setPage: 0})
+    this.setState({setPage: 1})
   }
 
   handleMenuTwo = () => {
     this.setState({open: false})
-    this.setState({setPage: 1})
+    this.setState({setPage: 0})
   }
 
   handleMenuThree = () => {
@@ -75,8 +75,8 @@ export default class Nav extends React.Component {
           onRequestChange={(open) => this.setState({open})}
         >
           <h2>Campaign Settings</h2>
-          <MenuItem onTouchTap={this.handleMenuTwo} leftIcon={currentIcon}>Current Campaigns</MenuItem>
           <MenuItem onTouchTap={this.handleMenuOne} leftIcon={addIcon}>New Campaign Setup</MenuItem>
+          <MenuItem onTouchTap={this.handleMenuTwo} leftIcon={currentIcon}>Current Campaigns</MenuItem>
           <p />
           <h2>Analytics</h2>
           <MenuItem onTouchTap={this.handleMenuThree} leftIcon={upIcon}>Real Time Event Data</MenuItem>
@@ -90,13 +90,7 @@ export default class Nav extends React.Component {
             <BottomNavigationItem
               label="Account Settings"
               icon={personIcon}
-              onTouchTap={() => this.select(0)}
-            />
-
-            <BottomNavigationItem
-              label={accountBalance}
-              icon={moneyIcon}
-              onTouchTap={() => this.select(1)}
+              onTouchTap={() => this.setState({setPage: 1})}
             />
           </BottomNavigation>
         </Paper>

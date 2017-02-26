@@ -7,12 +7,16 @@ injectTapEventPlugin();
 
 import Nav from './Nav'
 
+// Change theme for Mui
+import muiTheme from '../styles/muiTheme'
+
+
 // App component - represents the whole app
 class App extends Component {
   render() {
     return (
       <div>
-        <MuiThemeProvider>
+        <MuiThemeProvider muiTheme={muiTheme}>
           <Nav />
         </MuiThemeProvider>
       </div>

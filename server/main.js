@@ -47,10 +47,11 @@ WebApp.connectHandlers.use('/ad', function(req, res, next) {
     Events.insert({
       type: 'impression',
       publisher: publisher,
-      ad_id: Ad._id
+      ad_id: Ad._id,
+      time: new Date
     })
     // Minus 0.008 from the current ads balance
-    Ads.update(Ad, { $inc: { balance: -0.008 }})
+    Ads.update(Ad, { $inc: { balance: -0.008, impressions: 1}})
   }
 
   res.writeHead(200, {'Content-Type': 'application/json'})
@@ -65,12 +66,15 @@ WebApp.connectHandlers.use('/click', function(req, res, next) {
   Events.insert({
     type: 'click',
     publisher: publisher,
-    ad_id: ad_id
+    ad_id: ad_id,
+    time: new Date
   })
   //redirect user to url
   const Ad = Ads.findOne({
     _id: ad_id
   })
+
+  Ads.update(Ad, { $inc: {clicks: 1}})
 
   res.writeHead(307, { 'Location': Ad.url })
   res.end()

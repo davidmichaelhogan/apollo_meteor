@@ -1,0 +1,785 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/Users/Macbook/.meteor/packages/meteor-tool/.1.4.2_7.8jjb3n++os.osx.x86_64+web.browser+web.cordova/mt-os.osx.x86_64/dev_bundle/bin/node',
+1 verbose cli   '/Users/Macbook/.meteor/packages/meteor-tool/.1.4.2_7.8jjb3n++os.osx.x86_64+web.browser+web.cordova/mt-os.osx.x86_64/dev_bundle/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '--save',
+1 verbose cli   'bcrypt' ]
+2 info using npm@3.10.9
+3 info using node@v4.7.3
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 silly fetchPackageMetaData bcrypt@^1.0.2
+8 silly fetchNamedPackageData bcrypt
+9 silly mapToRegistry name bcrypt
+10 silly mapToRegistry using default registry
+11 silly mapToRegistry registry https://registry.npmjs.org/
+12 silly mapToRegistry data Result {
+12 silly mapToRegistry   raw: 'bcrypt',
+12 silly mapToRegistry   scope: null,
+12 silly mapToRegistry   escapedName: 'bcrypt',
+12 silly mapToRegistry   name: 'bcrypt',
+12 silly mapToRegistry   rawSpec: '',
+12 silly mapToRegistry   spec: 'latest',
+12 silly mapToRegistry   type: 'tag' }
+13 silly mapToRegistry uri https://registry.npmjs.org/bcrypt
+14 verbose request uri https://registry.npmjs.org/bcrypt
+15 verbose request no auth needed
+16 info attempt registry request try #1 at 10:38:23 PM
+17 verbose request id 60b2daa2151b2d38
+18 verbose etag W/"58a19670-16d95"
+19 verbose lastModified Mon, 13 Feb 2017 11:20:16 GMT
+20 http request GET https://registry.npmjs.org/bcrypt
+21 http 304 https://registry.npmjs.org/bcrypt
+22 verbose headers { date: 'Tue, 21 Feb 2017 03:38:23 GMT',
+22 verbose headers   via: '1.1 varnish',
+22 verbose headers   'cache-control': 'max-age=300',
+22 verbose headers   etag: 'W/"58a19670-16d95"',
+22 verbose headers   age: '261',
+22 verbose headers   connection: 'keep-alive',
+22 verbose headers   'x-served-by': 'cache-iad2632-IAD',
+22 verbose headers   'x-cache': 'HIT',
+22 verbose headers   'x-cache-hits': '1',
+22 verbose headers   'x-timer': 'S1487648303.935860,VS0,VE0',
+22 verbose headers   vary: 'Accept-Encoding' }
+23 silly get cb [ 304,
+23 silly get   { date: 'Tue, 21 Feb 2017 03:38:23 GMT',
+23 silly get     via: '1.1 varnish',
+23 silly get     'cache-control': 'max-age=300',
+23 silly get     etag: 'W/"58a19670-16d95"',
+23 silly get     age: '261',
+23 silly get     connection: 'keep-alive',
+23 silly get     'x-served-by': 'cache-iad2632-IAD',
+23 silly get     'x-cache': 'HIT',
+23 silly get     'x-cache-hits': '1',
+23 silly get     'x-timer': 'S1487648303.935860,VS0,VE0',
+23 silly get     vary: 'Accept-Encoding' } ]
+24 verbose etag https://registry.npmjs.org/bcrypt from cache
+25 verbose get saving bcrypt to /Users/Macbook/.meteor/packages/meteor-tool/.1.4.2_7.8jjb3n++os.osx.x86_64+web.browser+web.cordova/mt-os.osx.x86_64/dev_bundle/.npm/registry.npmjs.org/bcrypt/.cache.json
+26 verbose correctMkdir /Users/Macbook/.meteor/packages/meteor-tool/.1.4.2_7.8jjb3n++os.osx.x86_64+web.browser+web.cordova/mt-os.osx.x86_64/dev_bundle/.npm correctMkdir not in flight; initializing
+27 silly install normalizeTree
+28 silly loadCurrentTree Finishing
+29 silly loadIdealTree Starting
+30 silly install loadIdealTree
+31 silly cloneCurrentTree Starting
+32 silly install cloneCurrentTreeToIdealTree
+33 silly cloneCurrentTree Finishing
+34 silly loadShrinkwrap Starting
+35 silly install loadShrinkwrap
+36 silly loadShrinkwrap Finishing
+37 silly loadAllDepsIntoIdealTree Starting
+38 silly install loadAllDepsIntoIdealTree
+39 silly resolveWithNewModule bcrypt@1.0.2 checking installable status
+40 silly cache add args [ 'bcrypt@^1.0.2', null ]
+41 verbose cache add spec bcrypt@^1.0.2
+42 silly cache add parsed spec Result {
+42 silly cache add   raw: 'bcrypt@^1.0.2',
+42 silly cache add   scope: null,
+42 silly cache add   escapedName: 'bcrypt',
+42 silly cache add   name: 'bcrypt',
+42 silly cache add   rawSpec: '^1.0.2',
+42 silly cache add   spec: '>=1.0.2 <2.0.0',
+42 silly cache add   type: 'range' }
+43 silly addNamed bcrypt@>=1.0.2 <2.0.0
+44 verbose addNamed ">=1.0.2 <2.0.0" is a valid semver range for bcrypt
+45 silly addNameRange { name: 'bcrypt', range: '>=1.0.2 <2.0.0', hasData: false }
+46 silly mapToRegistry name bcrypt
+47 silly mapToRegistry using default registry
+48 silly mapToRegistry registry https://registry.npmjs.org/
+49 silly mapToRegistry data Result {
+49 silly mapToRegistry   raw: 'bcrypt',
+49 silly mapToRegistry   scope: null,
+49 silly mapToRegistry   escapedName: 'bcrypt',
+49 silly mapToRegistry   name: 'bcrypt',
+49 silly mapToRegistry   rawSpec: '',
+49 silly mapToRegistry   spec: 'latest',
+49 silly mapToRegistry   type: 'tag' }
+50 silly mapToRegistry uri https://registry.npmjs.org/bcrypt
+51 verbose addNameRange registry:https://registry.npmjs.org/bcrypt not in flight; fetching
+52 verbose get https://registry.npmjs.org/bcrypt not expired, no request
+53 silly addNameRange number 2 { name: 'bcrypt', range: '>=1.0.2 <2.0.0', hasData: true }
+54 silly addNameRange versions [ 'bcrypt',
+54 silly addNameRange   [ '0.1.2',
+54 silly addNameRange     '0.2.0',
+54 silly addNameRange     '0.2.1',
+54 silly addNameRange     '0.1.3',
+54 silly addNameRange     '0.2.2',
+54 silly addNameRange     '0.2.3',
+54 silly addNameRange     '0.2.4',
+54 silly addNameRange     '0.3.0',
+54 silly addNameRange     '0.3.1',
+54 silly addNameRange     '0.3.2',
+54 silly addNameRange     '0.4.0',
+54 silly addNameRange     '0.4.1',
+54 silly addNameRange     '0.5.0',
+54 silly addNameRange     '0.6.0',
+54 silly addNameRange     '0.7.0',
+54 silly addNameRange     '0.7.1',
+54 silly addNameRange     '0.7.2',
+54 silly addNameRange     '0.7.3',
+54 silly addNameRange     '0.7.4',
+54 silly addNameRange     '0.7.5',
+54 silly addNameRange     '0.7.6',
+54 silly addNameRange     '0.7.7',
+54 silly addNameRange     '0.7.8',
+54 silly addNameRange     '0.8.0',
+54 silly addNameRange     '0.8.1',
+54 silly addNameRange     '0.8.2',
+54 silly addNameRange     '0.8.3',
+54 silly addNameRange     '0.8.4',
+54 silly addNameRange     '0.8.5',
+54 silly addNameRange     '0.8.6',
+54 silly addNameRange     '0.8.7',
+54 silly addNameRange     '1.0.0',
+54 silly addNameRange     '1.0.1',
+54 silly addNameRange     '1.0.2' ] ]
+55 silly addNamed bcrypt@1.0.2
+56 verbose addNamed "1.0.2" is a plain semver version for bcrypt
+57 silly cache afterAdd bcrypt@1.0.2
+58 verbose afterAdd /Users/Macbook/.meteor/packages/meteor-tool/.1.4.2_7.8jjb3n++os.osx.x86_64+web.browser+web.cordova/mt-os.osx.x86_64/dev_bundle/.npm/bcrypt/1.0.2/package/package.json not in flight; writing
+59 verbose correctMkdir /Users/Macbook/.meteor/packages/meteor-tool/.1.4.2_7.8jjb3n++os.osx.x86_64+web.browser+web.cordova/mt-os.osx.x86_64/dev_bundle/.npm correctMkdir not in flight; initializing
+60 verbose afterAdd /Users/Macbook/.meteor/packages/meteor-tool/.1.4.2_7.8jjb3n++os.osx.x86_64+web.browser+web.cordova/mt-os.osx.x86_64/dev_bundle/.npm/bcrypt/1.0.2/package/package.json written
+61 silly loadAllDepsIntoIdealTree Finishing
+62 silly loadIdealTree Finishing
+63 silly currentTree apollo@
+63 silly currentTree ├── abbrev@1.1.0
+63 silly currentTree ├── ansi-regex@2.1.1
+63 silly currentTree ├── ansi-styles@2.2.1
+63 silly currentTree ├── aproba@1.1.1
+63 silly currentTree ├── are-we-there-yet@1.1.2
+63 silly currentTree ├── asap@2.0.5
+63 silly currentTree ├── asn1@0.2.3
+63 silly currentTree ├── assert-plus@0.2.0
+63 silly currentTree ├── asynckit@0.4.0
+63 silly currentTree ├── aws-sign2@0.6.0
+63 silly currentTree ├── aws4@1.6.0
+63 silly currentTree ├── babel-code-frame@6.22.0
+63 silly currentTree ├─┬ babel-helper-function-name@6.23.0
+63 silly currentTree │ ├── babel-runtime@6.23.0
+63 silly currentTree │ └── regenerator-runtime@0.10.3
+63 silly currentTree ├─┬ babel-helper-get-function-arity@6.22.0
+63 silly currentTree │ ├── babel-runtime@6.23.0
+63 silly currentTree │ └── regenerator-runtime@0.10.3
+63 silly currentTree ├─┬ babel-messages@6.23.0
+63 silly currentTree │ ├── babel-runtime@6.23.0
+63 silly currentTree │ └── regenerator-runtime@0.10.3
+63 silly currentTree ├── babel-plugin-syntax-class-properties@6.13.0
+63 silly currentTree ├─┬ babel-plugin-transform-class-properties@6.23.0
+63 silly currentTree │ ├── babel-runtime@6.23.0
+63 silly currentTree │ └── regenerator-runtime@0.10.3
+63 silly currentTree ├── babel-runtime@6.18.0
+63 silly currentTree ├─┬ babel-template@6.23.0
+63 silly currentTree │ ├── babel-runtime@6.23.0
+63 silly currentTree │ └── regenerator-runtime@0.10.3
+63 silly currentTree ├─┬ babel-traverse@6.23.1
+63 silly currentTree │ ├── babel-runtime@6.23.0
+63 silly currentTree │ └── regenerator-runtime@0.10.3
+63 silly currentTree ├─┬ babel-types@6.23.0
+63 silly currentTree │ ├── babel-runtime@6.23.0
+63 silly currentTree │ └── regenerator-runtime@0.10.3
+63 silly currentTree ├── babylon@6.15.0
+63 silly currentTree ├── balanced-match@0.4.2
+63 silly currentTree ├── bcrypt-pbkdf@1.0.1
+63 silly currentTree ├── bindings@1.2.1
+63 silly currentTree ├── block-stream@0.0.9
+63 silly currentTree ├── boom@2.10.1
+63 silly currentTree ├── bowser@1.6.0
+63 silly currentTree ├── brace-expansion@1.1.6
+63 silly currentTree ├── bson@1.0.4
+63 silly currentTree ├── buffer-shims@1.0.0
+63 silly currentTree ├── caseless@0.11.0
+63 silly currentTree ├── chalk@1.1.3
+63 silly currentTree ├── change-emitter@0.1.2
+63 silly currentTree ├── code-point-at@1.1.0
+63 silly currentTree ├── combined-stream@1.0.5
+63 silly currentTree ├── commander@2.9.0
+63 silly currentTree ├── concat-map@0.0.1
+63 silly currentTree ├── console-control-strings@1.1.0
+63 silly currentTree ├── core-js@2.4.1
+63 silly currentTree ├── core-util-is@1.0.2
+63 silly currentTree ├── cryptiles@2.0.5
+63 silly currentTree ├─┬ dashdash@1.14.1
+63 silly currentTree │ └── assert-plus@1.0.0
+63 silly currentTree ├── debug@2.2.0
+63 silly currentTree ├── deep-extend@0.4.1
+63 silly currentTree ├── delayed-stream@1.0.0
+63 silly currentTree ├── delegates@1.0.0
+63 silly currentTree ├── ecc-jsbn@0.1.1
+63 silly currentTree ├── encoding@0.1.12
+63 silly currentTree ├── es6-promise@3.2.1
+63 silly currentTree ├── escape-string-regexp@1.0.5
+63 silly currentTree ├── esutils@2.0.2
+63 silly currentTree ├── extend@3.0.0
+63 silly currentTree ├── extsprintf@1.0.2
+63 silly currentTree ├─┬ fbjs@0.8.9
+63 silly currentTree │ └── core-js@1.2.7
+63 silly currentTree ├── forever-agent@0.6.1
+63 silly currentTree ├── form-data@2.1.2
+63 silly currentTree ├── fs.realpath@1.0.0
+63 silly currentTree ├── fstream-ignore@1.0.5
+63 silly currentTree ├── fstream@1.0.10
+63 silly currentTree ├── gauge@2.7.3
+63 silly currentTree ├── generate-function@2.0.0
+63 silly currentTree ├── generate-object-property@1.2.0
+63 silly currentTree ├─┬ getpass@0.1.6
+63 silly currentTree │ └── assert-plus@1.0.0
+63 silly currentTree ├── glob@7.1.1
+63 silly currentTree ├── globals@9.16.0
+63 silly currentTree ├── graceful-fs@4.1.11
+63 silly currentTree ├── graceful-readlink@1.0.1
+63 silly currentTree ├── har-validator@2.0.6
+63 silly currentTree ├── has-ansi@2.0.0
+63 silly currentTree ├── has-unicode@2.0.1
+63 silly currentTree ├── hawk@3.1.3
+63 silly currentTree ├── hoek@2.16.3
+63 silly currentTree ├── hoist-non-react-statics@1.2.0
+63 silly currentTree ├── http-signature@1.1.1
+63 silly currentTree ├── hyphenate-style-name@1.0.2
+63 silly currentTree ├── iconv-lite@0.4.15
+63 silly currentTree ├── inflight@1.0.6
+63 silly currentTree ├── inherits@2.0.3
+63 silly currentTree ├── ini@1.3.4
+63 silly currentTree ├── inline-style-prefixer@2.0.5
+63 silly currentTree ├── invariant@2.2.2
+63 silly currentTree ├── is-fullwidth-code-point@1.0.0
+63 silly currentTree ├── is-my-json-valid@2.15.0
+63 silly currentTree ├── is-property@1.0.2
+63 silly currentTree ├── is-stream@1.1.0
+63 silly currentTree ├── is-typedarray@1.0.0
+63 silly currentTree ├── isarray@1.0.0
+63 silly currentTree ├── isomorphic-fetch@2.2.1
+63 silly currentTree ├── isstream@0.1.2
+63 silly currentTree ├── jodid25519@1.0.2
+63 silly currentTree ├── js-tokens@3.0.1
+63 silly currentTree ├── jsbn@0.1.1
+63 silly currentTree ├── json-schema@0.2.3
+63 silly currentTree ├── json-stringify-safe@5.0.1
+63 silly currentTree ├── jsonpointer@4.0.1
+63 silly currentTree ├── jsprim@1.3.1
+63 silly currentTree ├── keycode@2.1.8
+63 silly currentTree ├── lodash.merge@4.6.0
+63 silly currentTree ├── lodash.throttle@4.1.1
+63 silly currentTree ├── lodash@4.17.4
+63 silly currentTree ├── loose-envify@1.3.1
+63 silly currentTree ├── material-ui@0.17.0
+63 silly currentTree ├─┬ meteor-node-stubs@0.2.5
+63 silly currentTree │ ├── asn1.js@4.9.0
+63 silly currentTree │ ├── assert@1.4.1
+63 silly currentTree │ ├── base64-js@1.2.0
+63 silly currentTree │ ├── Base64@0.2.1
+63 silly currentTree │ ├── bn.js@4.11.6
+63 silly currentTree │ ├── brorand@1.0.6
+63 silly currentTree │ ├── browserify-aes@1.0.6
+63 silly currentTree │ ├── browserify-cipher@1.0.0
+63 silly currentTree │ ├── browserify-des@1.0.0
+63 silly currentTree │ ├── browserify-rsa@4.0.1
+63 silly currentTree │ ├── browserify-sign@4.0.0
+63 silly currentTree │ ├── browserify-zlib@0.1.4
+63 silly currentTree │ ├── buffer-shims@1.0.0
+63 silly currentTree │ ├── buffer-xor@1.0.3
+63 silly currentTree │ ├── buffer@4.9.1
+63 silly currentTree │ ├── cipher-base@1.0.3
+63 silly currentTree │ ├── console-browserify@1.1.0
+63 silly currentTree │ ├── constants-browserify@1.0.0
+63 silly currentTree │ ├── core-util-is@1.0.2
+63 silly currentTree │ ├── create-ecdh@4.0.0
+63 silly currentTree │ ├── create-hash@1.1.2
+63 silly currentTree │ ├── create-hmac@1.1.4
+63 silly currentTree │ ├── crypto-browserify@3.11.0
+63 silly currentTree │ ├── date-now@0.1.4
+63 silly currentTree │ ├── des.js@1.0.0
+63 silly currentTree │ ├── diffie-hellman@5.0.2
+63 silly currentTree │ ├── domain-browser@1.1.7
+63 silly currentTree │ ├── elliptic@6.3.2
+63 silly currentTree │ ├── events@1.1.1
+63 silly currentTree │ ├── evp_bytestokey@1.0.0
+63 silly currentTree │ ├── hash.js@1.0.3
+63 silly currentTree │ ├── http-browserify@1.7.0
+63 silly currentTree │ ├── https-browserify@0.0.1
+63 silly currentTree │ ├── ieee754@1.1.8
+63 silly currentTree │ ├── indexof@0.0.1
+63 silly currentTree │ ├── inherits@2.0.1
+63 silly currentTree │ ├── isarray@1.0.0
+63 silly currentTree │ ├── miller-rabin@4.0.0
+63 silly currentTree │ ├── minimalistic-assert@1.0.0
+63 silly currentTree │ ├── os-browserify@0.2.1
+63 silly currentTree │ ├── pako@0.2.9
+63 silly currentTree │ ├── parse-asn1@5.0.0
+63 silly currentTree │ ├── path-browserify@0.0.0
+63 silly currentTree │ ├── pbkdf2@3.0.9
+63 silly currentTree │ ├── process-nextick-args@1.0.7
+63 silly currentTree │ ├── process@0.11.9
+63 silly currentTree │ ├── public-encrypt@4.0.0
+63 silly currentTree │ ├── punycode@1.4.1
+63 silly currentTree │ ├── querystring-es3@0.2.1
+63 silly currentTree │ ├── querystring@0.2.0
+63 silly currentTree │ ├── randombytes@2.0.3
+63 silly currentTree │ ├── readable-stream@2.2.1
+63 silly currentTree │ ├── ripemd160@1.0.1
+63 silly currentTree │ ├── sha.js@2.4.8
+63 silly currentTree │ ├── stream-browserify@2.0.1
+63 silly currentTree │ ├── string_decoder@0.10.31
+63 silly currentTree │ ├── timers-browserify@1.4.2
+63 silly currentTree │ ├── tty-browserify@0.0.0
+63 silly currentTree │ ├─┬ url@0.11.0
+63 silly currentTree │ │ └── punycode@1.3.2
+63 silly currentTree │ ├── util-deprecate@1.0.2
+63 silly currentTree │ ├── util@0.10.3
+63 silly currentTree │ └── vm-browserify@0.0.4
+63 silly currentTree ├── mime-db@1.26.0
+63 silly currentTree ├── mime-types@2.1.14
+63 silly currentTree ├── minimatch@3.0.3
+63 silly currentTree ├── minimist@0.0.8
+63 silly currentTree ├── mkdirp@0.5.1
+63 silly currentTree ├── mongodb-core@2.1.8
+63 silly currentTree ├─┬ mongodb@2.2.24
+63 silly currentTree │ └── readable-stream@2.1.5
+63 silly currentTree ├── ms@0.7.1
+63 silly currentTree ├── nan@2.5.0
+63 silly currentTree ├── node-fetch@1.6.3
+63 silly currentTree ├── node-pre-gyp@0.6.32
+63 silly currentTree ├── nopt@3.0.6
+63 silly currentTree ├── npmlog@4.0.2
+63 silly currentTree ├── number-is-nan@1.0.1
+63 silly currentTree ├── oauth-sign@0.8.2
+63 silly currentTree ├── object-assign@4.1.1
+63 silly currentTree ├── once@1.4.0
+63 silly currentTree ├── path-is-absolute@1.0.1
+63 silly currentTree ├── pinkie-promise@2.0.1
+63 silly currentTree ├── pinkie@2.0.4
+63 silly currentTree ├── process-nextick-args@1.0.7
+63 silly currentTree ├── promise@7.1.1
+63 silly currentTree ├── punycode@1.4.1
+63 silly currentTree ├── qs@6.3.1
+63 silly currentTree ├─┬ rc@1.1.7
+63 silly currentTree │ └── minimist@1.2.0
+63 silly currentTree ├── react-addons-create-fragment@15.4.2
+63 silly currentTree ├── react-addons-pure-render-mixin@15.4.2
+63 silly currentTree ├── react-addons-shallow-compare@15.4.2
+63 silly currentTree ├── react-addons-transition-group@15.4.2
+63 silly currentTree ├── react-dom@15.4.2
+63 silly currentTree ├─┬ react-event-listener@0.4.1
+63 silly currentTree │ ├── babel-runtime@6.23.0
+63 silly currentTree │ └── regenerator-runtime@0.10.3
+63 silly currentTree ├── react-tap-event-plugin@2.0.1
+63 silly currentTree ├── react@15.4.2
+63 silly currentTree ├── readable-stream@2.2.2
+63 silly currentTree ├── recompose@0.22.0
+63 silly currentTree ├── regenerator-runtime@0.9.6
+63 silly currentTree ├── request@2.79.0
+63 silly currentTree ├── require_optional@1.0.0
+63 silly currentTree ├── resolve-from@2.0.0
+63 silly currentTree ├── rimraf@2.5.4
+63 silly currentTree ├── semver@5.3.0
+63 silly currentTree ├── set-blocking@2.0.0
+63 silly currentTree ├── setimmediate@1.0.5
+63 silly currentTree ├── signal-exit@3.0.2
+63 silly currentTree ├── simple-assign@0.1.0
+63 silly currentTree ├── sntp@1.0.9
+63 silly currentTree ├─┬ sshpk@1.10.2
+63 silly currentTree │ └── assert-plus@1.0.0
+63 silly currentTree ├── string_decoder@0.10.31
+63 silly currentTree ├── string-width@1.0.2
+63 silly currentTree ├── stringstream@0.0.5
+63 silly currentTree ├── strip-ansi@3.0.1
+63 silly currentTree ├── strip-json-comments@2.0.1
+63 silly currentTree ├── supports-color@2.0.0
+63 silly currentTree ├── symbol-observable@1.0.4
+63 silly currentTree ├─┬ tar-pack@3.3.0
+63 silly currentTree │ ├── once@1.3.3
+63 silly currentTree │ └── readable-stream@2.1.5
+63 silly currentTree ├── tar@2.2.1
+63 silly currentTree ├── to-fast-properties@1.0.2
+63 silly currentTree ├── tough-cookie@2.3.2
+63 silly currentTree ├── tunnel-agent@0.4.3
+63 silly currentTree ├── tweetnacl@0.14.5
+63 silly currentTree ├── ua-parser-js@0.7.12
+63 silly currentTree ├── uid-number@0.0.6
+63 silly currentTree ├── util-deprecate@1.0.2
+63 silly currentTree ├── uuid@3.0.1
+63 silly currentTree ├── verror@1.3.6
+63 silly currentTree ├── warning@3.0.0
+63 silly currentTree ├── whatwg-fetch@2.0.2
+63 silly currentTree ├── wide-align@1.1.0
+63 silly currentTree ├── wrappy@1.0.2
+63 silly currentTree └── xtend@4.0.1
+64 silly idealTree apollo@
+64 silly idealTree ├── abbrev@1.1.0
+64 silly idealTree ├── ansi-regex@2.1.1
+64 silly idealTree ├── ansi-styles@2.2.1
+64 silly idealTree ├── aproba@1.1.1
+64 silly idealTree ├── are-we-there-yet@1.1.2
+64 silly idealTree ├── asap@2.0.5
+64 silly idealTree ├── asn1@0.2.3
+64 silly idealTree ├── assert-plus@0.2.0
+64 silly idealTree ├── asynckit@0.4.0
+64 silly idealTree ├── aws-sign2@0.6.0
+64 silly idealTree ├── aws4@1.6.0
+64 silly idealTree ├── babel-code-frame@6.22.0
+64 silly idealTree ├─┬ babel-helper-function-name@6.23.0
+64 silly idealTree │ ├── babel-runtime@6.23.0
+64 silly idealTree │ └── regenerator-runtime@0.10.3
+64 silly idealTree ├─┬ babel-helper-get-function-arity@6.22.0
+64 silly idealTree │ ├── babel-runtime@6.23.0
+64 silly idealTree │ └── regenerator-runtime@0.10.3
+64 silly idealTree ├─┬ babel-messages@6.23.0
+64 silly idealTree │ ├── babel-runtime@6.23.0
+64 silly idealTree │ └── regenerator-runtime@0.10.3
+64 silly idealTree ├── babel-plugin-syntax-class-properties@6.13.0
+64 silly idealTree ├─┬ babel-plugin-transform-class-properties@6.23.0
+64 silly idealTree │ ├── babel-runtime@6.23.0
+64 silly idealTree │ └── regenerator-runtime@0.10.3
+64 silly idealTree ├── babel-runtime@6.18.0
+64 silly idealTree ├─┬ babel-template@6.23.0
+64 silly idealTree │ ├── babel-runtime@6.23.0
+64 silly idealTree │ └── regenerator-runtime@0.10.3
+64 silly idealTree ├─┬ babel-traverse@6.23.1
+64 silly idealTree │ ├── babel-runtime@6.23.0
+64 silly idealTree │ └── regenerator-runtime@0.10.3
+64 silly idealTree ├─┬ babel-types@6.23.0
+64 silly idealTree │ ├── babel-runtime@6.23.0
+64 silly idealTree │ └── regenerator-runtime@0.10.3
+64 silly idealTree ├── babylon@6.15.0
+64 silly idealTree ├── balanced-match@0.4.2
+64 silly idealTree ├── bcrypt-pbkdf@1.0.1
+64 silly idealTree ├── bcrypt@1.0.2
+64 silly idealTree ├── bindings@1.2.1
+64 silly idealTree ├── block-stream@0.0.9
+64 silly idealTree ├── boom@2.10.1
+64 silly idealTree ├── bowser@1.6.0
+64 silly idealTree ├── brace-expansion@1.1.6
+64 silly idealTree ├── bson@1.0.4
+64 silly idealTree ├── buffer-shims@1.0.0
+64 silly idealTree ├── caseless@0.11.0
+64 silly idealTree ├── chalk@1.1.3
+64 silly idealTree ├── change-emitter@0.1.2
+64 silly idealTree ├── code-point-at@1.1.0
+64 silly idealTree ├── combined-stream@1.0.5
+64 silly idealTree ├── commander@2.9.0
+64 silly idealTree ├── concat-map@0.0.1
+64 silly idealTree ├── console-control-strings@1.1.0
+64 silly idealTree ├── core-js@2.4.1
+64 silly idealTree ├── core-util-is@1.0.2
+64 silly idealTree ├── cryptiles@2.0.5
+64 silly idealTree ├─┬ dashdash@1.14.1
+64 silly idealTree │ └── assert-plus@1.0.0
+64 silly idealTree ├── debug@2.2.0
+64 silly idealTree ├── deep-extend@0.4.1
+64 silly idealTree ├── delayed-stream@1.0.0
+64 silly idealTree ├── delegates@1.0.0
+64 silly idealTree ├── ecc-jsbn@0.1.1
+64 silly idealTree ├── encoding@0.1.12
+64 silly idealTree ├── es6-promise@3.2.1
+64 silly idealTree ├── escape-string-regexp@1.0.5
+64 silly idealTree ├── esutils@2.0.2
+64 silly idealTree ├── extend@3.0.0
+64 silly idealTree ├── extsprintf@1.0.2
+64 silly idealTree ├─┬ fbjs@0.8.9
+64 silly idealTree │ └── core-js@1.2.7
+64 silly idealTree ├── forever-agent@0.6.1
+64 silly idealTree ├── form-data@2.1.2
+64 silly idealTree ├── fs.realpath@1.0.0
+64 silly idealTree ├── fstream-ignore@1.0.5
+64 silly idealTree ├── fstream@1.0.10
+64 silly idealTree ├── gauge@2.7.3
+64 silly idealTree ├── generate-function@2.0.0
+64 silly idealTree ├── generate-object-property@1.2.0
+64 silly idealTree ├─┬ getpass@0.1.6
+64 silly idealTree │ └── assert-plus@1.0.0
+64 silly idealTree ├── glob@7.1.1
+64 silly idealTree ├── globals@9.16.0
+64 silly idealTree ├── graceful-fs@4.1.11
+64 silly idealTree ├── graceful-readlink@1.0.1
+64 silly idealTree ├── har-validator@2.0.6
+64 silly idealTree ├── has-ansi@2.0.0
+64 silly idealTree ├── has-unicode@2.0.1
+64 silly idealTree ├── hawk@3.1.3
+64 silly idealTree ├── hoek@2.16.3
+64 silly idealTree ├── hoist-non-react-statics@1.2.0
+64 silly idealTree ├── http-signature@1.1.1
+64 silly idealTree ├── hyphenate-style-name@1.0.2
+64 silly idealTree ├── iconv-lite@0.4.15
+64 silly idealTree ├── inflight@1.0.6
+64 silly idealTree ├── inherits@2.0.3
+64 silly idealTree ├── ini@1.3.4
+64 silly idealTree ├── inline-style-prefixer@2.0.5
+64 silly idealTree ├── invariant@2.2.2
+64 silly idealTree ├── is-fullwidth-code-point@1.0.0
+64 silly idealTree ├── is-my-json-valid@2.15.0
+64 silly idealTree ├── is-property@1.0.2
+64 silly idealTree ├── is-stream@1.1.0
+64 silly idealTree ├── is-typedarray@1.0.0
+64 silly idealTree ├── isarray@1.0.0
+64 silly idealTree ├── isomorphic-fetch@2.2.1
+64 silly idealTree ├── isstream@0.1.2
+64 silly idealTree ├── jodid25519@1.0.2
+64 silly idealTree ├── js-tokens@3.0.1
+64 silly idealTree ├── jsbn@0.1.1
+64 silly idealTree ├── json-schema@0.2.3
+64 silly idealTree ├── json-stringify-safe@5.0.1
+64 silly idealTree ├── jsonpointer@4.0.1
+64 silly idealTree ├── jsprim@1.3.1
+64 silly idealTree ├── keycode@2.1.8
+64 silly idealTree ├── lodash.merge@4.6.0
+64 silly idealTree ├── lodash.throttle@4.1.1
+64 silly idealTree ├── lodash@4.17.4
+64 silly idealTree ├── loose-envify@1.3.1
+64 silly idealTree ├── material-ui@0.17.0
+64 silly idealTree ├─┬ meteor-node-stubs@0.2.5
+64 silly idealTree │ ├── asn1.js@4.9.0
+64 silly idealTree │ ├── assert@1.4.1
+64 silly idealTree │ ├── base64-js@1.2.0
+64 silly idealTree │ ├── Base64@0.2.1
+64 silly idealTree │ ├── bn.js@4.11.6
+64 silly idealTree │ ├── brorand@1.0.6
+64 silly idealTree │ ├── browserify-aes@1.0.6
+64 silly idealTree │ ├── browserify-cipher@1.0.0
+64 silly idealTree │ ├── browserify-des@1.0.0
+64 silly idealTree │ ├── browserify-rsa@4.0.1
+64 silly idealTree │ ├── browserify-sign@4.0.0
+64 silly idealTree │ ├── browserify-zlib@0.1.4
+64 silly idealTree │ ├── buffer-shims@1.0.0
+64 silly idealTree │ ├── buffer-xor@1.0.3
+64 silly idealTree │ ├── buffer@4.9.1
+64 silly idealTree │ ├── cipher-base@1.0.3
+64 silly idealTree │ ├── console-browserify@1.1.0
+64 silly idealTree │ ├── constants-browserify@1.0.0
+64 silly idealTree │ ├── core-util-is@1.0.2
+64 silly idealTree │ ├── create-ecdh@4.0.0
+64 silly idealTree │ ├── create-hash@1.1.2
+64 silly idealTree │ ├── create-hmac@1.1.4
+64 silly idealTree │ ├── crypto-browserify@3.11.0
+64 silly idealTree │ ├── date-now@0.1.4
+64 silly idealTree │ ├── des.js@1.0.0
+64 silly idealTree │ ├── diffie-hellman@5.0.2
+64 silly idealTree │ ├── domain-browser@1.1.7
+64 silly idealTree │ ├── elliptic@6.3.2
+64 silly idealTree │ ├── events@1.1.1
+64 silly idealTree │ ├── evp_bytestokey@1.0.0
+64 silly idealTree │ ├── hash.js@1.0.3
+64 silly idealTree │ ├── http-browserify@1.7.0
+64 silly idealTree │ ├── https-browserify@0.0.1
+64 silly idealTree │ ├── ieee754@1.1.8
+64 silly idealTree │ ├── indexof@0.0.1
+64 silly idealTree │ ├── inherits@2.0.1
+64 silly idealTree │ ├── isarray@1.0.0
+64 silly idealTree │ ├── miller-rabin@4.0.0
+64 silly idealTree │ ├── minimalistic-assert@1.0.0
+64 silly idealTree │ ├── os-browserify@0.2.1
+64 silly idealTree │ ├── pako@0.2.9
+64 silly idealTree │ ├── parse-asn1@5.0.0
+64 silly idealTree │ ├── path-browserify@0.0.0
+64 silly idealTree │ ├── pbkdf2@3.0.9
+64 silly idealTree │ ├── process-nextick-args@1.0.7
+64 silly idealTree │ ├── process@0.11.9
+64 silly idealTree │ ├── public-encrypt@4.0.0
+64 silly idealTree │ ├── punycode@1.4.1
+64 silly idealTree │ ├── querystring-es3@0.2.1
+64 silly idealTree │ ├── querystring@0.2.0
+64 silly idealTree │ ├── randombytes@2.0.3
+64 silly idealTree │ ├── readable-stream@2.2.1
+64 silly idealTree │ ├── ripemd160@1.0.1
+64 silly idealTree │ ├── sha.js@2.4.8
+64 silly idealTree │ ├── stream-browserify@2.0.1
+64 silly idealTree │ ├── string_decoder@0.10.31
+64 silly idealTree │ ├── timers-browserify@1.4.2
+64 silly idealTree │ ├── tty-browserify@0.0.0
+64 silly idealTree │ ├─┬ url@0.11.0
+64 silly idealTree │ │ └── punycode@1.3.2
+64 silly idealTree │ ├── util-deprecate@1.0.2
+64 silly idealTree │ ├── util@0.10.3
+64 silly idealTree │ └── vm-browserify@0.0.4
+64 silly idealTree ├── mime-db@1.26.0
+64 silly idealTree ├── mime-types@2.1.14
+64 silly idealTree ├── minimatch@3.0.3
+64 silly idealTree ├── minimist@0.0.8
+64 silly idealTree ├── mkdirp@0.5.1
+64 silly idealTree ├── mongodb-core@2.1.8
+64 silly idealTree ├─┬ mongodb@2.2.24
+64 silly idealTree │ └── readable-stream@2.1.5
+64 silly idealTree ├── ms@0.7.1
+64 silly idealTree ├── nan@2.5.0
+64 silly idealTree ├── node-fetch@1.6.3
+64 silly idealTree ├── node-pre-gyp@0.6.32
+64 silly idealTree ├── nopt@3.0.6
+64 silly idealTree ├── npmlog@4.0.2
+64 silly idealTree ├── number-is-nan@1.0.1
+64 silly idealTree ├── oauth-sign@0.8.2
+64 silly idealTree ├── object-assign@4.1.1
+64 silly idealTree ├── once@1.4.0
+64 silly idealTree ├── path-is-absolute@1.0.1
+64 silly idealTree ├── pinkie-promise@2.0.1
+64 silly idealTree ├── pinkie@2.0.4
+64 silly idealTree ├── process-nextick-args@1.0.7
+64 silly idealTree ├── promise@7.1.1
+64 silly idealTree ├── punycode@1.4.1
+64 silly idealTree ├── qs@6.3.1
+64 silly idealTree ├─┬ rc@1.1.7
+64 silly idealTree │ └── minimist@1.2.0
+64 silly idealTree ├── react-addons-create-fragment@15.4.2
+64 silly idealTree ├── react-addons-pure-render-mixin@15.4.2
+64 silly idealTree ├── react-addons-shallow-compare@15.4.2
+64 silly idealTree ├── react-addons-transition-group@15.4.2
+64 silly idealTree ├── react-dom@15.4.2
+64 silly idealTree ├─┬ react-event-listener@0.4.1
+64 silly idealTree │ ├── babel-runtime@6.23.0
+64 silly idealTree │ └── regenerator-runtime@0.10.3
+64 silly idealTree ├── react-tap-event-plugin@2.0.1
+64 silly idealTree ├── react@15.4.2
+64 silly idealTree ├── readable-stream@2.2.2
+64 silly idealTree ├── recompose@0.22.0
+64 silly idealTree ├── regenerator-runtime@0.9.6
+64 silly idealTree ├── request@2.79.0
+64 silly idealTree ├── require_optional@1.0.0
+64 silly idealTree ├── resolve-from@2.0.0
+64 silly idealTree ├── rimraf@2.5.4
+64 silly idealTree ├── semver@5.3.0
+64 silly idealTree ├── set-blocking@2.0.0
+64 silly idealTree ├── setimmediate@1.0.5
+64 silly idealTree ├── signal-exit@3.0.2
+64 silly idealTree ├── simple-assign@0.1.0
+64 silly idealTree ├── sntp@1.0.9
+64 silly idealTree ├─┬ sshpk@1.10.2
+64 silly idealTree │ └── assert-plus@1.0.0
+64 silly idealTree ├── string_decoder@0.10.31
+64 silly idealTree ├── string-width@1.0.2
+64 silly idealTree ├── stringstream@0.0.5
+64 silly idealTree ├── strip-ansi@3.0.1
+64 silly idealTree ├── strip-json-comments@2.0.1
+64 silly idealTree ├── supports-color@2.0.0
+64 silly idealTree ├── symbol-observable@1.0.4
+64 silly idealTree ├─┬ tar-pack@3.3.0
+64 silly idealTree │ ├── once@1.3.3
+64 silly idealTree │ └── readable-stream@2.1.5
+64 silly idealTree ├── tar@2.2.1
+64 silly idealTree ├── to-fast-properties@1.0.2
+64 silly idealTree ├── tough-cookie@2.3.2
+64 silly idealTree ├── tunnel-agent@0.4.3
+64 silly idealTree ├── tweetnacl@0.14.5
+64 silly idealTree ├── ua-parser-js@0.7.12
+64 silly idealTree ├── uid-number@0.0.6
+64 silly idealTree ├── util-deprecate@1.0.2
+64 silly idealTree ├── uuid@3.0.1
+64 silly idealTree ├── verror@1.3.6
+64 silly idealTree ├── warning@3.0.0
+64 silly idealTree ├── whatwg-fetch@2.0.2
+64 silly idealTree ├── wide-align@1.1.0
+64 silly idealTree ├── wrappy@1.0.2
+64 silly idealTree └── xtend@4.0.1
+65 silly generateActionsToTake Starting
+66 silly install generateActionsToTake
+67 silly generateActionsToTake Finishing
+68 silly diffTrees action count 1
+69 silly diffTrees add bcrypt@1.0.2
+70 silly decomposeActions action count 8
+71 silly decomposeActions fetch bcrypt@1.0.2
+72 silly decomposeActions extract bcrypt@1.0.2
+73 silly decomposeActions test bcrypt@1.0.2
+74 silly decomposeActions preinstall bcrypt@1.0.2
+75 silly decomposeActions build bcrypt@1.0.2
+76 silly decomposeActions install bcrypt@1.0.2
+77 silly decomposeActions postinstall bcrypt@1.0.2
+78 silly decomposeActions finalize bcrypt@1.0.2
+79 silly runTopLevelLifecycles Starting
+80 silly executeActions Starting
+81 silly install executeActions
+82 silly doSerial global-install 0
+83 silly doParallel fetch 1
+84 verbose correctMkdir /Users/Macbook/.meteor/packages/meteor-tool/.1.4.2_7.8jjb3n++os.osx.x86_64+web.browser+web.cordova/mt-os.osx.x86_64/dev_bundle/.npm/_locks correctMkdir not in flight; initializing
+85 verbose lock using /Users/Macbook/.meteor/packages/meteor-tool/.1.4.2_7.8jjb3n++os.osx.x86_64+web.browser+web.cordova/mt-os.osx.x86_64/dev_bundle/.npm/_locks/staging-d2d44f85c85f5d3d.lock for /Users/Macbook/cr-ks/apollo/node_modules/.staging
+86 silly doParallel extract 1
+87 silly extract bcrypt@1.0.2
+88 verbose unbuild node_modules/.staging/bcrypt-88285a48
+89 silly gentlyRm /Users/Macbook/cr-ks/apollo/node_modules/.staging/bcrypt-88285a48 is being purged from base /Users/Macbook/cr-ks/apollo
+90 verbose gentlyRm don't care about contents; nuking /Users/Macbook/cr-ks/apollo/node_modules/.staging/bcrypt-88285a48
+91 verbose tar unpack /Users/Macbook/.meteor/packages/meteor-tool/.1.4.2_7.8jjb3n++os.osx.x86_64+web.browser+web.cordova/mt-os.osx.x86_64/dev_bundle/.npm/bcrypt/1.0.2/package.tgz
+92 verbose tar unpacking to /Users/Macbook/cr-ks/apollo/node_modules/.staging/bcrypt-88285a48
+93 silly gentlyRm /Users/Macbook/cr-ks/apollo/node_modules/.staging/bcrypt-88285a48 is being purged
+94 verbose gentlyRm don't care about contents; nuking /Users/Macbook/cr-ks/apollo/node_modules/.staging/bcrypt-88285a48
+95 silly gunzTarPerm modes [ '755', '644' ]
+96 silly gunzTarPerm extractEntry package.json
+97 silly gunzTarPerm extractEntry .npmignore
+98 silly gunzTarPerm extractEntry README.md
+99 silly gunzTarPerm extractEntry LICENSE
+100 silly gunzTarPerm extractEntry bcrypt.js
+101 silly gunzTarPerm extractEntry Makefile
+102 silly gunzTarPerm extractEntry .travis.yml
+103 silly gunzTarPerm extractEntry appveyor.yml
+104 silly gunzTarPerm extractEntry CHANGELOG.md
+105 silly gunzTarPerm extractEntry binding.gyp
+106 silly gunzTarPerm extractEntry examples/async_compare.js
+107 silly gunzTarPerm extractEntry examples/forever_gen_salt.js
+108 silly gunzTarPerm extractEntry lib/promises.js
+109 silly gunzTarPerm extractEntry test/async.js
+110 silly gunzTarPerm extractEntry test/promise.js
+111 silly gunzTarPerm extractEntry test/repetitions.js
+112 silly gunzTarPerm extractEntry test/sync.js
+113 silly gunzTarPerm extractEntry ISSUE_TEMPLATE.md
+114 silly gunzTarPerm extractEntry src/bcrypt.cc
+115 silly gunzTarPerm extractEntry src/bcrypt_node.cc
+116 silly gunzTarPerm extractEntry src/blowfish.cc
+117 silly gunzTarPerm extractEntry src/node_blf.h
+118 silly gunzTarPerm extractEntry werker.yml
+119 silly gentlyRm /Users/Macbook/cr-ks/apollo/node_modules/.staging/bcrypt-88285a48/node_modules is being purged
+120 verbose gentlyRm don't care about contents; nuking /Users/Macbook/cr-ks/apollo/node_modules/.staging/bcrypt-88285a48/node_modules
+121 silly doParallel preinstall 1
+122 silly preinstall bcrypt@1.0.2 /Users/Macbook/cr-ks/apollo/node_modules/.staging/bcrypt-88285a48
+123 info lifecycle bcrypt@1.0.2~preinstall: bcrypt@1.0.2
+124 silly lifecycle bcrypt@1.0.2~preinstall: no script for preinstall, continuing
+125 silly doReverseSerial remove 0
+126 silly doSerial move 0
+127 silly doSerial finalize 1
+128 silly finalize /Users/Macbook/cr-ks/apollo/node_modules/bcrypt
+129 silly doSerial build 1
+130 silly build bcrypt@1.0.2
+131 info linkStuff bcrypt@1.0.2
+132 silly linkStuff bcrypt@1.0.2 has /Users/Macbook/cr-ks/apollo/node_modules as its parent node_modules
+133 verbose linkBins bcrypt@1.0.2
+134 verbose linkMans bcrypt@1.0.2
+135 silly doSerial global-link 0
+136 silly doParallel update-linked 0
+137 silly doSerial install 1
+138 silly install bcrypt@1.0.2 /Users/Macbook/cr-ks/apollo/node_modules/.staging/bcrypt-88285a48
+139 info lifecycle bcrypt@1.0.2~install: bcrypt@1.0.2
+140 verbose lifecycle bcrypt@1.0.2~install: unsafe-perm in lifecycle true
+141 verbose lifecycle bcrypt@1.0.2~install: PATH: /Users/Macbook/.meteor/packages/meteor-tool/.1.4.2_7.8jjb3n++os.osx.x86_64+web.browser+web.cordova/mt-os.osx.x86_64/dev_bundle/lib/node_modules/npm/bin/node-gyp-bin:/Users/Macbook/cr-ks/apollo/node_modules/bcrypt/node_modules/.bin:/Users/Macbook/cr-ks/apollo/node_modules/.bin:/Users/Macbook/.meteor/packages/meteor-tool/.1.4.2_7.8jjb3n++os.osx.x86_64+web.browser+web.cordova/mt-os.osx.x86_64/dev_bundle/bin:/Users/Macbook/.meteor/packages/meteor-tool/.1.4.2_7.8jjb3n++os.osx.x86_64+web.browser+web.cordova/mt-os.osx.x86_64/dev_bundle/lib/node_modules/.bin:/opt/local/bin:/opt/local/sbin:/Library/Frameworks/Python.framework/Versions/2.7/bin:/Users/Macbook/.composer/vendor/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/CrossPack-AVR/bin
+142 verbose lifecycle bcrypt@1.0.2~install: CWD: /Users/Macbook/cr-ks/apollo/node_modules/bcrypt
+143 silly lifecycle bcrypt@1.0.2~install: Args: [ '-c', 'node-pre-gyp install --fallback-to-build' ]
+144 silly lifecycle bcrypt@1.0.2~install: Returned: code: 1  signal: null
+145 info lifecycle bcrypt@1.0.2~install: Failed to exec install script
+146 verbose unlock done using /Users/Macbook/.meteor/packages/meteor-tool/.1.4.2_7.8jjb3n++os.osx.x86_64+web.browser+web.cordova/mt-os.osx.x86_64/dev_bundle/.npm/_locks/staging-d2d44f85c85f5d3d.lock for /Users/Macbook/cr-ks/apollo/node_modules/.staging
+147 silly rollbackFailedOptional Starting
+148 silly rollbackFailedOptional Finishing
+149 silly runTopLevelLifecycles Finishing
+150 silly install printInstalled
+151 verbose stack Error: bcrypt@1.0.2 install: `node-pre-gyp install --fallback-to-build`
+151 verbose stack Exit status 1
+151 verbose stack     at EventEmitter.<anonymous> (/Users/Macbook/.meteor/packages/meteor-tool/.1.4.2_7.8jjb3n++os.osx.x86_64+web.browser+web.cordova/mt-os.osx.x86_64/dev_bundle/lib/node_modules/npm/lib/utils/lifecycle.js:255:16)
+151 verbose stack     at emitTwo (events.js:87:13)
+151 verbose stack     at EventEmitter.emit (events.js:172:7)
+151 verbose stack     at ChildProcess.<anonymous> (/Users/Macbook/.meteor/packages/meteor-tool/.1.4.2_7.8jjb3n++os.osx.x86_64+web.browser+web.cordova/mt-os.osx.x86_64/dev_bundle/lib/node_modules/npm/lib/utils/spawn.js:40:14)
+151 verbose stack     at emitTwo (events.js:87:13)
+151 verbose stack     at ChildProcess.emit (events.js:172:7)
+151 verbose stack     at maybeClose (internal/child_process.js:854:16)
+151 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:222:5)
+152 verbose pkgid bcrypt@1.0.2
+153 verbose cwd /Users/Macbook/cr-ks/apollo
+154 error Darwin 14.4.0
+155 error argv "/Users/Macbook/.meteor/packages/meteor-tool/.1.4.2_7.8jjb3n++os.osx.x86_64+web.browser+web.cordova/mt-os.osx.x86_64/dev_bundle/bin/node" "/Users/Macbook/.meteor/packages/meteor-tool/.1.4.2_7.8jjb3n++os.osx.x86_64+web.browser+web.cordova/mt-os.osx.x86_64/dev_bundle/bin/npm" "install" "--save" "bcrypt"
+156 error node v4.7.3
+157 error npm  v3.10.9
+158 error code ELIFECYCLE
+159 error bcrypt@1.0.2 install: `node-pre-gyp install --fallback-to-build`
+159 error Exit status 1
+160 error Failed at the bcrypt@1.0.2 install script 'node-pre-gyp install --fallback-to-build'.
+160 error Make sure you have the latest version of node.js and npm installed.
+160 error If you do, this is most likely a problem with the bcrypt package,
+160 error not with npm itself.
+160 error Tell the author that this fails on your system:
+160 error     node-pre-gyp install --fallback-to-build
+160 error You can get information on how to open an issue for this project with:
+160 error     npm bugs bcrypt
+160 error Or if that isn't available, you can get their info via:
+160 error     npm owner ls bcrypt
+160 error There is likely additional logging output above.
+161 verbose exit [ 1, true ]
