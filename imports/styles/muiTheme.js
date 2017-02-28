@@ -1,5 +1,5 @@
-import Colors from 'material-ui/styles/colors';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import Colors from 'material-ui/styles/colors'
+import getMuiTheme from 'material-ui/styles/getMuiTheme'
 export default muiTheme = getMuiTheme({
   palette: {
     primary1Color: Colors.indigo500,
@@ -10,4 +10,4 @@ export default muiTheme = getMuiTheme({
     accent3Color: Colors.grey500,
     pickerHeaderColor: Colors.indigo500
   },
-});
+})

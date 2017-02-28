@@ -9,7 +9,11 @@ import { Events } from '../imports/api/events.js'
 
 Meteor.startup(() => {
   Meteor.publish('ads', function() {
-    return Ads.find({})
+    return Ads.find({advertiser: '58a885b681ff1e4611b3d172' })
+  })
+  Meteor.publish('events', function() {
+    // return events based on login info!!!
+    return Events.find({ advertiser: '58a885b681ff1e4611b3d172' })
   })
 })
 
@@ -45,10 +49,12 @@ WebApp.connectHandlers.use('/ad', function(req, res, next) {
   if (Ad) {
     // Create new impressions event
     Events.insert({
-      type: 'impression',
+      impression: 1,
+      click: 0,
       publisher: publisher,
+      advertiser: Ad.advertiser,
       ad_id: Ad._id,
-      time: new Date
+      date: (new Date).toDateString()
     })
     // Minus 0.008 from the current ads balance
     Ads.update(Ad, { $inc: { balance: -0.008, impressions: 1}})
@@ -62,20 +68,22 @@ WebApp.connectHandlers.use('/ad', function(req, res, next) {
 WebApp.connectHandlers.use('/click', function(req, res, next) {
   const publisher = req.query.publisher
   const ad_id = req.query.id
-  // Create new click event
-  Events.insert({
-    type: 'click',
-    publisher: publisher,
-    ad_id: ad_id,
-    time: new Date
-  })
-  //redirect user to url
   const Ad = Ads.findOne({
     _id: ad_id
+  })
+  // Create new click event
+  Events.insert({
+    impressions: 0,
+    click: 1,
+    publisher: publisher,
+    advertiser: Ad.advertiser,
+    ad_id: ad_id,
+    date: (new Date).toDateString()
   })
 
   Ads.update(Ad, { $inc: {clicks: 1}})
 
+  //redirect user to url
   res.writeHead(307, { 'Location': Ad.url })
   res.end()
 })

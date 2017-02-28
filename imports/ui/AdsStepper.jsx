@@ -1,20 +1,19 @@
-import React from 'react';
-import {
-  Step,
-  Stepper,
-  StepLabel,
-} from 'material-ui/Stepper';
-import RaisedButton from 'material-ui/RaisedButton';
-import FlatButton from 'material-ui/FlatButton';
-import ExpandTransition from 'material-ui/internal/ExpandTransition';
-import TextField from 'material-ui/TextField';
-import Slider from 'material-ui/Slider';
-import DatePicker from 'material-ui/DatePicker';
-import {Tabs, Tab} from 'material-ui/Tabs';
+import React from 'react'
+import { createContainer } from 'meteor/react-meteor-data'
+import { Step, Stepper, StepLabel } from 'material-ui/Stepper'
+import RaisedButton from 'material-ui/RaisedButton'
+import FlatButton from 'material-ui/FlatButton'
+import ExpandTransition from 'material-ui/internal/ExpandTransition'
+import TextField from 'material-ui/TextField'
+import Slider from 'material-ui/Slider'
+import DatePicker from 'material-ui/DatePicker'
+import { Tabs, Tab } from 'material-ui/Tabs'
 
 const ctr = (clicks, impressions) => clicks / impressions
 const impressions = (money) => money / 8 * 1000
 const commaify = (number) => number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+
+import { Ads } from '../api/ads.js'
 
 const style = {
   margin: 20,
@@ -44,37 +43,31 @@ class AdsStepper extends React.Component {
     start: new Date,
     end: new Date,
     balance: null
-  };
-
-  dummyAsync = (cb) => {
-    this.setState({loading: true}, () => {
-      this.asyncTimer = setTimeout(cb, 500);
-    });
-  };
+  }
 
   handleNext = () => {
-    const {stepIndex} = this.state;
+    const {stepIndex} = this.state
     if (!this.state.loading) {
       this.dummyAsync(() => this.setState({
         loading: false,
         stepIndex: stepIndex + 1,
         finished: stepIndex >= 2,
-      }));
+      }))
     }
-  };
+  }
 
   handlePrev = () => {
-    const {stepIndex} = this.state;
+    const {stepIndex} = this.state
     if (!this.state.loading) {
       this.dummyAsync(() => this.setState({
         loading: false,
         stepIndex: stepIndex - 1,
-      }));
+      }))
     }
-  };
+  }
 
   handleSlider = (event, value) => {
-    this.setState({slider: value});
+    this.setState({slider: value})
   }
 
   getStepContent(stepIndex) {
@@ -155,7 +148,7 @@ class AdsStepper extends React.Component {
               </div>
           </div>
           </div>
-        );
+        )
       case 2:
             return (
                 <Tabs
@@ -185,24 +178,24 @@ class AdsStepper extends React.Component {
               </Tabs>
             )
       default:
-        return 'You\'re a long way from home sonny jim!';
+        return 'WTF YOU DOIN'
     }
   }
 
   renderContent() {
-    const {finished, stepIndex} = this.state;
-    const contentStyle = {margin: '0 16px', overflow: 'hidden'};
+    const {finished, stepIndex} = this.state
+    const contentStyle = {margin: '0 16px', overflow: 'hidden'}
 
     if (finished) {
       //Update ad to Server
       //Process Payment
-      
+
       return (
         <div style={contentStyle}>
-          Your ad will begin running on the specified start date<br />
+          Your ad will begin running on the specified start date.<br />
           Thank you for choosing Apollo!
         </div>
-      );
+      )
     }
 
     return (
@@ -222,11 +215,11 @@ class AdsStepper extends React.Component {
           />
         </div>
       </div>
-    );
+    )
   }
 
   render() {
-    const {loading, stepIndex} = this.state;
+    const {loading, stepIndex} = this.state
 
     return (
       <div style={{width: '100%', maxWidth: 700, margin: 'auto'}}>
@@ -245,8 +238,13 @@ class AdsStepper extends React.Component {
           {this.renderContent()}
         </ExpandTransition>
       </div>
-    );
+    )
   }
 }
 
-export default AdsStepper;
+export default createContainer(() => {
+  Meteor.subscribe('ads')
+  return {
+    ads: Ads.find({}).fetch()
+  }
+}, AdsStepper)

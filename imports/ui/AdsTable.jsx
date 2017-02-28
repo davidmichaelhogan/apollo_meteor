@@ -1,22 +1,21 @@
-import React from 'react';
+import React from 'react'
 import { createContainer } from 'meteor/react-meteor-data'
-import {Table, TableBody, TableFooter, TableHeader, TableHeaderColumn, TableRow, TableRowColumn}
-  from 'material-ui/Table';
-import TextField from 'material-ui/TextField';
-import Toggle from 'material-ui/Toggle';
-import IconMenu from 'material-ui/IconMenu';
-import MenuItem from 'material-ui/MenuItem';
-import IconButton from 'material-ui/IconButton';
-import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
-import RaisedButton from 'material-ui/RaisedButton';
-import Divider from 'material-ui/Divider';
-import Paper from 'material-ui/Paper';
-import DatePicker from 'material-ui/DatePicker';
-import FlatButton from 'material-ui/FlatButton';
-import Dialog from 'material-ui/Dialog';
-import Slider from 'material-ui/Slider';
-import Checkbox from 'material-ui/Checkbox';
-import {Tabs, Tab} from 'material-ui/Tabs';
+import { Table, TableBody, TableFooter, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table'
+import TextField from 'material-ui/TextField'
+import Toggle from 'material-ui/Toggle'
+import IconMenu from 'material-ui/IconMenu'
+import MenuItem from 'material-ui/MenuItem'
+import IconButton from 'material-ui/IconButton'
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
+import RaisedButton from 'material-ui/RaisedButton'
+import Divider from 'material-ui/Divider'
+import Paper from 'material-ui/Paper'
+import DatePicker from 'material-ui/DatePicker'
+import FlatButton from 'material-ui/FlatButton'
+import Dialog from 'material-ui/Dialog'
+import Slider from 'material-ui/Slider'
+import Checkbox from 'material-ui/Checkbox'
+import { Tabs, Tab } from 'material-ui/Tabs'
 
 import { Ads } from '../api/ads.js'
 
@@ -39,7 +38,7 @@ const style = {
 class AdsTable extends React.Component {
 
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       selectable: false,
@@ -56,7 +55,7 @@ class AdsTable extends React.Component {
       start: null,
       end: null,
       balance: null
-    };
+    }
   }
 
   handleOpen = () => {
@@ -87,7 +86,7 @@ class AdsTable extends React.Component {
   }
 
   handleSlider = (event, value) => {
-    this.setState({slider: value});
+    this.setState({slider: value})
   }
 
   deleteAd(ad_id) {
@@ -107,7 +106,7 @@ class AdsTable extends React.Component {
         primary={true}
         onTouchTap={this.handlePaymentSubmit}
       />,
-    ];
+    ]
     return (
       <Dialog
         title="Add Funds to Campaign"
@@ -298,4 +297,4 @@ export default createContainer(() => {
   return {
     ads: Ads.find({}).fetch()
   }
-}, AdsTable);
+}, AdsTable)

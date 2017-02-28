@@ -21,13 +21,10 @@ const currentIcon = <IconToc />
 const upIcon = <IconUp />
 const timeIcon = <IconTime />
 
-const accountBalance = '$10,678.65'
-
-
 export default class Nav extends React.Component {
 
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       open: false,
       selectedIndex: 0,
@@ -35,7 +32,7 @@ export default class Nav extends React.Component {
     }
   }
 
-  handleToggle = () => this.setState({open: !this.state.open});
+  handleToggle = () => this.setState({open: !this.state.open})
 
   handleMenuOne = () => {
     this.setState({open: false})
@@ -49,7 +46,7 @@ export default class Nav extends React.Component {
 
   handleMenuThree = () => {
     this.setState({open: false})
-    this.setState({setPage: 0})
+    this.setState({setPage: 2})
   }
 
   handleMenuFour = () => {
@@ -57,7 +54,7 @@ export default class Nav extends React.Component {
     this.setState({setPage: 0})
   }
 
-  select = (index) => this.setState({selectedIndex: index});
+  select = (index) => this.setState({selectedIndex: index})
 
   render() {
     return (
@@ -96,6 +93,6 @@ export default class Nav extends React.Component {
         </Paper>
       </div>
       </div>
-    );
+    )
   }
 }
