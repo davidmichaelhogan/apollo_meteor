@@ -5,6 +5,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin()
 
 import Nav from './Nav'
+import Login from './Login'
 
 // Change theme for Mui
 import muiTheme from '../styles/muiTheme'
@@ -12,14 +13,30 @@ import muiTheme from '../styles/muiTheme'
 
 // App component - represents the whole app
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      isLoggedIn: false,
+    }
+  }
   render() {
-    return (
-      <div>
-        <MuiThemeProvider muiTheme={muiTheme}>
-          <Nav />
-        </MuiThemeProvider>
-      </div>
-    )
+    if (this.state.isLoggedIn) {
+      return (
+        <div>
+          <MuiThemeProvider muiTheme={muiTheme}>
+              <Nav />
+          </MuiThemeProvider>
+        </div>
+      )
+    } else {
+      return (
+        <div>
+          <MuiThemeProvider muiTheme={muiTheme}>
+              <Login />
+          </MuiThemeProvider>
+        </div>
+      )
+    }
   }
 }
 

@@ -26,6 +26,15 @@ const data = {
     {date: new Date(1488221740396), clicks: 200, impressions: 537},
     {date: new Date(1488241740396), clicks: 10, impressions: 574},
     {date: new Date(1488221743396), clicks: 140, impressions: 527},
+    {date: new Date(1482221740396), clicks: 100, impressions: 467},
+    {date: new Date(1488221780396), clicks: 150, impressions: 567},
+    {date: new Date(1488221744396), clicks: 100, impressions: 267},
+    {date: new Date(1498321740396), clicks: 40, impressions: 567},
+    {date: new Date(1488231740396), clicks: 120, impressions: 467},
+    {date: new Date(1488223740396), clicks: 180, impressions: 357},
+    {date: new Date(1488221740396), clicks: 200, impressions: 537},
+    {date: new Date(1488241740396), clicks: 10, impressions: 574},
+    {date: new Date(1488221743396), clicks: 140, impressions: 527},
     {date: new Date(1482221740396), clicks: 100, impressions: 467}
   ],
   id_58a9f08643a2e8f09b2435ba: [
@@ -56,7 +65,7 @@ class Analytics extends React.Component {
     super(props)
     this.state = {
       //Set menu to first Ad
-      value: this.props.ads[0]._id,
+      value: this.props.ads[0]._id
     }
   }
 
@@ -68,7 +77,7 @@ class Analytics extends React.Component {
     return (
       <ResponsiveContainer width="100%" height={400}>
         <AreaChart data={data[key]}>
-          <XAxis dataKey="name"/>
+          <XAxis dataKey={"clicks"}/>
           <YAxis/>
           <CartesianGrid strokeDasharray="3 3"/>
           <Tooltip/>

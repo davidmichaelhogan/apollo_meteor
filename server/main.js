@@ -15,6 +15,9 @@ Meteor.startup(() => {
     // return events based on login info!!!
     return Events.find({ advertiser: '58a885b681ff1e4611b3d172' })
   })
+  Meteor.publish('clicks', function() {
+    return Events.find({ click: 1})
+  })
 })
 
 //Ad Api
