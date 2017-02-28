@@ -45,6 +45,12 @@ class AdsStepper extends React.Component {
     balance: null
   }
 
+  dummyAsync = (cb) => {
+    this.setState({loading: true}, () => {
+      this.asyncTimer = setTimeout(cb, 500);
+    })
+  }
+
   handleNext = () => {
     const {stepIndex} = this.state
     if (!this.state.loading) {
