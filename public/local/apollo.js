@@ -119,7 +119,7 @@ class Apollo {
     const currentAd = this
 
     setTimeout(function(){
-      //currentAd.el.style.top = '10px' -- Ad Disabled
+      currentAd.el.style.top = '10px'
       currentAd.isVisible = true
     }, 3500)
 
