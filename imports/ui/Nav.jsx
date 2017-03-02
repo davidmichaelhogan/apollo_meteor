@@ -78,6 +78,7 @@ export default class Nav extends React.Component {
           <h2>Analytics</h2>
           <MenuItem onTouchTap={this.handleMenuThree} leftIcon={upIcon}>Real Time Event Data</MenuItem>
           <MenuItem onTouchTap={this.handleMenuFour} leftIcon={timeIcon}>Past Campaign Reports</MenuItem>
+
         </Drawer>
       </div>
       <Content currentPage={this.state.setPage}/>
@@ -85,9 +86,9 @@ export default class Nav extends React.Component {
         <Paper zDepth={1}>
           <BottomNavigation selectedIndex={this.state.selectedIndex}>
             <BottomNavigationItem
-              label="Account Settings"
+              label="Logout of Dashboard"
               icon={personIcon}
-              onTouchTap={() => this.setState({setPage: 1})}
+              onTouchTap={() => {this.props.changeLoginState(false); console.log('logged out')}}
             />
           </BottomNavigation>
         </Paper>

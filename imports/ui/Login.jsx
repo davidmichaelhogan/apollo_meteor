@@ -10,7 +10,8 @@ class Login extends React.Component {
   render() {
     return (
       <div>
-        <div className="title">Please contact us at: info@launchapollo.com to sign up for advertiser access.</div>
+        <div className="title">Click to Login</div>
+        <button onClick={() => this.props.changeLoginState(true)}>Login</button>
       </div>
     )
   }

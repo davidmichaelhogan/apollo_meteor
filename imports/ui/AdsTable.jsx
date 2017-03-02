@@ -2,6 +2,7 @@ import React from 'react'
 import { createContainer } from 'meteor/react-meteor-data'
 import { Table, TableBody, TableFooter, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table'
 import TextField from 'material-ui/TextField'
+import FlatButton from 'material-ui/FlatButton'
 import Toggle from 'material-ui/Toggle'
 import IconMenu from 'material-ui/IconMenu'
 import MenuItem from 'material-ui/MenuItem'
@@ -11,13 +12,11 @@ import RaisedButton from 'material-ui/RaisedButton'
 import Divider from 'material-ui/Divider'
 import Paper from 'material-ui/Paper'
 import DatePicker from 'material-ui/DatePicker'
-import FlatButton from 'material-ui/FlatButton'
 import Dialog from 'material-ui/Dialog'
-import Slider from 'material-ui/Slider'
-import Checkbox from 'material-ui/Checkbox'
-import { Tabs, Tab } from 'material-ui/Tabs'
 
 import { Ads } from '../api/ads.js'
+
+import FundsMenu from './FundsMenu'
 
 const ctr = (clicks, impressions) => clicks / impressions
 const impressions = (money) => money / 8 * 1000
@@ -45,7 +44,6 @@ class AdsTable extends React.Component {
       showCheckboxes: false,
       hasClicked: false,
       open: false,
-      slider: 5000.00,
       tab: 0,
       _id: null,
       headline: null,
@@ -58,19 +56,31 @@ class AdsTable extends React.Component {
     }
   }
 
-  handleOpen = () => {
-    this.setState({open: true})
-  }
-
   handlePaymentSubmit = () => {
     this.setState({open: false})
-    this.setState({hasClicked: false})
     //Put payment callback here
     console.log('Payment Submited')
   }
 
   handleCancel = () => {
     this.setState({open: false})
+  }
+
+  actions = [
+    <FlatButton
+      label="Cancel"
+      primary={true}
+      onTouchTap={this.handleCancel}
+    />,
+    <FlatButton
+      label="Submit"
+      primary={true}
+      onTouchTap={this.handlePaymentSubmit}
+    />,
+  ]
+
+  handleOpen = () => {
+    this.setState({open: true})
   }
 
   handleEscape = (e) => {
@@ -85,75 +95,9 @@ class AdsTable extends React.Component {
     })
   }
 
-  handleSlider = (event, value) => {
-    this.setState({slider: value})
-  }
-
   deleteAd(ad_id) {
-    //Run delete Meteor Method here
+    Meteor.call('deleteAd', ad_id)
     console.log('Delete this ad: ' + ad_id)
-  }
-
-  loadFundsMenu() {
-    const actions = [
-      <FlatButton
-        label="Cancel"
-        primary={true}
-        onTouchTap={this.handleCancel}
-      />,
-      <FlatButton
-        label="Submit"
-        primary={true}
-        onTouchTap={this.handlePaymentSubmit}
-      />,
-    ]
-    return (
-      <Dialog
-        title="Add Funds to Campaign"
-        actions={actions}
-        modal={true}
-        open={this.state.open}
-        autoScrollBodyContent={true}
-      >
-        <div className="sub-header">
-          Impressions: {commaify(impressions(this.state.slider))} (per 30 days)<br />
-          Cost: ${commaify(this.state.slider.toFixed(2))}
-        </div>
-        <Slider
-          min={100.00}
-          max={10000.00}
-          step={1}
-          defaultValue={500.00}
-          value={this.state.slider}
-          onChange={this.handleSlider}
-        />
-        <Tabs
-        value={this.state.tab}
-        onChange={this.handleTab}
-        >
-        <Tab label="Pay with Current Information" value={0} >
-          <div className="payment-tab">
-            <p>Account ID: <strong>56789789</strong><br />Email: <strong>nothing@gmail.com</strong></p>
-            <div className="sub-header">Click <strong>Submit</strong> to pay with your saved account information.</div>
-          </div>
-        </Tab>
-        <Tab label="Pay with New Card" value={1}>
-          <div className="payment-tab">
-            <h2>Pay with new card</h2>
-            <div className="sub-header">Contact Information</div>
-            <TextField style={style.input} hintText="Steve" floatingLabelText="First Name"/><TextField style={style.input} hintText="Jobs" floatingLabelText="Last Name"/><br />
-            <TextField style={style.input} hintText="1 Apple Tree Way, Suite 226" floatingLabelText="Address" /><TextField style={style.input} hintText="Los Angeles" floatingLabelText="City"/><br />
-            <TextField style={style.input} hintText="CA" floatingLabelText="State"/><TextField style={style.input} hintText="01035" floatingLabelText="Zip"/>
-            <div className="sub-header">Payment Information</div>
-            <TextField style={style.inputFull} hintText="0001000200030004" floatingLabelText="Card Number"/><br />
-            <TextField style={style.inputFull} hintText="Steven Jobs" floatingLabelText="Full Name"/><br />
-            <TextField style={style.input} hintText="01/2017" floatingLabelText="Expiration Date" /><TextField style={style.input} hintText="001" floatingLabelText="Security Code"/>
-            <div className="sub-header">Click <strong>Submit</strong> to process payment.</div>
-          </div>
-        </Tab>
-      </Tabs>
-      </Dialog>
-    )
   }
 
   loadMenu() {
@@ -286,7 +230,15 @@ class AdsTable extends React.Component {
     return (
       <div>
         {this.loadMenu()}
-        {this.loadFundsMenu()}
+        <Dialog
+          title="Add Funds to Campaign"
+          actions={this.actions}
+          modal={true}
+          open={this.state.open}
+          autoScrollBodyContent={true}
+        >
+        <FundsMenu />
+        </Dialog>
       </div>
     )
   }

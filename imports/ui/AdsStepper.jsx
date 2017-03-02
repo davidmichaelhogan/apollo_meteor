@@ -15,6 +15,8 @@ const commaify = (number) => number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, 
 
 import { Ads } from '../api/ads.js'
 
+import FundsMenu from './FundsMenu'
+
 const style = {
   margin: 20,
   padding: 10,
@@ -34,15 +36,17 @@ class AdsStepper extends React.Component {
     finished: false,
     stepIndex: 0,
     open: false,
-    slider: 500.00,
-    _id: null,
+    advertiser: '58a885b681ff1e4611b3d172', // Setup state to change advertiser with login
+    category: '58a886d597a4ce608ea459dd',  //Create option for category
     headline: 'Apollo Ad Server Example',
     subline: 'Your subline will appear here. Click in the fields below to make your ad.',
     logo: 'http://apolloads.io/img/form-logo.png',
     url: 'http://apollopods.com',
     start: new Date,
     end: new Date,
-    balance: null
+    click: 0,
+    impression: 0,
+    balance: 100
   }
 
   dummyAsync = (cb) => {
@@ -72,31 +76,13 @@ class AdsStepper extends React.Component {
     }
   }
 
-  handleSlider = (event, value) => {
-    this.setState({slider: value})
-  }
-
   getStepContent(stepIndex) {
     switch (stepIndex) {
       case 0:
         return (
           <div>
-            <div className="left-title">Campaign Setup</div>
+            <div className="left-title">Campaign Dates</div>
             <div className="clear"></div>
-            <div className="sub-header">
-              Impressions: {commaify(impressions(this.state.slider))}<br />
-              Cost: ${commaify(this.state.slider.toFixed(2))}
-            </div>
-            <Slider
-              min={100.00}
-              max={10000.00}
-              step={1}
-              defaultValue={500.00}
-              value={this.state.slider}
-              onChange={this.handleSlider}
-              style={{width: "60%", margin: 10}}
-            />
-            <div className="sub-header">Campaign Dates</div>
               <div className="date">Start: <DatePicker onChange={(x, date) => this.setState({start: date})} hintText={this.state.start.toString().split(this.state.start.getFullYear())[0]} /></div>
               <div className="date">End: <DatePicker onChange={(x, date) => this.setState({end: date})} hintText={this.state.end.toString().split(this.state.end.getFullYear())[0]} /></div>
           </div>
@@ -157,31 +143,7 @@ class AdsStepper extends React.Component {
         )
       case 2:
             return (
-                <Tabs
-                value={this.state.tab}
-                onChange={this.handleTab}
-                >
-                <Tab label="Pay with Current Information" value={0} >
-                  <div className="payment-tab">
-                    <p>Account ID: <strong>56789789</strong><br />Email: <strong>nothing@gmail.com</strong></p>
-                    <div className="sub-header">Click <strong>Finish</strong> to pay with your saved account information.</div>
-                  </div>
-                </Tab>
-                <Tab label="Pay with New Card" value={1}>
-                  <div className="payment-tab">
-                    <h2>Pay with new card</h2>
-                    <div className="sub-header">Contact Information</div>
-                    <TextField style={style.input} hintText="Steve" floatingLabelText="First Name"/><TextField style={style.input} hintText="Jobs" floatingLabelText="Last Name"/><br />
-                    <TextField style={style.input} hintText="1 Apple Tree Way, Suite 226" floatingLabelText="Address" /><TextField style={style.input} hintText="Los Angeles" floatingLabelText="City"/><br />
-                    <TextField style={style.input} hintText="CA" floatingLabelText="State"/><TextField style={style.input} hintText="01035" floatingLabelText="Zip"/>
-                    <div className="sub-header">Payment Information</div>
-                    <TextField style={style.inputFull} hintText="0001000200030004" floatingLabelText="Card Number"/><br />
-                    <TextField style={style.inputFull} hintText="Steven Jobs" floatingLabelText="Full Name"/><br />
-                    <TextField style={style.input} hintText="01/2017" floatingLabelText="Expiration Date" /><TextField style={style.input} hintText="001" floatingLabelText="Security Code"/>
-                    <div className="sub-header">Click <strong>Finish</strong> to process payment.</div>
-                  </div>
-                </Tab>
-              </Tabs>
+                <FundsMenu />
             )
       default:
         return 'WTF YOU DOIN'
@@ -194,6 +156,26 @@ class AdsStepper extends React.Component {
 
     if (finished) {
       //Update ad to Server
+      console.log(this.state.balance)
+      Meteor.call('addAd', {
+        headline: this.state.headline,
+        subline: this.state.subline,
+        url: this.state.url,
+        logo: this.state.logo,
+        advertiser: this.state.advertiser,
+        category: this.state.category,
+        start: this.state.start,
+        end: this.state.end,
+        balance: this.state.balance
+      }, (err, res) => {
+        if (err) {
+          alert(err);
+        } else {
+          console.log('YOU FUCKIN DID IT')
+        }
+      })
+
+
       //Process Payment
 
       return (
@@ -231,13 +213,13 @@ class AdsStepper extends React.Component {
       <div style={{width: '100%', maxWidth: 700, margin: 'auto'}}>
         <Stepper activeStep={stepIndex}>
           <Step>
-            <StepLabel>Select campaign settings</StepLabel>
+            <StepLabel>Select campaign dates</StepLabel>
           </Step>
           <Step>
             <StepLabel>Create an ad</StepLabel>
           </Step>
           <Step>
-            <StepLabel>Submit order</StepLabel>
+            <StepLabel>Choose impressions</StepLabel>
           </Step>
         </Stepper>
         <ExpandTransition loading={loading} open={true}>

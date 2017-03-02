@@ -19,12 +19,17 @@ class App extends Component {
       isLoggedIn: false,
     }
   }
+
+  changeLoginState (isLogged) {
+    this.setState({ isLoggedIn: isLogged })
+  }
+
   render() {
     if (this.state.isLoggedIn) {
       return (
         <div>
           <MuiThemeProvider muiTheme={muiTheme}>
-              <Nav />
+              <Nav changeLoginState={(isLogged) => this.changeLoginState(isLogged)}/>
           </MuiThemeProvider>
         </div>
       )
@@ -32,7 +37,7 @@ class App extends Component {
       return (
         <div>
           <MuiThemeProvider muiTheme={muiTheme}>
-              <Login />
+              <Login  changeLoginState={(isLogged) => this.changeLoginState(isLogged)} />
           </MuiThemeProvider>
         </div>
       )
