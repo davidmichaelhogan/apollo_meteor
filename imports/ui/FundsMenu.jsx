@@ -32,6 +32,7 @@ class FundsMenu extends React.Component {
 
   handleSlider = (event, value) => {
     this.setState({slider: value})
+    this.props.balanceUpdate(value)
   }
 
   render() {
@@ -49,10 +50,7 @@ class FundsMenu extends React.Component {
           value={this.state.slider}
           onChange={this.handleSlider}
         />
-        <Tabs
-        value={this.state.tab}
-        onChange={this.handleTab}
-        >
+        <Tabs>
         <Tab label="Pay with Current Information" value={0} >
           <div className="payment-tab">
             <p>Account ID: <strong>56789789</strong><br />Email: <strong>nothing@gmail.com</strong></p>

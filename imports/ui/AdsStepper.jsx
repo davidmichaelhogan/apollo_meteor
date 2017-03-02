@@ -44,9 +44,11 @@ class AdsStepper extends React.Component {
     url: 'http://apollopods.com',
     start: new Date,
     end: new Date,
-    click: 0,
-    impression: 0,
-    balance: 100
+    balance: 5000
+  }
+
+  balanceUpdate (balance) {
+    this.setState({ balance: balance })
   }
 
   dummyAsync = (cb) => {
@@ -62,6 +64,7 @@ class AdsStepper extends React.Component {
         loading: false,
         stepIndex: stepIndex + 1,
         finished: stepIndex >= 2,
+        runAddAd: stepIndex >= 2
       }))
     }
   }
@@ -143,7 +146,7 @@ class AdsStepper extends React.Component {
         )
       case 2:
             return (
-                <FundsMenu />
+                <FundsMenu balanceUpdate={(balance) => this.balanceUpdate(balance)}/>
             )
       default:
         return 'WTF YOU DOIN'
@@ -151,29 +154,31 @@ class AdsStepper extends React.Component {
   }
 
   renderContent() {
-    const {finished, stepIndex} = this.state
+    const {finished, stepIndex, runAddAd} = this.state
     const contentStyle = {margin: '0 16px', overflow: 'hidden'}
 
     if (finished) {
       //Update ad to Server
-      console.log(this.state.balance)
-      Meteor.call('addAd', {
-        headline: this.state.headline,
-        subline: this.state.subline,
-        url: this.state.url,
-        logo: this.state.logo,
-        advertiser: this.state.advertiser,
-        category: this.state.category,
-        start: this.state.start,
-        end: this.state.end,
-        balance: this.state.balance
-      }, (err, res) => {
-        if (err) {
-          alert(err);
-        } else {
-          console.log('YOU FUCKIN DID IT')
-        }
-      })
+      if (runAddAd) {
+        Meteor.call('addAd', {
+          headline: this.state.headline,
+          subline: this.state.subline,
+          url: this.state.url,
+          logo: this.state.logo,
+          advertiser: this.state.advertiser,
+          category: this.state.category,
+          start: this.state.start,
+          end: this.state.end,
+          balance: this.state.balance
+        }, (err, res) => {
+          if (err) {
+            alert(err);
+          } else {
+            console.log('Ad Set')
+            this.setState({ runAddAd: false })
+          }
+        })
+      }
 
 
       //Process Payment

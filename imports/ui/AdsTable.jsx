@@ -18,7 +18,7 @@ import { Ads } from '../api/ads.js'
 
 import FundsMenu from './FundsMenu'
 
-const ctr = (clicks, impressions) => clicks / impressions
+const ctr = (clicks, impressions) =>  (clicks / impressions) ? (clicks / impressions) : 0
 const impressions = (money) => money / 8 * 1000
 const commaify = (number) => number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 
@@ -87,12 +87,6 @@ class AdsTable extends React.Component {
     if (e.keyCode === 27) {
       this.setState({hasClicked: false})
     }
-  }
-
-  handleTab = (value) => {
-    this.setState({
-      tab: value,
-    })
   }
 
   deleteAd(ad_id) {

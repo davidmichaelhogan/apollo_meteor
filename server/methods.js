@@ -27,6 +27,8 @@ Meteor.methods({
       category: category,
       start: start,
       end: end,
+      clicks: 0,
+      impressions: 0,
       balance: balance
     })
   }
