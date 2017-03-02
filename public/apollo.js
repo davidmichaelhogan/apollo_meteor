@@ -119,7 +119,7 @@ class Apollo {
     const currentAd = this
 
     setTimeout(function(){
-      currentAd.el.style.top = '10px'
+      //currentAd.el.style.top = '10px' Ad is loading but not showing!
       currentAd.isVisible = true
     }, 3500)
 
