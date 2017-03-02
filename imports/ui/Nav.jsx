@@ -61,7 +61,7 @@ export default class Nav extends React.Component {
       <div>
       <div>
         <AppBar
-          title="Apollo Advertiser DSP"
+          title="Apollo Ad Server"
           onLeftIconButtonTouchTap={this.handleToggle}
         />
         <Drawer
