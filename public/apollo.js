@@ -1,7 +1,7 @@
 class Apollo {
   constructor () {
 
-    this.api = 'https://launchapollo.herokuapp.com/' // Set Production URL (Change to self hosted URL once DNS updates)
+    this.api = 'https://launchapollo.herokuapp.com' // Set Production URL (Change to self hosted URL once DNS updates)
 
     this.isVisible = false
     this.el = null
