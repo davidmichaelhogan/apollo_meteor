@@ -45,8 +45,8 @@ class FundsMenu extends React.Component {
         <Slider
           min={100.00}
           max={10000.00}
-          step={1}
-          defaultValue={500.00}
+          step={100}
+          defaultValue={5000.00}
           value={this.state.slider}
           onChange={this.handleSlider}
         />
@@ -68,7 +68,6 @@ class FundsMenu extends React.Component {
             <TextField style={style.inputFull} hintText="0001000200030004" floatingLabelText="Card Number"/><br />
             <TextField style={style.inputFull} hintText="Steven Jobs" floatingLabelText="Full Name"/><br />
             <TextField style={style.input} hintText="01/2017" floatingLabelText="Expiration Date" /><TextField style={style.input} hintText="001" floatingLabelText="Security Code"/>
-            <div className="sub-header">Click <strong>Submit</strong> to process payment.</div>
           </div>
         </Tab>
       </Tabs>

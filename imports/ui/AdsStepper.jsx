@@ -168,8 +168,7 @@ class AdsStepper extends React.Component {
           advertiser: this.state.advertiser,
           category: this.state.category,
           start: this.state.start,
-          end: this.state.end,
-          balance: this.state.balance
+          end: this.state.end
         }, (err, res) => {
           if (err) {
             alert(err);

@@ -77,7 +77,9 @@ export default class Nav extends React.Component {
           <p />
           <h2>Analytics</h2>
           <MenuItem onTouchTap={this.handleMenuThree} leftIcon={upIcon}>Real Time Event Data</MenuItem>
-          <MenuItem onTouchTap={this.handleMenuFour} leftIcon={timeIcon}>Past Campaign Reports</MenuItem>
+          {
+            //<MenuItem onTouchTap={this.handleMenuFour} leftIcon={timeIcon}>Past Campaign Reports</MenuItem>
+          }
 
         </Drawer>
       </div>

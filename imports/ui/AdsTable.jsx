@@ -45,20 +45,34 @@ class AdsTable extends React.Component {
       hasClicked: false,
       open: false,
       tab: 0,
-      _id: null,
+      ad_id: null,
+      advertiser: null,
+      category: null,
       headline: null,
       subline: null,
       logo: null,
       url: null,
       start: null,
       end: null,
+      impressions: null,
+      clicks: null,
       balance: null
     }
   }
 
   handlePaymentSubmit = () => {
     this.setState({open: false})
-    //Put payment callback here
+    this.setState({hasClicked: false})
+    //Payment method
+    Meteor.call('updateBalance', {
+      ad_id: this.state.ad_id
+    }, (err, res) => {
+      if (err) {
+        alert(err);
+      } else {
+        console.log('Payment Sent')
+      }
+    })
     console.log('Payment Submited')
   }
 
@@ -87,6 +101,33 @@ class AdsTable extends React.Component {
     if (e.keyCode === 27) {
       this.setState({hasClicked: false})
     }
+  }
+
+  balanceUpdate (balance) {
+    this.setState({ balance: balance })
+  }
+
+  handleEditSubmit = () => {
+    Meteor.call('updateAd', {
+      ad_id: this.state.ad_id,
+      headline: this.state.headline,
+      subline: this.state.subline,
+      url: this.state.url,
+      logo: this.state.logo,
+      advertiser: this.state.advertiser,
+      category: this.state.category,
+      start: this.state.start,
+      end: this.state.end,
+      impressions: this.state.impressions,
+      clicks: this.state.clicks
+    }, (err, res) => {
+      if (err) {
+        alert(err);
+      } else {
+        console.log('Ad Set')
+      }
+    })
+    this.setState({ hasClicked: false })
   }
 
   deleteAd(ad_id) {
@@ -129,7 +170,23 @@ class AdsTable extends React.Component {
                         anchorOrigin={{horizontal: 'right', vertical: 'top'}}
                         targetOrigin={{horizontal: 'right', vertical: 'top'}}
                       >
-                        <MenuItem primaryText="Edit Settings" onTouchTap={() => this.setState({hasClicked: true, _id: ad._id, headline: ad.headline, subline: ad.subline, logo: ad.logo, url: ad.url, start: ad.start, end: ad.end, balance: ad.balance})}/>
+                        <MenuItem primaryText="Edit Settings"
+                          onTouchTap={() => this.setState({
+                            hasClicked: true,
+                            ad_id: ad._id,
+                            advertiser: ad.advertiser,
+                            category: ad.category,
+                            headline:ad.headline,
+                            subline: ad.subline,
+                            logo: ad.logo,
+                            url: ad.url,
+                            start: ad.start,
+                            end: ad.end,
+                            impressions: ad.impressions,
+                            clicks: ad.clicks,
+                            balance: ad.balance
+                          })}
+                        />
                         <MenuItem primaryText="Delete Ad" onTouchTap={(event) => this.deleteAd(ad._id)}/>
                       </IconMenu>
                     </div>
@@ -152,7 +209,6 @@ class AdsTable extends React.Component {
           </div>
           <div className="clear"></div>
           <div className="ad-editor">
-          <a href={this.state.url} target="new">
           <div className="sample-ad-top">
           <div className="sample-ad-headline">{this.state.headline}</div>
           <div className="sample-ad-logo"><img src={this.state.logo} /></div>
@@ -161,7 +217,6 @@ class AdsTable extends React.Component {
           <div className="sample-ad-bottom">
           {this.state.subline}
           </div>
-          </a>
             <div className="float">
               <TextField
                 hintText={this.state.headline}
@@ -202,14 +257,7 @@ class AdsTable extends React.Component {
             </div>
             <div className="sub-header">Remaining Balance: ${commaify(this.state.balance.toFixed(2))} - {commaify(impressions(this.state.balance).toFixed(0))} impressions</div>
             <div className="sub-buttons">
-              <FlatButton label="Save Settings" primary={true} onTouchTap={() => console.log(
-                'Headline: ' + this.state.headline + '\n' +
-                'Subline: ' + this.state.subline + '\n' +
-                'URL: ' + this.state.url + '\n' +
-                'Start Date: ' + this.state.start + '\n' +
-                'End Date: ' + this.state.end
-
-              )}/>
+              <FlatButton label="Save Settings" primary={true} onTouchTap={this.handleEditSubmit}/>
             </div>
             <div className="sub-buttons">
               <FlatButton label="Add Funds" onTouchTap={this.handleOpen} />
@@ -231,7 +279,7 @@ class AdsTable extends React.Component {
           open={this.state.open}
           autoScrollBodyContent={true}
         >
-        <FundsMenu />
+        <FundsMenu balanceUpdate={(balance) => this.balanceUpdate(balance)}/>
         </Dialog>
       </div>
     )

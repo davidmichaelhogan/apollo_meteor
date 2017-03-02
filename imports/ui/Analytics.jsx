@@ -17,7 +17,7 @@ import { Ads } from '../api/ads.js'
 
 //Fake data for use with graph
 const data = {
-  id_58a9f07043a2e8f09b2435b9: [
+  id_3AaJ8Hg5EGHBdPGvq: [
     {date: new Date(1488221780396), clicks: 150, impressions: 567},
     {date: new Date(1488221744396), clicks: 100, impressions: 267},
     {date: new Date(1498321740396), clicks: 40, impressions: 567},
@@ -37,27 +37,46 @@ const data = {
     {date: new Date(1488221743396), clicks: 140, impressions: 527},
     {date: new Date(1482221740396), clicks: 100, impressions: 467}
   ],
-  id_58a9f08643a2e8f09b2435ba: [
-    {date: new Date(1488221740396), clicks: 10, impressions: 4567},
-    {date: new Date(1488241740396), clicks: 10, impressions: 4567},
-    {date: new Date(1488221743396), clicks: 10, impressions: 4567},
-    {date: new Date(1482221740396), clicks: 10, impressions: 4567}
-  ],
-  id_58a9f0a843a2e8f09b2435bb: [
-        {date: new Date(1488221780396), clicks: 15, impressions: 4567},
-        {date: new Date(1488221744396), clicks: 25, impressions: 4567},
-        {date: new Date(1498321740396), clicks: 4, impressions: 4567},
-        {date: new Date(1488231740396), clicks: 12, impressions: 4567},
-        {date: new Date(1488223740396), clicks: 18, impressions: 4567},
-        {date: new Date(1488221740396), clicks: 12, impressions: 4567},
-        {date: new Date(1488241740396), clicks: 2, impressions: 4567},
-        {date: new Date(1488221743396), clicks: 11, impressions: 4567},
-        {date: new Date(1482221740396), clicks: 25, impressions: 4567},
-        {date: new Date(1488221740396), clicks: 20, impressions: 4567},
-        {date: new Date(1488241740396), clicks: 1, impressions: 4567},
-        {date: new Date(1488221743396), clicks: 14, impressions: 4567},
-        {date: new Date(1482221740396), clicks: 10, impressions: 4567}
-  ]
+    id_LiPfAAf2oaWeXke8b: [
+      {date: new Date(1488221780396), clicks: 150, impressions: 567},
+      {date: new Date(1488221744396), clicks: 100, impressions: 267},
+      {date: new Date(1498321740396), clicks: 40, impressions: 567},
+      {date: new Date(1488231740396), clicks: 120, impressions: 467},
+      {date: new Date(1488223740396), clicks: 180, impressions: 357},
+      {date: new Date(1488221740396), clicks: 200, impressions: 537},
+      {date: new Date(1488241740396), clicks: 10, impressions: 574},
+      {date: new Date(1488221743396), clicks: 140, impressions: 527},
+      {date: new Date(1482221740396), clicks: 100, impressions: 467},
+      {date: new Date(1488221780396), clicks: 150, impressions: 567},
+      {date: new Date(1488221744396), clicks: 100, impressions: 267},
+      {date: new Date(1498321740396), clicks: 40, impressions: 567},
+      {date: new Date(1488231740396), clicks: 120, impressions: 467},
+      {date: new Date(1488223740396), clicks: 180, impressions: 357},
+      {date: new Date(1488221740396), clicks: 200, impressions: 537},
+      {date: new Date(1488241740396), clicks: 10, impressions: 574},
+      {date: new Date(1488221743396), clicks: 140, impressions: 527},
+      {date: new Date(1482221740396), clicks: 100, impressions: 467}
+    ],
+      id_QJkDPiWxNDzaZmHAM: [
+        {date: new Date(1488221780396), clicks: 150, impressions: 567},
+        {date: new Date(1488221744396), clicks: 100, impressions: 267},
+        {date: new Date(1498321740396), clicks: 40, impressions: 567},
+        {date: new Date(1488231740396), clicks: 120, impressions: 467},
+        {date: new Date(1488223740396), clicks: 180, impressions: 357},
+        {date: new Date(1488221740396), clicks: 200, impressions: 537},
+        {date: new Date(1488241740396), clicks: 10, impressions: 574},
+        {date: new Date(1488221743396), clicks: 140, impressions: 527},
+        {date: new Date(1482221740396), clicks: 100, impressions: 467},
+        {date: new Date(1488221780396), clicks: 150, impressions: 567},
+        {date: new Date(1488221744396), clicks: 100, impressions: 267},
+        {date: new Date(1498321740396), clicks: 40, impressions: 567},
+        {date: new Date(1488231740396), clicks: 120, impressions: 467},
+        {date: new Date(1488223740396), clicks: 180, impressions: 357},
+        {date: new Date(1488221740396), clicks: 200, impressions: 537},
+        {date: new Date(1488241740396), clicks: 10, impressions: 574},
+        {date: new Date(1488221743396), clicks: 140, impressions: 527},
+        {date: new Date(1482221740396), clicks: 100, impressions: 467}
+      ]
 }
 
 class Analytics extends React.Component {
