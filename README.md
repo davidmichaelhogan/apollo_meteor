@@ -8,6 +8,8 @@ Big things to finish up:
  - SETUP SIGN UP PAGE
  - MAKE ANALYTICS DATA REAL
 
+ TY
+
 Little things todo:
  - Change Method to take current Advertiser ID - change ads category to use USER ID instead of advertiser id
  - Add button to last page of Stepper to return to ad table
