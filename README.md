@@ -8,6 +8,10 @@ Big things to finish up:
  - SETUP SIGN UP PAGE
  - MAKE ANALYTICS DATA REAL
 
+ - FUNCTION for ads to display over time...
+  - on impression update all ad display variables according to their display function (ie. display this many times over the course of a month)
+  - update ad unit display variable 
+
  TY
 
 Little things todo:
