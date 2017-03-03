@@ -10,14 +10,16 @@ Big things to finish up:
 
  - FUNCTION for ads to display over time...
   - on impression update all ad display variables according to their display function (ie. display this many times over the course of a month)
-  - update ad unit display variable 
+  - update ad unit display variable
 
  TY
 
 Little things todo:
+ - Try new font for Headline
  - Change Method to take current Advertiser ID - change ads category to use USER ID instead of advertiser id
  - Add button to last page of Stepper to return to ad table
  - Add category settings to ad stepper & ad editor
+ - MAILCHIMP API to like email
  - Add "Enter" function to add stepper & editor in subline
  - Change to update balance only after card is accepted (on server)
  - Add reset click & impression data to "edit ad"
