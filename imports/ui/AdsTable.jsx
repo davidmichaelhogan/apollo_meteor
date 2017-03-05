@@ -171,7 +171,7 @@ class AdsTable extends React.Component {
                   <TableRowColumn>{ad.impressions}</TableRowColumn>
                   <TableRowColumn>{ad.clicks}</TableRowColumn>
                   <TableRowColumn>%{ctr(ad.clicks, ad.impressions).toFixed(2)}</TableRowColumn>
-                  <TableRowColumn>${cpc(ad.clicks, ad.impressions)// add .toFixed(2)}</TableRowColumn>
+                  <TableRowColumn>${cpc(ad.clicks, ad.impressions)}</TableRowColumn>
                   <TableRowColumn>${ad.balance.toFixed(2)}</TableRowColumn>
                   <TableRowColumn>
                     <div className="admenu">
@@ -229,13 +229,13 @@ class AdsTable extends React.Component {
           </div>
             <div className="float">
               <TextField
-                hintText={this.state.headline}
+                defaultValue={this.state.headline}
                 floatingLabelText="Headline"
                 onChange={(nada, value) => this.setState({headline: value})}
                 onKeyDown={this.handleEscape}
               /><br />
               <TextField
-                hintText={this.state.subline}
+                defaultValue={this.state.subline}
                 floatingLabelText="Subline"
                 multiLine={true}
                 rows={2}
@@ -251,14 +251,14 @@ class AdsTable extends React.Component {
             </div>
             <div className="three">
               <TextField
-                hintText={this.state.url}
+                defaultValue={this.state.url}
                 floatingLabelText="Click-through URL"
                 fullWidth={true}
                 onChange={(nada, value) => this.setState({url: value})}
                 onKeyDown={this.handleEscape}
               />
               <TextField
-                hintText={this.state.logo}
+                defaultValue={this.state.logo}
                 floatingLabelText="Logo Location URL"
                 fullWidth={true}
                 onChange={(nada, value) => this.setState({logo: value})}
