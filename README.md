@@ -7,6 +7,7 @@ Big things to finish up:
  - GET STRIPE & PAYMENTS WORKING
  - SETUP SIGN UP PAGE
  - MAKE ANALYTICS DATA REAL
+ - Cookies to show to user once between pages
 
  - FUNCTION for ads to display over time...
   - on impression update all ad display variables according to their display function (ie. display this many times over the course of a month)
