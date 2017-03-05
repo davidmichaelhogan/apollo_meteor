@@ -20,11 +20,11 @@ Meteor.startup(() => {
   })
 })
 
-// Access Control
-WebApp.rawConnectHandlers.use(function(req, res, next) {
-  res.setHeader("Access-Control-Allow-Origin", "*")
-  return next();
-});
+// // Access Control
+// WebApp.rawConnectHandlers.use(function(req, res, next) {
+//   res.setHeader("Access-Control-Allow-Origin", "*")
+//   return next();
+// });
 
 //Ad Api
 WebApp.connectHandlers.use('/ad', function(req, res, next) {
@@ -69,7 +69,7 @@ WebApp.connectHandlers.use('/ad', function(req, res, next) {
     Ads.update(Ad, { $inc: { balance: -0.008, impressions: 1}})
   }
 
-  res.writeHead(200, {'Content-Type': 'application/json'})
+  res.writeHead(200, {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'})
   res.end(JSON.stringify(Ad))
 })
 
