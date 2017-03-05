@@ -20,6 +20,12 @@ Meteor.startup(() => {
   })
 })
 
+// Access Control
+WebApp.rawConnectHandlers.use(function(req, res, next) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  return next();
+});
+
 //Ad Api
 WebApp.connectHandlers.use('/ad', function(req, res, next) {
   const date = new Date()
