@@ -30,7 +30,6 @@ class Apollo {
   		x.open('GET', url, 1)
   		x.setRequestHeader('X-Requested-With', 'XMLHttpRequest')
       x.setRequestHeader('Content-type', 'application/json')
-      //x.setRequestHeader('Access-Control-Allow-Origin', 'http://turtleboysports.com'); -- testing allow origin 
 
   		x.onreadystatechange = function () {
   			x.readyState > 3 && callback && callback(x.responseText, x)

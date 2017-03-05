@@ -18,6 +18,7 @@ import { Ads } from '../api/ads.js'
 
 import FundsMenu from './FundsMenu'
 
+const cpc =  (clicks, impressions) => (.0008 / (1000 × (clicks / impressions))) ? .0008 / (1000 × (clicks / impressions))) : 0
 const ctr = (clicks, impressions) =>  (clicks / impressions) ? (clicks / impressions) : 0
 const impressions = (money) => money / 8 * 1000
 const commaify = (number) => number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
@@ -149,6 +150,7 @@ class AdsTable extends React.Component {
               <TableHeaderColumn>Impressions</TableHeaderColumn>
               <TableHeaderColumn>Clicks</TableHeaderColumn>
               <TableHeaderColumn>CTR</TableHeaderColumn>
+              <TableHeaderColumn>CPC</TableHeaderColumn>
               <TableHeaderColumn>Balance</TableHeaderColumn>
               <TableHeaderColumn>Ad Settings</TableHeaderColumn>
             </TableRow>
@@ -162,6 +164,7 @@ class AdsTable extends React.Component {
                   <TableRowColumn>{ad.impressions}</TableRowColumn>
                   <TableRowColumn>{ad.clicks}</TableRowColumn>
                   <TableRowColumn>%{ctr(ad.clicks, ad.impressions).toFixed(2)}</TableRowColumn>
+                  <TableRowColumn>%{cpc(ad.clicks, ad.impressions).toFixed(2)}</TableRowColumn>
                   <TableRowColumn>${ad.balance.toFixed(2)}</TableRowColumn>
                   <TableRowColumn>
                     <div className="admenu">
