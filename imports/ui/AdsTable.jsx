@@ -171,7 +171,7 @@ class AdsTable extends React.Component {
                   <TableRowColumn>{ad.impressions}</TableRowColumn>
                   <TableRowColumn>{ad.clicks}</TableRowColumn>
                   <TableRowColumn>%{ctr(ad.clicks, ad.impressions).toFixed(2)}</TableRowColumn>
-                  <TableRowColumn>${cpc(ad.clicks, ad.impressions).toFiced(2)}</TableRowColumn>
+                  <TableRowColumn>${cpc(ad.clicks, ad.impressions).toFixed(2)}</TableRowColumn>
                   <TableRowColumn>${ad.balance.toFixed(2)}</TableRowColumn>
                   <TableRowColumn>
                     <div className="admenu">
