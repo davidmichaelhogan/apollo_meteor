@@ -19,14 +19,14 @@ import { Ads } from '../api/ads.js'
 import FundsMenu from './FundsMenu'
 
 const cpc =  (clicks, impressions) => {
-  let calc = .0008 / (1000 * (clicks / impressions))
+  let calc = .0008 / (1000 * (clicks / impressions * 100))
   if ((!calc) || (calc == 'Infinity')) {
-    return 0
+    return 0.00
   } else {
     return calc
   }
 }
-const ctr = (clicks, impressions) =>  (clicks / impressions) ? (clicks / impressions) : 0
+const ctr = (clicks, impressions) =>  (clicks / impressions * 100) ? (clicks / impressions * 100) : 0
 const impressions = (money) => money / 8 * 1000
 const commaify = (number) => number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 

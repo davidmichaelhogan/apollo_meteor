@@ -41,7 +41,7 @@ class AdsStepper extends React.Component {
     headline: 'Apollo Ad Server Example',
     subline: 'Your subline will appear here. Click in the fields below to make your ad.',
     logo: 'http://apolloads.io/img/form-logo.png',
-    url: 'http://apollopods.com',
+    url: 'http://launchapollo.com',
     start: new Date,
     end: new Date,
     balance: 5000
