@@ -41,7 +41,7 @@ Meteor.methods({
       // Give user payment notification error!
     }
   },
-  'updateAd'({ ad_id, headline, subline, url, logo, advertiser, category, start, end, impressions, clicks }) {
+  'updateAd'({ ad_id, headline, subline, url, logo, advertiser, category, start, end, impressions, clicks, timeDiff, nextServed }) {
     new SimpleSchema({
       ad_id: { type: String },
       headline: { type: String, max: 50 },
@@ -69,7 +69,9 @@ Meteor.methods({
           start: start,
           end: end,
           impressions: impressions,
-          clicks: clicks
+          clicks: clicks,
+          timeDiff: timeDiff,
+          nextServed: nextServed
         }
     })
   },

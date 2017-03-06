@@ -2,6 +2,7 @@
 http://launchapollo.com
 
 Big things to finish up:
+ - Update display over time on Ad update
  - SETUP LOGIN PAGE
  - GET THIS SHIT ONLINE
  - GET STRIPE & PAYMENTS WORKING
@@ -9,16 +10,9 @@ Big things to finish up:
  - MAKE ANALYTICS DATA REAL
  - Cookies to show to user once between pages
 
- - FUNCTION for ads to display over time...
-  - on impression update all ad display variables according to their display function (ie. display this many times over the course of a month)
-  - update ad unit display variable
-
-- Text display for cost
-
- TY
-
 Little things todo:
  - Try new font for Headline
+ - Text display for cost
  - Change Method to take current Advertiser ID - change ads category to use USER ID instead of advertiser id
  - Add button to last page of Stepper to return to ad table
  - Add category settings to ad stepper & ad editor

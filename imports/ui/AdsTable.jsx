@@ -68,6 +68,12 @@ class AdsTable extends React.Component {
     }
   }
 
+  timesUpdate = (balance, start, end) => {
+    let impressions = balance / .008
+    let amount = (end.getTime() - start.getTime()) / impressions
+    return amount
+  }
+
   handlePaymentSubmit = () => {
     this.setState({open: false})
     this.setState({hasClicked: false})
@@ -127,7 +133,9 @@ class AdsTable extends React.Component {
       start: this.state.start,
       end: this.state.end,
       impressions: this.state.impressions,
-      clicks: this.state.clicks
+      clicks: this.state.clicks,
+      timeDiff: this.timesUpdate(this.state.balance, this.state.start, this.state.end),
+      nextServed: (new Date().getTime() + this.timesUpdate(this.state.balance, this.state.start, this.state.end))
     }, (err, res) => {
       if (err) {
         alert(err);
