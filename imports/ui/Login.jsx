@@ -7,28 +7,33 @@ class Login extends React.Component {
     super(props)
     this.state = {
       email: null,
-      text: null,
-      button: 'Submit'
+      password: null,
+      text: 'Please Login to continue.'
     }
   }
 
-  handleClick = () => {
-    Meteor.call('login', text, function(error, result) {
-      this.setState({ canLogin: result })
+  loginWithPassword = (e) => {
+    e.preventDefault();
+    const email = this.state.email, password = this.state.password
+
+    Meteor.loginWithPassword(email, password, (error) => {
+      if (error) {
+        console.log("There was an error:" + error.reason);
+        this.setState({ text: error.reason })
+      } else {
+        this.props.changeLoginState(true)
+      }
     })
   }
 
   render() {
     return (
       <div className="login">
-        <div className="sub-header">Please type access key to login:</div>
-        <TextField hintText="000000" onChange={(event, value) => this.setState({ text: value })}/><br />
-        <RaisedButton label={this.state.button} onTouchTap={() => {
-          if (this.state.text == '0117') {
-            this.props.changeLoginState(true)
-          } else {
-            this.setState({ button: 'Nope'})
-          }}}
+      <div className="title center">Apollo Ad Network</div>
+        <div className="sub-header">{this.state.text}</div>
+        <TextField hintText="Email" onChange={(event, value) => this.setState({ email: value })}/><br />
+        <TextField hintText="Password" type="password" onChange={(event, value) => this.setState({ password: value })}/><br />
+        <RaisedButton label="Submit" onTouchTap={this.loginWithPassword}
          />
       </div>
     )

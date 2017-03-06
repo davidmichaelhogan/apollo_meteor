@@ -1,6 +1,7 @@
 import React from 'react'
 import TextField from 'material-ui/TextField'
 import FlatButton from 'material-ui/FlatButton'
+import RaisedButton from 'material-ui/RaisedButton'
 import Slider from 'material-ui/Slider'
 import Checkbox from 'material-ui/Checkbox'
 import { Tabs, Tab } from 'material-ui/Tabs'
@@ -13,6 +14,7 @@ const style = {
   margin: 20,
   padding: 10,
   input: {
+    width: "22.5%",
     margin: "0 20px"
   },
   inputFull: {
@@ -50,24 +52,21 @@ class FundsMenu extends React.Component {
           value={this.state.slider}
           onChange={this.handleSlider}
         />
-        <Tabs>
-        <Tab label="Pay with Current Information" value={0} >
+        <Tabs onChange={(value) => {this.props.paymentOption(value)}}>
+        <Tab label="Pay with Current Information" value={0}>
           <div className="payment-tab">
-            <p>Account ID: <strong>56789789</strong><br />Email: <strong>nothing@gmail.com</strong></p>
-            <div className="sub-header">Click <strong>Submit</strong> to pay with your saved account information.</div>
+            <p>Account ID: <strong>{Meteor.user()._id}</strong><br />Email: <strong>{Meteor.user().emails[0].address}</strong></p>
           </div>
         </Tab>
         <Tab label="Pay with New Card" value={1}>
           <div className="payment-tab">
             <h2>Pay with new card</h2>
-            <div className="sub-header">Contact Information</div>
-            <TextField style={style.input} hintText="Steve" floatingLabelText="First Name"/><TextField style={style.input} hintText="Jobs" floatingLabelText="Last Name"/><br />
-            <TextField style={style.input} hintText="1 Apple Tree Way, Suite 226" floatingLabelText="Address" /><TextField style={style.input} hintText="Los Angeles" floatingLabelText="City"/><br />
-            <TextField style={style.input} hintText="CA" floatingLabelText="State"/><TextField style={style.input} hintText="01035" floatingLabelText="Zip"/>
             <div className="sub-header">Payment Information</div>
-            <TextField style={style.inputFull} hintText="0001000200030004" floatingLabelText="Card Number"/><br />
-            <TextField style={style.inputFull} hintText="Steven Jobs" floatingLabelText="Full Name"/><br />
-            <TextField style={style.input} hintText="01/2017" floatingLabelText="Expiration Date" /><TextField style={style.input} hintText="001" floatingLabelText="Security Code"/>
+            <TextField style={style.inputFull} hintText="John Doe" floatingLabelText="Full Name" onChange={(nada, value) => this.props.updateName(value)}/><br />
+            <TextField style={style.inputFull} hintText="0001000200030004" floatingLabelText="Card Number" onChange={(nada, value) => this.props.updateCard(value)}/><br />
+            <TextField style={style.input} hintText="01" floatingLabelText="Expiration Month" onChange={(nada, value) => this.props.updateExpMonth(value)}/>
+            <TextField style={style.input} hintText="2017" floatingLabelText="Expiration Year" onChange={(nada, value) => this.props.updateExpYear(value)}/>
+            <TextField style={style.input} hintText="001" floatingLabelText="Security Code" onChange={(nada, value) => this.props.updateCvc(value)}/><br />
           </div>
         </Tab>
       </Tabs>

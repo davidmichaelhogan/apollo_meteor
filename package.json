@@ -14,7 +14,8 @@
     "react-addons-pure-render-mixin": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-tap-event-plugin": "^2.0.1",
-    "recharts": "^0.21.2"
+    "recharts": "^0.21.2",
+    "stripe": "^4.15.0"
   },
   "devDependencies": {
     "babel-plugin-transform-class-properties": "^6.23.0",

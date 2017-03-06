@@ -16,15 +16,13 @@ import Dialog from 'material-ui/Dialog'
 
 import { Ads } from '../api/ads.js'
 
-import FundsMenu from './FundsMenu'
+import FundsMenu from './forms/FundsMenu'
 
 const cpc =  (clicks, impressions) => {
   let calc = 800 / (1000 * (clicks / impressions * 100))
   if ((!calc) || (calc == 'Infinity')) {
     return 0.00
-    console.log(calc + ' no')
   } else {
-    console.log(calc)
     return calc
   }
 }
@@ -56,6 +54,13 @@ class AdsTable extends React.Component {
       hasClicked: false,
       open: false,
       tab: 0,
+      dialogTitle: 'Add Funds to Campaign',
+      name: null,
+      ccNum: null,
+      cvc: null,
+      expMo: null,
+      expYr: null,
+      paymentOption: 0,
       ad_id: null,
       advertiser: null,
       category: null,
@@ -67,6 +72,7 @@ class AdsTable extends React.Component {
       end: null,
       impressions: null,
       clicks: null,
+      currentBalance: null,
       balance: null
     }
   }
@@ -77,20 +83,70 @@ class AdsTable extends React.Component {
     return amount
   }
 
-  handlePaymentSubmit = () => {
+  balanceUpdate (balance) {
+    this.setState({ balance: balance })
+  }
+
+  paymentOption (tab) {
+    this.setState({ paymentOption: tab })
+    console.log(tab)
+  }
+
+  updateName (name) {
+    this.setState({ name: name })
+  }
+
+  updateCard (card) {
+    this.setState({ ccNum: card })
+  }
+
+  updateExpMonth (month) {
+    this.setState({ expMo: month })
+  }
+
+  updateExpYear (year) {
+    this.setState({ expYr: year })
+  }
+
+  updateCvc (cvc) {
+    this.setState({ cvc: cvc })
+  }
+
+  updateAdBalance = (balance) => {
+    let newBalance = balance + this.state.currentBalance
     this.setState({open: false})
     this.setState({hasClicked: false})
-    //Payment method
-    Meteor.call('updateBalance', {
-      ad_id: this.state.ad_id
-    }, (err, res) => {
-      if (err) {
-        alert(err);
+    //Update current Ad balance
+    Meteor.call('updateAdBalance', { balance: newBalance, ad_id: this.state.ad_id })
+  }
+
+  handleNewPaymentSubmit = () => {
+    let balance = this.state.balance
+    let name = this.state.name
+    Stripe.card.createToken({
+    	number: this.state.ccNum,
+    	cvc: this.state.cvc,
+    	exp_month: this.state.expMo,
+    	exp_year: this.state.expYr
+    }, (status, response) => {
+      console.log(status)
+      console.log(response)
+      //Make finish button active or go to adstable or whatever
+      if (status !== 200) {
+        this.setState({ dialogTitle: response.error.message })
       } else {
-        console.log('Payment Sent')
+      	stripeToken = response.id
+      	Meteor.call('chargeNewCard', { stripeToken: stripeToken, balance: balance, currentUser: Meteor.user(), name: name})
+        //Create new ad unit once card is charged
+        this.updateAdBalance(balance)
       }
     })
-    console.log('Payment Submited')
+  }
+
+  handleCurrentPaymentSubmit = () => {
+    let balance = this.state.balance
+    Meteor.call('chargeCurrentCard', { balance: balance, currentUser: Meteor.user()})
+    this.updateAdBalance(balance)
   }
 
   handleCancel = () => {
@@ -106,7 +162,13 @@ class AdsTable extends React.Component {
     <FlatButton
       label="Submit"
       primary={true}
-      onTouchTap={this.handlePaymentSubmit}
+      onTouchTap={() => {
+        if (this.state.paymentOption == 1) {
+          this.handleNewPaymentSubmit()
+        } else if (this.state.paymentOption == 0){
+          this.handleCurrentPaymentSubmit()
+        }
+      }}
     />,
   ]
 
@@ -118,10 +180,6 @@ class AdsTable extends React.Component {
     if (e.keyCode === 27) {
       this.setState({hasClicked: false})
     }
-  }
-
-  balanceUpdate (balance) {
-    this.setState({ balance: balance })
   }
 
   handleEditSubmit = () => {
@@ -156,6 +214,7 @@ class AdsTable extends React.Component {
 
   loadMenu() {
     if (!this.state.hasClicked) {
+      console.log(Meteor.user()._id)
       return (
         <div>
         <div className="title">Your Current Ad Campaigns</div>
@@ -183,7 +242,7 @@ class AdsTable extends React.Component {
                   <TableRowColumn>{ad.clicks}</TableRowColumn>
                   <TableRowColumn>%{ctr(ad.clicks, ad.impressions).toFixed(2)}</TableRowColumn>
                   <TableRowColumn>${cpc(ad.clicks, ad.impressions).toFixed(2)}</TableRowColumn>
-                  <TableRowColumn>${ad.balance.toFixed(2)}</TableRowColumn>
+                  <TableRowColumn>${commaify(ad.balance.toFixed(2))}</TableRowColumn>
                   <TableRowColumn>
                     <div className="admenu">
                       <IconMenu
@@ -205,7 +264,7 @@ class AdsTable extends React.Component {
                             end: ad.end,
                             impressions: ad.impressions,
                             clicks: ad.clicks,
-                            balance: ad.balance
+                            currentBalance: ad.balance
                           })}
                         />
                         <MenuItem primaryText="Delete Ad" onTouchTap={(event) => this.deleteAd(ad._id)}/>
@@ -226,6 +285,7 @@ class AdsTable extends React.Component {
             <div className="sub-title">Click any field to edit. Leave blank to keep current setting.</div>
           </div>
           <div className="back-button">
+            <RaisedButton primary={true} label="Save Settings" primary={true} onTouchTap={this.handleEditSubmit}/>
             <RaisedButton label="Cancel" onTouchTap={() => this.setState({hasClicked: false})}/>
           </div>
           <div className="clear"></div>
@@ -276,12 +336,9 @@ class AdsTable extends React.Component {
                 onKeyDown={this.handleEscape}
               />
             </div>
-            <div className="sub-header">Remaining Balance: ${commaify(this.state.balance.toFixed(2))} - {commaify(impressions(this.state.balance).toFixed(0))} impressions</div>
+            <div className="sub-header">Remaining Balance: <strong>${commaify(this.state.currentBalance.toFixed(2))} - {commaify(impressions(this.state.currentBalance).toFixed(0))} impressions</strong></div>
             <div className="sub-buttons">
-              <FlatButton label="Save Settings" primary={true} onTouchTap={this.handleEditSubmit}/>
-            </div>
-            <div className="sub-buttons">
-              <FlatButton label="Add Funds" onTouchTap={this.handleOpen} />
+              <RaisedButton label="Add Funds" onTouchTap={this.handleOpen} />
             </div>
           </div>
         </div>
@@ -294,13 +351,21 @@ class AdsTable extends React.Component {
       <div>
         {this.loadMenu()}
         <Dialog
-          title="Add Funds to Campaign"
+          title={this.state.dialogTitle}
           actions={this.actions}
           modal={true}
           open={this.state.open}
           autoScrollBodyContent={true}
         >
-        <FundsMenu balanceUpdate={(balance) => this.balanceUpdate(balance)}/>
+        <FundsMenu
+          paymentOption={(option) => this.paymentOption(option)}
+          balanceUpdate={(balance) => this.balanceUpdate(balance)}
+          updateName={(name) => this.updateName(name)}
+          updateCard={(card) => this.updateCard(card)}
+          updateExpMonth={(month) => this.updateExpMonth(month)}
+          updateExpYear={(year) => this.updateExpYear(year)}
+          updateCvc={(cvc) => this.updateCvc(cvc)}
+        />
         </Dialog>
       </div>
     )

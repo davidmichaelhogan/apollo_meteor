@@ -9,11 +9,10 @@ import { Events } from '../imports/api/events.js'
 
 Meteor.startup(() => {
   Meteor.publish('ads', function() {
-    return Ads.find({advertiser: '58a885b681ff1e4611b3d172' })
+    return Ads.find({ advertiser: this.userId })
   })
   Meteor.publish('events', function() {
-    // return events based on login info!!!
-    return Events.find({ advertiser: '58a885b681ff1e4611b3d172' })
+    return Events.find({ advertiser: this.userId })
   })
   Meteor.publish('clicks', function() {
     return Events.find({ click: 1})

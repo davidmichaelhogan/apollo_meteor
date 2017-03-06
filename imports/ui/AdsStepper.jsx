@@ -15,7 +15,7 @@ const commaify = (number) => number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, 
 
 import { Ads } from '../api/ads.js'
 
-import FundsMenu from './FundsMenu'
+import FundsMenu from './forms/FundsMenu'
 
 const style = {
   margin: 20,
@@ -29,14 +29,23 @@ const style = {
   }
 }
 
+let saveAd = true
+
 class AdsStepper extends React.Component {
 
   state = {
     loading: false,
     finished: false,
     stepIndex: 0,
+    formStatus: 'Your ad will begin running on the specified start date. Thank you for choosing Apollo!',
+    name: null,
+    ccNum: null,
+    cvc: null,
+    expMo: null,
+    expYr: null,
+    paymentOption: 0,
     open: false,
-    advertiser: '58a885b681ff1e4611b3d172', // Setup state to change advertiser with login
+    advertiser: Meteor.user()._id,
     category: '58a886d597a4ce608ea459dd',  //Create option for category
     headline: 'Apollo Ad Server Example',
     subline: 'Your subline will appear here. Click in the fields below to make your ad.',
@@ -47,8 +56,83 @@ class AdsStepper extends React.Component {
     balance: 5000
   }
 
-  balanceUpdate (balance, start, end) {
+  balanceUpdate (balance) {
     this.setState({ balance: balance })
+  }
+
+  paymentOption (tab) {
+    this.setState({ paymentOption: tab })
+    console.log(tab)
+  }
+
+  updateName (name) {
+    this.setState({ name: name })
+  }
+
+  updateCard (card) {
+    this.setState({ ccNum: card })
+  }
+
+  updateExpMonth (month) {
+    this.setState({ expMo: month })
+  }
+
+  updateExpYear (year) {
+    this.setState({ expYr: year })
+  }
+
+  updateCvc (cvc) {
+    this.setState({ cvc: cvc })
+  }
+
+  createNewAd = (balance) => {
+    Meteor.call('addAd', {
+      headline: this.state.headline,
+      subline: this.state.subline,
+      url: this.state.url,
+      logo: this.state.logo,
+      advertiser: this.state.advertiser,
+      category: this.state.category,
+      start: this.state.start,
+      end: this.state.end,
+      timeDiff: this.timesUpdate(this.state.balance, this.state.start, this.state.end),
+      nextServed: (new Date().getTime() + this.timesUpdate(this.state.balance, this.state.start, this.state.end)),
+      balance: balance
+    }, (err, res) => {
+      if (err) {
+        alert(err);
+      } else {
+        console.log('Ad Set')
+      }
+    })
+  }
+
+  handleNewPaymentSubmit = () => {
+    let balance = this.state.balance
+    let name = this.state.name
+    Stripe.card.createToken({
+    	number: this.state.ccNum,
+    	cvc: this.state.cvc,
+    	exp_month: this.state.expMo,
+    	exp_year: this.state.expYr
+    }, (status, response) => {
+      console.log(status)
+      console.log(response)
+      //Make finish button active or go to adstable or whatever
+      if (status !== 200) {
+        this.setState({ formStatus: response.error.message + ' Please go back and try again.'})
+      } else {
+      	stripeToken = response.id
+      	Meteor.call('chargeNewCard', { stripeToken: stripeToken, balance: balance, currentUser: Meteor.user(), name: name})
+        //Create new ad unit once card is charged
+        this.createNewAd(balance)
+      }
+    })
+  }
+
+  handleCurrentPaymentSubmit = () => {
+    Meteor.call('chargeCurrentCard', { balance: this.state.balance, currentUser: Meteor.user()})
+    this.createNewAd(this.state.balance)
   }
 
   timesUpdate = (balance, start, end) => {
@@ -69,8 +153,7 @@ class AdsStepper extends React.Component {
       this.dummyAsync(() => this.setState({
         loading: false,
         stepIndex: stepIndex + 1,
-        finished: stepIndex >= 2,
-        runAddAd: stepIndex >= 2
+        finished: stepIndex >= 2
       }))
     }
   }
@@ -88,6 +171,7 @@ class AdsStepper extends React.Component {
   getStepContent(stepIndex) {
     switch (stepIndex) {
       case 0:
+      saveAd = true
         return (
           <div>
             <div className="left-title">Campaign Dates</div>
@@ -153,7 +237,15 @@ class AdsStepper extends React.Component {
       case 2:
             return (
               <div>
-                <FundsMenu balanceUpdate={(balance) => this.balanceUpdate(balance)}/>
+                <FundsMenu
+                  paymentOption={(option) => this.paymentOption(option)}
+                  balanceUpdate={(balance) => this.balanceUpdate(balance)}
+                  updateName={(name) => this.updateName(name)}
+                  updateCard={(card) => this.updateCard(card)}
+                  updateExpMonth={(month) => this.updateExpMonth(month)}
+                  updateExpYear={(year) => this.updateExpYear(year)}
+                  updateCvc={(cvc) => this.updateCvc(cvc)}
+                />
               </div>
             )
       default:
@@ -162,39 +254,21 @@ class AdsStepper extends React.Component {
   }
 
   renderContent() {
-    const {finished, stepIndex, runAddAd} = this.state
+    const {finished, stepIndex} = this.state
     const contentStyle = {margin: '0 16px', overflow: 'hidden'}
 
     if (finished) {
-      //Update ad to Server
-
-      if (runAddAd) { // Make sure payment went through
-        Meteor.call('addAd', {
-          headline: this.state.headline,
-          subline: this.state.subline,
-          url: this.state.url,
-          logo: this.state.logo,
-          advertiser: this.state.advertiser,
-          category: this.state.category,
-          start: this.state.start,
-          end: this.state.end,
-          timeDiff: this.timesUpdate(this.state.balance, this.state.start, this.state.end),
-          nextServed: (new Date().getTime() + this.timesUpdate(this.state.balance, this.state.start, this.state.end))
-        }, (err, res) => {
-          if (err) {
-            alert(err);
-          } else {
-            console.log('Ad Set')
-            this.setState({ runAddAd: false })
-          }
-        })
+      if (this.state.paymentOption == 1 && saveAd) {
+        this.handleNewPaymentSubmit()
+        saveAd = false
+      } else if (this.state.paymentOption == 0 && saveAd){
+        console.log('current')
+        this.handleCurrentPaymentSubmit()
+        saveAd = false
       }
-      //Process Payment
-
       return (
         <div style={contentStyle}>
-          Your ad will begin running on the specified start date.<br />
-          Thank you for choosing Apollo!
+          {this.state.formStatus}
         </div>
       )
     }
@@ -210,7 +284,7 @@ class AdsStepper extends React.Component {
             style={{marginRight: 12}}
           />
           <RaisedButton
-            label={stepIndex === 2 ? 'Finish' : 'Next'}
+            label={stepIndex === 2 ? 'Submit Payment' : 'Next'}
             primary={true}
             onTouchTap={this.handleNext}
           />
@@ -224,7 +298,7 @@ class AdsStepper extends React.Component {
 
     return (
       <div style={{width: '100%', maxWidth: 700, margin: 'auto'}}>
-        <Stepper activeStep={stepIndex}>
+        <Stepper activeStep={stepIndex} linear={false}>
           <Step>
             <StepLabel>Select campaign dates</StepLabel>
           </Step>

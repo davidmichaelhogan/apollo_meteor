@@ -1,15 +1,50 @@
 import { Meteor } from 'meteor/meteor'
-import { Ads } from '../imports/api/ads.js'
+import Stripe from 'stripe'
+import { first } from 'lodash'
 
-//Write standalone SimpleSchema to validate all ad objects
-const balance = 1000
-const balanceUpdate = true
+import { Ads } from '../imports/api/ads.js'
+import { Advertisers } from '../imports/api/advertisers.js'
+
+const stripeKey = 'sk_test_zpX9YLoK3TJKPAGJLNHks3gy'
 
 Meteor.methods({
   deleteAd(ad) {
     Ads.remove({ _id: ad })
   },
-  'addAd'({ headline, subline, url, logo, advertiser, category, start, end, timeDiff, nextServed }) {
+  'chargeNewCard'({ stripeToken, balance, currentUser, name}) {
+    var Stripe = StripeAPI(stripeKey);
+
+    Stripe.customers.create({
+      email: currentUser.emails[0].address,
+      source: stripeToken,
+    }).then(Meteor.bindEnvironment(function(customer) {
+      // YOUR CODE: Save the customer ID and other info in a database for later.
+      if (!Advertisers.find({ _id: currentUser._id })) {
+        Advertisers.insert({ _id: currentUser._id, name: name, stripeId: customer.id}).limit(1)
+      } else {
+        Advertisers.update({ _id: currentUser._id}, {name: name, stripeId: customer.id})
+      }
+      return Stripe.charges.create({
+        amount: balance * 100,
+        currency: "usd",
+        customer: customer.id,
+      })
+    })).then(function(err, charge) {
+      console.log(err, charge)
+      // Use and save the charge info.
+    })
+  },
+  'chargeCurrentCard'({ balance, currentUser}) {
+    let advertiser = first(Advertisers.find({ _id: currentUser._id }).fetch())
+    console.log(advertiser.stripeId)
+    var Stripe = StripeAPI(stripeKey);
+    Stripe.charges.create({
+      amount: balance * 100,
+      currency: "usd",
+      customer: advertiser.stripeId
+    })
+  },
+  'addAd'({ headline, subline, url, logo, advertiser, category, start, end, timeDiff, nextServed, balance }) {
     new SimpleSchema({
       headline: { type: String, max: 50 },
       subline: { type: String, max: 150},
@@ -21,25 +56,21 @@ Meteor.methods({
       end: { type: Date }
     }).validate({ headline, subline, url, logo, advertiser, category, start, end })
 
-    if (balanceUpdate) {
-      Ads.insert({
-        headline: headline,
-        subline: subline,
-        url: url,
-        logo: logo,
-        advertiser: advertiser,
-        category: category,
-        start: start,
-        end: end,
-        clicks: 0,
-        impressions: 0,
-        balance: balance,
-        timeDiff: timeDiff,
-        nextServed: nextServed
-      })
-    } else {
-      // Give user payment notification error!
-    }
+    Ads.insert({
+      headline: headline,
+      subline: subline,
+      url: url,
+      logo: logo,
+      advertiser: advertiser,
+      category: category,
+      start: start,
+      end: end,
+      clicks: 0,
+      impressions: 0,
+      balance: balance,
+      timeDiff: timeDiff,
+      nextServed: nextServed
+    })
   },
   'updateAd'({ ad_id, headline, subline, url, logo, advertiser, category, start, end, impressions, clicks, timeDiff, nextServed }) {
     new SimpleSchema({
@@ -75,18 +106,12 @@ Meteor.methods({
         }
     })
   },
-  'updateBalance'({ ad_id }) {
-    new SimpleSchema({
-      ad_id: { type: String },
-      balance: { type: Number }
-    }).validate({ ad_id, balance })
-
-    if (balanceUpdate) {
+  'updateAdBalance'({ balance, ad_id }) {
+      console.log(ad_id)
       Ads.update(
       { _id: ad_id },
       {
         $set: { balance: balance }
       })
-    }
   }
 })
