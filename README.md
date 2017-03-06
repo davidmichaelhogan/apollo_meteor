@@ -13,6 +13,8 @@ Big things to finish up:
   - on impression update all ad display variables according to their display function (ie. display this many times over the course of a month)
   - update ad unit display variable
 
+- Text display for cost
+
  TY
 
 Little things todo:

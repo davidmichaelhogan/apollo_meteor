@@ -47,8 +47,14 @@ class AdsStepper extends React.Component {
     balance: 5000
   }
 
-  balanceUpdate (balance) {
+  balanceUpdate (balance, start, end) {
     this.setState({ balance: balance })
+  }
+
+  timesUpdate = (balance, start, end) => {
+    let impressions = balance / .008
+    let amount = (end.getTime() - start.getTime()) / impressions
+    return amount
   }
 
   dummyAsync = (cb) => {
@@ -146,7 +152,9 @@ class AdsStepper extends React.Component {
         )
       case 2:
             return (
+              <div>
                 <FundsMenu balanceUpdate={(balance) => this.balanceUpdate(balance)}/>
+              </div>
             )
       default:
         return 'WTF YOU DOIN'
@@ -159,7 +167,8 @@ class AdsStepper extends React.Component {
 
     if (finished) {
       //Update ad to Server
-      if (runAddAd) {
+
+      if (runAddAd) { // Make sure payment went through
         Meteor.call('addAd', {
           headline: this.state.headline,
           subline: this.state.subline,
@@ -168,7 +177,9 @@ class AdsStepper extends React.Component {
           advertiser: this.state.advertiser,
           category: this.state.category,
           start: this.state.start,
-          end: this.state.end
+          end: this.state.end,
+          timeDiff: this.timesUpdate(this.state.balance, this.state.start, this.state.end),
+          nextServed: (new Date().getTime() + this.timesUpdate(this.state.balance, this.state.start, this.state.end))
         }, (err, res) => {
           if (err) {
             alert(err);
@@ -178,8 +189,6 @@ class AdsStepper extends React.Component {
           }
         })
       }
-
-
       //Process Payment
 
       return (

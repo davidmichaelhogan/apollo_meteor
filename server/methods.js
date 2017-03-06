@@ -9,7 +9,7 @@ Meteor.methods({
   deleteAd(ad) {
     Ads.remove({ _id: ad })
   },
-  'addAd'({ headline, subline, url, logo, advertiser, category, start, end }) {
+  'addAd'({ headline, subline, url, logo, advertiser, category, start, end, timeDiff, nextServed }) {
     new SimpleSchema({
       headline: { type: String, max: 50 },
       subline: { type: String, max: 150},
@@ -33,7 +33,9 @@ Meteor.methods({
         end: end,
         clicks: 0,
         impressions: 0,
-        balance: balance
+        balance: balance,
+        timeDiff: timeDiff,
+        nextServed: nextServed
       })
     } else {
       // Give user payment notification error!

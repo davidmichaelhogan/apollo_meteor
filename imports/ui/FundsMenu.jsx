@@ -39,7 +39,7 @@ class FundsMenu extends React.Component {
     return (
       <div>
         <div className="sub-header">
-          Impressions: {commaify(impressions(this.state.slider))} (per 30 days)<br />
+          Impressions: {commaify(impressions(this.state.slider))}<br />
           Cost: ${commaify(this.state.slider.toFixed(2))}
         </div>
         <Slider
