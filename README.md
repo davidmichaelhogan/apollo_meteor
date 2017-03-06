@@ -2,7 +2,6 @@
 http://launchapollo.com
 
 Big things to finish up:
- - Update display over time on Ad update
  - SETUP LOGIN PAGE
  - GET THIS SHIT ONLINE
  - GET STRIPE & PAYMENTS WORKING
