@@ -19,7 +19,7 @@ import { Ads } from '../api/ads.js'
 import FundsMenu from './FundsMenu'
 
 const cpc =  (clicks, impressions) => {
-  let calc = 8.00 / (1000 * (clicks / impressions * 100))
+  let calc = 800 / (1000 * (clicks / impressions * 100))
   if ((!calc) || (calc == 'Infinity')) {
     return 0.00
     console.log(calc + ' no')
