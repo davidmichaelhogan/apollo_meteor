@@ -63,7 +63,7 @@ WebApp.connectHandlers.use('/ad', function(req, res, next) {
       date: (new Date).toDateString()
     })
     // Minus 0.008 from the current ads balance
-    Ads.update(Ad, { nextServed: (new Date().getTime() + Ad.timeDiff), $inc: { balance: -0.008, impressions: 1}})
+    Ads.update(Ad, { $inc: { balance: -0.008, impressions: 1, nextServed: Ad.timeDiff}})
   }
 
 
