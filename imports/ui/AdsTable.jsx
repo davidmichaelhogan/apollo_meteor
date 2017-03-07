@@ -140,7 +140,7 @@ class AdsTable extends React.Component {
       if (status !== 200) {
         this.setState({ dialogTitle: response.error.message })
       } else {
-      	stripeToken = response.id
+      	let stripeToken = response.id
       	Meteor.call('chargeNewCard', { stripeToken: stripeToken, balance: balance, currentUser: Meteor.user(), name: name})
         //Create new ad unit once card is charged
         this.updateAdBalance(balance)
