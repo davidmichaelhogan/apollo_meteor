@@ -106,12 +106,12 @@ Meteor.methods({
         }
     })
   },
-  'updateAdBalance'({ balance, ad_id }) {
+  'updateAdBalance'({ balance, ad_id, timeDiff, nextServed }) {
       console.log(ad_id)
       Ads.update(
       { _id: ad_id },
       {
-        $set: { balance: balance }
+        $set: { balance: balance, timeDiff: timeDiff, nextServed: nextServed }
       })
   }
 })

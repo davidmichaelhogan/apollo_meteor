@@ -73,7 +73,7 @@ class AdsTable extends React.Component {
       impressions: null,
       clicks: null,
       currentBalance: null,
-      balance: null
+      balance: 5000
     }
   }
 
@@ -114,10 +114,15 @@ class AdsTable extends React.Component {
 
   updateAdBalance = (balance) => {
     let newBalance = balance + this.state.currentBalance
+    let newTime = new Date()
     this.setState({open: false})
     this.setState({hasClicked: false})
     //Update current Ad balance
-    Meteor.call('updateAdBalance', { balance: newBalance, ad_id: this.state.ad_id })
+    Meteor.call('updateAdBalance', {
+      balance: newBalance, ad_id: this.state.ad_id,
+      timeDiff: this.timesUpdate(newBalance, newTime, this.state.end),
+      nextServed: (new Date().getTime() + this.timesUpdate(newBalance, newTime, this.state.end))
+          })
   }
 
   handleNewPaymentSubmit = () => {
@@ -195,8 +200,8 @@ class AdsTable extends React.Component {
       end: this.state.end,
       impressions: this.state.impressions,
       clicks: this.state.clicks,
-      timeDiff: this.timesUpdate(this.state.balance, this.state.start, this.state.end),
-      nextServed: (new Date().getTime() + this.timesUpdate(this.state.balance, this.state.start, this.state.end))
+      timeDiff: this.timesUpdate(this.state.currentBalance, this.state.start, this.state.end),
+      nextServed: (new Date().getTime() + this.timesUpdate(this.state.currentBalance, this.state.start, this.state.end))
     }, (err, res) => {
       if (err) {
         alert(err);
