@@ -43,7 +43,7 @@ class AdsStepper extends React.Component {
     cvc: null,
     expMo: null,
     expYr: null,
-    paymentOption: 0,
+    paymentOption: 1,
     open: false,
     advertiser: Meteor.user()._id,
     category: '58a886d597a4ce608ea459dd',  //Create option for category
@@ -62,7 +62,6 @@ class AdsStepper extends React.Component {
 
   paymentOption (tab) {
     this.setState({ paymentOption: tab })
-    console.log(tab)
   }
 
   updateName (name) {
@@ -116,8 +115,6 @@ class AdsStepper extends React.Component {
     	exp_month: this.state.expMo,
     	exp_year: this.state.expYr
     }, (status, response) => {
-      console.log(status)
-      console.log(response)
       //Make finish button active or go to adstable or whatever
       if (status !== 200) {
         this.setState({ formStatus: response.error.message + ' Please go back and try again.'})
@@ -262,7 +259,6 @@ class AdsStepper extends React.Component {
         this.handleNewPaymentSubmit()
         saveAd = false
       } else if (this.state.paymentOption == 0 && saveAd){
-        console.log('current')
         this.handleCurrentPaymentSubmit()
         saveAd = false
       }

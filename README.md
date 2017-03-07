@@ -7,6 +7,9 @@ Big things to finish up:
  - Account settings page
  - Left Footer links (legal, homepage etc.)
 
+ Issues:
+ Payments Calls not working (trying to call wrong option?)
+
 Little things todo:
  - credit card info constraints
  - Try new font for Headline / title
