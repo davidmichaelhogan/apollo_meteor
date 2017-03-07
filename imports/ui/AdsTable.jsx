@@ -70,7 +70,7 @@ class AdsTable extends React.Component {
       cvc: null,
       expMo: null,
       expYr: null,
-      paymentOption: 0,
+      paymentOption: 1,
       ad_id: null,
       advertiser: null,
       category: null,
@@ -198,6 +198,7 @@ class AdsTable extends React.Component {
       label="Submit"
       primary={true}
       onTouchTap={() => {
+        console.log()
         if (this.state.paymentOption == 1) {
           this.handleNewPaymentSubmit()
         } else if (this.state.paymentOption == 0){
