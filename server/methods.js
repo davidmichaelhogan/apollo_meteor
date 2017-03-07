@@ -5,7 +5,7 @@ import { first } from 'lodash'
 import { Ads } from '../imports/api/ads.js'
 import { Advertisers } from '../imports/api/advertisers.js'
 
-const stripeKey = Meteor.settings.stripe.s_key
+const stripeKey = 'sk_test_zpX9YLoK3TJKPAGJLNHks3gy'
 
 Meteor.methods({
   deleteAd(ad) {
