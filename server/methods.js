@@ -69,7 +69,8 @@ Meteor.methods({
       impressions: 0,
       balance: balance,
       timeDiff: timeDiff,
-      nextServed: nextServed
+      nextServed: nextServed,
+      runAd: true
     })
   },
   'updateAd'({ ad_id, headline, subline, url, logo, advertiser, category, start, end, impressions, clicks, timeDiff, nextServed }) {
@@ -107,11 +108,26 @@ Meteor.methods({
     })
   },
   'updateAdBalance'({ balance, ad_id, timeDiff, nextServed }) {
-      console.log(ad_id)
       Ads.update(
       { _id: ad_id },
       {
         $set: { balance: balance, timeDiff: timeDiff, nextServed: nextServed }
-      })
+    })
+  },
+  'pauseAd'({ ad_id }) {
+    Ads.update(
+      { _id: ad_id },
+      {
+        $set: { runAd: false }
+      }
+    )
+  },
+  'resumeAd'({ ad_id, timeDiff, nextServed }) {
+    Ads.update(
+      { _id: ad_id },
+      {
+        $set: { timeDiff: timeDiff, nextServed: nextServed, runAd: true }
+      }
+    )
   }
 })

@@ -4,7 +4,6 @@ http://launchapollo.com
 Big things to finish up:
  - SETUP SIGN UP PAGE
  - MAKE ANALYTICS DATA REAL
- - SSL
  - Account settings page
 
 Issues:

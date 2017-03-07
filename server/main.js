@@ -43,7 +43,8 @@ WebApp.connectHandlers.use('/ad', function(req, res, next) {
       },
       nextServed: {
         $lte: date.getTime()
-      }
+      },
+      runAd: true
     }
   }, {
     $sample : {

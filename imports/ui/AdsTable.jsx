@@ -13,10 +13,19 @@ import Divider from 'material-ui/Divider'
 import Paper from 'material-ui/Paper'
 import DatePicker from 'material-ui/DatePicker'
 import Dialog from 'material-ui/Dialog'
+import IconDelete from 'material-ui/svg-icons/action/delete'
+import IconSettings from 'material-ui/svg-icons/action/settings'
+import IconPause from 'material-ui/svg-icons/av/pause'
+import IconPlayArrow from 'material-ui/svg-icons/av/play-arrow'
 
 import { Ads } from '../api/ads.js'
 
 import FundsMenu from './forms/FundsMenu'
+
+const pauseIcon = <IconPause />
+const runIcon = <IconPlayArrow />
+const settingsIcon = <IconSettings />
+const trashIcon = <IconDelete />
 
 const cpc =  (clicks, impressions) => {
   let calc = 800 / (1000 * (clicks / impressions * 100))
@@ -55,6 +64,7 @@ class AdsTable extends React.Component {
       open: false,
       tab: 0,
       dialogTitle: 'Add Funds to Campaign',
+      adState: [ true, 'Pause Ad', pauseIcon ],
       name: null,
       ccNum: null,
       cvc: null,
@@ -115,6 +125,9 @@ class AdsTable extends React.Component {
   updateAdBalance = (balance) => {
     let newBalance = balance + this.state.currentBalance
     let newTime = new Date()
+    if (this.state.start >= newTime) {
+      newtime = this.state.start
+    }
     this.setState({open: false})
     this.setState({hasClicked: false})
     //Update current Ad balance
@@ -122,7 +135,27 @@ class AdsTable extends React.Component {
       balance: newBalance, ad_id: this.state.ad_id,
       timeDiff: this.timesUpdate(newBalance, newTime, this.state.end),
       nextServed: (new Date().getTime() + this.timesUpdate(newBalance, newTime, this.state.end))
-          })
+    })
+  }
+
+  pauseAd = (adState, ad_id, adBalance, start, end) => {
+    let newTime = new Date()
+    if (start >= newTime) {
+      newtime = start
+    }
+    //if running, pause ad
+    if (adState[0]) {
+      Meteor.call('pauseAd', { ad_id: ad_id })
+      this.setState({ adState: [ false, 'Run Ad', runIcon ]})
+    } else {
+    // Run Ad, adjust timeDiff
+      Meteor.call('resumeAd', {
+        ad_id: ad_id,
+        timeDiff: this.timesUpdate(adBalance, newTime, end),
+        nextServed: (new Date().getTime() + this.timesUpdate(adBalance, newTime, end))
+      })
+      this.setState({ adState: [ true, 'Pause Ad', pauseIcon ]})
+    }
   }
 
   handleNewPaymentSubmit = () => {
@@ -255,7 +288,8 @@ class AdsTable extends React.Component {
                         anchorOrigin={{horizontal: 'right', vertical: 'top'}}
                         targetOrigin={{horizontal: 'right', vertical: 'top'}}
                       >
-                        <MenuItem primaryText="Edit Settings"
+                        <MenuItem primaryText={this.state.adState[1]} leftIcon={this.state.adState[2]} onTouchTap={(event) => this.pauseAd(this.state.adState, ad._id, ad.currentBalance, ad.start, ad.end)}/>
+                        <MenuItem primaryText="Edit Settings" leftIcon={settingsIcon}
                           onTouchTap={() => this.setState({
                             hasClicked: true,
                             ad_id: ad._id,
@@ -272,7 +306,7 @@ class AdsTable extends React.Component {
                             currentBalance: ad.balance
                           })}
                         />
-                        <MenuItem primaryText="Delete Ad" onTouchTap={(event) => this.deleteAd(ad._id)}/>
+                        <MenuItem primaryText="Delete Ad" leftIcon={trashIcon} onTouchTap={(event) => this.deleteAd(ad._id)}/>
                       </IconMenu>
                     </div>
                   </TableRowColumn>
