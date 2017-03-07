@@ -1,5 +1,4 @@
 import { Meteor } from 'meteor/meteor'
-import Stripe from 'stripe'
 import { first } from 'lodash'
 
 import { Ads } from '../imports/api/ads.js'
@@ -36,7 +35,7 @@ Meteor.methods({
   },
   'chargeCurrentCard'({ balance, currentUser}) {
     let advertiser = first(Advertisers.find({ _id: currentUser._id }).fetch())
-    
+
     Stripe.charges.create({
       amount: balance * 100,
       currency: "usd",
