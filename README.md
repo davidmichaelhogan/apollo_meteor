@@ -5,10 +5,7 @@ Big things to finish up:
  - SETUP SIGN UP PAGE
  - MAKE ANALYTICS DATA REAL
  - Account settings page
-
-Issues:
- - on add funds, adjust difftime based on which date comes later: today or start date
- - PAUSE/RUN AD SETTING
+ - Left Footer links (legal, homepage etc.)
 
 Little things todo:
  - credit card info constraints
