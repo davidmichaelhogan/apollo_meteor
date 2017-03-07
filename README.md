@@ -4,8 +4,12 @@ http://launchapollo.com
 Big things to finish up:
  - SETUP SIGN UP PAGE
  - MAKE ANALYTICS DATA REAL
-- SSL
+ - SSL
+ - Account settings page
 
+Issues:
+ - on add funds, adjust difftime based on which date comes later: today or start date
+ - PAUSE/RUN AD SETTING
 
 Little things todo:
  - credit card info constraints
