@@ -1,10 +1,15 @@
 import React from 'react'
+import { createContainer } from 'meteor/react-meteor-data'
 import TextField from 'material-ui/TextField'
 import FlatButton from 'material-ui/FlatButton'
 import RaisedButton from 'material-ui/RaisedButton'
 import Slider from 'material-ui/Slider'
 import Checkbox from 'material-ui/Checkbox'
 import { Tabs, Tab } from 'material-ui/Tabs'
+
+import { first } from 'lodash'
+
+import { Advertisers } from '../../api/advertisers.js'
 
 const ctr = (clicks, impressions) => clicks / impressions
 const impressions = (money) => money / 8 * 1000
@@ -32,6 +37,18 @@ class FundsMenu extends React.Component {
     }
   }
 
+  returnCardOnFile = () => {
+    if (this.props.advertiser) {
+      return (
+        <Tab label="Pay with Current Account" value={0}>
+          <div className="payment-tab">
+            <p>Account ID: <strong>{Meteor.user()._id}</strong><br />Email: <strong>{Meteor.user().emails[0].address}</strong></p>
+          </div>
+        </Tab>
+      )
+    }
+  }
+
   handleSlider = (event, value) => {
     this.setState({slider: value})
     this.props.balanceUpdate(value)
@@ -53,11 +70,6 @@ class FundsMenu extends React.Component {
           onChange={this.handleSlider}
         />
         <Tabs onChange={(value) => {this.props.paymentOption(value)}}>
-        <Tab label="Pay with Current Information" value={0}>
-          <div className="payment-tab">
-            <p>Account ID: <strong>{Meteor.user()._id}</strong><br />Email: <strong>{Meteor.user().emails[0].address}</strong></p>
-          </div>
-        </Tab>
         <Tab label="Pay with New Card" value={1}>
           <div className="payment-tab">
             <h2>Pay with new card</h2>
@@ -69,10 +81,16 @@ class FundsMenu extends React.Component {
             <TextField style={style.input} hintText="001" floatingLabelText="Security Code" onChange={(nada, value) => this.props.updateCvc(value)}/><br />
           </div>
         </Tab>
+        {this.returnCardOnFile()}
       </Tabs>
       </div>
     )
   }
 }
 
-export default FundsMenu
+export default createContainer(() => {
+  Meteor.subscribe('advertisers')
+  return {
+    advertiser: first(Advertisers.find({}).fetch())
+  }
+}, FundsMenu)

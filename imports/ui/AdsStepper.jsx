@@ -49,7 +49,7 @@ class AdsStepper extends React.Component {
     category: '58a886d597a4ce608ea459dd',  //Create option for category
     headline: 'Apollo Ad Server Example',
     subline: 'Your subline will appear here. Click in the fields below to make your ad.',
-    logo: 'http://apolloads.io/img/form-logo.png',
+    logo: 'https://server.launchapollo.com/favicon.ico',
     url: 'http://launchapollo.com',
     start: new Date,
     end: new Date,

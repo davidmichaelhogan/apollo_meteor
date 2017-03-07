@@ -99,7 +99,6 @@ class AdsTable extends React.Component {
 
   paymentOption (tab) {
     this.setState({ paymentOption: tab })
-    console.log(tab)
   }
 
   updateName (name) {
@@ -167,8 +166,6 @@ class AdsTable extends React.Component {
     	exp_month: this.state.expMo,
     	exp_year: this.state.expYr
     }, (status, response) => {
-      console.log(status)
-      console.log(response)
       //Make finish button active or go to adstable or whatever
       if (status !== 200) {
         this.setState({ dialogTitle: response.error.message })
@@ -247,12 +244,10 @@ class AdsTable extends React.Component {
 
   deleteAd(ad_id) {
     Meteor.call('deleteAd', ad_id)
-    console.log('Delete this ad: ' + ad_id)
   }
 
   loadMenu() {
     if (!this.state.hasClicked) {
-      console.log(Meteor.user()._id)
       return (
         <div>
         <div className="title">Your Current Ad Campaigns</div>
@@ -288,7 +283,7 @@ class AdsTable extends React.Component {
                         anchorOrigin={{horizontal: 'right', vertical: 'top'}}
                         targetOrigin={{horizontal: 'right', vertical: 'top'}}
                       >
-                        <MenuItem primaryText={this.state.adState[1]} leftIcon={this.state.adState[2]} onTouchTap={(event) => this.pauseAd(this.state.adState, ad._id, ad.currentBalance, ad.start, ad.end)}/>
+                        <MenuItem primaryText={this.state.adState[1]} leftIcon={this.state.adState[2]} onTouchTap={(event) => this.pauseAd(this.state.adState, ad._id, ad.balance, ad.start, ad.end)}/>
                         <MenuItem primaryText="Edit Settings" leftIcon={settingsIcon}
                           onTouchTap={() => this.setState({
                             hasClicked: true,

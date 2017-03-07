@@ -18,8 +18,9 @@ Meteor.methods({
       source: stripeToken,
     }).then(Meteor.bindEnvironment(function(customer) {
       // YOUR CODE: Save the customer ID and other info in a database for later.
-      if (!Advertisers.find({ _id: currentUser._id })) {
-        Advertisers.insert({ _id: currentUser._id, name: name, stripeId: customer.id}).limit(1)
+      if (Advertisers.find({ _id: currentUser._id }).count() == 0 ) {
+        console.log("couldn't find:" + currentUser._id )
+        Advertisers.insert({ _id: currentUser._id, name: name, stripeId: customer.id})
       } else {
         Advertisers.update({ _id: currentUser._id}, {name: name, stripeId: customer.id})
       }
@@ -29,11 +30,10 @@ Meteor.methods({
         customer: customer.id,
       })
     })).then(function(err, charge) {
-      console.log(err, charge)
       // Use and save the charge info.
     })
   },
-  'chargeCurrentCard'({ balance, currentUser}) {
+  'chargeCurrentCard'({ balance, currentUser }) {
     let advertiser = first(Advertisers.find({ _id: currentUser._id }).fetch())
 
     Stripe.charges.create({

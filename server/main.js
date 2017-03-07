@@ -6,10 +6,14 @@ import { first } from 'lodash'
 import { Ads } from '../imports/api/ads.js'
 import { Categories } from '../imports/api/categories.js'
 import { Events } from '../imports/api/events.js'
+import { Advertisers } from '../imports/api/advertisers.js'
 
 Meteor.startup(() => {
   Meteor.publish('ads', function() {
     return Ads.find({ advertiser: this.userId })
+  })
+  Meteor.publish('advertisers', function() {
+    return Advertisers.find({ _id: this.userId })
   })
   Meteor.publish('events', function() {
     return Events.find({ advertiser: this.userId })
