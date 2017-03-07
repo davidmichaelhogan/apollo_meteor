@@ -6,13 +6,13 @@ import { Ads } from '../imports/api/ads.js'
 import { Advertisers } from '../imports/api/advertisers.js'
 
 const stripeKey = Meteor.settings.stripe.s_key
+const Stripe = StripeAPI(stripeKey)
 
 Meteor.methods({
   deleteAd(ad) {
     Ads.remove({ _id: ad })
   },
   'chargeNewCard'({ stripeToken, balance, currentUser, name}) {
-    var Stripe = StripeAPI(stripeKey);
 
     Stripe.customers.create({
       email: currentUser.emails[0].address,
@@ -36,8 +36,7 @@ Meteor.methods({
   },
   'chargeCurrentCard'({ balance, currentUser}) {
     let advertiser = first(Advertisers.find({ _id: currentUser._id }).fetch())
-    console.log(advertiser.stripeId)
-    var Stripe = StripeAPI(stripeKey);
+    
     Stripe.charges.create({
       amount: balance * 100,
       currency: "usd",
