@@ -43,7 +43,7 @@ class AnalyticsChart extends React.Component {
       return (
         <ResponsiveContainer width="100%" height={400}>
           <AreaChart data={currentAd.data.slice(currentAd.data.length - 31, currentAd.data.length)}>
-            <XAxis dataKey={"dateString"}/>
+            <XAxis dataKey={"date"}/>
             <YAxis/>
             <CartesianGrid strokeDasharray="3 3"/>
             <Tooltip/>

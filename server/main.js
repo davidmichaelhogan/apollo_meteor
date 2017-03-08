@@ -82,8 +82,7 @@ WebApp.connectHandlers.use('/ad', function(req, res, next) {
         _id: Ad._id,
         data: [
           {
-            dateString: dateString,
-            date: new Date(),
+            date: dateString,
             impressions: 1,
             clicks: 0
           }
@@ -92,7 +91,7 @@ WebApp.connectHandlers.use('/ad', function(req, res, next) {
     } else  if (Analytics.find({ "data.date": dateString }).count() == 0) {
       Analytics.update({ _id: Ad._id },
         {
-        $push: { data: { $each: [{ dateString: dateString, date: new Date(), impressions: 1, clicks: 0 }]}}
+        $push: { data: { $each: [{ date: dateString, impressions: 1, clicks: 0 }]}}
       })
     } else {
     Analytics.update({ _id: Ad._id, "data.date": dateString} , { $inc: { "data.$.impressions": 1 }})
@@ -128,8 +127,7 @@ WebApp.connectHandlers.use('/click', function(req, res, next) {
       _id: Ad._id,
       data: [
         {
-          dateString: dateString,
-          date: new Date(),
+          date: dateString,
           impressions: 0,
           clicks: 1
           }
@@ -138,7 +136,7 @@ WebApp.connectHandlers.use('/click', function(req, res, next) {
   } else  if (Analytics.find({ "data.date": dateString }).count() == 0) {
     Analytics.update({ _id: Ad._id },
       {
-      $push: { data: { $each: [{ dateString: dateString, date: new Date(), impressions: 0, clicks: 1 }]}}
+      $push: { data: { $each: [{ date: dateString, impressions: 0, clicks: 1 }]}}
     })
   } else {
     Analytics.update({ _id: Ad._id, "data.date": dateString} , { $inc: { "data.$.clicks": 1 }})
