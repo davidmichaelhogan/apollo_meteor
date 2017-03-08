@@ -87,6 +87,18 @@ class AdsTable extends React.Component {
     }
   }
 
+  pauseButtonState (adState, text) {
+    if (text && adState) {
+      return 'Pause Ad'
+    } else if (text && !adState) {
+      return 'Run Ad'
+    } else if (!text && adState) {
+      return pauseIcon
+    } else {
+      return runIcon
+    }
+  }
+
   timesUpdate = (balance, start, end) => {
     let impressions = balance / .008
     let amount = (end.getTime() - start.getTime()) / impressions
@@ -284,7 +296,7 @@ class AdsTable extends React.Component {
                         anchorOrigin={{horizontal: 'right', vertical: 'top'}}
                         targetOrigin={{horizontal: 'right', vertical: 'top'}}
                       >
-                        <MenuItem primaryText={this.state.adState[1]} leftIcon={this.state.adState[2]} onTouchTap={(event) => this.pauseAd(this.state.adState, ad._id, ad.balance, ad.start, ad.end)}/>
+                        <MenuItem primaryText={this.pauseButtonState(ad.runAd, true)} leftIcon={this.pauseButtonState(ad.runAd, false)} onTouchTap={(event) => this.pauseAd(this.state.adState, ad._id, ad.balance, ad.start, ad.end)}/>
                         <MenuItem primaryText="Edit Settings" leftIcon={settingsIcon}
                           onTouchTap={() => this.setState({
                             hasClicked: true,
