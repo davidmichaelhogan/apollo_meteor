@@ -64,7 +64,6 @@ class AdsTable extends React.Component {
       open: false,
       tab: 0,
       dialogTitle: 'Add Funds to Campaign',
-      adState: [ true, 'Pause Ad', pauseIcon ],
       name: null,
       ccNum: null,
       cvc: null,
@@ -155,9 +154,8 @@ class AdsTable extends React.Component {
       newtime = start
     }
     //if running, pause ad
-    if (adState[0]) {
+    if (adState) {
       Meteor.call('pauseAd', { ad_id: ad_id })
-      this.setState({ adState: [ false, 'Run Ad', runIcon ]})
     } else {
     // Run Ad, adjust timeDiff
       Meteor.call('resumeAd', {
@@ -165,7 +163,6 @@ class AdsTable extends React.Component {
         timeDiff: this.timesUpdate(adBalance, newTime, end),
         nextServed: (new Date().getTime() + this.timesUpdate(adBalance, newTime, end))
       })
-      this.setState({ adState: [ true, 'Pause Ad', pauseIcon ]})
     }
   }
 
@@ -210,7 +207,6 @@ class AdsTable extends React.Component {
       label="Submit"
       primary={true}
       onTouchTap={() => {
-        console.log()
         if (this.state.paymentOption == 1) {
           this.handleNewPaymentSubmit()
         } else if (this.state.paymentOption == 0){
@@ -296,7 +292,7 @@ class AdsTable extends React.Component {
                         anchorOrigin={{horizontal: 'right', vertical: 'top'}}
                         targetOrigin={{horizontal: 'right', vertical: 'top'}}
                       >
-                        <MenuItem primaryText={this.pauseButtonState(ad.runAd, true)} leftIcon={this.pauseButtonState(ad.runAd, false)} onTouchTap={(event) => this.pauseAd(this.state.adState, ad._id, ad.balance, ad.start, ad.end)}/>
+                        <MenuItem primaryText={this.pauseButtonState(ad.runAd, true)} leftIcon={this.pauseButtonState(ad.runAd, false)} onTouchTap={(event) => this.pauseAd(ad.runAd, ad._id, ad.balance, ad.start, ad.end)}/>
                         <MenuItem primaryText="Edit Settings" leftIcon={settingsIcon}
                           onTouchTap={() => this.setState({
                             hasClicked: true,
