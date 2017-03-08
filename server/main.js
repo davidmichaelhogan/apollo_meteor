@@ -7,6 +7,9 @@ import { Ads } from '../imports/api/ads.js'
 import { Categories } from '../imports/api/categories.js'
 import { Events } from '../imports/api/events.js'
 import { Advertisers } from '../imports/api/advertisers.js'
+import { Analytics } from '../imports/api/analytics.js'
+
+const dateString = (new Date).toDateString()
 
 Meteor.startup(() => {
   Meteor.publish('ads', function() {
@@ -21,6 +24,10 @@ Meteor.startup(() => {
   Meteor.publish('clicks', function() {
     return Events.find({ click: 1})
   })
+  Meteor.publish('analytics', function() {
+    return Analytics.find({})
+  })
+
 })
 
 //Ad Api
@@ -64,10 +71,31 @@ WebApp.connectHandlers.use('/ad', function(req, res, next) {
       publisher: publisher,
       advertiser: Ad.advertiser,
       ad_id: Ad._id,
-      date: (new Date).toDateString()
+      date: dateString
     })
     // Minus 0.008 from the current ads balance
     Ads.update(Ad, { $inc: { balance: -0.008, impressions: 1, nextServed: Ad.timeDiff}})
+
+    //Update analytics data
+    if (Analytics.find({ _id: Ad._id }).count() == 0 ) {
+      Analytics.insert({
+        _id: Ad._id,
+        data: [
+          {
+            date: dateString,
+            impressions: 1,
+            clicks: 0
+          }
+        ]
+      })
+    } else  if (Analytics.find({ "data.date": dateString }).count() == 0) {
+      Analytics.update({ _id: Ad._id },
+        {
+        $push: { data: { $each: [{ date: dateString, impressions: 1, clicks: 0 }]}}
+      })
+    } else {
+    Analytics.update({ _id: Ad._id, "data.date": dateString} , { $inc: { "data.$.impressions": 1 }})
+    }
   }
 
 
@@ -93,6 +121,26 @@ WebApp.connectHandlers.use('/click', function(req, res, next) {
   })
 
   Ads.update(Ad, { $inc: {clicks: 1}})
+
+  if (Analytics.find({ _id: Ad._id }).count() == 0 ) {
+    Analytics.insert({
+      _id: Ad._id,
+      data: [
+        {
+          date: dateString,
+          impressions: 0,
+          clicks: 1
+          }
+      ]
+    })
+  } else  if (Analytics.find({ "data.date": dateString }).count() == 0) {
+    Analytics.update({ _id: Ad._id },
+      {
+      $push: { data: { $each: [{ date: dateString, impressions: 0, clicks: 1 }]}}
+    })
+  } else {
+    Analytics.update({ _id: Ad._id, "data.date": dateString} , { $inc: { "data.$.clicks": 1 }})
+  }
 
   //redirect user to url
   res.writeHead(307, { 'Location': Ad.url })

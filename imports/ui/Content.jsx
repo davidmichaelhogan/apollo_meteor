@@ -2,7 +2,7 @@ import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import AdsTable from './AdsTable'
 import AdsStepper from './AdsStepper'
-import Analytics from './Analytics'
+import AnalyticsChart from './AnalyticsChart'
 
 import muiTheme from '../styles/muiTheme'
 
@@ -28,7 +28,7 @@ export default class Content extends React.Component {
       return (
         <div>
           <MuiThemeProvider>
-            <Analytics />
+            <AnalyticsChart />
           </MuiThemeProvider>
         </div>
       )
