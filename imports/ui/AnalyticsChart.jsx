@@ -27,6 +27,11 @@ class AnalyticsChart extends React.Component {
 
   handleChange = (event, index, value) => this.setState({value})
 
+  handleDownload = () => {
+    console.log('download that shit')
+    Meteor.call('downloadCSV', { ad_id: this.state.value})
+  }
+
   renderChart() {
     //Key corresponding with each ad and written in data object
     const dataKey = this.props.analytics.map((ad) => {
@@ -37,8 +42,8 @@ class AnalyticsChart extends React.Component {
     if (currentAd) {
       return (
         <ResponsiveContainer width="100%" height={400}>
-          <AreaChart data={currentAd.data}>
-            <XAxis dataKey={"date"}/>
+          <AreaChart data={currentAd.data.slice(currentAd.data.length - 31, currentAd.data.length)}>
+            <XAxis dataKey={"dateString"}/>
             <YAxis/>
             <CartesianGrid strokeDasharray="3 3"/>
             <Tooltip/>
@@ -55,7 +60,6 @@ class AnalyticsChart extends React.Component {
       <div>
         <Toolbar>
         <ToolbarGroup firstChild={true}>
-        <div className="ana-header">Choose Ad Campaign:</div>
           <DropDownMenu value={this.state.value} onChange={this.handleChange}>
             {this.props.ads.map((ad) => (
               <MenuItem key={ad._id} value={ad._id} primaryText={ad.headline} />
@@ -64,17 +68,7 @@ class AnalyticsChart extends React.Component {
         </ToolbarGroup>
         <ToolbarGroup>
           <ToolbarSeparator />
-          <RaisedButton label="Download CSV" primary={true} />
-          <IconMenu
-            iconButtonElement={
-              <IconButton touch={true}>
-                <NavigationExpandMoreIcon />
-              </IconButton>
-            }
-          >
-            <MenuItem primaryText="Export to " />
-            <MenuItem primaryText="More Info" />
-          </IconMenu>
+          <RaisedButton label="Download CSV" primary={true} onTouchTap={this.handleDownload}/>
         </ToolbarGroup>
       </Toolbar>
       {this.renderChart()}

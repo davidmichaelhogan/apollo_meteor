@@ -3,6 +3,7 @@ import { first } from 'lodash'
 
 import { Ads } from '../imports/api/ads.js'
 import { Advertisers } from '../imports/api/advertisers.js'
+import { Analytics } from '../imports/api/analytics.js'
 
 const stripeKey = Meteor.settings.stripe.s_key
 const Stripe = StripeAPI(stripeKey)
@@ -127,5 +128,8 @@ Meteor.methods({
         $set: { timeDiff: timeDiff, nextServed: nextServed, runAd: true }
       }
     )
+  },
+  'downloadCSV'({ ad_id }) {
+    console.log('download that shit')
   }
 })
