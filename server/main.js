@@ -71,7 +71,7 @@ WebApp.connectHandlers.use('/ad', function(req, res, next) {
       publisher: publisher,
       advertiser: Ad.advertiser,
       ad_id: Ad._id,
-      date: dateString
+      date: new Date()
     })
     // Minus 0.008 from the current ads balance
     Ads.update(Ad, { $inc: { balance: -0.008, impressions: 1, nextServed: Ad.timeDiff}})
@@ -117,7 +117,7 @@ WebApp.connectHandlers.use('/click', function(req, res, next) {
     publisher: publisher,
     advertiser: Ad.advertiser,
     ad_id: ad_id,
-    date: (new Date).toDateString()
+    date: (new Date)
   })
 
   Ads.update(Ad, { $inc: {clicks: 1}})

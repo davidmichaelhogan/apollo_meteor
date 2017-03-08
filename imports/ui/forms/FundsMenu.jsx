@@ -70,7 +70,6 @@ class FundsMenu extends React.Component {
           onChange={this.handleSlider}
         />
         <Tabs onChange={(value) => {this.props.paymentOption(value)}}>
-        {this.returnCardOnFile()}
         <Tab label="Pay with New Card" value={1}>
           <div className="payment-tab">
             <h2>Pay with new card</h2>
@@ -82,6 +81,7 @@ class FundsMenu extends React.Component {
             <TextField style={style.input} hintText="001" floatingLabelText="Security Code" onChange={(nada, value) => this.props.updateCvc(value)}/><br />
           </div>
         </Tab>
+        {this.returnCardOnFile()}
       </Tabs>
       </div>
     )
