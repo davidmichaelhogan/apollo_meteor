@@ -1,6 +1,7 @@
 import React from 'react'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
+import FlatButton from 'material-ui/FlatButton'
 
 class Login extends React.Component {
   constructor(props) {
@@ -10,7 +11,7 @@ class Login extends React.Component {
       password: null,
       login: false,
       loginText: 'Please Login to continue.',
-      registerText: 'Register for an Advertiser Account'
+      registerText: 'Sign up for an Advertiser Account'
     }
   }
 
@@ -61,8 +62,7 @@ class Login extends React.Component {
           <div className="sub-header">{this.state.loginText}</div>
           <TextField hintText="Email" onChange={(event, value) => this.setState({ email: value })}/><br />
           <TextField hintText="Password" type="password" onChange={(event, value) => this.setState({ password: value })}/><br />
-          <RaisedButton label="Submit" onTouchTap={this.loginWithPassword}
-           />
+          <RaisedButton label="I don't have an account" onTouchTap={() => this.setState({ login: false })}/> <RaisedButton primary={true} label="Submit" onTouchTap={this.loginWithPassword}/>
         </div>
       )
     } else {
@@ -72,7 +72,7 @@ class Login extends React.Component {
         <div className="sub-header">{this.state.registerText}</div>
         <TextField hintText="Email" onChange={(event, value) => this.setState({ email: value })}/><br />
         <TextField hintText="Password" type="password" onChange={(event, value) => this.setState({ password: value })}/><br />
-        <RaisedButton label="Submit" onTouchTap={this.createUser} />
+        <RaisedButton label="I'm already registered" onTouchTap={() => this.setState({ login: true })}/> <RaisedButton label="Submit" primary={true} onTouchTap={this.createUser} />
         </div>
       )
     }

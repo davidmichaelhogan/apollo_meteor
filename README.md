@@ -3,7 +3,6 @@ http://launchapollo.com
 
 Big things to finish up:
  - SETUP SIGN UP PAGE
- - Email & Name save on register (add name field to user account Collection - Mailchimp API connect)
  - Left Footer links (legal, homepage etc.)
  - Add snack bar to notify actions
 

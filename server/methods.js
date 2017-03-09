@@ -1,6 +1,5 @@
 import { Meteor } from 'meteor/meteor'
 import { first } from 'lodash'
-import mailchimpAPI from 'meteor/universe:mailchimp-v3-api'
 
 import { Ads } from '../imports/api/ads.js'
 import { Advertisers } from '../imports/api/advertisers.js'
@@ -8,6 +7,8 @@ import { Analytics } from '../imports/api/analytics.js'
 
 const stripeKey = Meteor.settings.stripe.s_key
 const Stripe = StripeAPI(stripeKey)
+
+import { HTTP } from 'meteor/http'
 
 
 Meteor.methods({
@@ -148,14 +149,11 @@ Meteor.methods({
     )
   },
   'sendEmail'({ email }) {
-    mailchimpAPI.setApiKey(Meteor.settings.MailChimp.apiKey);
-    mailchimpAPI.addANewListMember({
-    list_id: Meteor.settings.MailChimp.listId,
-    body: {
-        email_address: email,
-        status: 'pending'
+    const body = {
+    "email_address": email,
+    "status": "subscribed"
     }
-});
+    HTTP.post('https://us15.api.mailchimp.com/3.0/lists/f8159e45b4/members', {data: body, auth: 'apollodev:36c3e397a2938129b9e771a7d832287e-us15'}, (err) => console.log(err))
   },
   'downloadCSV'({ ad_id }) {
     console.log('download that shit')
