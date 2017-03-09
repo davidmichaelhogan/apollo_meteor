@@ -8,12 +8,14 @@ import TextField from 'material-ui/TextField'
 import Slider from 'material-ui/Slider'
 import DatePicker from 'material-ui/DatePicker'
 import { Tabs, Tab } from 'material-ui/Tabs'
+import { first } from 'lodash'
 
 const ctr = (clicks, impressions) => clicks / impressions
 const impressions = (money) => money / 8 * 1000
 const commaify = (number) => number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 
 import { Ads } from '../api/ads.js'
+import { Advertisers } from '../api/advertisers.js'
 
 import FundsMenu from './forms/FundsMenu'
 
@@ -43,7 +45,7 @@ class AdsStepper extends React.Component {
     cvc: null,
     expMo: null,
     expYr: null,
-    paymentOption: 1,
+    paymentOption: 0,
     open: false,
     advertiser: Meteor.user()._id,
     category: '58a886d597a4ce608ea459dd',  //Create option for category
@@ -120,17 +122,25 @@ class AdsStepper extends React.Component {
         this.setState({ formStatus: response.error.message + ' Please go back and try again.'})
       } else {
       	let stripeToken = response.id
-      	Meteor.call('chargeNewCard', { stripeToken: stripeToken, balance: balance, currentUser: Meteor.user(), name: name})
+      	Meteor.call('chargeNewCard', { stripeToken: stripeToken, balance: balance, currentUser: Meteor.user(), name: name })
         //Create new ad unit once card is charged
         this.createNewAd(balance)
       }
     })
   }
 
-  handleCurrentPaymentSubmit = () => {
-    Meteor.call('chargeCurrentCard', { balance: this.state.balance, currentUser: Meteor.user()})
-    this.createNewAd(this.state.balance)
+handleCurrentPaymentSubmit = () => {
+  let balance = this.state.balance
+  let balanceDiff = this.props.advertisers.balance - this.state.balance
+  if (balanceDiff <= 0) {
+    balanceDiff = -balanceDiff
+    Meteor.call('updateAdvertiserBalance', { balance: 0, currentUser: Meteor.user() })
+    Meteor.call('chargeCurrentCard', { balance: balanceDiff, currentUser: Meteor.user()})
+  } else {
+    Meteor.call('updateAdvertiserBalance', { balance: balanceDiff, currentUser: Meteor.user() })
   }
+  this.createNewAd(this.state.balance)
+}
 
   timesUpdate = (balance, start, end) => {
     let impressions = balance / .008
@@ -315,7 +325,9 @@ class AdsStepper extends React.Component {
 
 export default createContainer(() => {
   Meteor.subscribe('ads')
+  Meteor.subscribe('advertisers')
   return {
-    ads: Ads.find({}).fetch()
+    ads: Ads.find({}).fetch(),
+    advertisers: first(Advertisers.find({}).fetch())
   }
 }, AdsStepper)

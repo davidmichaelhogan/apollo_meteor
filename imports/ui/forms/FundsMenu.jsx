@@ -70,18 +70,18 @@ class FundsMenu extends React.Component {
           onChange={this.handleSlider}
         />
         <Tabs onChange={(value) => {this.props.paymentOption(value)}}>
+        {this.returnCardOnFile()}
         <Tab label="Pay with New Card" value={1}>
           <div className="payment-tab">
             <h2>Pay with new card</h2>
             <div className="sub-header">Payment Information</div>
-            <TextField style={style.inputFull} hintText="John Doe" floatingLabelText="Full Name" onChange={(nada, value) => this.props.updateName(value)}/><br />
+            <TextField style={style.inputFull} hintText="John Doe" floatingLabelText="Full Name" onChange={(nada, value) => {this.props.updateName(value); this.props.paymentOption(1)}}/><br />
             <TextField style={style.inputFull} hintText="0001000200030004" floatingLabelText="Card Number" onChange={(nada, value) => this.props.updateCard(value)}/><br />
             <TextField style={style.input} hintText="01" floatingLabelText="Expiration Month" onChange={(nada, value) => this.props.updateExpMonth(value)}/>
             <TextField style={style.input} hintText="2017" floatingLabelText="Expiration Year" onChange={(nada, value) => this.props.updateExpYear(value)}/>
             <TextField style={style.input} hintText="001" floatingLabelText="Security Code" onChange={(nada, value) => this.props.updateCvc(value)}/><br />
           </div>
         </Tab>
-        {this.returnCardOnFile()}
       </Tabs>
       </div>
     )

@@ -17,8 +17,10 @@ import IconDelete from 'material-ui/svg-icons/action/delete'
 import IconSettings from 'material-ui/svg-icons/action/settings'
 import IconPause from 'material-ui/svg-icons/av/pause'
 import IconPlayArrow from 'material-ui/svg-icons/av/play-arrow'
+import { first } from 'lodash'
 
 import { Ads } from '../api/ads.js'
+import { Advertisers } from '../api/advertisers.js'
 
 import FundsMenu from './forms/FundsMenu'
 
@@ -69,7 +71,7 @@ class AdsTable extends React.Component {
       cvc: null,
       expMo: null,
       expYr: null,
-      paymentOption: 1,
+      paymentOption: 0,
       ad_id: null,
       advertiser: null,
       category: null,
@@ -180,7 +182,7 @@ class AdsTable extends React.Component {
         this.setState({ dialogTitle: response.error.message })
       } else {
       	let stripeToken = response.id
-      	Meteor.call('chargeNewCard', { stripeToken: stripeToken, balance: balance, currentUser: Meteor.user(), name: name})
+      	Meteor.call('chargeNewCard', { stripeToken: stripeToken, balance: balance, currentUser: Meteor.user(), name: name })
         //Create new ad unit once card is charged
         this.updateAdBalance(balance)
       }
@@ -189,7 +191,14 @@ class AdsTable extends React.Component {
 
   handleCurrentPaymentSubmit = () => {
     let balance = this.state.balance
-    Meteor.call('chargeCurrentCard', { balance: balance, currentUser: Meteor.user()})
+    let balanceDiff = this.props.advertisers.balance - this.state.balance
+    if (balanceDiff <= 0) {
+      balanceDiff = -balanceDiff
+      Meteor.call('updateAdvertiserBalance', { balance: 0, currentUser: Meteor.user() })
+      Meteor.call('chargeCurrentCard', { balance: balanceDiff, currentUser: Meteor.user()})
+    } else {
+      Meteor.call('updateAdvertiserBalance', { balance: balanceDiff, currentUser: Meteor.user() })
+    }
     this.updateAdBalance(balance)
   }
 
@@ -251,8 +260,10 @@ class AdsTable extends React.Component {
     this.setState({ hasClicked: false })
   }
 
-  deleteAd(ad_id) {
+  deleteAd(ad_id, balance) {
+    let balanceDiff = balance + this.props.advertisers.balance
     Meteor.call('deleteAd', ad_id)
+    Meteor.call('updateAdvertiserBalance', { balance: balanceDiff, currentUser: Meteor.user()})
   }
 
   loadMenu() {
@@ -310,7 +321,7 @@ class AdsTable extends React.Component {
                             currentBalance: ad.balance
                           })}
                         />
-                        <MenuItem primaryText="Delete Ad" leftIcon={trashIcon} onTouchTap={(event) => this.deleteAd(ad._id)}/>
+                        <MenuItem primaryText="Delete Ad" leftIcon={trashIcon} onTouchTap={(event) => this.deleteAd(ad._id, ad.balance)}/>
                       </IconMenu>
                     </div>
                   </TableRowColumn>
@@ -417,7 +428,9 @@ class AdsTable extends React.Component {
 
 export default createContainer(() => {
   Meteor.subscribe('ads')
+  Meteor.subscribe('advertisers')
   return {
-    ads: Ads.find({}).fetch()
+    ads: Ads.find({}).fetch(),
+    advertisers: first(Advertisers.find({}).fetch())
   }
 }, AdsTable)

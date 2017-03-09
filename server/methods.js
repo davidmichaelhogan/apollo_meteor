@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor'
 import { first } from 'lodash'
+import mailchimpAPI from 'meteor/universe:mailchimp-v3-api'
 
 import { Ads } from '../imports/api/ads.js'
 import { Advertisers } from '../imports/api/advertisers.js'
@@ -8,11 +9,12 @@ import { Analytics } from '../imports/api/analytics.js'
 const stripeKey = Meteor.settings.stripe.s_key
 const Stripe = StripeAPI(stripeKey)
 
+
 Meteor.methods({
   deleteAd(ad) {
     Ads.remove({ _id: ad })
   },
-  'chargeNewCard'({ stripeToken, balance, currentUser, name}) {
+  'chargeNewCard'({ stripeToken, balance, currentUser, name, forAccount}) {
 
     Stripe.customers.create({
       email: currentUser.emails[0].address,
@@ -20,10 +22,17 @@ Meteor.methods({
     }).then(Meteor.bindEnvironment(function(customer) {
       // YOUR CODE: Save the customer ID and other info in a database for later.
       if (Advertisers.find({ _id: currentUser._id }).count() == 0 ) {
-        console.log("couldn't find:" + currentUser._id )
-        Advertisers.insert({ _id: currentUser._id, name: name, stripeId: customer.id})
+        if (forAccount) {
+          Advertisers.insert({ _id: currentUser._id, name: name, balance: balance, stripeId: customer.id})
+        } else {
+          Advertisers.insert({ _id: currentUser._id, name: name, balance: 0, stripeId: customer.id})
+        }
       } else {
-        Advertisers.update({ _id: currentUser._id}, {name: name, stripeId: customer.id})
+        Advertisers.update({ _id: currentUser._id},
+          {
+            $set: { name: name, stripeId: customer.id }
+          }
+        )
       }
       return Stripe.charges.create({
         amount: balance * 100,
@@ -32,6 +41,7 @@ Meteor.methods({
       })
     })).then(function(err, charge) {
       // Use and save the charge info.
+      return charge
     })
   },
   'chargeCurrentCard'({ balance, currentUser }) {
@@ -129,7 +139,25 @@ Meteor.methods({
       }
     )
   },
+  'updateAdvertiserBalance'({ balance, currentUser }) {
+    console.log(balance + currentUser._id)
+    Advertisers.update({ _id: currentUser._id },
+      {
+          $set: { balance: balance }
+      }
+    )
+  },
+  'sendEmail'({ email }) {
+    mailchimpAPI.setApiKey(Meteor.settings.MailChimp.apiKey);
+    mailchimpAPI.addANewListMember({
+    list_id: Meteor.settings.MailChimp.listId,
+    body: {
+        email_address: email,
+        status: 'pending'
+    }
+});
+  },
   'downloadCSV'({ ad_id }) {
     console.log('download that shit')
-  }
+  },
 })

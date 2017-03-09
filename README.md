@@ -3,20 +3,16 @@ http://launchapollo.com
 
 Big things to finish up:
  - SETUP SIGN UP PAGE
- - Account settings page - clear Stripe saved card Information
  - Email & Name save on register (add name field to user account Collection - Mailchimp API connect)
  - Left Footer links (legal, homepage etc.)
  - Add snack bar to notify actions
- - Duplicate ad button
 
  Issues:
- card payment tabs
  Analytics page - rework: select campaign
- ** Try to edit ad display time (less of a wait, see if clicks increase)
- RETURN THE GECKO
 
 Little things todo:
  - credit card info constraints
+ - Duplicate ad button (how to pay for duplicate?)
  - Try new font for Headline / title
  - Download CSV button & edit timeframe
  - Setup Flow Router for Navigation
