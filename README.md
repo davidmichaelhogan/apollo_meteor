@@ -2,12 +2,14 @@
 http://launchapollo.com
 
 Big things to finish up:
- - SETUP SIGN UP PAGE
+ - Fix number handling on inputs
+ - Add apollo logo to ads
+ - show audience reach
  - Left Footer links (legal, homepage etc.)
- - Add snack bar to notify actions
 
  Issues:
  Analytics page - rework: select campaign
+ Create loading dialog for graph
 
 Little things todo:
  - credit card info constraints
@@ -23,3 +25,7 @@ Little things todo:
  - Add "Enter" function to add stepper & editor in subline
  - for some reason the csv button on analytics page is the wrong color
  - fix ads table to pull click & impression data from Events collection & remove click & impression counters from ads collection
+
+In the future:
+ - Wordpress plugin
+ -

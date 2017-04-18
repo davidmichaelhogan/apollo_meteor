@@ -148,10 +148,15 @@ Meteor.methods({
       }
     )
   },
-  'sendEmail'({ email }) {
+  'sendEmail'({ email, name, phone, website }) {
     const body = {
-    "email_address": email,
-    "status": "subscribed"
+      "email_address": email,
+      "status": "subscribed",
+      "merge_fields": {
+        "NAME": name,
+        "PHONE": phone,
+        "WEBSITE": website
+      }
     }
     HTTP.post('https://us15.api.mailchimp.com/3.0/lists/f8159e45b4/members', {data: body, auth: 'apollodev:36c3e397a2938129b9e771a7d832287e-us15'}, (err) => console.log(err))
   },

@@ -1,17 +1,31 @@
 //Apollo Sass File
 
+$break-small: 320px
+$break-large: 1200px
+
 //Main shit
+html
+  height: 100%
+
 body
   font-family: 'Roboto', sans-serif
+  height: 100%
+  margin: 0
 
 h3
   font-weight: normal
+
+.app
+  height: 100%
 
 //Nav
 .title
   text-align: left
   margin: 2%
   font-size: 2em
+  img
+    width: 100%
+    height: auto
 
 .center
   float: none
@@ -98,8 +112,8 @@ h3
 
 .sub-header
   @extend .sub-title
-  font-size: 1em
-  padding: 2% 0 0
+  font-size: 1.4em
+  padding: 2%
 
 .payment-tab
   margin: 0 1%
@@ -113,3 +127,47 @@ h3
 //Login
 .login
   text-align: center
+  background: url("img/login.jpg") no-repeat center center fixed
+  -webkit-background-size: cover
+  -moz-background-size: cover
+  background-size: cover
+  height: 95%
+  margin: 0
+  padding: 5% 0 0
+
+.login-content
+  background-color: rgba(256,256,256,1)
+  width: 30%
+  margin: 0 5% 4% 0
+  margin-left: auto
+  padding: 2% 5%
+  border-radius: 12px
+  @media screen and (max-width: 768px)
+    border-radius: 0
+    width: 100%
+    margin-left: none
+    padding: 0
+  a
+    color: rgb(42, 91, 189)
+
+.login-sub-text
+  margin: 10px 0 0
+  text-align: center
+  width: 100%
+  font-size: 1.4em
+  font-weight: bold
+  color: #fff
+  a
+    color: #fff
+    text-decoration: none
+
+.login-sub-links
+  width: 100%
+  font-size: .6em
+  font-weight: normal
+  color: #000
+  background-color: #fff
+  margin: 30px 0 0
+  line-height: 50px
+  a
+    color: rgb(42, 91, 189)
