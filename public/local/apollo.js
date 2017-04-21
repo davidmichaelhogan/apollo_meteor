@@ -121,11 +121,11 @@ class Apollo {
     setTimeout(function(){
       currentAd.el.style.top = '10px'
       currentAd.isVisible = true
-    }, 3500)
+    }, 2000)
 
     setTimeout(function(){
         currentAd.el.style.top = '-300px'
-    }, 12000)
+    }, 4000)
   }
 }
 
