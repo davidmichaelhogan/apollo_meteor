@@ -62,13 +62,13 @@ class AnalyticsChart extends React.Component {
         <ToolbarGroup firstChild={true}>
           <DropDownMenu value={this.state.value} onChange={this.handleChange}>
             {this.props.ads.map((ad) => (
-              <MenuItem key={ad._id} value={ad._id} primaryText={ad.headline} />
+              <MenuItem key={ad._id} value={ad._id} secondaryText={ad.headline} />
             ))}
           </DropDownMenu>
         </ToolbarGroup>
         <ToolbarGroup>
           <ToolbarSeparator />
-          <RaisedButton label="Download CSV" primary={true} onTouchTap={this.handleDownload}/>
+          <RaisedButton label="Download CSV" secondary={true} onTouchTap={this.handleDownload}/>
         </ToolbarGroup>
       </Toolbar>
       {this.renderChart()}

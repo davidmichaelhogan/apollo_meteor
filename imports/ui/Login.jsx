@@ -12,7 +12,7 @@ class Login extends React.Component {
       name: null,
       phone: null,
       website: null,
-      login: true,
+      login: false,
       loginText: 'Please Login to Continue',
       registerText: 'Sign up for an Advertiser Account'
     }
@@ -66,9 +66,10 @@ class Login extends React.Component {
           <TextField hintText="Email" onChange={(event, value) => this.setState({ email: value })}/><br />
           <TextField hintText="Password" type="password" onChange={(event, value) => this.setState({ password: value })}/><br />
           <div style={{margin: 20}}>
-          <RaisedButton primary={true} label="Submit" onTouchTap={this.loginWithPassword}/>
+          <RaisedButton secondary={true} label="Submit" onTouchTap={this.loginWithPassword}/>
           </div>
           <p><a id="myLink" href="#" title="Click to Login" onClick={() => this.setState({ login: false })}>I'd like to sign up for an account</a></p>
+          <span>Need to get in touch? Send us an email: <a href="mailto:info@launchapollo.com">info@launchapollo.com</a></span>
         </div>
       )
     } else {
@@ -82,9 +83,10 @@ class Login extends React.Component {
         <TextField hintText="Website" type="website" onChange={(event, value) => this.setState({ website: value })}/><br />
         <TextField hintText="Choose a Password" type="password" onChange={(event, value) => this.setState({ password: value })}/><br />
         <div style={{margin: 20}}>
-        <RaisedButton label="Submit" primary={true} onTouchTap={this.createUser} />
+        <RaisedButton label="Submit" secondary={true} onTouchTap={this.createUser} />
         </div>
         <p><a id="myLink" href="#" title="Click to Login" onClick={() => this.setState({ login: true })}>I'm already registered</a></p>
+        <span>Need to get in touch? Send us an email: <a href="mailto:info@launchapollo.com">info@launchapollo.com</a></span>
         </div>
       )
     }
@@ -94,11 +96,8 @@ class Login extends React.Component {
     return (
       <div className="login">
        {this.showRegistration()}
-       <div className="login-sub-text">
-       <span>Need to get in touch? Send us an email: <a href="mailto:info@launchapollo.com">info@launchapollo.com</a></span>
        <div className="login-sub-links">
        Copyright © 2017 Apollo Network, LLC. All Rights Reserved. <a href="#">Privacy Policy</a>
-       </div>
        </div>
       </div>
     )

@@ -212,7 +212,6 @@ class AdsTable extends React.Component {
   actions = [
     <FlatButton
       label="Cancel"
-      primary={true}
       onTouchTap={this.handleCancel}
     />,
     <FlatButton
@@ -343,7 +342,7 @@ class AdsTable extends React.Component {
             <div className="sub-title">Click any field to edit. Leave blank to keep current setting.</div>
           </div>
           <div className="back-button">
-            <RaisedButton primary={true} label="Save Settings" primary={true} onTouchTap={this.handleEditSubmit}/>
+            <RaisedButton secondary={true} label="Save Settings" onTouchTap={this.handleEditSubmit}/>
             <RaisedButton label="Cancel" onTouchTap={() => this.setState({hasClicked: false})}/>
           </div>
           <div className="clear"></div>

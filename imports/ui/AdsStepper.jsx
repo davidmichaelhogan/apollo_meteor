@@ -291,7 +291,7 @@ handleCurrentPaymentSubmit = () => {
           />
           <RaisedButton
             label={stepIndex === 2 ? 'Submit Payment' : 'Next'}
-            primary={true}
+            secondary={true}
             onTouchTap={this.handleNext}
           />
         </div>

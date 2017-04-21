@@ -216,7 +216,7 @@ class AdsStepper extends React.Component {
           />
           <RaisedButton
             label={stepIndex === 2 ? 'Finish' : 'Next'}
-            primary={true}
+            secondary={true}
             onTouchTap={this.handleNext}
           />
         </div>
