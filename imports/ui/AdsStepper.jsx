@@ -218,7 +218,7 @@ handleCurrentPaymentSubmit = () => {
                   rows={2}
                   rowsMax={2}
                   style={{width: 370}}
-                  onChange={(nada, value) => this.setState({subline: value})}
+                  onChange={(nada, value) => { let new_value = value.replace(/(?:\r\n|\r|\n)/g, '<br />'); this.setState({subline: new_value})}}
                   onKeyDown={this.handleEscape}
                 />
               </div>
