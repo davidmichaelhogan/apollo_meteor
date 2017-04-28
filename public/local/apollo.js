@@ -125,7 +125,7 @@ class Apollo {
 
     setTimeout(function(){
         currentAd.el.style.top = '-300px'
-    }, 4000)
+    }, 8000)
   }
 }
 

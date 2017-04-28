@@ -2,12 +2,9 @@
 http://launchapollo.com
 
 Big things to finish up:
+ - Add apollo code to SS site
+ - Fix new line on ad DESIGN
  - Fix number handling on inputs
- - Register page first
- - Change /n on ad design to <br /> in database
- - Add apollo logo to ads
- - show audience reach
- - Left Footer links (legal, homepage etc.)
 
  Issues:
  Analytics page - rework: select campaign
