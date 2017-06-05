@@ -175,6 +175,19 @@ handleCurrentPaymentSubmit = () => {
     }
   }
 
+  uploadFile = (event) => {
+    console.log('trying to upload');
+    let func = this
+    let file = event.currentTarget.files[0]
+    let reader = new FileReader()
+    console.log(file)
+    reader.onload = (fileLoadEvent) => {
+      Meteor.call('file-upload', { fileInfo: file, fileData: reader.result })
+
+    }
+    reader.readAsBinaryString(file)
+  }
+
   getStepContent(stepIndex) {
     switch (stepIndex) {
       case 0:
@@ -237,6 +250,10 @@ handleCurrentPaymentSubmit = () => {
                   onChange={(nada, value) => this.setState({logo: value})}
                   onKeyDown={this.handleEscape}
                 />
+                <br />
+                <br />
+                <br />
+                <input name="this" onChange={this.uploadFile} type="file" />
               </div>
           </div>
           </div>

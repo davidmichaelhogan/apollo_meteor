@@ -393,7 +393,7 @@ class AdsTable extends React.Component {
                 onKeyDown={this.handleEscape}
               />
             </div>
-            <div className="sub-header">Remaining Balance: <strong>${commaify(this.state.currentBalance.toFixed(2))} - {commaify(impressions(this.state.currentBalance).toFixed(0))} impressions</strong></div>
+            <div className="sub-header">Remaining Balance: <strong>${commaify(this.state.currentBalance.toFixed(2))} & {commaify(impressions(this.state.currentBalance).toFixed(0))} impressions</strong></div>
             <div className="sub-buttons">
               <RaisedButton label="Add Funds" onTouchTap={this.handleOpen} />
             </div>

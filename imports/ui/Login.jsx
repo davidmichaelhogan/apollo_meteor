@@ -77,11 +77,11 @@ class Login extends React.Component {
         <div id="login-content" className="login-content">
         <div className="title center"><img src="img/logo.jpg" /></div>
         <div className="sub-header">{this.state.registerText}</div>
-        <TextField hintText="Name" onChange={(event, value) => this.setState({ name: value })}/><br />
         <TextField hintText="Email" onChange={(event, value) => this.setState({ email: value })}/><br />
+        <TextField hintText="Choose a Password" type="password" onChange={(event, value) => this.setState({ password: value })}/><br />
+        <TextField hintText="Name" onChange={(event, value) => this.setState({ name: value })}/><br />
         <TextField hintText="Phone" type="phone" onChange={(event, value) => this.setState({ phone: value })}/><br />
         <TextField hintText="Website" type="website" onChange={(event, value) => this.setState({ website: value })}/><br />
-        <TextField hintText="Choose a Password" type="password" onChange={(event, value) => this.setState({ password: value })}/><br />
         <div style={{margin: 20}}>
         <RaisedButton label="Submit" secondary={true} onTouchTap={this.createUser} />
         </div>

@@ -9,6 +9,7 @@ const stripeKey = Meteor.settings.stripe.s_key
 const Stripe = StripeAPI(stripeKey)
 
 import { HTTP } from 'meteor/http'
+import fs from 'fs'
 
 
 Meteor.methods({
@@ -163,4 +164,8 @@ Meteor.methods({
   'downloadCSV'({ ad_id }) {
     console.log('download that shit')
   },
+  'file-upload'({fileInfo, fileData}) {
+    console.log("received file " + fileInfo.name + " data: " + fileData);
+    fs.writeFile('./', fileData); //NEED TO SAVE FILE WITH FS --- LOOK UP
+  }
 })
