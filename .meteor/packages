@@ -25,4 +25,5 @@ accounts-password
 fourseven:scss
 aldeed:simple-schema
 mrgalaxy:stripe
+force-ssl
 http
