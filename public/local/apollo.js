@@ -12,7 +12,7 @@ class Apollo {
 
     if (this.isTouchDevice()) {
       this.createElement()
-      this.request(`${this.api}/ad?publisher=${window.ApolloOptions.publisher}`, (res) => {
+      this.request(`${this.api}/ad?publisher=${window.ApolloOptions.publisher}&category=${window.ApolloOptions.category}`, (res) => {
         this.showAd(JSON.parse(res))
       })
 

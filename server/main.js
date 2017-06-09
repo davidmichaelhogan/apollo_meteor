@@ -38,6 +38,8 @@ WebApp.connectHandlers.use('/ad', function(req, res, next) {
     name: req.query.category
   }) : null
 
+  console.log(category)
+
   const Ad = first(Ads.aggregate([{
     $match: {
       ...(category ? {
