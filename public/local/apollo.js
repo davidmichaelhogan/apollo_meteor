@@ -51,7 +51,7 @@ class Apollo {
     this.el.style.position = 'fixed'
     this.el.style.top = '-300px'
     this.el.style.zIndex = '3000000'
-    this.el.style.transition = 'top 500ms ease'
+    this.el.style.transition = 'top 700ms ease'
     this.el.style.boxSizing = 'content-box'
     this.el.style.padding = '0 10px'
 
