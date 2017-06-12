@@ -3,7 +3,7 @@ Slingshot.fileRestrictions( "uploadToAmazonS3", {
   maxSize: 1 * 1024 * 1024
 })
 
-Slingshot.createDirective( "uploadToAmazonS3", Slingshot.S3Storage, {
+Slingshot.createDirective( "newOne", Slingshot.S3Storage, {
   bucket: "apolloserver-logos",
   acl: "public-read",
   authorize: function () {
@@ -15,7 +15,7 @@ Slingshot.createDirective( "uploadToAmazonS3", Slingshot.S3Storage, {
 
     return true;
   },
-  key: function () {
-    return this.userId
+  key: function ( file ) {
+    return this.userId + '/' + file.name
   }
 })
