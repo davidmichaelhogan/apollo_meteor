@@ -7,8 +7,13 @@ Slingshot.createDirective( "uploadToAmazonS3", Slingshot.S3Storage, {
   bucket: "apolloserver-logos",
   acl: "public-read",
   authorize: function () {
-    let userFileCount = 1
-    return userFileCount < 3 ? true : false
+    // do some validation
+    // e.g. deny uploads if user is not logged in.
+    if (!this.userId) {
+      throw new Meteor.Error(403, "Login Required");
+     }
+
+    return true;
   },
   key: function ( file ) {
     var user = Meteor.users.findOne( this.userId )
