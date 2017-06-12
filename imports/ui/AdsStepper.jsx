@@ -51,7 +51,7 @@ class AdsStepper extends React.Component {
     paymentOption: 0,
     open: false,
     advertiser: Meteor.user()._id,
-    category: '58a886d597a4ce608ea459dd',
+    category: '593acdcbc3b5a06739484e31',
     headline: 'Apollo Ad Server Example',
     subline: 'Your subline will appear here. Click in the fields below to make your ad.',
     subline_display: ['Your subline will appear here. Click in the fields below to make your ad.', ''],
