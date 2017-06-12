@@ -363,8 +363,12 @@ handleCurrentPaymentSubmit = () => {
 }
 
 export default createContainer(() => {
+  Meteor.subscribe('ads')
+  Meteor.subscribe('advertisers')
   Meteor.subscribe('categories')
   return {
+    ads: Ads.find({}).fetch(),
+    advertisers: first(Advertisers.find({}).fetch()),
     categories: Categories.find({}).fetch()
   }
 }, AdsStepper)

@@ -335,7 +335,8 @@ class AdsTable extends React.Component {
       return (
         <div>
           <div className="left-title">Ad Editor
-            <div className="sub-title">Click any field to edit. Leave blank to keep current setting.</div>
+            <div className="sub-title">Click any field to edit. Leave blank to keep current setting.
+            <p><strong>{commaify(impressions(this.state.currentBalance).toFixed(0))} impressions remaining</strong></p></div>
           </div>
           <div className="back-button">
             <RaisedButton secondary={true} label="Save Settings" onTouchTap={this.handleEditSubmit}/>
@@ -381,15 +382,7 @@ class AdsTable extends React.Component {
                 onChange={(nada, value) => this.setState({url: value})}
                 onKeyDown={this.handleEscape}
               />
-              <TextField
-                defaultValue={this.state.logo}
-                floatingLabelText="Logo Location URL"
-                fullWidth={true}
-                onChange={(nada, value) => this.setState({logo: value})}
-                onKeyDown={this.handleEscape}
-              />
             </div>
-            <div className="sub-header">Remaining Balance: <strong>${commaify(this.state.currentBalance.toFixed(2))} & {commaify(impressions(this.state.currentBalance).toFixed(0))} impressions</strong></div>
             <div className="sub-buttons">
               <RaisedButton label="Add Funds" onTouchTap={this.handleOpen} />
             </div>
