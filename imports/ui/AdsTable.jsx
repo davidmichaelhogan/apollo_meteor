@@ -17,7 +17,6 @@ import IconDelete from 'material-ui/svg-icons/action/delete'
 import IconSettings from 'material-ui/svg-icons/action/settings'
 import IconPause from 'material-ui/svg-icons/av/pause'
 import IconPlayArrow from 'material-ui/svg-icons/av/play-arrow'
-import Snackbar from 'material-ui/Snackbar'
 import { first } from 'lodash'
 
 import { Ads } from '../api/ads.js'
@@ -66,8 +65,6 @@ class AdsTable extends React.Component {
       hasClicked: false,
       open: false,
       tab: 0,
-      bar: false,
-      barMessage: 'Hello.',
       dialogTitle: 'Add Funds to Campaign',
       name: null,
       ccNum: null,
@@ -266,7 +263,6 @@ class AdsTable extends React.Component {
     let balanceDiff = balance + this.props.advertisers.balance
     Meteor.call('deleteAd', ad_id)
     Meteor.call('updateAdvertiserBalance', { balance: balanceDiff, currentUser: Meteor.user()})
-    this.setState({ bar: true, barMessage: 'Your ad has been deleted.'})
   }
 
   loadMenu() {
@@ -424,11 +420,6 @@ class AdsTable extends React.Component {
           updateCvc={(cvc) => this.updateCvc(cvc)}
         />
         </Dialog>
-        <Snackbar
-          open={this.state.bar}
-          message={this.state.barMessage}
-          autoHideDuration={4000}
-        />
       </div>
     )
   }

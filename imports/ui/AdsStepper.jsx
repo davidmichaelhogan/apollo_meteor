@@ -7,6 +7,8 @@ import ExpandTransition from 'material-ui/internal/ExpandTransition'
 import TextField from 'material-ui/TextField'
 import Slider from 'material-ui/Slider'
 import DatePicker from 'material-ui/DatePicker'
+import DropDownMenu from 'material-ui/DropDownMenu'
+import MenuItem from 'material-ui/MenuItem'
 import { Tabs, Tab } from 'material-ui/Tabs'
 import { first } from 'lodash'
 
@@ -16,6 +18,7 @@ const commaify = (number) => number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, 
 
 import { Ads } from '../api/ads.js'
 import { Advertisers } from '../api/advertisers.js'
+import { Categories } from '../api/categories.js'
 
 import FundsMenu from './forms/FundsMenu'
 
@@ -48,10 +51,12 @@ class AdsStepper extends React.Component {
     paymentOption: 0,
     open: false,
     advertiser: Meteor.user()._id,
-    category: '58a886d597a4ce608ea459dd',  //Create option for category
+    category: '58a886d597a4ce608ea459dd',
     headline: 'Apollo Ad Server Example',
     subline: 'Your subline will appear here. Click in the fields below to make your ad.',
+    subline_display: ['Your subline will appear here. Click in the fields below to make your ad.', ''],
     logo: 'https://server.launchapollo.com/favicon.ico',
+    uploadMessage: 'Click or Drag Your Logo Here to Upload',
     url: 'http://launchapollo.com',
     start: new Date,
     end: new Date,
@@ -148,6 +153,22 @@ handleCurrentPaymentSubmit = () => {
     return amount
   }
 
+  onUpload = (event) => {
+    const uploader = new Slingshot.Upload( "uploadToAmazonS3" )
+    let file = event.target.files[0]
+
+    uploader.send( file, ( error, url ) => {
+      if ( error ) {
+        console.log(error)
+        this.setState({ uploadMessage: 'Sorry. ' + error.reason  + '. Please try again.' })
+      } else {
+        console.log( url )
+        this.setState({ uploadMessage: 'Success! Your ad has been updated.' })
+        this.setState({ logo: url })
+      }
+    })
+  }
+
   dummyAsync = (cb) => {
     this.setState({loading: true}, () => {
       this.asyncTimer = setTimeout(cb, 500);
@@ -175,29 +196,26 @@ handleCurrentPaymentSubmit = () => {
     }
   }
 
-  uploadFile = (event) => {
-    console.log('trying to upload');
-    let func = this
-    let file = event.currentTarget.files[0]
-    let reader = new FileReader()
-    console.log(file)
-    reader.onload = (fileLoadEvent) => {
-      Meteor.call('file-upload', { fileInfo: file, fileData: reader.result })
-
-    }
-    reader.readAsBinaryString(file)
-  }
-
   getStepContent(stepIndex) {
     switch (stepIndex) {
       case 0:
       saveAd = true
         return (
           <div>
-            <div className="left-title">Campaign Dates</div>
+            <div className="left-title">Campaign Settings</div>
             <div className="clear"></div>
-              <div className="date">Start: <DatePicker onChange={(x, date) => this.setState({start: date})} hintText={this.state.start.toString().split(this.state.start.getFullYear())[0]} /></div>
-              <div className="date">End: <DatePicker onChange={(x, date) => this.setState({end: date})} hintText={this.state.end.toString().split(this.state.end.getFullYear())[0]} /></div>
+            <div className="date">Please choose a site category:<br />
+              <DropDownMenu value={this.state.category} onChange={(x, y, category) => this.setState({category: category})}>
+                {this.props.categories.map((category) => (
+                  <MenuItem key={category._id} value={category._id} primaryText={category.name} />
+                  )
+                )}
+              </DropDownMenu>
+            </div>
+            <div className="date">Choose your campaign dates:<br />
+              <div className="date">Start Date: <DatePicker onChange={(x, date) => this.setState({start: date})} hintText={this.state.start.toString().split(this.state.start.getFullYear())[0]} /></div>
+              <div className="date">End Date: <DatePicker onChange={(x, date) => this.setState({end: date})} hintText={this.state.end.toString().split(this.state.end.getFullYear())[0]} /></div>
+            </div>
           </div>
         )
       case 1:
@@ -214,13 +232,14 @@ handleCurrentPaymentSubmit = () => {
             <div className="clear"></div>
             </div>
             <div className="sample-ad-bottom">
-            {this.state.subline}
+            {this.state.subline_display[0]}<br />{this.state.subline_display[1]}
             </div>
             </a>
               <div className="float">
                 <TextField
                   hintText={this.state.headline}
                   floatingLabelText="Headline"
+                  maxLength="26"
                   onChange={(nada, value) => this.setState({headline: value})}
                   onKeyDown={this.handleEscape}
                 /><br />
@@ -230,8 +249,9 @@ handleCurrentPaymentSubmit = () => {
                   multiLine={true}
                   rows={2}
                   rowsMax={2}
+                  maxLength="90"
                   style={{width: 370}}
-                  onChange={(nada, value) => { let new_value = value.replace(/(?:\r\n|\r|\n)/g, '<br />'); this.setState({subline: new_value})}}
+                  onChange={(nada, value) => { let new_value = value.replace(/(?:\r\n|\r|\n)/g, '<br />'); this.setState({subline: new_value}); this.setState({subline_display: new_value.split('<br />')})}}
                   onKeyDown={this.handleEscape}
                 />
               </div>
@@ -239,23 +259,24 @@ handleCurrentPaymentSubmit = () => {
                 <TextField
                   hintText={this.state.url}
                   floatingLabelText="Click-through URL"
+                  maxLength="290"
                   fullWidth={true}
                   onChange={(nada, value) => this.setState({url: value})}
                   onKeyDown={this.handleEscape}
                 />
-                <TextField
-                  hintText={this.state.logo}
-                  floatingLabelText="Logo Location URL"
-                  fullWidth={true}
-                  onChange={(nada, value) => this.setState({logo: value})}
-                  onKeyDown={this.handleEscape}
-                />
-                <br />
-                <br />
-                <br />
-                <input name="this" onChange={this.uploadFile} type="file" />
+                <div className="upload">
+                  <form id="upload">
+                    <div className="upload-area">
+                      {this.state.uploadMessage}
+                    </div>
+                    <input type="file" ref="upload" onChange={this.onUpload}/>
+                  </form>
+                </div>
+                <div className="upload-note">
+                Note: logo should be 25x25 pixels and either a .png or .jpg
+                </div>
               </div>
-          </div>
+              </div>
           </div>
         )
       case 2:
@@ -341,10 +362,8 @@ handleCurrentPaymentSubmit = () => {
 }
 
 export default createContainer(() => {
-  Meteor.subscribe('ads')
-  Meteor.subscribe('advertisers')
+  Meteor.subscribe('categories')
   return {
-    ads: Ads.find({}).fetch(),
-    advertisers: first(Advertisers.find({}).fetch())
+    categories: Categories.find({}).fetch()
   }
 }, AdsStepper)

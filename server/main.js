@@ -18,6 +18,9 @@ Meteor.startup(() => {
   Meteor.publish('advertisers', function() {
     return Advertisers.find({ _id: this.userId })
   })
+  Meteor.publish('categories', function() {
+    return Categories.find({})
+  })
   Meteor.publish('events', function() {
     return Events.find({ advertiser: this.userId })
   })

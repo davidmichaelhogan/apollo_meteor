@@ -163,9 +163,5 @@ Meteor.methods({
   },
   'downloadCSV'({ ad_id }) {
     console.log('download that shit')
-  },
-  'file-upload'({fileInfo, fileData}) {
-    console.log("received file " + fileInfo.name + " data: " + fileData);
-    fs.writeFile('./', fileData); //NEED TO SAVE FILE WITH FS --- LOOK UP
   }
 })

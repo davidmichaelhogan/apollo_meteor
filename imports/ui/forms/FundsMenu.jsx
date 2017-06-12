@@ -75,11 +75,11 @@ class FundsMenu extends React.Component {
           <div className="payment-tab">
             <h2>Pay with new card</h2>
             <div className="sub-header">Payment Information</div>
-            <TextField style={style.inputFull} hintText="John Doe" floatingLabelText="Full Name" onChange={(nada, value) => {this.props.updateName(value); this.props.paymentOption(1)}}/><br />
-            <TextField style={style.inputFull} hintText="4823-4823-4823-4823" floatingLabelText="Card Number" onChange={(nada, value) => this.props.updateCard(value)}/><br />
-            <TextField style={style.input} hintText="01" floatingLabelText="Expiration Month" onChange={(nada, value) => this.props.updateExpMonth(value)}/>
-            <TextField style={style.input} hintText="2017" floatingLabelText="Expiration Year" onChange={(nada, value) => this.props.updateExpYear(value)}/>
-            <TextField style={style.input} hintText="001" floatingLabelText="Security Code" onChange={(nada, value) => this.props.updateCvc(value)}/><br />
+            <TextField style={style.inputFull} maxLength="120" hintText="John Doe" floatingLabelText="Full Name" onChange={(nada, value) => {this.props.updateName(value); this.props.paymentOption(1)}}/><br />
+            <TextField style={style.inputFull} maxLength="16" hintText="4132413241324132" floatingLabelText="Card Number" onChange={(nada, value) => this.props.updateCard(value)}/><br />
+            <TextField style={style.input} hintText="01" maxLength="2" floatingLabelText="Expiration Month" onChange={(nada, value) => this.props.updateExpMonth(value)}/>
+            <TextField style={style.input} hintText="2020" maxLength="4" floatingLabelText="Expiration Year" onChange={(nada, value) => this.props.updateExpYear(value)}/>
+            <TextField style={style.input} hintText="567" maxLength="3" floatingLabelText="Security Code" onChange={(nada, value) => this.props.updateCvc(value)}/><br />
           </div>
         </Tab>
       </Tabs>
