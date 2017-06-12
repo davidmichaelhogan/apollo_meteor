@@ -8,6 +8,7 @@ import { Categories } from '../imports/api/categories.js'
 import { Events } from '../imports/api/events.js'
 import { Advertisers } from '../imports/api/advertisers.js'
 import { Analytics } from '../imports/api/analytics.js'
+import { Publishers } from '../imports/api/publishers.js'
 
 const dateString = (new Date).toDateString()
 
@@ -30,24 +31,21 @@ Meteor.startup(() => {
   Meteor.publish('analytics', function() {
     return Analytics.find({})
   })
+  Meteor.publish('publishers', function() {
+    return Publishers.find({})
+  })
 
 })
 
 //Ad Api
 WebApp.connectHandlers.use('/ad', function(req, res, next) {
   const date = new Date()
-  const publisher = req.query.publisher
-  const category = req.query.category ? Categories.findOne({
-    name: req.query.category
-  }) : null
-
+  const publisher = Publishers.findOne({ _id : req.query.publisher })
+  const category = publisher.category
   console.log(category)
 
   const Ad = first(Ads.aggregate([{
     $match: {
-      ...(category ? {
-        category: category._id
-      } : null),
       start: {
         $lte: date
       },
@@ -60,7 +58,8 @@ WebApp.connectHandlers.use('/ad', function(req, res, next) {
       nextServed: {
         $lte: date.getTime()
       },
-      runAd: true
+      runAd: true,
+      category: category
     }
   }, {
     $sample : {
