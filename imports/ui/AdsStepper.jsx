@@ -154,19 +154,20 @@ handleCurrentPaymentSubmit = () => {
   }
 
   onUpload = (event) => {
-    const uploader = new Slingshot.Upload( "uploadToAmazonS3" )
-    let file = event.target.files[0]
-
-    uploader.send( file, ( error, url ) => {
-      if ( error ) {
-        console.log(error)
-        this.setState({ uploadMessage: 'Sorry. ' + error.reason  + '. Please try again.' })
-      } else {
-        console.log( url )
-        this.setState({ uploadMessage: 'Success! Your ad has been updated.' })
-        this.setState({ logo: url })
-      }
-    })
+    console.log(event)
+    // const uploader = new Slingshot.Upload( "uploadToAmazonS3" )
+    // let file = event.target.files[0]
+    //
+    // uploader.send( file, ( error, url ) => {
+    //   if ( error ) {
+    //     console.log(error)
+    //     this.setState({ uploadMessage: 'Sorry. ' + error.reason  + '. Please try again.' })
+    //   } else {
+    //     console.log( url )
+    //     this.setState({ uploadMessage: 'Success! Your ad has been updated.' })
+    //     this.setState({ logo: url })
+    //   }
+    // })
   }
 
   dummyAsync = (cb) => {
