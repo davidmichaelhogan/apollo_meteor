@@ -44,6 +44,8 @@ WebApp.connectHandlers.use('/ad', function(req, res, next) {
   const category = publisher.category
   console.log(category)
 
+  //Direct placements will have a publisher attribute in replace of cateory
+
   const Ad = first(Ads.aggregate([{
     $match: {
       start: {
@@ -61,7 +63,7 @@ WebApp.connectHandlers.use('/ad', function(req, res, next) {
       runAd: true,
       $or: [
         { category: category }, { publisher: publisher._id }
-      ] 
+      ]
     }
   }, {
     $sample : {
