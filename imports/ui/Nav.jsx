@@ -180,12 +180,6 @@ class Nav extends React.Component {
           <h2>Campaign Settings</h2>
           <MenuItem onTouchTap={this.handleMenuOne} leftIcon={addIcon}>New Campaign Setup</MenuItem>
           <MenuItem onTouchTap={this.handleMenuTwo} leftIcon={currentIcon}>Current Campaigns</MenuItem>
-          <p />
-          <h2>Analytics</h2>
-          <MenuItem onTouchTap={this.handleMenuThree} leftIcon={upIcon}>Real Time Event Data</MenuItem>
-          {
-            //<MenuItem onTouchTap={this.handleMenuFour} leftIcon={timeIcon}>Past Campaign Reports</MenuItem>
-          }
 
         </Drawer>
       </div>
