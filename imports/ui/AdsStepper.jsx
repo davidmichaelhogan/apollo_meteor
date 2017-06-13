@@ -21,6 +21,7 @@ import { Advertisers } from '../api/advertisers.js'
 import { Categories } from '../api/categories.js'
 
 import FundsMenu from './forms/FundsMenu'
+import UploadForm from './forms/UploadForm'
 
 const style = {
   margin: 20,
@@ -51,12 +52,12 @@ class AdsStepper extends React.Component {
     paymentOption: 0,
     open: false,
     advertiser: Meteor.user()._id,
-    category: '593acdcbc3b5a06739484e31',
+    category: '594016b0df931d10bc421f1a',
     headline: 'Apollo Ad Server Example',
     subline: 'Your subline will appear here. Click in the fields below to make your ad.',
     subline_display: ['Your subline will appear here. Click in the fields below to make your ad.', ''],
     logo: 'https://server.launchapollo.com/favicon.ico',
-    uploadMessage: 'Click or Drag Your Logo Here to Upload',
+    uploadMessage: 'Choose a logo file...',
     url: 'http://launchapollo.com',
     start: new Date,
     end: new Date,
@@ -265,17 +266,7 @@ handleCurrentPaymentSubmit = () => {
                   onChange={(nada, value) => this.setState({url: value})}
                   onKeyDown={this.handleEscape}
                 />
-                <div className="upload">
-                  <form id="upload">
-                    <div className="upload-area">
-                      {this.state.uploadMessage}
-                    </div>
-                    <input type="file" ref="upload" onChange={this.onUpload}/>
-                  </form>
-                </div>
-                <div className="upload-note">
-                Note: logo should be 25x25 pixels and either a .png or .jpg
-                </div>
+                <UploadForm message={this.state.uploadMessage} onUpload={this.onUpload}/>
               </div>
               </div>
           </div>

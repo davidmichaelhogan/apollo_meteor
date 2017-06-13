@@ -6,6 +6,7 @@ injectTapEventPlugin()
 
 import Nav from './Nav'
 import Login from './Login'
+import UserIsMobile from './UserIsMobile'
 
 // Change theme for Mui
 import muiTheme from '../styles/muiTheme'
@@ -17,6 +18,7 @@ class App extends Component {
     super(props)
     this.state = {
       isLoggedIn: false,
+      userIsMobile: false
     }
   }
 
@@ -24,8 +26,30 @@ class App extends Component {
     this.setState({ isLoggedIn: isLogged })
   }
 
+  changeMobileState () {
+    this.setState({ userIsMobile: false })
+  }
+
+  isTouchDevice () {
+    return 'ontouchstart' in window
+  }
+
+  componentWillMount() {
+    if (this.isTouchDevice()) {
+      this.setState({userIsMobile: true})
+    }
+  }
+
   render() {
-    if (this.state.isLoggedIn) {
+    if (this.state.isLoggedIn && this.state.userIsMobile) {
+      return (
+        <div className="app">
+          <MuiThemeProvider muiTheme={muiTheme}>
+              <UserIsMobile changeMobileState={(mobileState) => this.changeMobileState(mobileState)}/>
+          </MuiThemeProvider>
+        </div>
+      )
+    } else if (this.state.isLoggedIn) {
       return (
         <div className="app">
           <MuiThemeProvider muiTheme={muiTheme}>
