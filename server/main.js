@@ -61,7 +61,7 @@ WebApp.connectHandlers.use('/ad', function(req, res, next) {
       },
       runAd: true,
       $or: [
-        { category: category }, { publisher: 123 }
+        { category: category }, { publisher: publisher._id }
       ]
     }
   }, {
