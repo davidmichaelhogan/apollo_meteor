@@ -251,7 +251,7 @@ handleCurrentPaymentSubmit = () => {
                   multiLine={true}
                   rows={2}
                   rowsMax={2}
-                  maxLength="90"
+                  maxLength="98"
                   style={{width: 370}}
                   onChange={(nada, value) => { let new_value = value.replace(/(?:\r\n|\r|\n)/g, '<br />'); this.setState({subline: new_value}); this.setState({subline_display: new_value.split('<br />')})}}
                   onKeyDown={this.handleEscape}
