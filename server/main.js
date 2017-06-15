@@ -76,7 +76,7 @@ WebApp.connectHandlers.use('/ad', function(req, res, next) {
     Events.insert({
       impression: 1,
       click: 0,
-      publisher: publisher,
+      publisher: publisher._id,
       advertiser: Ad.advertiser,
       ad_id: Ad._id,
       date: new Date()
@@ -113,7 +113,7 @@ WebApp.connectHandlers.use('/ad', function(req, res, next) {
 
 //Click event handler
 WebApp.connectHandlers.use('/click', function(req, res, next) {
-  const publisher = req.query.publisher
+  const publisher = Publishers.findOne({ _id : req.query.publisher })
   const ad_id = req.query.id
   const Ad = Ads.findOne({
     _id: ad_id
@@ -122,7 +122,7 @@ WebApp.connectHandlers.use('/click', function(req, res, next) {
   Events.insert({
     impressions: 0,
     click: 1,
-    publisher: publisher,
+    publisher: publisher._id,
     advertiser: Ad.advertiser,
     ad_id: ad_id,
     date: (new Date)
