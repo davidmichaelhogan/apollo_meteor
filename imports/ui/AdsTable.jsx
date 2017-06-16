@@ -74,7 +74,7 @@ class AdsTable extends React.Component {
       paymentOption: 0,
       ad_id: null,
       advertiser: null,
-      category: 0,
+      category: null,
       headline: null,
       subline: null,
       logo: null,
