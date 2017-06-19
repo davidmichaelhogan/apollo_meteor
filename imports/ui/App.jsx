@@ -18,7 +18,8 @@ class App extends Component {
     super(props)
     this.state = {
       isLoggedIn: false,
-      userIsMobile: false
+      userIsMobile: false,
+      isFirst: false
     }
   }
 
@@ -61,7 +62,7 @@ class App extends Component {
       return (
         <div className="app">
           <MuiThemeProvider muiTheme={muiTheme}>
-              <Login  changeLoginState={(isLogged) => this.changeLoginState(isLogged)} />
+              <Login changeLoginState={(isLogged) => this.changeLoginState(isLogged)}/>
           </MuiThemeProvider>
         </div>
       )

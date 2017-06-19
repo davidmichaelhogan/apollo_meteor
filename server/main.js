@@ -41,7 +41,7 @@ Meteor.startup(() => {
 WebApp.connectHandlers.use('/ad', function(req, res, next) {
   const date = new Date()
   const publisher = Publishers.findOne({ _id : req.query.publisher })
-  const category = (publisher.category) ? (publisher.category) : 'none'
+  const category = (publisher.category !== 0) ? (publisher.category) : null
   console.log(category)
 
   //Direct placements will have a publisher attribute in replace of cateory
