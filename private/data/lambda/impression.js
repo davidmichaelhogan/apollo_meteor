@@ -27,7 +27,6 @@ exports.handler = function index(e, ctx, callback) {
         TableName : "ads",
         ProjectionExpression: "#start, #end, balance, nextServed, runAd, category, headline, subline, #url, logo",
         FilterExpression: "#start <= :date AND #end >= :date AND balance >= :bal AND nextServed <= :date AND runAd = :true AND category = :cat",
-        //AND nextServed <= :dateTime AND runAd = :true AND category = :cat
         ExpressionAttributeNames:{
             "#start": "start",
             "#end": "end",
