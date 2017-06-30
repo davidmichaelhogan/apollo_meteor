@@ -82,29 +82,29 @@ WebApp.connectHandlers.use('/ad', function(req, res, next) {
       date: new Date()
     })
     // Minus 0.008 from the current ads balance
-    Ads.update(Ad, { $inc: { balance: -0.008, impressions: 1, nextServed: Ad.timeDiff}})
+    Ads.update(Ad, { $inc: { balance: -0.008, impressions: 1, nextServed: (date + Ad.timeDiff)}})
 
-    //Update analytics data
-    if (Analytics.find({ _id: Ad._id }).count() == 0 ) {
-      Analytics.insert({
-        _id: Ad._id,
-        data: [
-          {
-            date: dateString,
-            impressions: 1,
-            clicks: 0
-          }
-        ]
-      })
-    } else  if (Analytics.find({ "data.date": dateString }).count() == 0) {
-      Analytics.update({ _id: Ad._id },
-        {
-        $push: { data: { $each: [{ date: dateString, impressions: 1, clicks: 0 }]}}
-      })
-    } else {
-    Analytics.update({ _id: Ad._id, "data.date": dateString} , { $inc: { "data.$.impressions": 1 }})
-    }
-  }
+  //   //Update analytics data
+  //   if (Analytics.find({ _id: Ad._id }).count() == 0 ) {
+  //     Analytics.insert({
+  //       _id: Ad._id,
+  //       data: [
+  //         {
+  //           date: dateString,
+  //           impressions: 1,
+  //           clicks: 0
+  //         }
+  //       ]
+  //     })
+  //   } else  if (Analytics.find({ "data.date": dateString }).count() == 0) {
+  //     Analytics.update({ _id: Ad._id },
+  //       {
+  //       $push: { data: { $each: [{ date: dateString, impressions: 1, clicks: 0 }]}}
+  //     })
+  //   } else {
+  //   Analytics.update({ _id: Ad._id, "data.date": dateString} , { $inc: { "data.$.impressions": 1 }})
+  //   }
+  // }
 
 
   res.writeHead(200, {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'})
