@@ -109,6 +109,7 @@ WebApp.connectHandlers.use('/ad', function(req, res, next) {
 
   res.writeHead(200, {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'})
   res.end(JSON.stringify(Ad))
+  }
 })
 
 //Click event handler
