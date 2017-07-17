@@ -1,13 +1,30 @@
 const AWS = require('aws-sdk');
 const docClient = new AWS.DynamoDB.DocumentClient({ region: 'us-east-1' });
 
+//Hash Generator
+const ALPHABET = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+const ID_LENGTH = 10;
+
+function generatehash() {
+  var rtn = '';
+  for (var i = 0; i < ID_LENGTH; i++) {
+    rtn += ALPHABET.charAt(Math.floor(Math.random() * ALPHABET.length));
+  }
+  return rtn;
+}
+
+//Variable
+
 const date = new Date().getTime();
 const balance = 0.008;
-let publisher = null;
-let category = null;
-let adUnit = null;
-let advertiser = null;
-let adId = null;
+let publisher = '';
+let publisherId = '';
+let category = '';
+let adUnit = {};
+let advertiser = '';
+let adId = '';
+let timeDiff = 0;
 
 function rand(min,max) {
   return Math.floor(Math.random()*(max-min+1)+min);
@@ -15,17 +32,19 @@ function rand(min,max) {
 
 exports.handler = function index(e, ctx, callback) {
 
+    const pubId = e.pub
+
     const publisherQuery = {
         TableName : "publishers",
         KeyConditionExpression: 'id = :id',
         ExpressionAttributeValues: {
-            ':id': '594017eadf931d10bc421f1e' //Find publisher based on params
+            ':id': pubId
         }
     };
 
     const adQuery = {
         TableName : "ads",
-        ProjectionExpression: "#start, #end, balance, nextServed, runAd, category, headline, subline, #url, logo",
+        ProjectionExpression: "#start, #end, balance, nextServed, runAd, category, headline, subline, #url, logo, advertiser, id, timeDiff",
         FilterExpression: "#start <= :date AND #end >= :date AND balance >= :bal AND nextServed <= :date AND runAd = :true AND category = :cat",
         ExpressionAttributeNames:{
             "#start": "start",
@@ -40,46 +59,59 @@ exports.handler = function index(e, ctx, callback) {
         }
     };
 
-    const addAd = {
+    let addEvent = {
         TableName: 'events',
         Item:{
-            "id": "2AXu2mtAAHQFraCcm", //Should be randomly generated UUID
+            "id": generatehash(), //Should be randomly generated UUID
             "impression": 1,
             "click": 0,
-            "publisher": publisher,
+            "publisher": pubId,
             "advertiser": advertiser,
             "adId": adId,
             "date": date
         }
     };
 
+    let updateAd = {
+        TableName: 'ads',
+        Key: { 'id' : adId },
+        UpdateExpression: 'SET impressions = impressions + :one',
+        // ExpressionAttributeNames: {'#i' : 'impressions'},
+        ExpressionAttributeValues: {
+            ':one' : 1
+        }
+    }
+
+    console.log(pubId)
+
     docClient.query(publisherQuery, function(err, data){
         if (err) {console.log(err);}
         else {
+
             publisher = data.Items[0];
             category = publisher.category;
-            console.log('pub: ' + publisher.id + '. Category: ' + category);
+            publisherId = publisher.id
+            console.log('pub: ' + publisherId + '. Category: ' + category);
 
             docClient.scan(adQuery, function(err, data){
                 if (err) {console.log(err);}
                 else {
-                    const adArr = data.Items;
-                    adUnit = adArr[rand(0, adArr.length - 1)];
+                    adUnit = data.Items[rand(0, data.Items.length - 1)]; //random ad from returned array - will take too long with many ads!
                     if (adUnit) {
-                        console.log(adUnit.headline);
                         //insert new event
-                        advertiser = adUnit.advertiser;
-                        adId = adUnit.id;
+                        advertiser = adUnit.advertiser
+                        adId = adUnit.id
+                        timeDiff = adUnit.timeDiff
                         console.log(adId)
-                        docClient.put(addAd, function(err, data) {
-                            if (err) {
-                                console.error("Unable to add item. Error JSON:", JSON.stringify(err, null, 2));
-                            } else {
-                                console.log("Added item:", JSON.stringify(data, null, 2));
-                            }
-                        });
-
-                        //update ad unit
+                        docClient.put(addEvent, function(err, data) {
+                            if (err) console.log('error: ' + err);
+                            else console.log('event saved: ' + JSON.stringify(data));
+                        })
+                        docClient.update(updateAd, function(err, data) {
+                            if (err) console.log('error: ' + err);
+                            else console.log('ad updated.: ' + JSON.stringify(data));
+                        })
+                        callback(err, adUnit)
                     }
                 }
             });

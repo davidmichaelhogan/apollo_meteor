@@ -40,6 +40,7 @@ Meteor.methods({
         amount: balance * 100,
         currency: "usd",
         customer: customer.id,
+        description: "Apollo Mobile Ads Campaign"
       })
     })).then(function(err, charge) {
       // Use and save the charge info.
