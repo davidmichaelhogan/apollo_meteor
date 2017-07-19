@@ -1,7 +1,9 @@
 class Apollo {
   constructor () {
 
-    this.api = 'https://server.launchapollo.com' // Set Production URL
+    this.api.impression = 'https://xll46odmri.execute-api.us-east-1.amazonaws.com'
+    this.api.click = 'https://p906ajb94h.execute-api.us-east-1.amazonaws.com'
+    this.api.production = '1'
 
     this.isVisible = false
     this.el = null
@@ -12,7 +14,7 @@ class Apollo {
 
     if (this.isTouchDevice()) {
       this.createElement()
-      this.request(`https://xll46odmri.execute-api.us-east-1.amazonaws.com/1/${window.ApolloOptions.publisher}`, (res) => {
+      this.request(`${this.api.impression}/${this.api.production}/${window.ApolloOptions.publisher}`, (res) => {
         this.showAd(JSON.parse(res))
       })
 
@@ -98,7 +100,7 @@ class Apollo {
   }
 
   showAd (ad) {
-    const html = `<a href="${this.api}/click?publisher=${window.ApolloOptions.publisher}&id=${ad.id}" target="_blank" style="display: block; width: 100%; text-decoration: none; font-family: arial, sans-serif; font-size: 20px;">
+    const html = `<a href="${this.api.click}/${this.api.production}/${window.ApolloOptions.publisher}/${ad.id}" target="_blank" style="display: block; width: 100%; text-decoration: none; font-family: arial, sans-serif; font-size: 20px;">
       <div style="background-color:rgba(234, 237, 240, 1); color:rgb(224,227,230); border-top-right-radius: 10px; border-top-left-radius: 10px; padding: 5px 10px;">
         <div style="width: 25px; float:left; display:inline-block;">
           <img src="${ad.logo}" style="max-width: 100%; max-height: 25px;">
