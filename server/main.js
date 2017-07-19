@@ -155,3 +155,17 @@ WebApp.connectHandlers.use('/click', function(req, res, next) {
   res.writeHead(307, { 'Location': Ad.url })
   res.end()
 })
+
+WebApp.connectHandlers.use('/updateAd', function(req, res, next) {
+  const type = req.query.type
+  const ad_id = req.query.id
+  const Ad = Ads.findOne({
+    _id: ad_id
+  })
+
+  type = 'impression' ? Ads.update(Ad, { $inc: {impression: 1}}) : Ads.update(Ad, { $inc: {clicks: 1}})
+
+  //redirect user to url
+  res.writeHead(200)
+  res.end()
+})

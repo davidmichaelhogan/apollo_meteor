@@ -18,16 +18,6 @@ Meteor.methods({
     // Remove ad lambda
   },
   'addAd'({ headline, subline, url, logo, advertiser, category, start, end, timeDiff, nextServed, balance }) {
-    new SimpleSchema({
-      headline: { type: String, max: 50 },
-      subline: { type: String, max: 150},
-      url: { type: String, max: 250 },
-      logo: { type: String, max: 250 },
-      advertiser: { type: String },
-      category: { type: String },
-      start: { type: Date },
-      end: { type: Date }
-    }).validate({ headline, subline, url, logo, advertiser, category, start, end })
 
     Ads.insert({
       headline: headline,
@@ -53,8 +43,8 @@ Meteor.methods({
       "logo": logo,
       "advertiser": advertiser,
       "category": category,
-      "start": start,
-      "end": end,
+      "start": start.getTime(), // change to EPOCH for Dynamo DB
+      "end": end.getTime(),
       "clicks": 0,
       "impressions": 0,
       "balance": balance,
@@ -63,7 +53,7 @@ Meteor.methods({
       "runAd": true
     }
 
-    HTTP.post('https://20e2r2bap7.execute-api.us-east-1.amazonaws.com/1', {data: body, (err) => console.log(err))
+    HTTP.post('https://20e2r2bap7.execute-api.us-east-1.amazonaws.com/1', {data: apiAdUnit}, (err) => console.log(err))
 
   },
   'updateAd'({ ad_id, headline, subline, url, logo, advertiser, category, start, end, impressions, clicks, timeDiff, nextServed }) {
