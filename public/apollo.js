@@ -12,7 +12,7 @@ class Apollo {
 
     if (this.isTouchDevice()) {
       this.createElement()
-      this.request(`https://b4gf07uua6.execute-api.us-east-1.amazonaws.com/1/impression/${window.ApolloOptions.publisher}`, (res) => {
+      this.request(`https://xll46odmri.execute-api.us-east-1.amazonaws.com/1/${window.ApolloOptions.publisher}`, (res) => {
         this.showAd(JSON.parse(res))
       })
 
