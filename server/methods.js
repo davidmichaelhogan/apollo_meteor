@@ -15,46 +15,7 @@ import fs from 'fs'
 Meteor.methods({
   deleteAd(ad) {
     Ads.remove({ _id: ad })
-  },
-  'chargeNewCard'({ stripeToken, balance, currentUser, name, forAccount}) {
-
-    Stripe.customers.create({
-      email: currentUser.emails[0].address,
-      source: stripeToken,
-    }).then(Meteor.bindEnvironment(function(customer) {
-      // YOUR CODE: Save the customer ID and other info in a database for later.
-      if (Advertisers.find({ _id: currentUser._id }).count() == 0 ) {
-        if (forAccount) {
-          Advertisers.insert({ _id: currentUser._id, name: name, balance: balance, stripeId: customer.id})
-        } else {
-          Advertisers.insert({ _id: currentUser._id, name: name, balance: 0, stripeId: customer.id})
-        }
-      } else {
-        Advertisers.update({ _id: currentUser._id},
-          {
-            $set: { name: name, stripeId: customer.id }
-          }
-        )
-      }
-      return Stripe.charges.create({
-        amount: balance * 100,
-        currency: "usd",
-        customer: customer.id,
-        description: "Apollo Mobile Ads Campaign"
-      })
-    })).then(function(err, charge) {
-      // Use and save the charge info.
-      return charge
-    })
-  },
-  'chargeCurrentCard'({ balance, currentUser }) {
-    let advertiser = first(Advertisers.find({ _id: currentUser._id }).fetch())
-
-    Stripe.charges.create({
-      amount: balance * 100,
-      currency: "usd",
-      customer: advertiser.stripeId
-    })
+    // Remove ad lambda
   },
   'addAd'({ headline, subline, url, logo, advertiser, category, start, end, timeDiff, nextServed, balance }) {
     new SimpleSchema({
@@ -84,6 +45,26 @@ Meteor.methods({
       nextServed: nextServed,
       runAd: true
     })
+
+    let apiAdUnit = {
+      "headline": headline,
+      "subline": subline,
+      "url": url,
+      "logo": logo,
+      "advertiser": advertiser,
+      "category": category,
+      "start": start,
+      "end": end,
+      "clicks": 0,
+      "impressions": 0,
+      "balance": balance,
+      "timeDiff": timeDiff,
+      "nextServed": nextServed,
+      "runAd": true
+    }
+
+    HTTP.post('https://20e2r2bap7.execute-api.us-east-1.amazonaws.com/1', {data: body, (err) => console.log(err))
+
   },
   'updateAd'({ ad_id, headline, subline, url, logo, advertiser, category, start, end, impressions, clicks, timeDiff, nextServed }) {
     new SimpleSchema({
@@ -142,6 +123,46 @@ Meteor.methods({
       }
     )
   },
+  'chargeNewCard'({ stripeToken, balance, currentUser, name, forAccount}) {
+
+    Stripe.customers.create({
+      email: currentUser.emails[0].address,
+      source: stripeToken,
+    }).then(Meteor.bindEnvironment(function(customer) {
+      // YOUR CODE: Save the customer ID and other info in a database for later.
+      if (Advertisers.find({ _id: currentUser._id }).count() == 0 ) {
+        if (forAccount) {
+          Advertisers.insert({ _id: currentUser._id, name: name, balance: balance, stripeId: customer.id})
+        } else {
+          Advertisers.insert({ _id: currentUser._id, name: name, balance: 0, stripeId: customer.id})
+        }
+      } else {
+        Advertisers.update({ _id: currentUser._id},
+          {
+            $set: { name: name, stripeId: customer.id }
+          }
+        )
+      }
+      return Stripe.charges.create({
+        amount: balance * 100,
+        currency: "usd",
+        customer: customer.id,
+        description: "Apollo Mobile Ads Campaign"
+      })
+    })).then(function(err, charge) {
+      // Use and save the charge info.
+      return charge
+    })
+  },
+  'chargeCurrentCard'({ balance, currentUser }) {
+    let advertiser = first(Advertisers.find({ _id: currentUser._id }).fetch())
+
+    Stripe.charges.create({
+      amount: balance * 100,
+      currency: "usd",
+      customer: advertiser.stripeId
+    })
+  },
   'updateAdvertiserBalance'({ balance, currentUser }) {
     console.log(balance + currentUser._id)
     Advertisers.update({ _id: currentUser._id },
@@ -161,8 +182,5 @@ Meteor.methods({
       }
     }
     HTTP.post('https://us15.api.mailchimp.com/3.0/lists/f8159e45b4/members', {data: body, auth: 'apollodev:36c3e397a2938129b9e771a7d832287e-us15'}, (err) => console.log(err))
-  },
-  'downloadCSV'({ ad_id }) {
-    console.log('download that shit')
   }
 })
