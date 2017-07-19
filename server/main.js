@@ -157,7 +157,7 @@ WebApp.connectHandlers.use('/click', function(req, res, next) {
 })
 
 WebApp.connectHandlers.use('/updateAd', function(req, res, next) {
-  contentStyle type = req.query.type
+  const type = req.query.type
   const ad_id = req.query.id
   const Ad = Ads.findOne({
     _id: ad_id
