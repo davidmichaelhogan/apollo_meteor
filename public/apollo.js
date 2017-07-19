@@ -28,7 +28,6 @@ class Apollo {
     try {
   		const x = new (window.XMLHttpRequest || window.ActiveXObject)('MSXML2.XMLHTTP.3.0')
   		x.open('GET', url, 1)
-  		x.setRequestHeader('X-Requested-With', 'XMLHttpRequest')
       x.setRequestHeader('Content-type', 'application/json')
 
   		x.onreadystatechange = function () {
