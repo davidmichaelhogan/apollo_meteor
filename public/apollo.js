@@ -73,7 +73,6 @@ class Apollo {
   createAd () {
     const sites = ['grow-your-income-online', 'diy-seo-3-steps', 'grow-your-income', 'diy-seo']
     const bodyWidth = screen.width
-    console.log('hi')
     const html = `<iframe src="https://server.launchapollo.com/ads/${sites[this.rand(0, sites.length - 1)]}.html" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth}" height="110"></iframe>`
     this.el.innerHTML = html
 
