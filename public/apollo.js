@@ -52,8 +52,8 @@ class Apollo {
   }
 
   createElement () {
-    // const bodyStyles = window.getComputedStyle ? getComputedStyle(document.body, null) : document.body.currentStyle
-    // const bodyMargin = parseInt(bodyStyles['marginLeft'].replace('px', '')) + parseInt(bodyStyles['marginRight'].replace('px', ''))
+    const bodyStyles = window.getComputedStyle ? getComputedStyle(document.body, null) : document.body.currentStyle
+    const bodyMargin = parseInt(bodyStyles['marginLeft'].replace('px', '')) + parseInt(bodyStyles['marginRight'].replace('px', ''))
     const bodyMargin = 0
 
     this.el = document.createElement('div')
@@ -72,7 +72,7 @@ class Apollo {
   createAd () {
     const sites = ['grow-your-income-online', 'diy-seo-3-steps', 'grow-your-income', 'diy-seo']
     console.log('hi')
-    const html = `<iframe src="https://server.launchapollo.com/ads/${sites[this.rand(0, sites.length - 1)]}.html" style="background-color: transparent" allow-transparency="true" frame-border="0" onload="this.width=screen.width;" height="100"></iframe>`
+    const html = `<iframe src="https://server.launchapollo.com/ads/${sites[this.rand(0, sites.length - 1)]}.html" style="background-color: transparent" allow-transparency="true" frameBorder="0" onload="this.width=screen.width;" height="100"></iframe>`
     this.el.innerHTML = html
 
     const currentAd = this
