@@ -27,7 +27,7 @@ class Apollo {
         }
         else {
           this.request(`${this.api}/remnant?publisher=${window.ApolloOptions.publisher}`, (res) => {
-            this.createAd((JSON.parse(res))
+            this.createAd(JSON.parse(res))
           }
         }
       })
