@@ -84,32 +84,31 @@ WebApp.connectHandlers.use('/ad', function(req, res, next) {
     // Minus 0.008 from the current ads balance
     Ads.update(Ad, { $inc: { balance: -0.008, impressions: 1, nextServed: Ad.timeDiff}})
 
-  //   //Update analytics data
-  //   if (Analytics.find({ _id: Ad._id }).count() == 0 ) {
-  //     Analytics.insert({
-  //       _id: Ad._id,
-  //       data: [
-  //         {
-  //           date: dateString,
-  //           impressions: 1,
-  //           clicks: 0
-  //         }
-  //       ]
-  //     })
-  //   } else  if (Analytics.find({ "data.date": dateString }).count() == 0) {
-  //     Analytics.update({ _id: Ad._id },
-  //       {
-  //       $push: { data: { $each: [{ date: dateString, impressions: 1, clicks: 0 }]}}
-  //     })
-  //   } else {
-  //   Analytics.update({ _id: Ad._id, "data.date": dateString} , { $inc: { "data.$.impressions": 1 }})
-  //   }
-  // }
+    //Update analytics data
+    if (Analytics.find({ _id: Ad._id }).count() == 0 ) {
+      Analytics.insert({
+        _id: Ad._id,
+        data: [
+          {
+            date: dateString,
+            impressions: 1,
+            clicks: 0
+          }
+        ]
+      })
+    } else  if (Analytics.find({ "data.date": dateString }).count() == 0) {
+      Analytics.update({ _id: Ad._id },
+        {
+        $push: { data: { $each: [{ date: dateString, impressions: 1, clicks: 0 }]}}
+      })
+    } else {
+    Analytics.update({ _id: Ad._id, "data.date": dateString} , { $inc: { "data.$.impressions": 1 }})
+    }
+  }
 
 
   res.writeHead(200, {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'})
   res.end(JSON.stringify(Ad))
-  }
 })
 
 //Click event handler
@@ -153,19 +152,5 @@ WebApp.connectHandlers.use('/click', function(req, res, next) {
 
   //redirect user to url
   res.writeHead(307, { 'Location': Ad.url })
-  res.end()
-})
-
-WebApp.connectHandlers.use('/updateAd', function(req, res, next) {
-  const type = req.query.type
-  const ad_id = req.query.id
-  const Ad = Ads.findOne({
-    _id: ad_id
-  })
-
-  (type == 'impression') ? Ads.update(Ad, { $inc: {impression: 1}}) : Ads.update(Ad, { $inc: {clicks: 1}})
-
-  //redirect user to url
-  res.writeHead(200)
   res.end()
 })
