@@ -71,6 +71,7 @@ class Apollo {
   }
 
   createAd () {
+    //replace with ajax request that returns proper pages for each pub by id!
     const sites = ['grow-your-income-online', 'diy-seo-3-steps', 'grow-your-income', 'diy-seo']
     const bodyWidth = screen.width
     const html = `<iframe src="https://server.launchapollo.com/ads/${sites[this.rand(0, sites.length - 1)]}.html" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth}" height="110"></iframe>`
@@ -81,12 +82,12 @@ class Apollo {
     setTimeout(function(){
       currentAd.el.style.top = '10px' // -- Ad NOT Disabled
       currentAd.isVisible = true
-    }, 1000)
+    }, 2000)
 
     setTimeout(function(){
         currentAd.el.style.top = '-300px'
         currentAd.isVisible = false
-    }, 8000)
+    }, 10000)
   }
 
   onTouchStart (e) {
@@ -155,7 +156,7 @@ class Apollo {
     setTimeout(function(){
       currentAd.el.style.top = '10px' // -- Ad NOT Disabled
       currentAd.isVisible = true
-    }, 1000)
+    }, 2000)
 
     setTimeout(function(){
         currentAd.el.style.top = '-300px'
