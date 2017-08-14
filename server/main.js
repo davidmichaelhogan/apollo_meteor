@@ -154,3 +154,13 @@ WebApp.connectHandlers.use('/click', function(req, res, next) {
   res.writeHead(307, { 'Location': Ad.url })
   res.end()
 })
+
+//Remnant Event handler
+WebApp.connectHandlers.use('/remnant', function(req, res, next) {
+  const inventory = Remnant.findOne({ pub: req.query.publisher })
+  console.log(inventory)
+
+
+  res.writeHead(200, {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'})
+  res.end(JSON.stringify(inventory))
+})
