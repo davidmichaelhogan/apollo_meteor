@@ -54,7 +54,7 @@ class Apollo {
   createElement () {
     const bodyStyles = window.getComputedStyle ? getComputedStyle(document.body, null) : document.body.currentStyle
     const bodyMargin = parseInt(bodyStyles['marginLeft'].replace('px', '')) + parseInt(bodyStyles['marginRight'].replace('px', ''))
-    const bodyMargin = 0
+    // const bodyMargin = 0
 
     this.el = document.createElement('div')
 
