@@ -1,0 +1,82 @@
+/* CSS SHEET FOR APOLLO13 */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+body {
+  font-family: 'Open Sans';
+}
+
+p {
+  font-family: Helvetica;
+}
+
+.header {
+  margin: 20px 10px;
+  height: 120px;
+  background: url("./img/logo.png") center center no-repeat;
+  background-size: contain;
+}
+
+.clear {
+  clear: both;
+}
+
+.left-container {
+  float: left;
+  width: 70%;
+}
+
+.right-container {
+  float: left;
+  width: 30%;
+}
+
+.article-container {
+  width: 90%;
+  margin: 10px 0 0 5%;
+}
+
+.article-image {
+  text-align: center;
+}
+
+.article-image img {
+  width: 100%;
+}
+
+.article-title {
+  margin: 40px 0 20px;
+  font-size: 3em;
+  text-align: center;
+}
+
+.sub-title {
+  font-weight: 700;
+}
+
+.ads-title {
+  margin: 10px 0 20px;
+  color: #555;
+}
+
+.ad-unit {
+  margin: 20px 0;
+}
+
+.gecko {
+  position: absolute;
+  top: 0;
+  left: 40;
+  opacity: 0;
+}
+
+@media screen and (max-width: 728px) {
+  .left-container {
+    float: none;
+    width: 100%;
+  }
+
+  .right-container {
+    float: none;
+    width: 100%;
+  }
+}
