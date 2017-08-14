@@ -20,15 +20,15 @@ class Apollo {
 
     if (this.isTouchDevice()) {
       this.createElement()
-      this.createAd()
       this.request(`${this.api}/ad?publisher=${window.ApolloOptions.publisher}`, (res) => {
         if (res) {
           this.showAd(JSON.parse(res))
         }
         else {
           this.request(`${this.api}/remnant?publisher=${window.ApolloOptions.publisher}`, (res) => {
-            this.createAd(JSON.parse(res))
-          )}
+            //this.createAd(JSON.parse(res))
+            console.log(JSON.parse(res))
+          })
         }
       })
 
@@ -72,11 +72,10 @@ class Apollo {
     document.body.insertAdjacentElement('beforeend', this.el)
   }
 
-  createAd (res) {
+  createAd (ad) {
     //replace with ajax request that returns proper pages for each pub by id!
-    const urls = res.urls
     const bodyWidth = screen.width
-    const html = `<iframe src="https://server.launchapollo.com/ads/${urls[this.rand(0, sites.length - 1)]}" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth}" height="110"></iframe>`
+    const html = `<iframe src="https://server.launchapollo.com/ads/${ad.urls[this.rand(0, ad.urls.length - 1)]}" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth}" height="110"></iframe>`
     this.el.innerHTML = html
 
     const currentAd = this
