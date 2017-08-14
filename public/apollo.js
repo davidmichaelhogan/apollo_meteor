@@ -52,19 +52,19 @@ class Apollo {
   }
 
   createElement () {
-    const bodyStyles = window.getComputedStyle ? getComputedStyle(document.body, null) : document.body.currentStyle
-    const bodyMargin = parseInt(bodyStyles['marginLeft'].replace('px', '')) + parseInt(bodyStyles['marginRight'].replace('px', ''))
-    // const bodyMargin = 0
+    // const bodyStyles = window.getComputedStyle ? getComputedStyle(document.body, null) : document.body.currentStyle
+    // const bodyMargin = parseInt(bodyStyles['marginLeft'].replace('px', '')) + parseInt(bodyStyles['marginRight'].replace('px', ''))
+    const bodyMargin = 0
 
     this.el = document.createElement('div')
 
-    this.el.style.width = `calc(100% - ${bodyMargin + 20}px)`
+    this.el.style.width = `100%`
     this.el.style.position = 'fixed'
     this.el.style.top = '-300px'
     this.el.style.zIndex = '3000000'
     this.el.style.transition = 'top 500ms ease'
     this.el.style.boxSizing = 'content-box'
-    this.el.style.padding = '0 10px'
+    this.el.style.padding = '0'
 
     document.body.insertAdjacentElement('beforeend', this.el)
   }
@@ -127,7 +127,7 @@ class Apollo {
   }
 
   showAd (ad) {
-    const html = `<a href="${this.click}/${this.env}/${window.ApolloOptions.publisher}/${ad.id}" target="_blank" style="display: block; width: 100%; text-decoration: none; font-family: arial, sans-serif; font-size: 20px;">
+    const html = `<a href="${this.click}/${this.env}/${window.ApolloOptions.publisher}/${ad.id}" target="_blank" style="display: block; padding: 0 10px; width: calc(100% - ${bodyMargin + 20}px); text-decoration: none; font-family: arial, sans-serif; font-size: 20px;">
       <div style="background-color:rgba(234, 237, 240, 1); color:rgb(224,227,230); border-top-right-radius: 10px; border-top-left-radius: 10px; padding: 5px 10px;">
         <div style="width: 25px; float:left; display:inline-block;">
           <img src="${ad.logo}" style="max-width: 100%; max-height: 25px;">
