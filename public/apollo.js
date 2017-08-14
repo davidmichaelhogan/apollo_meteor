@@ -9,6 +9,10 @@ class Apollo {
     this.dragStartPosition = null
     this.currentDragPosition = null
 
+    // const bodyStyles = window.getComputedStyle ? getComputedStyle(document.body, null) : document.body.currentStyle
+    // const bodyMargin = parseInt(bodyStyles['marginLeft'].replace('px', '')) + parseInt(bodyStyles['marginRight'].replace('px', ''))
+    this.bodyMargin = 0
+
     this.rand = (min,max) => {
       return Math.floor(Math.random()*(max-min+1)+min)
     }
@@ -52,10 +56,6 @@ class Apollo {
   }
 
   createElement () {
-    // const bodyStyles = window.getComputedStyle ? getComputedStyle(document.body, null) : document.body.currentStyle
-    // const bodyMargin = parseInt(bodyStyles['marginLeft'].replace('px', '')) + parseInt(bodyStyles['marginRight'].replace('px', ''))
-    const bodyMargin = 0
-
 
     this.el = document.createElement('div')
 
@@ -86,7 +86,7 @@ class Apollo {
     setTimeout(function(){
         currentAd.el.style.top = '-300px'
         currentAd.isVisible = false
-    }, 10000)
+    }, 8000)
   }
 
   onTouchStart (e) {
@@ -128,6 +128,9 @@ class Apollo {
   }
 
   showAd (ad) {
+    this.el.style.width = `calc(100% - ${this.bodyMargin + 20}px)`
+    this.el.style.padding = '0 10px'
+
     const html = `<a href="${this.click}/${this.env}/${window.ApolloOptions.publisher}/${ad.id}" target="_blank" style="display: block; width: 100%; text-decoration: none; font-family: arial, sans-serif; font-size: 20px;">
       <div style="background-color:rgba(234, 237, 240, 1); color:rgb(224,227,230); border-top-right-radius: 10px; border-top-left-radius: 10px; padding: 5px 10px;">
         <div style="width: 25px; float:left; display:inline-block;">
