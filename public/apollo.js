@@ -17,33 +17,21 @@ class Apollo {
       return Math.floor(Math.random()*(max-min+1)+min)
     }
 
-    this.ad = {
-      "urls": ["revhits_300x250_tbs1.html", "revhits_300x250_tbs2.html", "revhits_300x250_01.html", "revhits_300x250_02.html"]
-    }
-    //No APOLLO INVENTORY -- speed up call to increase impressions
-    if (true) {
+    //Set to true to run on desktop
+    if (this.isTouchDevice()) {
       this.createElement()
-      //this.request(`${this.api}/remnant?publisher=${window.ApolloOptions.publisher}`, (res) => {
-        this.createAd(this.ad)
-        console.log(this.ad)
-      //})
+      this.request(`${this.api}/ad?publisher=${window.ApolloOptions.publisher}`, (res) => {
+        if (res) {
+          this.showAd(JSON.parse(res))
+        }
+        else {
+          this.request(`${this.api}/remnant?publisher=${window.ApolloOptions.publisher}`, (res) => {
+            this.createAd(JSON.parse(res))
+          })
+        }
+      })
       this.attachEvents()
     }
-    //Set to true to run on desktop
-    // if (this.isTouchDevice()) {
-    //   this.createElement()
-    //   this.request(`${this.api}/ad?publisher=${window.ApolloOptions.publisher}`, (res) => {
-    //     if (res) {
-    //       this.showAd(JSON.parse(res))
-    //     }
-    //     else {
-    //       this.request(`${this.api}/remnant?publisher=${window.ApolloOptions.publisher}`, (res) => {
-    //         this.createAd(JSON.parse(res))
-    //       })
-    //     }
-    //   })
-    //   this.attachEvents()
-    // }
   }
 
   isTouchDevice () {
@@ -98,7 +86,6 @@ class Apollo {
       setTimeout(function(){
           currentAd.el.style.top = '-300px'
           currentAd.isVisible = false
-          document.getElementById('apolloFrame').contentDocument.defaultView.location.reload();
       }, 10000)
     }
   }
