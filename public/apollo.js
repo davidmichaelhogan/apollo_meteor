@@ -17,7 +17,7 @@ class Apollo {
       return Math.floor(Math.random()*(max-min+1)+min)
     }
 
-
+    //Set to true to run on desktop 
     if (this.isTouchDevice()) {
       this.createElement()
       this.request(`${this.api}/ad?publisher=${window.ApolloOptions.publisher}`, (res) => {
