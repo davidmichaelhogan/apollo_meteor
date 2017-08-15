@@ -21,7 +21,7 @@ class Apollo {
       "urls": ["revhits_300x250_tbs1.html", "revhits_300x250_tbs2.html", "revhits_300x250_01.html", "revhits_300x250_02.html"]
     }
     //No APOLLO INVENTORY -- speed up call to increase impressions
-    if (this.isTouchDevice()) {
+    if (true) {
       this.createElement()
       //this.request(`${this.api}/remnant?publisher=${window.ApolloOptions.publisher}`, (res) => {
         this.createAd(this.ad)
