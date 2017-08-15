@@ -68,6 +68,10 @@ class Apollo {
     this.el.style.padding = '0'
 
     document.body.insertAdjacentElement('beforeend', this.el)
+    const ref = document.referrer;
+    if (ref.match(/^https?:\/\/([^\/]+\.)?turtleboysports\.com(\/|$)/i)) {
+      console.log("tbs");
+    }
   }
 
   createAd (ad) {
@@ -75,6 +79,8 @@ class Apollo {
     const bodyWidth = screen.width
     const html = `<iframe id="apolloFrame" src="https://server.apollomobileads.com/ads/${ad.urls[this.rand(0, ad.urls.length - 1)]}" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth}" height="110"></iframe>`
     this.el.innerHTML = html
+
+
 
     if (this.isTouchDevice()) {
       const currentAd = this
