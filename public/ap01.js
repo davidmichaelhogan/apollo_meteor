@@ -85,10 +85,10 @@ class Apollo {
         currentAd.isVisible = true
       }, 2000)
 
-      setTimeout(function(){
-          currentAd.el.style.top = '-300px'
-          currentAd.isVisible = false
-      }, 10000)
+      // setTimeout(function(){
+      //     currentAd.el.style.top = '-300px'
+      //     currentAd.isVisible = false
+      // }, 10000)
     }
   }
 
