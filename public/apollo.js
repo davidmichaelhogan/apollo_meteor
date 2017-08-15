@@ -18,7 +18,7 @@ class Apollo {
     }
 
 
-    if (this.isTouchDevice()) {
+    if (true) {
       this.createElement()
       this.request(`${this.api}/ad?publisher=${window.ApolloOptions.publisher}`, (res) => {
         if (res) {
@@ -78,17 +78,18 @@ class Apollo {
     const html = `<iframe src="https://server.launchapollo.com/ads/${ad.urls[this.rand(0, ad.urls.length - 1)]}" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth}" height="110"></iframe>`
     this.el.innerHTML = html
 
-    const currentAd = this
+    if (this.isTouchDevice()) {
+      const currentAd = this
+      setTimeout(function(){
+        currentAd.el.style.top = '10px' // -- Ad NOT Disabled
+        currentAd.isVisible = true
+      }, 2000)
 
-    setTimeout(function(){
-      currentAd.el.style.top = '10px' // -- Ad NOT Disabled
-      currentAd.isVisible = true
-    }, 2000)
-
-    setTimeout(function(){
-        currentAd.el.style.top = '-300px'
-        currentAd.isVisible = false
-    }, 10000)
+      setTimeout(function(){
+          currentAd.el.style.top = '-300px'
+          currentAd.isVisible = false
+      }, 10000)
+    }
   }
 
   onTouchStart (e) {
@@ -152,17 +153,18 @@ class Apollo {
     //this.el.style.top = '10px'
     //this.isVisible = true
 
-    const currentAd = this
+    if (this.isTouchDevice()) {
+      const currentAd = this
+      setTimeout(function(){
+        currentAd.el.style.top = '10px' // -- Ad NOT Disabled
+        currentAd.isVisible = true
+      }, 2000)
 
-    setTimeout(function(){
-      currentAd.el.style.top = '10px' // -- Ad NOT Disabled
-      currentAd.isVisible = true
-    }, 2000)
-
-    setTimeout(function(){
-        currentAd.el.style.top = '-300px'
-        currentAd.isVisible = false
-    }, 10000)
+      setTimeout(function(){
+          currentAd.el.style.top = '-300px'
+          currentAd.isVisible = false
+      }, 10000)
+    }
   }
 }
 
