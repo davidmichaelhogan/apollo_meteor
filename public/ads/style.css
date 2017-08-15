@@ -9,6 +9,10 @@ p {
   font-family: Helvetica;
 }
 
+a {
+  text-decoration: none;
+}
+
 .header {
   margin: 20px 10px;
   height: 120px;
