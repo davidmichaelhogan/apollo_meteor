@@ -17,12 +17,16 @@ class Apollo {
       return Math.floor(Math.random()*(max-min+1)+min)
     }
 
+    this.ad = {
+      "urls": ["revhits_300x250_tbs1.html", "revhits_300x250_tbs2.html", "revhits_300x250_01.html", "revhits_300x250_02.html"]
+    }
     //No APOLLO INVENTORY -- speed up call to increase impressions
     if (this.isTouchDevice()) {
       this.createElement()
-      this.request(`${this.api}/remnant?publisher=${window.ApolloOptions.publisher}`, (res) => {
-        this.createAd(JSON.parse(res))
-      })
+      //this.request(`${this.api}/remnant?publisher=${window.ApolloOptions.publisher}`, (res) => {
+        this.createAd(this.ad)
+        console.log(this.ad)
+      //})
       this.attachEvents()
     }
     //Set to true to run on desktop
