@@ -17,22 +17,29 @@ class Apollo {
       return Math.floor(Math.random()*(max-min+1)+min)
     }
 
-    //Set to true to run on desktop 
+    //No APOLLO INVENTORY -- speed up call to increase impressions
     if (this.isTouchDevice()) {
       this.createElement()
-      this.request(`${this.api}/ad?publisher=${window.ApolloOptions.publisher}`, (res) => {
-        if (res) {
-          this.showAd(JSON.parse(res))
-        }
-        else {
-          this.request(`${this.api}/remnant?publisher=${window.ApolloOptions.publisher}`, (res) => {
-            this.createAd(JSON.parse(res))
-          })
-        }
+      this.request(`${this.api}/remnant?publisher=${window.ApolloOptions.publisher}`, (res) => {
+        this.createAd(JSON.parse(res))
       })
-
       this.attachEvents()
     }
+    //Set to true to run on desktop
+    // if (this.isTouchDevice()) {
+    //   this.createElement()
+    //   this.request(`${this.api}/ad?publisher=${window.ApolloOptions.publisher}`, (res) => {
+    //     if (res) {
+    //       this.showAd(JSON.parse(res))
+    //     }
+    //     else {
+    //       this.request(`${this.api}/remnant?publisher=${window.ApolloOptions.publisher}`, (res) => {
+    //         this.createAd(JSON.parse(res))
+    //       })
+    //     }
+    //   })
+    //   this.attachEvents()
+    // }
   }
 
   isTouchDevice () {
