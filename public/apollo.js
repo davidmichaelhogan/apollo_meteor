@@ -85,7 +85,7 @@ class Apollo {
   createAd (ad) {
     //replace with ajax request that returns proper pages for each pub by id!
     const bodyWidth = screen.width
-    const html = `<iframe src="https://server.apollomobileads.com/ads/${ad.urls[this.rand(0, ad.urls.length - 1)]}" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth}" height="110"></iframe>`
+    const html = `<iframe id="apolloFrame" src="https://server.apollomobileads.com/ads/${ad.urls[this.rand(0, ad.urls.length - 1)]}" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth}" height="110"></iframe>`
     this.el.innerHTML = html
 
     if (this.isTouchDevice()) {
@@ -98,6 +98,7 @@ class Apollo {
       setTimeout(function(){
           currentAd.el.style.top = '-300px'
           currentAd.isVisible = false
+          document.getElementById('apolloFrame').contentDocument.defaultView.location.reload();
       }, 10000)
     }
   }
