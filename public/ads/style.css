@@ -3,6 +3,7 @@
 
 body {
   font-family: 'Open Sans';
+  background-color: none;
 }
 
 p {
@@ -71,6 +72,10 @@ a {
   top: 0;
   left: 40;
   opacity: 0;
+}
+
+.apollo {
+  font-family: 'Open Sans';
 }
 
 @media screen and (max-width: 728px) {
