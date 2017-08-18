@@ -41,36 +41,58 @@ Meteor.startup(() => {
 //Ad Api
 WebApp.connectHandlers.use('/ad', function(req, res, next) {
   const date = new Date()
-  const publisher = Publishers.findOne({ _id : req.query.publisher })
-  const category = (publisher.category !== 0) ? (publisher.category) : null
-  console.log(category)
+  let remnant = false,
+  publisher = {},
+  category = 0
+
+  if (req.query.remnant) {
+    console.log(req.query.pubname)
+    remnant = true
+    publisher = Publishers.findOne({ name: req.query.pubname })
+  } else {
+    publisher = Publishers.findOne({ _id : req.query.publisher })
+    category = (publisher.category !== 0) ? (publisher.category) : null
+  }
+  let Ad = ''
 
   //Direct placements will have a publisher attribute in replace of cateory
-
-  const Ad = first(Ads.aggregate([{
-    $match: {
-      start: {
-        $lte: date
-      },
-      end: {
-        $gte: date
-      },
-      balance: {
-        $gte: 0.008
-      },
-      nextServed: {
-        $lte: date.getTime()
-      },
-      runAd: true,
-      $or: [
-        { category: category }, { publisher: publisher._id }
-      ]
-    }
-  }, {
-    $sample : {
-      size : 1
-    }
-  }]))
+  if (remnant) {
+    Ad = first(Ads.aggregate([{
+      $match: {
+        remnant: true
+      }
+    }, {
+      $sample : {
+        size : 1
+      }
+    }]))
+  } else {
+    Ad = first(Ads.aggregate([{
+      $match: {
+        start: {
+          $lte: date
+        },
+        end: {
+          $gte: date
+        },
+        balance: {
+          $gte: 0.008
+        },
+        nextServed: {
+          $lte: date.getTime()
+        },
+        runAd: true,
+        remnant: false,
+        $or: [
+          { category: category }, { publisher: publisher._id }
+        ]
+      }
+    }, {
+      $sample : {
+        size : 1
+      }
+    }]))
+  }
 
   if (Ad) {
     // Create new impressions event
@@ -114,7 +136,16 @@ WebApp.connectHandlers.use('/ad', function(req, res, next) {
 
 //Click event handler
 WebApp.connectHandlers.use('/click', function(req, res, next) {
-  const publisher = Publishers.findOne({ _id : req.query.publisher })
+  let remnant = false,
+  publisher = {},
+  category = 0
+
+  if (req.query.remnant) {
+    console.log(req.query.id)
+    publisher = Publishers.findOne({ name: req.query.pubname })
+  } else {
+    publisher = Publishers.findOne({ _id : req.query.publisher })
+  }
   const ad_id = req.query.id
   const Ad = Ads.findOne({
     _id: ad_id
@@ -157,11 +188,10 @@ WebApp.connectHandlers.use('/click', function(req, res, next) {
 })
 
 //Remnant Event handler
-WebApp.connectHandlers.use('/remnant', function(req, res, next) {
-  const inventory = Remnant.findOne({ pub: req.query.publisher })
-  console.log(inventory)
+WebApp.connectHandlers.use('/remnant/links', function(req, res, next) {
+  const links = Remnant.findOne({ name: 'links' })
 
 
   res.writeHead(200, {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'})
-  res.end(JSON.stringify(inventory))
+  res.end(JSON.stringify(links))
 })
