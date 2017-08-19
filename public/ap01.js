@@ -75,7 +75,7 @@ class Apollo {
     const html = `<iframe id="apolloFrame" src="${ad.link}${ad.click ? '?click=yes' : null}" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth}" height="110"></iframe>`
     this.el.innerHTML = html
 
-    
+
     if (ad.show){
       const currentAd = this
       setTimeout(function(){
@@ -87,6 +87,7 @@ class Apollo {
           currentAd.isVisible = false
       }, 10000)
     }
+    this.request(`${this.api}/remnant/impression`)
   }
 
   onTouchStart (e) {
