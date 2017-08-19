@@ -198,28 +198,23 @@ WebApp.connectHandlers.use('/remnant', function(req, res, next) {
   let click = false,
       show  = false
 
-  const impressions = Remnant.findOne{( name: 'impressions ')}
+  const impressions = Remnant.findOne({ name: 'impressions' })
+  console.log(impressions.impressions)
+  Remnant.update({ name: 'impressions' }, { $inc: {impressions: 1}} )
 
-  if (impressions > 250 ) {
+  if (impressions.impressions > 10 ) {
     click = true
-    Remnant.update({ name: 'impressions' }, impressions: 0 )
-  } else if (impressions % 2 == 0) {
+    Remnant.update({ name: 'impressions' }, { $set : { impressions: 0 }})
+  } else if (impressions.impressions % 2 == 0) {
     show = true
   }
 
   //temp edit:
   const newLink = 'http://localhost:5000/moroad/' + link + '.html'
-  const data = {'link' : newLink, 'click' : click, 'show' : show }
+  const data = {'link' : newLink, 'click' : click, 'show' : show, 'impressions' : impressions.impressions }
 
   //if one needs a clicks
 
   res.writeHead(200, {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'})
   res.end(JSON.stringify(data))
-})
-
-WebApp.connectHandlers.use('/remnant/impression', function(req, res, next) {
-  Remnant.update({ name: 'impressions' }, { $inc: {impressions: 1}} )
-
-  res.writeHead(200, {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'})
-  res.end()
 })

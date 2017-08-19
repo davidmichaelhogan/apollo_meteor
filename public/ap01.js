@@ -87,7 +87,6 @@ class Apollo {
           currentAd.isVisible = false
       }, 10000)
     }
-    this.request(`${this.api}/remnant/impression`)
   }
 
   onTouchStart (e) {
