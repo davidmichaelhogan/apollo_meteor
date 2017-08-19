@@ -1,7 +1,7 @@
 class Apollo {
   constructor () {
 
-    this.api = 'http://localhost:3000' // Set Production URL
+    this.api = 'https://server.launchapollo.com' // Set Production URL
 
     this.isVisible = false
     this.el = null
