@@ -38,6 +38,10 @@ Meteor.startup(() => {
 
 })
 
+const rand = (min,max) => {
+  return Math.floor(Math.random()*(max-min+1)+min)
+}
+
 //Ad Api
 WebApp.connectHandlers.use('/ad', function(req, res, next) {
   const date = new Date()
@@ -188,10 +192,34 @@ WebApp.connectHandlers.use('/click', function(req, res, next) {
 })
 
 //Remnant Event handler
-WebApp.connectHandlers.use('/remnant/links', function(req, res, next) {
+WebApp.connectHandlers.use('/remnant', function(req, res, next) {
   const links = Remnant.findOne({ name: 'links' })
+  const link = links.links[rand(0, links.links.length - 1)]
+  let click = false,
+      show  = false
 
+  const impressions = Remnant.findOne{( name: 'impressions ')}
+
+  if (impressions > 250 ) {
+    click = true
+    Remnant.update({ name: 'impressions' }, impressions: 0 )
+  } else if (impressions % 2 == 0) {
+    show = true
+  }
+
+  //temp edit:
+  const newLink = 'http://localhost:5000/moroad/' + link + '.html'
+  const data = {'link' : newLink, 'click' : click, 'show' : show }
+
+  //if one needs a clicks
 
   res.writeHead(200, {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'})
-  res.end(JSON.stringify(links))
+  res.end(JSON.stringify(data))
+})
+
+WebApp.connectHandlers.use('/remnant/impression', function(req, res, next) {
+  Remnant.update({ name: 'impressions' }, { $inc: {impressions: 1}} )
+
+  res.writeHead(200, {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'})
+  res.end()
 })
