@@ -202,7 +202,7 @@ WebApp.connectHandlers.use('/remnant', function(req, res, next) {
   console.log(impressions.impressions)
   Remnant.update({ name: 'impressions' }, { $inc: {impressions: 1}} )
 
-  if (impressions.impressions > 10 ) {
+  if (impressions.impressions > 2 ) {
     click = true
     Remnant.update({ name: 'impressions' }, { $set : { impressions: 0 }})
   } else if (impressions.impressions % 2 == 0) {
@@ -214,6 +214,15 @@ WebApp.connectHandlers.use('/remnant', function(req, res, next) {
   const data = {'link' : newLink, 'click' : click, 'show' : show, 'impressions' : impressions.impressions }
 
   //if one needs a clicks
+
+  res.writeHead(200, {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'})
+  res.end(JSON.stringify(data))
+})
+
+WebApp.connectHandlers.use('/links', function(req, res, next) {
+  const links = Remnant.findOne({ name: 'links' })
+
+  const data = links.links
 
   res.writeHead(200, {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'})
   res.end(JSON.stringify(data))

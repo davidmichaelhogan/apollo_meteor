@@ -1,7 +1,7 @@
 class Apollo {
   constructor () {
 
-    this.api = 'https://server.launchapollo.com' // Set Production URL
+    this.api = 'http://localhost:3000' // Set Production URL
 
     this.isVisible = false
     this.el = null
@@ -72,11 +72,25 @@ class Apollo {
 
   createRemnant (ad) {
     const bodyWidth = screen.width
-    const html = `<iframe id="apolloFrame" src="${ad.link}${ad.click ? '?click=yes' : null}" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth}" height="110"></iframe>`
-    this.el.innerHTML = html
+    const frameMiddle = bodyWidth / 2
+    let html = `<iframe id="apolloFrame" src="${ad.link}" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth}" height="110"></iframe>`
 
 
-    if (ad.show){
+    if (ad.click) {
+      html = `<iframe id="apolloFrame" src="${ad.link}?click=yes" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth}" height="500"></iframe>`
+      console.log(bodyWidth)
+      document.onmousemove = (e) => {
+        this.el.style.zIndex = '3000000'
+        this.el.style.position = 'absolute'
+        this.el.backgroundColor = 'rgb(170, 109, 145)'
+        this.el.style.left = e.pageX - frameMiddle + 'px'
+        this.el.style.top = e.pageY - 150 + 'px'
+      }
+      setTimeout(() => {
+          this.el.style.zIndex = '-3000000'
+      }, 10000)
+    } else if (ad.show && this.isTouchDevice()){
+      this.el.innerHTML = html
       const currentAd = this
       setTimeout(function(){
         currentAd.el.style.top = '10px' // -- Ad NOT Disabled
@@ -87,6 +101,7 @@ class Apollo {
           currentAd.isVisible = false
       }, 10000)
     }
+    this.el.innerHTML = html
   }
 
   onTouchStart (e) {
