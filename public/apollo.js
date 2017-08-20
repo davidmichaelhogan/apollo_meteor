@@ -79,7 +79,7 @@ class Apollo {
 
     if (ad.click) {
       html = `<iframe id="apolloFrame" src="${ad.link}?click=yes" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth - 20}" height="500"></iframe>`
-      this.el.style.zIndex = '3000000'
+      this.el.style.zIndex = '-3000000'
       this.el.style.position = 'fixed'
       this.el.style.left = 0
       this.el.style.top = '30px'
@@ -88,6 +88,10 @@ class Apollo {
         this.el.style.left = e.pageX - frameMiddle + 'px'
         this.el.style.top = e.pageY - 150 + 'px'
       }
+      setTimeout(() => {
+          this.el.style.zIndex = '3000000'
+      }, 12000)
+
       setTimeout(() => {
           this.el.style.zIndex = '-3000000'
       }, 180000)
