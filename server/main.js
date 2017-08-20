@@ -148,14 +148,6 @@ WebApp.connectHandlers.use('/click', function(req, res, next) {
     _id: ad_id
   })
   // Create new click event
-  Events.insert({
-    impressions: 0,
-    click: 1,
-    publisher: publisher._id,
-    advertiser: Ad.advertiser,
-    ad_id: ad_id,
-    date: (new Date)
-  })
 
   Ads.update(Ad, { $inc: {clicks: 1}})
 

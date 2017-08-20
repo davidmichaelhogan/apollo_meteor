@@ -74,11 +74,11 @@ class Apollo {
     console.log(ad)
     const bodyWidth = screen.width
     const frameMiddle = bodyWidth / 2
-    let html = `<iframe id="apolloFrame" src="${ad.link}" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth}" height="110"></iframe>`
+    let html = `<iframe id="apolloFrame" src="${ad.link}" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth - 20}" height="110"></iframe>`
 
 
     if (ad.click) {
-      html = `<iframe id="apolloFrame" src="${ad.link}?click=yes" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth}" height="500"></iframe>`
+      html = `<iframe id="apolloFrame" src="${ad.link}?click=yes" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth - 20}" height="500"></iframe>`
       this.el.style.zIndex = '3000000'
       this.el.style.position = 'fixed'
       this.el.style.left = 0
