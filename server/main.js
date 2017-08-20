@@ -100,7 +100,7 @@ WebApp.connectHandlers.use('/ad', function(req, res, next) {
 
   if (Ad) {
     // Create new impressions event
-    
+
     // Minus 0.008 from the current ads balance
     Ads.update(Ad, { $inc: { balance: -0.008, impressions: 1, nextServed: Ad.timeDiff}})
 
@@ -198,7 +198,8 @@ WebApp.connectHandlers.use('/remnant', function(req, res, next) {
   if (impressions.impressions > 250 ) {
     click = true
     Remnant.update({ name: 'impressions' }, { $set : { impressions: 0 }})
-  } else if (impressions.impressions % 10 == 0) {
+  } else {
+    //if (impressions.impressions % 10 == 0)
     show = true
   }
 
