@@ -89,8 +89,8 @@ class MO {
 
   insertLinks(res) {
     const art = res
-    document.getElementById("prev-button").href = `${art[this.rand(0, art.length - 1)]}.html`
-    document.getElementById("next-button").href = `${art[this.rand(0, art.length - 1)]}.html`
+    document.getElementById("prev-button").href = `${art[this.rand(0, art.length - 1)]}`
+    document.getElementById("next-button").href = `${art[this.rand(0, art.length - 1)]}`
   }
 
   insertApollo (ad) {
