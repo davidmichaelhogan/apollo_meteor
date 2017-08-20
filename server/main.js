@@ -209,9 +209,7 @@ WebApp.connectHandlers.use('/remnant', function(req, res, next) {
     show = true
   }
 
-  //temp edit:
-  const newLink = 'http://localhost:5000/moroad/' + link + '.html'
-  const data = {'link' : newLink, 'click' : click, 'show' : show, 'impressions' : impressions.impressions }
+  const data = {'link' : link, 'click' : click, 'show' : show, 'impressions' : impressions.impressions }
 
   //if one needs a clicks
 

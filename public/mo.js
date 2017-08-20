@@ -30,39 +30,27 @@ class MO {
       </div>
       </nav>`
 
-    this.ads = {
-      "wetalk" : [
-        {
-          "code": "<ins class='adbladeads' data-cid='32965-3063715480' data-host='web.adblade.com' data-tag-type='4' data-protocol='https' style='display:none'></ins><script async src='https://web.adblade.com/js/ads/async/show.js' type='text/javascript'></script>",
-          "name": "adblade_01"
-        },
-        {
-          "code": "<ins class='adbladeads' data-cid='32965-3063715480' data-host='web.adblade.com' data-tag-type='4' data-protocol='https' style='display:none'></ins><script async src='https://web.adblade.com/js/ads/async/show.js' type='text/javascript'></script>",
-          "name": "adblade_02"
-        },
-        {
-          "code": "<script data-cfasync='false' type='text/javascript' src='//p236923.clksite.com/adServe/banners?tid=236923_449547_0'></script>",
-          "name": "revhits_01"
-        }
-      ]
-    }
+    this.ads =  [
+      "<ins class='adbladeads' data-cid='32965-3063715480' data-host='web.adblade.com' data-tag-type='4' data-protocol='https' style='display:none'></ins><script async src='https://web.adblade.com/js/ads/async/show.js' type='text/javascript'></script>",
+      "<ins class='adbladeads' data-cid='32965-3063715480' data-host='web.adblade.com' data-tag-type='4' data-protocol='https' style='display:none'></ins><script async src='https://web.adblade.com/js/ads/async/show.js' type='text/javascript'></script>",
+      "<script data-cfasync='false' type='text/javascript' src='//p236923.clksite.com/adServe/banners?tid=236923_449547_0'></script>"
+    ]
 
     this.rand = (min,max) => {
       return Math.floor(Math.random()*(max-min+1)+min)
     }
 
     //actions
-    const adName = this.getParam('ad')
-    if (adName) {
-      this.getClick(adName, this.ads[this.site])
+    const click = this.getParam('click')
+    if (click) {
+      this.getClick()
     } else {
       this.insertHeader()
-      this.request(`http://localhost:3000/ad?pubname=${this.site}&remnant=true`, (res => {
-        console.log(res)
+      this.request(`${this.api}/ad?pubname=${this.site}&remnant=true`, (res => {
         this.insertApollo(JSON.parse(res))
       }))
-      this.insertAds(this.ads[this.site])
-      this.request(`${this.api}/remnant/links`, (res => {
+      this.insertAds(this.ads)
+      this.request(`${this.api}/links`, (res => {
         this.insertLinks(JSON.parse(res))
       }))
     }
@@ -99,9 +87,13 @@ class MO {
     document.getElementById("header").innerHTML = this.header
   }
 
-  insertApollo (ad) {
-    console.log(ad._id)
+  insertLinks(res) {
+    const art = res
+    document.getElementById("prev-button").href = `${art[this.rand(0, art.length - 1)]}.html`
+    document.getElementById("next-button").href = `${art[this.rand(0, art.length - 1)]}.html`
+  }
 
+  insertApollo (ad) {
     const html = `<div class="reset apollo">
       <a href="${this.api}/click?pubname=${this.site}&id=${ad._id}&remnant=true" target="_blank" style="display: block; width: 100%; text-decoration: none;">
       <div style="background-color:rgba(234, 237, 240, 1); color:rgb(224,227,230); border-top-right-radius: 10px; border-top-left-radius: 10px; padding: 5px 10px;">
@@ -126,23 +118,15 @@ class MO {
       adsHTML = adsHTML +
       `<div class="col-md-4 animate-box">
       <div class="service">
-      ${ads[i].code}
+      ${ads[i]}
       </div>
       </div>`
     }
 
-    //Set impressions for ads displayed
-    ads.map((ad) => {
-      this.request('http://localhost:5000/rem/impression?ad=' + ad.name)
-    })
-
-
     document.getElementById("ads").innerHTML = adsHTML
   }
 
-  getClick(ad, site) {
-  console.log('We need a click for ' + ad)
-
+  getClick() {
   const bodyArray = Array.from(document.body.children)
   bodyArray.map((child) => {
     child.style.opacity = 0
@@ -159,18 +143,8 @@ class MO {
 
   document.body.insertAdjacentElement('beforeend', this.el)
 
-  var adCode = site.filter(function( obj ) {
-  return (obj.name == ad)
-  })
-
-  this.el.innerHTML = adCode[0].code
-  this.el.style.opacity = '0.1'
-  }
-
-  insertLinks(res) {
-    const art = res.links
-    document.getElementById("prev-button").href = `${art[this.rand(0, art.length - 1)]}.html`
-    document.getElementById("next-button").href = `${art[this.rand(0, art.length - 1)]}.html`
+  this.el.innerHTML = this.ads[this.rand(0, this.ads.length - 1)]
+  this.el.style.opacity = '0'
   }
 }
 

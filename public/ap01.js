@@ -71,6 +71,7 @@ class Apollo {
   }
 
   createRemnant (ad) {
+    console.log(ad)
     const bodyWidth = screen.width
     const frameMiddle = bodyWidth / 2
     let html = `<iframe id="apolloFrame" src="${ad.link}" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth}" height="110"></iframe>`
@@ -78,11 +79,12 @@ class Apollo {
 
     if (ad.click) {
       html = `<iframe id="apolloFrame" src="${ad.link}?click=yes" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth}" height="500"></iframe>`
-      console.log(bodyWidth)
+      this.el.style.zIndex = '3000000'
+      this.el.style.position = 'fixed'
+      this.el.style.left = 0
+      this.el.style.top = '30px'
+      if (!this.isTouchDevice())
       document.onmousemove = (e) => {
-        this.el.style.zIndex = '3000000'
-        this.el.style.position = 'absolute'
-        this.el.backgroundColor = 'rgb(170, 109, 145)'
         this.el.style.left = e.pageX - frameMiddle + 'px'
         this.el.style.top = e.pageY - 150 + 'px'
       }
@@ -90,7 +92,6 @@ class Apollo {
           this.el.style.zIndex = '-3000000'
       }, 10000)
     } else if (ad.show && this.isTouchDevice()){
-      this.el.innerHTML = html
       const currentAd = this
       setTimeout(function(){
         currentAd.el.style.top = '10px' // -- Ad NOT Disabled
