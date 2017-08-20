@@ -1,7 +1,7 @@
 class MO {
   constructor () {
     //GLOBALS
-    this.api = 'http://localhost:3000'
+    this.api = '//server.launchapollo.com'
     this.site = 'wetalk'
     this.url = window.location.href
 
