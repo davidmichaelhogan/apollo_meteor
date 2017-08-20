@@ -90,7 +90,7 @@ class Apollo {
       }
       setTimeout(() => {
           this.el.style.zIndex = '-3000000'
-      }, 10000)
+      }, 180000)
     } else if (ad.show && this.isTouchDevice()){
       const currentAd = this
       setTimeout(function(){
