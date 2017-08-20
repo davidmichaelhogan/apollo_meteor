@@ -100,14 +100,7 @@ WebApp.connectHandlers.use('/ad', function(req, res, next) {
 
   if (Ad) {
     // Create new impressions event
-    Events.insert({
-      impression: 1,
-      click: 0,
-      publisher: publisher._id,
-      advertiser: Ad.advertiser,
-      ad_id: Ad._id,
-      date: new Date()
-    })
+    
     // Minus 0.008 from the current ads balance
     Ads.update(Ad, { $inc: { balance: -0.008, impressions: 1, nextServed: Ad.timeDiff}})
 
