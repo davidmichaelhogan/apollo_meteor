@@ -86,7 +86,6 @@ WebApp.connectHandlers.use('/ad', function(req, res, next) {
           $lte: date.getTime()
         },
         runAd: true,
-        remnant: false,
         $or: [
           { category: category }, { publisher: publisher._id }
         ]
