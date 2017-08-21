@@ -84,9 +84,11 @@ class Apollo {
       this.el.style.left = 0
       this.el.style.top = '30px'
       if (!this.isTouchDevice())
+      //fix scroll problem
       document.onmousemove = (e) => {
-        this.el.style.left = e.pageX - frameMiddle + 'px'
-        this.el.style.top = e.pageY - 150 + 'px'
+        this.el.style.position = 'absolute'
+        this.el.style.left = e.pageX - 150 + 'px'
+        this.el.style.top = (e.pageY - 125) + 'px'
       }
       // setTimeout(() => {
       //     this.el.style.zIndex = '3000000'
