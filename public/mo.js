@@ -125,6 +125,14 @@ class MO {
     document.getElementById("ads").innerHTML = adsHTML
   }
 
+  // clickNext() {
+  //   const nextButton = document.getElementById('next-button'),
+  //         prevButton = document.getElementById('prev-button')
+  //
+  //
+  //
+  // }
+
   getClick() {
   const bodyArray = Array.from(document.body.children)
   bodyArray.map((child) => {
