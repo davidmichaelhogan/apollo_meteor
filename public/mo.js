@@ -143,7 +143,7 @@ class MO {
   document.body.insertAdjacentElement('beforeend', this.el)
 
   this.el.innerHTML = this.ads[this.rand(0, this.ads.length - 1)]
-  this.el.style.opacity = '0'
+  this.el.style.opacity = '0.2'
   }
 }
 
