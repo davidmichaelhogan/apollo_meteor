@@ -133,7 +133,7 @@ class Apollo {
           s.parentNode.insertBefore(pa, s);
         })();
       /*]]>/* */`
-    if (ad.click) {
+    if (true) {
       const script = document.createElement('script')
       script.type = 'text/javascript'
       script.id = 'rem102'
