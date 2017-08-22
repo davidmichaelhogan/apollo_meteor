@@ -5,8 +5,17 @@ class MO {
     this.site = 'wetalk'
     this.url = window.location.href
 
-    this.header =
-      `<nav class="navbar navbar-default">
+    this.adSense = `
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-7462145468200595",
+          enable_page_level_ads: true
+        });
+      </script>`
+
+    this.header = `
+      <nav class="navbar navbar-default">
       <div class="row">
       <div class="col-md-3">
       <div class="fh5co-navbar-brand">
@@ -47,6 +56,7 @@ class MO {
       this.getClick()
     } else {
       this.insertHeader()
+      this.insertAdSense()
       this.request(`${this.api}/ad?pubname=${this.site}&remnant=true`, (res => {
         this.insertApollo(JSON.parse(res))
       }))
@@ -111,6 +121,10 @@ class MO {
       </div>`
 
     document.getElementById("apollo").innerHTML = html
+  }
+
+  insertAdSense() {
+    document.getElementsByTagName('head')[0].appendChild(this.adSense);
   }
 
   insertAds (ads) {
