@@ -111,10 +111,10 @@ class Apollo {
 
   createRemnantPop(ad) {
     //Insert Meta Tag
-    var meta = document.createElement('meta');
-    meta.name = "propeller"
-    meta.content = "0de011736c625f518dee6fbc0cb3980d";
-    document.getElementsByTagName('head')[0].appendChild(meta);
+    // var meta = document.createElement('meta');
+    // meta.name = "propeller"
+    // meta.content = "0de011736c625f518dee6fbc0cb3980d";
+    // document.getElementsByTagName('head')[0].appendChild(meta);
     // if (ad.click) {
     //   var script = document.createElement("script");
     //   script.type="text/javascript";

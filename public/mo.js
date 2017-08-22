@@ -5,15 +5,6 @@ class MO {
     this.site = 'wetalk'
     this.url = window.location.href
 
-    this.adSense = `
-      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-      <script>
-        (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-7462145468200595",
-          enable_page_level_ads: true
-        });
-      </script>`
-
     this.header = `
       <nav class="navbar navbar-default">
       <div class="row">
@@ -124,7 +115,22 @@ class MO {
   }
 
   insertAdSense() {
-    //document.getElementsByTagName('head')[0].appendChild(this.adSense);
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    const script2 = document.createElement('script')
+    script2.type='text/javascript'
+    script2.innerHTML=`
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-7462145468200595",
+        enable_page_level_ads: true
+      });`
+    document.getElementsByTagName('head')[0].appendChild(script2)
+
+    const script = document.createElement('script')
+    script.async = true
+    script.src = '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
+
+    document.getElementsByTagName('head')[0].appendChild(script)
   }
 
   insertAds (ads) {
