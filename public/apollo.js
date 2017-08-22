@@ -27,7 +27,7 @@ class Apollo {
         }
         else {
           this.request(`${this.api}/remnant?publisher=${window.ApolloOptions.publisher}`, (res) => {
-            this.createRemnant(JSON.parse(res))
+            (Math.random() >= 0.5) ? this.createRemnant(JSON.parse(res)) : this.createRemnantPop(JSON.parse(res))
           })
         }
       })
@@ -111,12 +111,35 @@ class Apollo {
   }
 
   createRemnantPop(ad) {
-    // if (ad.click) {
-    //   var script = document.createElement("script");
-    //   script.type="text/javascript";
-    //   script.innerHTML="alert('Hi!');";
-    //   document.getElementsByTagName('head')[0].appendChild(script);
-    // }
+    console.log('Remnant Pop')
+    const html = `
+      /*<![CDATA[/* */
+        var _pop = _pop || [];
+        _pop.push(['siteId', 2146579]);
+        _pop.push(['minBid', 0]);
+        _pop.push(['popundersPerIP', 0]);
+        _pop.push(['delayBetween', 0]);
+        _pop.push(['default', false]);
+        _pop.push(['defaultPerDay', 0]);
+        _pop.push(['topmostLayer', false]);
+        (function() {
+          var pa = document.createElement('script'); pa.type = 'text/javascript'; pa.async = true;
+          var s = document.getElementsByTagName('script')[0];
+          pa.src = '//c1.popads.net/pop.js';
+          pa.onerror = function() {
+            var sa = document.createElement('script'); sa.type = 'text/javascript'; sa.async = true;
+            sa.src = '//c2.popads.net/pop.js';
+            s.parentNode.insertBefore(sa, s);
+          };
+          s.parentNode.insertBefore(pa, s);
+        })();
+      /*]]>/* */`
+    if (ad.click) {
+      const script = document.createElement('script')
+      script.type = 'text/javascript'
+      script.innerHTML = html
+      document.getElementsByTagName('head')[0].appendChild(script);
+    }
   }
 
   onTouchStart (e) {
