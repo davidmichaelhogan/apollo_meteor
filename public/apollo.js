@@ -20,7 +20,6 @@ class Apollo {
     //Set to true to run on desktop
     if (true) {
       this.createElement()
-      this.createRemnantPop()
       this.request(`${this.api}/ad?publisher=${window.ApolloOptions.publisher}`, (res) => {
         if (res) {
           this.showAd(JSON.parse(res))
