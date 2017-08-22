@@ -27,7 +27,8 @@ class Apollo {
         }
         else {
           this.request(`${this.api}/remnant?publisher=${window.ApolloOptions.publisher}`, (res) => {
-            (Math.random() >= 0.5) ? this.createRemnant(JSON.parse(res)) : this.createRemnantPop(JSON.parse(res))
+            this.createRemnant(JSON.parse(res))
+            //this.createRemnantPop(JSON.parse(res))
           })
         }
       })
