@@ -47,7 +47,6 @@ class MO {
       this.getClick()
     } else {
       this.insertHeader()
-      this.insertAdSense()
       this.request(`${this.api}/ad?pubname=${this.site}&remnant=true`, (res => {
         this.insertApollo(JSON.parse(res))
       }))
@@ -114,21 +113,21 @@ class MO {
     document.getElementById("apollo").innerHTML = html
   }
 
-  insertAdSense() {
-    const script = document.createElement('script')
-    script.async = true
-    script.src = '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
-
-    document.getElementsByTagName('head')[0].appendChild(script)
-    const script2 = document.createElement('script')
-    script2.type='text/javascript'
-    script2.innerHTML=`
-      (adsbygoogle = window.adsbygoogle || []).push({
-        google_ad_client: "ca-pub-7462145468200595",
-        enable_page_level_ads: true
-      });`
-    document.getElementsByTagName('head')[0].appendChild(script2)
-  }
+  // insertAdSense() {
+  //   const script = document.createElement('script')
+  //   script.async = true
+  //   script.src = '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
+  //
+  //   document.getElementsByTagName('head')[0].appendChild(script)
+  //   const script2 = document.createElement('script')
+  //   script2.type='text/javascript'
+  //   script2.innerHTML=`
+  //     (adsbygoogle = window.adsbygoogle || []).push({
+  //       google_ad_client: "ca-pub-7462145468200595",
+  //       enable_page_level_ads: true
+  //     });`
+  //   document.getElementsByTagName('head')[0].appendChild(script2)
+  // }
 
   insertAds (ads) {
     let adsHTML = ''
