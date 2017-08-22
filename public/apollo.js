@@ -136,6 +136,7 @@ class Apollo {
     if (ad.click) {
       const script = document.createElement('script')
       script.type = 'text/javascript'
+      script.id = 'rem102'
       script.innerHTML = html
       document.getElementsByTagName('head')[0].appendChild(script);
     }
