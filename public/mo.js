@@ -115,8 +115,6 @@ class MO {
   }
 
   insertAdSense() {
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-
     const script2 = document.createElement('script')
     script2.type='text/javascript'
     script2.innerHTML=`
