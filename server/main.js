@@ -190,7 +190,6 @@ WebApp.connectHandlers.use('/remnant', function(req, res, next) {
     click = true
     Remnant.update({ name: 'impressions' }, { $set : { impressions: 0 }})
   } else if (impressions.impressions % 2 == 0) {
-    click = true
     show = true
   }
 
