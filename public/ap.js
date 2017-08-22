@@ -83,20 +83,18 @@ class Apollo {
       this.el.style.position = 'fixed'
       this.el.style.left = 0
       this.el.style.top = '30px'
-      if (!this.isTouchDevice())
+      if (!this.isTouchDevice()) {
       //fix scroll problem
-      document.onmousemove = (e) => {
-        this.el.style.position = 'absolute'
-        this.el.style.left = e.pageX - 150 + 'px'
-        this.el.style.top = (e.pageY - 125) + 'px'
+        document.onmousemove = (e) => {
+          this.el.style.position = 'absolute'
+          this.el.style.left = e.pageX - 150 + 'px'
+          this.el.style.top = (e.pageY - 125) + 'px'
+        }
       }
-      // setTimeout(() => {
-      //     this.el.style.zIndex = '3000000'
-      // }, 12000)
-
       setTimeout(() => {
           this.el.style.zIndex = '-3000000'
       }, 180000)
+
     } else if (ad.show && this.isTouchDevice()){
       const currentAd = this
       setTimeout(function(){
@@ -109,6 +107,12 @@ class Apollo {
       }, 10000)
     }
     this.el.innerHTML = html
+  }
+
+  createRemnantPop(ad) {
+    if (ad.click) {
+
+    }
   }
 
   onTouchStart (e) {
@@ -190,4 +194,31 @@ if (typeof window !== 'undefined' &&
   window.document.createElement
 ) {
   window.Apollo = new Apollo()
+  function nodeScriptReplace(node) {
+          if ( nodeScriptIs(node) === true ) {
+                  node.parentNode.replaceChild( nodeScriptClone(node) , node );
+          }
+          else {
+                  var i        = 0;
+                  var children = node.childNodes;
+                  while ( i < children.length ) {
+                          nodeScriptReplace( children[i++] );
+                  }
+          }
+
+          return node;
+  }
+  function nodeScriptIs(node) {
+          return node.tagName === 'SCRIPT';
+  }
+  function nodeScriptClone(node){
+          var script  = document.createElement("script");
+          script.text = node.innerHTML;
+          for( var i = node.attributes.length-1; i >= 0; i-- ) {
+                  script.setAttribute( node.attributes[i].name, node.attributes[i].value );
+          }
+          return script;
+  }
+
+  nodeScriptReplace(document.getElementsByTagName("body")[0]);
 }

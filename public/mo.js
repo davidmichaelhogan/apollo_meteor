@@ -124,7 +124,7 @@ class MO {
   }
 
   insertAdSense() {
-    document.getElementsByTagName('head')[0].appendChild(this.adSense);
+    //document.getElementsByTagName('head')[0].appendChild(this.adSense);
   }
 
   insertAds (ads) {
