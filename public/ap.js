@@ -80,7 +80,7 @@ class Apollo {
       }, 2000)
       setTimeout(() => {
         this.el.innerHTML = `<h1>hi</h1>`
-      }, 10000)
+      }, 15000)
     //Show ad if mobile
     } else if (ad.show && this.isTouchDevice()){
       const currentAd = this

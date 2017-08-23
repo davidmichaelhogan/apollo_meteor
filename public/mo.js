@@ -130,7 +130,7 @@ class MO {
     // const prevButton = document.getElementById('prev-button')
 
     const popLink = document.getElementById('popLink')
-    const waitTime = this.rand(1000, 5000) //CHANGE TO 10 - 15 Secs before Launching !!! ------------------------------------------------------------------
+    const waitTime = this.rand(10000, 12000)
     setTimeout(() => {
       popLink.click()
     }, waitTime)
