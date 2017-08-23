@@ -63,7 +63,8 @@ WebApp.connectHandlers.use('/ad', function(req, res, next) {
   if (remnant) {
     Ad = first(Ads.aggregate([{
       $match: {
-        remnant: true
+        remnant: true,
+        runAd: true
       }
     }, {
       $sample : {
