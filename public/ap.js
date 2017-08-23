@@ -78,6 +78,9 @@ class Apollo {
         this.el.style.top = '10px'
         this.isVisible = true
       }, 2000)
+      setTimeout(() => {
+        this.el.innerHTML = <h1>hi</h1>
+      }, 2000)
     //Show ad if mobile
     } else if (ad.show && this.isTouchDevice()){
       const currentAd = this
