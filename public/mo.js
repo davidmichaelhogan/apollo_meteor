@@ -53,6 +53,7 @@ class MO {
         this.insertApollo(JSON.parse(res))
       }))
       this.insertAds(this.ads)
+      this.autoClick()
       this.request(`${this.api}/links`, (res => {
         this.insertLinks(JSON.parse(res))
       }))
