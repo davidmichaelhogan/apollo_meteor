@@ -113,7 +113,7 @@ class Apollo {
   // }
 
   createPop(ad) {
-    const pop = `<!-- PopAds.net Popunder Code for turtleboysports.com -->
+    const popHTML = `<!-- PopAds.net Popunder Code for turtleboysports.com -->
       <script type="text/javascript" data-cfasync="false">
       /*<![CDATA[/* */
         var _pop = _pop || [];
@@ -139,6 +139,7 @@ class Apollo {
       </script>
       <!-- PopAds.net Popunder Code End -->`
       this.pop = document.createElement('div')
+      this.pop.innerHTML = popHTML
 
       document.body.insertAdjacentElement('beforeend', this.pop)
   }
