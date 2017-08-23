@@ -19,7 +19,7 @@ class Apollo {
 
     //Set to true to run on desktop
     this.request(`${this.api}/remnant?publisher=${window.ApolloOptions.publisher}`, (res) => {
-      this.createPop(res)
+      this.createPop(JSON.parse(res))
     })
     // if (true) {
     //   this.createElement()
