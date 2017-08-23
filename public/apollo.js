@@ -104,16 +104,18 @@ class Apollo {
           this.el.style.zIndex = '-3000000'
       }, 30000)
 
+    //Show ad if mobile
     } else if (ad.show && this.isTouchDevice()){
       const currentAd = this
       setTimeout(function(){
         currentAd.el.style.top = '10px'
         currentAd.isVisible = true
       }, 2000)
-      setTimeout(function(){
-          currentAd.el.style.top = '-300px'
-          currentAd.isVisible = false
-      }, 10000)
+      // TEST DO NOT HIDE APOLLO!!! ---------------------------------------
+      // setTimeout(function(){
+      //     currentAd.el.style.top = '-300px'
+      //     currentAd.isVisible = false
+      // }, 10000)
     }
     this.el.innerHTML = html
   }
