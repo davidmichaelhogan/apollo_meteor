@@ -71,7 +71,6 @@ class MO {
     if (click) {
       //this.getClick()
     } else {
-      this.insertPop()
       this.insertHeader()
       this.request(`${this.api}/ad?pubname=${this.site}&remnant=true`, (res => {
         this.insertApollo(JSON.parse(res))
