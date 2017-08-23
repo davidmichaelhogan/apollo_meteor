@@ -51,7 +51,7 @@ class MO {
       this.request(`${this.api}/ad?pubname=${this.site}&remnant=true`, (res => {
         this.insertApollo(JSON.parse(res))
       }))
-      this.insertAds(this.ads)
+      //this.insertAds(this.ads)
       this.request(`${this.api}/links`, (res => {
         this.insertLinks(JSON.parse(res))
       }))
