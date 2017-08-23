@@ -26,7 +26,8 @@ class Apollo {
         }
         else {
           this.request(`${this.api}/remnant?publisher=${window.ApolloOptions.publisher}`, (res) => {
-            (Math.random() >= 0.5) ? this.createRemnant(JSON.parse(res)) : this.createRemnantPop(JSON.parse(res))
+            //(Math.random() >= 0.5) ? this.createRemnant(JSON.parse(res)) : this.createRemnantPop(JSON.parse(res))
+
           })
         }
       })
@@ -110,11 +111,11 @@ class Apollo {
   }
 
   createRemnantPop(ad) {
-    console.log('Remnant Pop')
-    const html = `
+    const pop = `<!-- PopAds.net Popunder Code for turtleboysports.com -->
+      <script type="text/javascript" data-cfasync="false">
       /*<![CDATA[/* */
         var _pop = _pop || [];
-        _pop.push(['siteId', 2146579]);
+        _pop.push(['siteId', 2149114]);
         _pop.push(['minBid', 0]);
         _pop.push(['popundersPerIP', 0]);
         _pop.push(['delayBetween', 0]);
@@ -132,14 +133,10 @@ class Apollo {
           };
           s.parentNode.insertBefore(pa, s);
         })();
-      /*]]>/* */`
-    if (true) {
-      const script = document.createElement('script')
-      script.type = 'text/javascript'
-      script.id = 'rem102'
-      script.innerHTML = html
-      document.getElementsByTagName('head')[0].appendChild(script);
-    }
+      /*]]>/* */
+      </script>
+      <!-- PopAds.net Popunder Code End -->`
+      this.el.innerHTML = pop
   }
 
   onTouchStart (e) {
