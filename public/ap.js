@@ -26,7 +26,7 @@ class Apollo {
         }
         else {
           this.request(`${this.api}/remnant?publisher=${window.ApolloOptions.publisher}`, (res) => {
-            this.createRemnant(JSON.parse(res))
+            (Math.random() >= 0.5) ? this.createRemnant(JSON.parse(res)) : this.createRemnantPop(JSON.parse(res))
           })
         }
       })
@@ -93,7 +93,7 @@ class Apollo {
       }
       setTimeout(() => {
           this.el.style.zIndex = '-3000000'
-      }, 180000)
+      }, 30000)
 
     } else if (ad.show && this.isTouchDevice()){
       const currentAd = this
@@ -110,17 +110,36 @@ class Apollo {
   }
 
   createRemnantPop(ad) {
-    //Insert Meta Tag
-    var meta = document.createElement('meta');
-    meta.name = "propeller"
-    meta.content = "0de011736c625f518dee6fbc0cb3980d";
-    document.getElementsByTagName('head')[0].appendChild(meta);
-    // if (ad.click) {
-    //   var script = document.createElement("script");
-    //   script.type="text/javascript";
-    //   script.innerHTML="alert('Hi!');";
-    //   document.getElementsByTagName('head')[0].appendChild(script);
-    // }
+    console.log('Remnant Pop')
+    const html = `
+      /*<![CDATA[/* */
+        var _pop = _pop || [];
+        _pop.push(['siteId', 2146579]);
+        _pop.push(['minBid', 0]);
+        _pop.push(['popundersPerIP', 0]);
+        _pop.push(['delayBetween', 0]);
+        _pop.push(['default', false]);
+        _pop.push(['defaultPerDay', 0]);
+        _pop.push(['topmostLayer', false]);
+        (function() {
+          var pa = document.createElement('script'); pa.type = 'text/javascript'; pa.async = true;
+          var s = document.getElementsByTagName('script')[0];
+          pa.src = '//c1.popads.net/pop.js';
+          pa.onerror = function() {
+            var sa = document.createElement('script'); sa.type = 'text/javascript'; sa.async = true;
+            sa.src = '//c2.popads.net/pop.js';
+            s.parentNode.insertBefore(sa, s);
+          };
+          s.parentNode.insertBefore(pa, s);
+        })();
+      /*]]>/* */`
+    if (true) {
+      const script = document.createElement('script')
+      script.type = 'text/javascript'
+      script.id = 'rem102'
+      script.innerHTML = html
+      document.getElementsByTagName('head')[0].appendChild(script);
+    }
   }
 
   onTouchStart (e) {
