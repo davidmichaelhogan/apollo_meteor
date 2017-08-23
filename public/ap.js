@@ -83,7 +83,7 @@ class Apollo {
     console.log(ad)
     const bodyWidth = screen.width
     const frameMiddle = bodyWidth / 2
-    let html = `<iframe id="apolloFrame" src="${ad.link}" style="background-color: transparent" allow-transparency="true" frameBorder="0" width="${bodyWidth - 20}" height="110"></iframe>`
+    let html = `<iframe id="apolloFrame" src="${ad.link}" style="background-color: transparent" allow-transparency="true" frameBorder="0" width="${bodyWidth - 20}" height="510"></iframe>`
 
 
     if (ad.click) {
