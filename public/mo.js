@@ -37,7 +37,7 @@ class MO {
       //"<script data-cfasync='false' type='text/javascript' src='//p239147.clksite.com/adServe/banners?tid=239147_454129_0'></script>"
       //`<script type="text/javascript" src="//go.pub2srv.com/apu.php?zoneid=1372148"></script>`,
       `<a href="http://go.onclasrv.com/afu.php?id=1372240" target="_blank"><div id="propLink"><h1>LINK</h1</div></a>`,
-      `<a href="#" onClick="${this.newClick}"><div id="propLink2"><h1>LINK 2</h1</div></a>`
+      `<a href="http://google.com"><div id="propLink2"><h1>LINK 2</h1</div></a>`
     ]
 
     this.rand = (min,max) => {
@@ -135,6 +135,7 @@ class MO {
     const nextButton = document.getElementById('next-button')
     const prevButton = document.getElementById('prev-button')
     const propLink = document.getElementById('propLink2')
+    propLink.click()
     const waitTime = this.rand(1000, 10000)
     console.log('click function')
     setTimeout(() => {
