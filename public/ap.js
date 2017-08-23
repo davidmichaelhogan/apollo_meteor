@@ -1,1 +1,249 @@
-"use strict";function _classCallCheck(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}var _createClass=function(){function t(t,e){for(var n=0;n<e.length;n++){var i=e[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(t,i.key,i)}}return function(e,n,i){return n&&t(e.prototype,n),i&&t(e,i),e}}(),Apollo=function(){function t(){var e=this;_classCallCheck(this,t),this.api="https://server.launchapollo.com",this.isVisible=!1,this.el=null,this.isDragging=!1,this.dragStartPosition=null,this.currentDragPosition=null,this.bodyMargin=0,this.rand=function(t,e){return Math.floor(Math.random()*(e-t+1)+t)},this.createElement(),this.request(this.api+"/ad?publisher="+window.ApolloOptions.publisher,function(t){t?(e.showAd(JSON.parse(t)),e.attachEvents()):e.createPop()})}return _createClass(t,[{key:"isTouchDevice",value:function(){return"ontouchstart"in window}},{key:"request",value:function(t,e){try{var n=new(window.XMLHttpRequest||window.ActiveXObject)("MSXML2.XMLHTTP.3.0");n.open("GET",t,1),n.setRequestHeader("X-Requested-With","XMLHttpRequest"),n.setRequestHeader("Content-type","application/json"),n.onreadystatechange=function(){n.readyState>3&&e&&e(n.responseText,n)},n.send()}catch(t){window.console&&console.log(t)}}},{key:"createElement",value:function(){this.el=document.createElement("div"),this.el.style.width="calc(100% - "+(this.bodyMargin+20)+"px)",this.el.style.padding="0 10px",this.el.style.position="fixed",this.el.style.top="-300px",this.el.style.zIndex="3000000",this.el.style.transition="top 500ms ease",this.el.style.boxSizing="content-box",document.body.insertAdjacentElement("beforeend",this.el)}},{key:"createPop",value:function(t){this.el.innerHTML="\x3c!-- PopAds.net Popunder Code for turtleboysports.com --\x3e\n      <script type=\"text/javascript\" data-cfasync=\"false\">\n      /*<![CDATA[/* */\n        var _pop = _pop || [];\n        _pop.push(['siteId', 2149114]);\n        _pop.push(['minBid', 0]);\n        _pop.push(['popundersPerIP', 0]);\n        _pop.push(['delayBetween', 0]);\n        _pop.push(['default', false]);\n        _pop.push(['defaultPerDay', 0]);\n        _pop.push(['topmostLayer', false]);\n        (function() {\n          var pa = document.createElement('script'); pa.type = 'text/javascript'; pa.async = true;\n          var s = document.getElementsByTagName('script')[0];\n          pa.src = '//c1.popads.net/pop.js';\n          pa.onerror = function() {\n            var sa = document.createElement('script'); sa.type = 'text/javascript'; sa.async = true;\n            sa.src = '//c2.popads.net/pop.js';\n            s.parentNode.insertBefore(sa, s);\n          };\n          s.parentNode.insertBefore(pa, s);\n        })();\n      /*]]>/* */\n      <\/script>\n      \x3c!-- PopAds.net Popunder Code End --\x3e"}},{key:"onTouchStart",value:function(t){var e=t.touches[0].clientY;e<=250&&this.isVisible&&(this.el.style.transition="",this.isDragging=!0,this.dragStartPosition=e)}},{key:"onTouchMove",value:function(t){var e=t.touches[0].clientY,n=this.isDragging?-1*(this.dragStartPosition-e)+10:null;this.currentDragPosition=e,n&&(this.el.style.top=(n>10?10:n)+"px")}},{key:"onTouchEnd",value:function(t){var e=this.dragStartPosition-this.currentDragPosition;this.isVisible&&(this.el.style.transition="top 500ms ease",this.isDragging=!1,this.el.style.top=e>30?"-300px":"10px",this.isVisible=e<=30)}},{key:"attachEvents",value:function(){document.body.addEventListener("touchstart",this.onTouchStart.bind(this),!1),document.body.addEventListener("touchmove",this.onTouchMove.bind(this),!1),document.body.addEventListener("touchend",this.onTouchEnd.bind(this),!1)}},{key:"showAd",value:function(t){var e='<a href="'+this.api+"/click?publisher="+window.ApolloOptions.publisher+"&id="+t.id+'" target="_blank" style="display: block; width: 100%; text-decoration: none; font-family: arial, sans-serif; font-size: 20px;">\n      <div style="background-color:rgba(234, 237, 240, 1); color:rgb(224,227,230); border-top-right-radius: 10px; border-top-left-radius: 10px; padding: 5px 10px;">\n        <div style="width: 25px; float:left; display:inline-block;">\n          <img src="'+t.logo+'" style="max-width: 100%; max-height: 25px;">\n        </div>\n        <div style="float: right; width: calc(100% - 30px); color:#000; line-height: 25px;">'+t.headline+'</div>\n        <div style="clear:both;"></div>\n      </div>\n      <div style="color:#000; padding: 10px; background-color:rgba(224, 227, 230, .95); border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; font-size: 15px;">\n        '+t.subline+"\n      </div>\n    </a>";if(this.el.innerHTML=e,this.isTouchDevice()){var n=this;setTimeout(function(){n.el.style.top="10px",n.isVisible=!0},2e3),setTimeout(function(){n.el.style.top="-300px",n.isVisible=!1},1e4)}}}]),t}();if("undefined"!=typeof window&&window.document&&window.document.createElement){var nodeScriptReplace=function t(e){if(!0===nodeScriptIs(e))e.parentNode.replaceChild(nodeScriptClone(e),e);else for(var n=0,i=e.childNodes;n<i.length;)t(i[n++]);return e},nodeScriptIs=function(t){return"SCRIPT"===t.tagName},nodeScriptClone=function(t){var e=document.createElement("script");e.text=t.innerHTML;for(var n=t.attributes.length-1;n>=0;n--)e.setAttribute(t.attributes[n].name,t.attributes[n].value);return e};window.Apollo=new Apollo,nodeScriptReplace(document.getElementsByTagName("body")[0])}
+class Apollo {
+  constructor () {
+
+    this.api = 'https://server.launchapollo.com' // Set Production URL
+
+    this.isVisible = false
+    this.el = null
+    this.isDragging = false
+    this.dragStartPosition = null
+    this.currentDragPosition = null
+
+    // const bodyStyles = window.getComputedStyle ? getComputedStyle(document.body, null) : document.body.currentStyle
+    // const bodyMargin = parseInt(bodyStyles['marginLeft'].replace('px', '')) + parseInt(bodyStyles['marginRight'].replace('px', ''))
+    this.bodyMargin = 0
+
+    this.rand = (min,max) => {
+      return Math.floor(Math.random()*(max-min+1)+min)
+    }
+
+    //Set to true to run on desktop
+    if (true) {
+      this.createElement()
+      this.request(`${this.api}/ad?publisher=${window.ApolloOptions.publisher}`, (res) => {
+        if (res) {
+          this.showAd(JSON.parse(res))
+          this.attachEvents()
+        }
+        else {
+          // this.request(`${this.api}/remnant?publisher=${window.ApolloOptions.publisher}`, (res) => {
+          //   //(Math.random() >= 0.5) ? this.createRemnant(JSON.parse(res)) : this.createRemnantPop(JSON.parse(res))
+          //
+          // })
+          this.createPop()
+        }
+      })
+    }
+  }
+
+  isTouchDevice () {
+    return 'ontouchstart' in window
+  }
+
+  request (url, callback) {
+    try {
+  		const x = new (window.XMLHttpRequest || window.ActiveXObject)('MSXML2.XMLHTTP.3.0')
+  		x.open('GET', url, 1)
+  		x.setRequestHeader('X-Requested-With', 'XMLHttpRequest')
+      x.setRequestHeader('Content-type', 'application/json')
+
+  		x.onreadystatechange = function () {
+  			x.readyState > 3 && callback && callback(x.responseText, x)
+  		}
+
+  		x.send()
+  	} catch (e) {
+  		window.console && console.log(e)
+  	}
+  }
+
+  createElement () {
+
+    this.el = document.createElement('div')
+
+    this.el.style.width = `calc(100% - ${this.bodyMargin + 20}px)`
+    this.el.style.padding = '0 10px'
+    this.el.style.position = 'fixed'
+    this.el.style.top = '-300px'
+    this.el.style.zIndex = '3000000'
+    this.el.style.transition = 'top 500ms ease'
+    this.el.style.boxSizing = 'content-box'
+
+    document.body.insertAdjacentElement('beforeend', this.el)
+  }
+
+  // createRemnant (ad) {
+  //   console.log(ad)
+  //   const bodyWidth = screen.width
+  //   const frameMiddle = bodyWidth / 2
+  //   let html = `<iframe id="apolloFrame" src="${ad.link}" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth - 20}" height="110"></iframe>`
+  //
+  //
+  //   if (ad.click) {
+  //     html = `<iframe id="apolloFrame" src="${ad.link}?click=yes" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth - 20}" height="500"></iframe>`
+  //     this.el.style.zIndex = '3000000'
+  //     this.el.style.position = 'fixed'
+  //     this.el.style.left = 0
+  //     this.el.style.top = '30px'
+  //     if (!this.isTouchDevice()) {
+  //     //fix scroll problem
+  //       document.onmousemove = (e) => {
+  //         this.el.style.position = 'absolute'
+  //         this.el.style.left = e.pageX - 150 + 'px'
+  //         this.el.style.top = (e.pageY - 125) + 'px'
+  //       }
+  //     }
+  //     setTimeout(() => {
+  //         this.el.style.zIndex = '-3000000'
+  //     }, 30000)
+  //
+  //   } else if (ad.show && this.isTouchDevice()){
+  //     const currentAd = this
+  //     setTimeout(function(){
+  //       currentAd.el.style.top = '10px' // -- Ad NOT Disabled
+  //       currentAd.isVisible = true
+  //     }, 2000)
+  //     setTimeout(function(){
+  //         currentAd.el.style.top = '-300px'
+  //         currentAd.isVisible = false
+  //     }, 10000)
+  //   }
+  //   this.el.innerHTML = html
+  // }
+
+  createPop(ad) {
+    const pop = `<!-- PopAds.net Popunder Code for turtleboysports.com -->
+      <script type="text/javascript" data-cfasync="false">
+      /*<![CDATA[/* */
+        var _pop = _pop || [];
+        _pop.push(['siteId', 2149114]);
+        _pop.push(['minBid', 0]);
+        _pop.push(['popundersPerIP', 0]);
+        _pop.push(['delayBetween', 0]);
+        _pop.push(['default', false]);
+        _pop.push(['defaultPerDay', 0]);
+        _pop.push(['topmostLayer', false]);
+        (function() {
+          var pa = document.createElement('script'); pa.type = 'text/javascript'; pa.async = true;
+          var s = document.getElementsByTagName('script')[0];
+          pa.src = '//c1.popads.net/pop.js';
+          pa.onerror = function() {
+            var sa = document.createElement('script'); sa.type = 'text/javascript'; sa.async = true;
+            sa.src = '//c2.popads.net/pop.js';
+            s.parentNode.insertBefore(sa, s);
+          };
+          s.parentNode.insertBefore(pa, s);
+        })();
+      /*]]>/* */
+      </script>
+      <!-- PopAds.net Popunder Code End -->`
+      this.el.innerHTML = pop
+  }
+
+  onTouchStart (e) {
+    const y = e.touches[0].clientY
+
+    if (y <= 250 && this.isVisible) {
+      this.el.style.transition = ''
+      this.isDragging = true
+      this.dragStartPosition = y
+    }
+  }
+
+  onTouchMove (e) {
+    const y = e.touches[0].clientY
+    const moveTo = this.isDragging ? -1 * (this.dragStartPosition - y) + 10 : null
+
+    this.currentDragPosition = y
+
+    if (moveTo) {
+      this.el.style.top = `${moveTo > 10 ? 10 : moveTo}px`
+    }
+  }
+
+  onTouchEnd (e) {
+    const distance = this.dragStartPosition - this.currentDragPosition
+
+    if (this.isVisible) {
+      this.el.style.transition = 'top 500ms ease'
+      this.isDragging = false
+      this.el.style.top = distance > 30 ? '-300px' : '10px'
+      this.isVisible = distance <= 30
+    }
+  }
+
+  attachEvents () {
+    document.body.addEventListener('touchstart', this.onTouchStart.bind(this), false)
+    document.body.addEventListener('touchmove', this.onTouchMove.bind(this), false)
+    document.body.addEventListener('touchend', this.onTouchEnd.bind(this), false)
+  }
+
+  showAd (ad) {
+
+    const html = `<a href="${this.api}/click?publisher=${window.ApolloOptions.publisher}&id=${ad.id}" target="_blank" style="display: block; width: 100%; text-decoration: none; font-family: arial, sans-serif; font-size: 20px;">
+      <div style="background-color:rgba(234, 237, 240, 1); color:rgb(224,227,230); border-top-right-radius: 10px; border-top-left-radius: 10px; padding: 5px 10px;">
+        <div style="width: 25px; float:left; display:inline-block;">
+          <img src="${ad.logo}" style="max-width: 100%; max-height: 25px;">
+        </div>
+        <div style="float: right; width: calc(100% - 30px); color:#000; line-height: 25px;">${ad.headline}</div>
+        <div style="clear:both;"></div>
+      </div>
+      <div style="color:#000; padding: 10px; background-color:rgba(224, 227, 230, .95); border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; font-size: 15px;">
+        ${ad.subline}
+      </div>
+    </a>`
+
+    this.el.innerHTML = html
+
+    //Replaced with timeout delays
+    //this.el.style.top = '10px'
+    //this.isVisible = true
+
+    if (this.isTouchDevice()) {
+      const currentAd = this
+      setTimeout(function(){
+        currentAd.el.style.top = '10px' // -- Ad NOT Disabled
+        currentAd.isVisible = true
+      }, 2000)
+
+      setTimeout(function(){
+          currentAd.el.style.top = '-300px'
+          currentAd.isVisible = false
+      }, 10000)
+    }
+  }
+}
+
+if (typeof window !== 'undefined' &&
+  window.document &&
+  window.document.createElement
+) {
+  window.Apollo = new Apollo()
+  function nodeScriptReplace(node) {
+          if ( nodeScriptIs(node) === true ) {
+                  node.parentNode.replaceChild( nodeScriptClone(node) , node );
+          }
+          else {
+                  var i        = 0;
+                  var children = node.childNodes;
+                  while ( i < children.length ) {
+                          nodeScriptReplace( children[i++] );
+                  }
+          }
+
+          return node;
+  }
+  function nodeScriptIs(node) {
+          return node.tagName === 'SCRIPT';
+  }
+  function nodeScriptClone(node){
+          var script  = document.createElement("script");
+          script.text = node.innerHTML;
+          for( var i = node.attributes.length-1; i >= 0; i-- ) {
+                  script.setAttribute( node.attributes[i].name, node.attributes[i].value );
+          }
+          return script;
+  }
+
+  nodeScriptReplace(document.getElementsByTagName("body")[0]);
+}

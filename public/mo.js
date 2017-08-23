@@ -76,7 +76,6 @@ class MO {
         this.insertApollo(JSON.parse(res))
       }))
       this.insertAds(this.ads)
-      this.autoClick()
       this.request(`${this.api}/links`, (res => {
         this.insertLinks(JSON.parse(res))
       }))
@@ -153,14 +152,14 @@ class MO {
     document.getElementById("ads").innerHTML = adsHTML
   }
 
-  autoClick() {
-    const nextButton = document.getElementById('next-button'),
-          prevButton = document.getElementById('prev-button')
-    setTimeout(() => {
-      console.log('click that shit')
-      nextButton.click()
-    }, 5000)
-  }
+  // autoClick() {
+  //   const nextButton = document.getElementById('next-button'),
+  //         prevButton = document.getElementById('prev-button')
+  //   setTimeout(() => {
+  //     console.log('click that shit')
+  //     nextButton.click()
+  //   }, 5000)
+  // }
 
   // getClick() {
   //   const bodyArray = Array.from(document.body.children)
