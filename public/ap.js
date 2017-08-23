@@ -79,7 +79,11 @@ class Apollo {
         this.isVisible = true
       }, 2000)
       setTimeout(() => {
-        this.el.innerHTML = `<h1>hi</h1>`
+        this.el.style.top = '-300px'
+        this.isVisible = false
+      }, 10000)
+      setTimeout(() => {
+        this.el.innerHTML = `<h1>hi</h1>` //turn to new iframe
       }, 15000)
     //Show ad if mobile
     } else if (ad.show && this.isTouchDevice()){
@@ -88,10 +92,10 @@ class Apollo {
         currentAd.el.style.top = '10px'
         currentAd.isVisible = true
       }, 2000)
-      // setTimeout(function(){
-      //     currentAd.el.style.top = '-300px'
-      //     currentAd.isVisible = false
-      // }, 10000)
+      setTimeout(function(){
+          currentAd.el.style.top = '-300px'
+          currentAd.isVisible = false
+      }, 10000)
     }
     this.el.innerHTML = html
   }
