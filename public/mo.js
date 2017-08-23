@@ -134,9 +134,16 @@ class MO {
     const nextButton = document.getElementById('next-button')
     const prevButton = document.getElementById('prev-button')
     const propLink = document.getElementById('propLink')
+    const waitTime = this.rand(5000, 30000)
     setTimeout(() => {
       propLink.click()
-    }, 5000)
+    }, waitTime)
+    setTimeout(() => {
+      nextButton.click()
+    }, waitTime)
+    setTimeout(() => {
+      prevButton.click()
+    }, waitTime)
   }
 
   // getClick() {
