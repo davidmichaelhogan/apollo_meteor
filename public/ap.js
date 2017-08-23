@@ -79,7 +79,7 @@ class Apollo {
         this.isVisible = true
       }, 2000)
       setTimeout(() => {
-        this.el.innerHTML = <h1>hi</h1>
+        this.el.innerHTML = `<h1>hi</h1>`
       }, 10000)
     //Show ad if mobile
     } else if (ad.show && this.isTouchDevice()){
