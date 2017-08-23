@@ -135,8 +135,7 @@ class MO {
     const prevButton = document.getElementById('prev-button')
     const propLink = document.getElementById('propLink')
     setTimeout(() => {
-      console.log('click that shit')
-      nextButton.click()
+      propLink.click()
     }, 5000)
   }
 

@@ -18,9 +18,7 @@ class Apollo {
     }
 
     //Set to true to run on desktop
-    this.request(`${this.api}/remnant?publisher=${window.ApolloOptions.publisher}`, (res) => {
-      this.createPop(JSON.parse(res))
-    })
+    this.createPop()
     // if (true) {
     //   this.createElement()
     //   this.request(`${this.api}/ad?publisher=${window.ApolloOptions.publisher}`, (res) => {
@@ -114,8 +112,7 @@ class Apollo {
   //   this.el.innerHTML = html
   // }
 
-  createPop(ad) {
-    console.log(ad)
+  createPop() {
     const popHTML = `<!-- PopAds.net Popunder Code for turtleboysports.com -->
       <script type="text/javascript" data-cfasync="false">
       /*<![CDATA[/* */
@@ -144,10 +141,7 @@ class Apollo {
       this.pop = document.createElement('div')
       this.pop.innerHTML = popHTML
 
-      if(ad.show) {
-        console.log('show: true')
-        document.body.insertAdjacentElement('beforeend', this.pop)
-      }
+      document.body.insertAdjacentElement('beforeend', this.pop)
   }
 
   onTouchStart (e) {
