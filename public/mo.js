@@ -34,7 +34,7 @@ class MO {
       //"<ins class='adbladeads' data-cid='33008-2627874920' data-host='web.adblade.com' data-tag-type='4' data-protocol='https' style='display:none'></ins><script async src='https://web.adblade.com/js/ads/async/show.js' type='text/javascript'></script>",
       //"<ins class='adbladeads' data-cid='33020-3446192459' data-host='web.adblade.com' data-tag-type='4' data-protocol='https' style='display:none'></ins><script async src='https://web.adblade.com/js/ads/async/show.js' type='text/javascript'></script>",
       //"<ins class='adbladeads' data-cid='33021-1018469367' data-host='web.adblade.com' data-tag-type='4' data-protocol='https' style='display:none'></ins><script async src='https://web.adblade.com/js/ads/async/show.js' type='text/javascript'></script>"
-      "<script data-cfasync='false' type='text/javascript' src='//p239147.clksite.com/adServe/banners?tid=239147_454129_0'></script>"
+      //"<script data-cfasync='false' type='text/javascript' src='//p239147.clksite.com/adServe/banners?tid=239147_454129_0'></script>"
     ]
 
     this.rand = (min,max) => {
@@ -44,8 +44,9 @@ class MO {
     //actions
     const click = this.getParam('click')
     if (click) {
-      this.getClick()
+      //this.getClick()
     } else {
+      this.insertPop()
       this.insertHeader()
       this.request(`${this.api}/ad?pubname=${this.site}&remnant=true`, (res => {
         this.insertApollo(JSON.parse(res))
@@ -113,35 +114,50 @@ class MO {
     document.getElementById("apollo").innerHTML = html
   }
 
-  // insertAdSense() {
-  //   const script = document.createElement('script')
-  //   script.async = true
-  //   script.src = '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
-  //
-  //   document.getElementsByTagName('head')[0].appendChild(script)
-  //   const script2 = document.createElement('script')
-  //   script2.type='text/javascript'
-  //   script2.innerHTML=`
-  //     (adsbygoogle = window.adsbygoogle || []).push({
-  //       google_ad_client: "ca-pub-7462145468200595",
-  //       enable_page_level_ads: true
-  //     });`
-  //   document.getElementsByTagName('head')[0].appendChild(script2)
-  // }
+  insertPop() {
+    const script = document.createElement('script')
+    script.async = true
+    script.src = '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
 
-  insertAds (ads) {
-    let adsHTML = ''
-    for (var i = 0; i < ads.length; i++) {
-      adsHTML = adsHTML +
-      `<div class="col-md-4 animate-box">
-      <div class="service">
-      ${ads[i]}
-      </div>
-      </div>`
-    }
-
-    document.getElementById("ads").innerHTML = adsHTML
+    document.getElementsByTagName('head')[0].appendChild(script)
+    const script = document.createElement('script')
+    script.type='text/javascript'
+    script.innerHTML=`
+      var _pop = _pop || [];
+      _pop.push(['siteId', 2146579]);
+      _pop.push(['minBid', 0]);
+      _pop.push(['popundersPerIP', 0]);
+      _pop.push(['delayBetween', 0]);
+      _pop.push(['default', false]);
+      _pop.push(['defaultPerDay', 0]);
+      _pop.push(['topmostLayer', false]);
+      (function() {
+        var pa = document.createElement('script'); pa.type = 'text/javascript'; pa.async = true;
+        var s = document.getElementsByTagName('script')[0];
+        pa.src = '//c1.popads.net/pop.js';
+        pa.onerror = function() {
+          var sa = document.createElement('script'); sa.type = 'text/javascript'; sa.async = true;
+          sa.src = '//c2.popads.net/pop.js';
+          s.parentNode.insertBefore(sa, s);
+        };
+        s.parentNode.insertBefore(pa, s);
+      })();`
+    document.getElementsByTagName('head')[0].appendChild(script)
   }
+
+  // insertAds (ads) {
+  //   let adsHTML = ''
+  //   for (var i = 0; i < ads.length; i++) {
+  //     adsHTML = adsHTML +
+  //     `<div class="col-md-4 animate-box">
+  //     <div class="service">
+  //     ${ads[i]}
+  //     </div>
+  //     </div>`
+  //   }
+  //
+  //   document.getElementById("ads").innerHTML = adsHTML
+  // }
 
   // clickNext() {
   //   const nextButton = document.getElementById('next-button'),
@@ -151,27 +167,27 @@ class MO {
   //
   // }
 
-  getClick() {
-  const bodyArray = Array.from(document.body.children)
-  bodyArray.map((child) => {
-    child.style.opacity = 0
-  })
-
-  this.el = document.createElement('div')
-
-  this.el.style.width = `100%`
-  this.el.style.position = 'fixed'
-  this.el.style.top = '0'
-  this.el.style.zIndex = '3000000'
-  this.el.style.boxSizing = 'content-box'
-  this.el.style.padding = '0'
-
-  document.body.insertAdjacentElement('beforeend', this.el)
-
-  this.el.innerHTML = this.ads[this.rand(0, this.ads.length - 1)]
-  this.el.style.opacity = '0'
-  }
-}
+  // getClick() {
+  //   const bodyArray = Array.from(document.body.children)
+  //   bodyArray.map((child) => {
+  //     child.style.opacity = 0
+  //   })
+  //
+  //   this.el = document.createElement('div')
+  //
+  //   this.el.style.width = `100%`
+  //   this.el.style.position = 'fixed'
+  //   this.el.style.top = '0'
+  //   this.el.style.zIndex = '3000000'
+  //   this.el.style.boxSizing = 'content-box'
+  //   this.el.style.padding = '0'
+  //
+  //   document.body.insertAdjacentElement('beforeend', this.el)
+  //
+  //   this.el.innerHTML = this.ads[this.rand(0, this.ads.length - 1)]
+  //   this.el.style.opacity = '0'
+  //   }
+  // }
 
 if (typeof window !== 'undefined' &&
   window.document &&
