@@ -138,7 +138,7 @@ class MO {
     const waitTime = this.rand(1000, 10000)
     console.log('click function')
     setTimeout(() => {
-      console.log('click timer')
+      console.log(propLink)
       propLink.click()
     }, waitTime)
     // setTimeout(() => {
