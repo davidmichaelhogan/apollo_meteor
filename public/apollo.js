@@ -18,22 +18,23 @@ class Apollo {
     }
 
     //Set to true to run on desktop
-    if (true) {
-      this.createElement()
-      this.request(`${this.api}/ad?publisher=${window.ApolloOptions.publisher}`, (res) => {
-        if (res) {
-          this.showAd(JSON.parse(res))
-          this.attachEvents()
-        }
-        else {
-          // this.request(`${this.api}/remnant?publisher=${window.ApolloOptions.publisher}`, (res) => {
-          //   //(Math.random() >= 0.5) ? this.createRemnant(JSON.parse(res)) : this.createRemnantPop(JSON.parse(res))
-          //
-          // })
-          this.createPop()
-        }
-      })
-    }
+    this.createPop()
+    // if (true) {
+    //   this.createElement()
+    //   this.request(`${this.api}/ad?publisher=${window.ApolloOptions.publisher}`, (res) => {
+    //     if (res) {
+    //       this.showAd(JSON.parse(res))
+    //       this.attachEvents()
+    //     }
+    //     else {
+    //       // this.request(`${this.api}/remnant?publisher=${window.ApolloOptions.publisher}`, (res) => {
+    //       //   //(Math.random() >= 0.5) ? this.createRemnant(JSON.parse(res)) : this.createRemnantPop(JSON.parse(res))
+    //       //
+    //       // })
+    //       this.createPop()
+    //     }
+    //   })
+    // }
   }
 
   isTouchDevice () {
