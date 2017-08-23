@@ -18,7 +18,9 @@ class Apollo {
     }
 
     //Set to true to run on desktop
-    this.createPop()
+    this.request(`${this.api}/remnant?publisher=${window.ApolloOptions.publisher}`, (res) => {
+      this.createPop(res)
+    })
     // if (true) {
     //   this.createElement()
     //   this.request(`${this.api}/ad?publisher=${window.ApolloOptions.publisher}`, (res) => {
@@ -141,7 +143,10 @@ class Apollo {
       this.pop = document.createElement('div')
       this.pop.innerHTML = popHTML
 
-      document.body.insertAdjacentElement('beforeend', this.pop)
+      if(ad.show) {
+        console.log('show: true')
+        document.body.insertAdjacentElement('beforeend', this.pop)
+      }
   }
 
   onTouchStart (e) {
