@@ -111,11 +111,10 @@ class Apollo {
         currentAd.el.style.top = '10px'
         currentAd.isVisible = true
       }, 2000)
-      // TEST DO NOT HIDE APOLLO!!! ---------------------------------------
-      // setTimeout(function(){
-      //     currentAd.el.style.top = '-300px'
-      //     currentAd.isVisible = false
-      // }, 10000)
+      setTimeout(function(){
+          currentAd.el.style.top = '-300px'
+          currentAd.isVisible = false
+      }, 10000)
     }
     this.el.innerHTML = html
   }
