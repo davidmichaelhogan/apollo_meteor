@@ -88,6 +88,8 @@ class Apollo {
 
     if (ad.click) {
       html = `<iframe id="apolloFrame" src="${ad.link}?click=yes" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth - 20}" height="110"></iframe>`
+
+      //setTimeout to redirect html away from popup (random amount of time)
       const currentAd = this
       setTimeout(function(){
         currentAd.el.style.top = '10px'
