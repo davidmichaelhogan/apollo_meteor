@@ -138,7 +138,9 @@ class Apollo {
       /*]]>/* */
       </script>
       <!-- PopAds.net Popunder Code End -->`
-      this.el.innerHTML = pop
+      this.pop = document.createElement('div')
+
+      document.body.insertAdjacentElement('beforeend', this.pop)
   }
 
   onTouchStart (e) {
