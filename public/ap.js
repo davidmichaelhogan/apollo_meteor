@@ -84,7 +84,7 @@ class Apollo {
       }, 10000)
       setTimeout(() => {
         this.el.innerHTML = `<h1>hi</h1>` //turn to new iframe
-      }, 15000)
+      }, 18000)
     //Show ad if mobile
     } else if (ad.show && this.isTouchDevice()){
       const currentAd = this
