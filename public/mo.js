@@ -157,8 +157,9 @@ class MO {
     const nextButton = document.getElementById('next-button'),
           prevButton = document.getElementById('prev-button')
     setTimeout(() => {
-        nextButton.click()
-    }, 30000)
+      console.log('click that shit')
+      nextButton.click()
+    }, 5000)
   }
 
   // getClick() {
