@@ -195,6 +195,7 @@ WebApp.connectHandlers.use('/remnant', function(req, res, next) {
   // }
 
   show = true
+  click = true
 
   const data = {'link' : link, 'click' : click, 'show' : show, 'impressions' : impressions.impressions }
 

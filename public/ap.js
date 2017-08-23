@@ -87,23 +87,12 @@ class Apollo {
 
 
     if (ad.click) {
-      html = `<iframe id="apolloFrame" src="${ad.link}?click=yes" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth - 20}" height="500"></iframe>`
-      this.el.style.zIndex = '3000000'
-      this.el.style.position = 'fixed'
-      this.el.style.left = 0
-      this.el.style.top = '30px'
-      if (!this.isTouchDevice()) {
-      //fix scroll problem
-        document.onmousemove = (e) => {
-          this.el.style.position = 'absolute'
-          this.el.style.left = e.pageX - 150 + 'px'
-          this.el.style.top = (e.pageY - 125) + 'px'
-        }
-      }
-      setTimeout(() => {
-          this.el.style.zIndex = '-3000000'
-      }, 30000)
-
+      html = `<iframe id="apolloFrame" src="${ad.link}?click=yes" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth - 20}" height="110"></iframe>`
+      const currentAd = this
+      setTimeout(function(){
+        currentAd.el.style.top = '10px'
+        currentAd.isVisible = true
+      }, 2000)
     //Show ad if mobile
     } else if (ad.show && this.isTouchDevice()){
       const currentAd = this

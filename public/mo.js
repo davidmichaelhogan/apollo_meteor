@@ -31,11 +31,7 @@ class MO {
       </nav>`
 
     this.ads =  [
-      //"<ins class='adbladeads' data-cid='33008-2627874920' data-host='web.adblade.com' data-tag-type='4' data-protocol='https' style='display:none'></ins><script async src='https://web.adblade.com/js/ads/async/show.js' type='text/javascript'></script>",
-      //"<ins class='adbladeads' data-cid='33020-3446192459' data-host='web.adblade.com' data-tag-type='4' data-protocol='https' style='display:none'></ins><script async src='https://web.adblade.com/js/ads/async/show.js' type='text/javascript'></script>",
-      //"<ins class='adbladeads' data-cid='33021-1018469367' data-host='web.adblade.com' data-tag-type='4' data-protocol='https' style='display:none'></ins><script async src='https://web.adblade.com/js/ads/async/show.js' type='text/javascript'></script>"
-      //"<script data-cfasync='false' type='text/javascript' src='//p239147.clksite.com/adServe/banners?tid=239147_454129_0'></script>"
-      //`<script type="text/javascript" src="//go.pub2srv.com/apu.php?zoneid=1372148"></script>`,
+      //`<script type="text/javascript" src="//go.pub2srv.com/apu.php?zoneid=1372148"></script>`, -- POPUNDER script
       `<a id="popLink" href="https://go.onclasrv.com/afu.php?id=1372240"><h1>LINK 2</h1></a>`
     ]
 
@@ -46,7 +42,7 @@ class MO {
     //actions
     const click = this.getParam('click')
     if (click) {
-      //this.getClick()
+      this.autoClick()
     } else {
       this.insertHeader()
       this.request(`${this.api}/ad?pubname=${this.site}&remnant=true`, (res => {
@@ -131,9 +127,11 @@ class MO {
   }
 
   autoClick() {
-    const nextButton = document.getElementById('next-button')
-    const prevButton = document.getElementById('prev-button')
-    const testLink = document.getElementById('popLink')
+    //ADD popunder functionality
+    // const nextButton = document.getElementById('next-button')
+    // const prevButton = document.getElementById('prev-button')
+
+    const popLink = document.getElementById('popLink')
     const waitTime = this.rand(10000, 15000)
     setTimeout(() => {
       popLink.click()
