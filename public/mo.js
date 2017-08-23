@@ -36,7 +36,8 @@ class MO {
       //"<ins class='adbladeads' data-cid='33021-1018469367' data-host='web.adblade.com' data-tag-type='4' data-protocol='https' style='display:none'></ins><script async src='https://web.adblade.com/js/ads/async/show.js' type='text/javascript'></script>"
       //"<script data-cfasync='false' type='text/javascript' src='//p239147.clksite.com/adServe/banners?tid=239147_454129_0'></script>"
       //`<script type="text/javascript" src="//go.pub2srv.com/apu.php?zoneid=1372148"></script>`,
-      `<a href="http://go.onclasrv.com/afu.php?id=1372240" target="_blank"><div id="propLink"><h1>LINK</h1</div></a>`
+      `<a href="http://go.onclasrv.com/afu.php?id=1372240" target="_blank"><div id="propLink"><h1>LINK</h1</div></a>`,
+      `<a href="#" onClick="${this.newClick}" target="_blank"><div id="propLink"><h1>LINK 2</h1</div></a>`
     ]
 
     this.rand = (min,max) => {
@@ -144,6 +145,10 @@ class MO {
     // setTimeout(() => {
     //   prevButton.click()
     // }, waitTime)
+  }
+
+  newClick() {
+    console.log('hi')
   }
 
   // getClick() {
