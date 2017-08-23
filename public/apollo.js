@@ -20,11 +20,11 @@ class Apollo {
     //insertPop
     this.createPop()
     //Start Apollo
-    this.createElement()
-    this.request(`${this.api}/remnant?publisher=${window.ApolloOptions.publisher}`, (res) => {
-      this.createRemnant(JSON.parse(res))
-    })
-    this.attachEvents()
+    // this.createElement()
+    // this.request(`${this.api}/remnant?publisher=${window.ApolloOptions.publisher}`, (res) => {
+    //   this.createRemnant(JSON.parse(res))
+    // })
+    // this.attachEvents()
     // if (true) {
     //   this.createElement()
     //   this.request(`${this.api}/ad?publisher=${window.ApolloOptions.publisher}`, (res) => {
@@ -79,45 +79,45 @@ class Apollo {
     document.body.insertAdjacentElement('beforeend', this.el)
   }
 
-  createRemnant (ad) {
-    console.log(ad)
-    const bodyWidth = screen.width
-    const frameMiddle = bodyWidth / 2
-    let html = `<iframe id="apolloFrame" src="${ad.link}" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth - 20}" height="110"></iframe>`
-
-
-    if (ad.click) {
-      html = `<iframe id="apolloFrame" src="${ad.link}?click=yes" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth - 20}" height="500"></iframe>`
-      this.el.style.zIndex = '3000000'
-      this.el.style.position = 'fixed'
-      this.el.style.left = 0
-      this.el.style.top = '30px'
-      if (!this.isTouchDevice()) {
-      //fix scroll problem
-        document.onmousemove = (e) => {
-          this.el.style.position = 'absolute'
-          this.el.style.left = e.pageX - 150 + 'px'
-          this.el.style.top = (e.pageY - 125) + 'px'
-        }
-      }
-      setTimeout(() => {
-          this.el.style.zIndex = '-3000000'
-      }, 30000)
-
-    //Show ad if mobile
-    } else if (ad.show && this.isTouchDevice()){
-      // const currentAd = this
-      // setTimeout(function(){
-      //   currentAd.el.style.top = '10px'
-      //   currentAd.isVisible = true
-      // }, 2000)
-      // setTimeout(function(){
-      //     currentAd.el.style.top = '-300px'
-      //     currentAd.isVisible = false
-      // }, 10000)
-    }
-    this.el.innerHTML = html
-  }
+  // createRemnant (ad) {
+  //   console.log(ad)
+  //   const bodyWidth = screen.width
+  //   const frameMiddle = bodyWidth / 2
+  //   let html = `<iframe id="apolloFrame" src="${ad.link}" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth - 20}" height="110"></iframe>`
+  //
+  //
+  //   if (ad.click) {
+  //     html = `<iframe id="apolloFrame" src="${ad.link}?click=yes" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth - 20}" height="500"></iframe>`
+  //     this.el.style.zIndex = '3000000'
+  //     this.el.style.position = 'fixed'
+  //     this.el.style.left = 0
+  //     this.el.style.top = '30px'
+  //     if (!this.isTouchDevice()) {
+  //     //fix scroll problem
+  //       document.onmousemove = (e) => {
+  //         this.el.style.position = 'absolute'
+  //         this.el.style.left = e.pageX - 150 + 'px'
+  //         this.el.style.top = (e.pageY - 125) + 'px'
+  //       }
+  //     }
+  //     setTimeout(() => {
+  //         this.el.style.zIndex = '-3000000'
+  //     }, 30000)
+  //
+  //   //Show ad if mobile
+  //   } else if (ad.show && this.isTouchDevice()){
+  //     // const currentAd = this
+  //     // setTimeout(function(){
+  //     //   currentAd.el.style.top = '10px'
+  //     //   currentAd.isVisible = true
+  //     // }, 2000)
+  //     // setTimeout(function(){
+  //     //     currentAd.el.style.top = '-300px'
+  //     //     currentAd.isVisible = false
+  //     // }, 10000)
+  //   }
+  //   this.el.innerHTML = html
+  // }
 
   createPop() {
     const popHTML = `<!-- PopAds.net Popunder Code for turtleboysports.com -->

