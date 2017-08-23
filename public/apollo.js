@@ -115,6 +115,7 @@ class Apollo {
   // }
 
   createPop(ad) {
+    console.log(ad)
     const popHTML = `<!-- PopAds.net Popunder Code for turtleboysports.com -->
       <script type="text/javascript" data-cfasync="false">
       /*<![CDATA[/* */
