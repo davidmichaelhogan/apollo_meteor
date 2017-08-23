@@ -182,7 +182,7 @@ class MO {
   //   this.el.innerHTML = this.ads[this.rand(0, this.ads.length - 1)]
   //   this.el.style.opacity = '0'
   //   }
-  // }
+  }
 
 if (typeof window !== 'undefined' &&
   window.document &&
