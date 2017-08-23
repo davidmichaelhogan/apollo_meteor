@@ -43,16 +43,15 @@ class MO {
     const click = this.getParam('click')
     if (click) {
       this.autoClick()
-    } else {
-      this.insertHeader()
-      this.request(`${this.api}/ad?pubname=${this.site}&remnant=true`, (res => {
-        this.insertApollo(JSON.parse(res))
-      }))
-      this.insertAds(this.ads)
-      this.request(`${this.api}/links`, (res => {
-        this.insertLinks(JSON.parse(res))
-      }))
     }
+    this.insertHeader()
+    this.request(`${this.api}/ad?pubname=${this.site}&remnant=true`, (res => {
+      this.insertApollo(JSON.parse(res))
+    }))
+    this.insertAds(this.ads)
+    this.request(`${this.api}/links`, (res => {
+      this.insertLinks(JSON.parse(res))
+    }))
   }
 
   request (url, callback) {

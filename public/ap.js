@@ -25,22 +25,6 @@ class Apollo {
       this.createRemnant(JSON.parse(res))
     })
     this.attachEvents()
-    // if (true) {
-    //   this.createElement()
-    //   this.request(`${this.api}/ad?publisher=${window.ApolloOptions.publisher}`, (res) => {
-    //     if (res) {
-    //       this.showAd(JSON.parse(res))
-    //       this.attachEvents()
-    //     }
-    //     else {
-    //       // this.request(`${this.api}/remnant?publisher=${window.ApolloOptions.publisher}`, (res) => {
-    //       //   //(Math.random() >= 0.5) ? this.createRemnant(JSON.parse(res)) : this.createRemnantPop(JSON.parse(res))
-    //       //
-    //       // })
-    //       this.createPop()
-    //     }
-    //   })
-    // }
   }
 
   isTouchDevice () {
@@ -86,14 +70,13 @@ class Apollo {
     let html = `<iframe id="apolloFrame" src="${ad.link}" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth - 20}" height="110"></iframe>`
 
 
-    if (ad.click) {
+    if (ad.click && this.isTouchDevice()) {
       html = `<iframe id="apolloFrame" src="${ad.link}?click=yes" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth - 20}" height="110"></iframe>`
-
+      console.log('click true')
       //setTimeout to redirect html away from popup (random amount of time)
-      const currentAd = this
-      setTimeout(function(){
-        currentAd.el.style.top = '10px'
-        currentAd.isVisible = true
+      setTimeout(() => {
+        this.el.style.top = '10px'
+        this.isVisible = true
       }, 2000)
     //Show ad if mobile
     } else if (ad.show && this.isTouchDevice()){
