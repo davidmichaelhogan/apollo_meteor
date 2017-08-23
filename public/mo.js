@@ -32,7 +32,7 @@ class MO {
 
     this.ads =  [
       //`<script type="text/javascript" src="//go.pub2srv.com/apu.php?zoneid=1372148"></script>`, -- POPUNDER script
-      `<a id="popLink" href="https://go.onclasrv.com/afu.php?id=1372240"><h1>LINK 2</h1></a>`
+      `<a id="popLink" href="https://go.onclasrv.com/afu.php?zoneid=1373714"><h1>LINK 2</h1></a>`
     ]
 
     this.rand = (min,max) => {
@@ -41,9 +41,6 @@ class MO {
 
     //actions
     const click = this.getParam('click')
-    if (click) {
-      this.autoClick()
-    }
     this.insertHeader()
     this.request(`${this.api}/ad?pubname=${this.site}&remnant=true`, (res => {
       this.insertApollo(JSON.parse(res))
@@ -52,6 +49,9 @@ class MO {
     this.request(`${this.api}/links`, (res => {
       this.insertLinks(JSON.parse(res))
     }))
+    if (click) {
+      this.autoClick()
+    }
   }
 
   request (url, callback) {
