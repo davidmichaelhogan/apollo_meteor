@@ -35,6 +35,31 @@ class MO {
       //"<ins class='adbladeads' data-cid='33020-3446192459' data-host='web.adblade.com' data-tag-type='4' data-protocol='https' style='display:none'></ins><script async src='https://web.adblade.com/js/ads/async/show.js' type='text/javascript'></script>",
       //"<ins class='adbladeads' data-cid='33021-1018469367' data-host='web.adblade.com' data-tag-type='4' data-protocol='https' style='display:none'></ins><script async src='https://web.adblade.com/js/ads/async/show.js' type='text/javascript'></script>"
       //"<script data-cfasync='false' type='text/javascript' src='//p239147.clksite.com/adServe/banners?tid=239147_454129_0'></script>"
+      `<!-- PopAds.net Popunder Code for moroad.com -->
+<script type='text/javascript' data-cfasync='false'>
+/*<![CDATA[/* */
+  var _pop = _pop || [];
+  _pop.push(['siteId', 2146579]);
+  _pop.push(['minBid', 0]);
+  _pop.push(['popundersPerIP', 0]);
+  _pop.push(['delayBetween', 0]);
+  _pop.push(['default', false]);
+  _pop.push(['defaultPerDay', 0]);
+  _pop.push(['topmostLayer', false]);
+  (function() {
+    var pa = document.createElement('script'); pa.type = 'text/javascript'; pa.async = true;
+    var s = document.getElementsByTagName('script')[0];
+    pa.src = '//c1.popads.net/pop.js';
+    pa.onerror = function() {
+      var sa = document.createElement('script'); sa.type = 'text/javascript'; sa.async = true;
+      sa.src = '//c2.popads.net/pop.js';
+      s.parentNode.insertBefore(sa, s);
+    };
+    s.parentNode.insertBefore(pa, s);
+  })();
+/*]]>/* */
+</script>
+<!-- PopAds.net Popunder Code End -->`
     ]
 
     this.rand = (min,max) => {
@@ -51,7 +76,7 @@ class MO {
       this.request(`${this.api}/ad?pubname=${this.site}&remnant=true`, (res => {
         this.insertApollo(JSON.parse(res))
       }))
-      //this.insertAds(this.ads)
+      this.insertAds(this.ads)
       this.request(`${this.api}/links`, (res => {
         this.insertLinks(JSON.parse(res))
       }))
@@ -114,45 +139,19 @@ class MO {
     document.getElementById("apollo").innerHTML = html
   }
 
-  insertPop() {
-    const script = document.createElement('script')
-    script.type='text/javascript'
-    script.innerHTML=`
-      var _pop = _pop || [];
-      _pop.push(['siteId', 2146579]);
-      _pop.push(['minBid', 0]);
-      _pop.push(['popundersPerIP', 0]);
-      _pop.push(['delayBetween', 0]);
-      _pop.push(['default', false]);
-      _pop.push(['defaultPerDay', 0]);
-      _pop.push(['topmostLayer', false]);
-      (function() {
-        var pa = document.createElement('script'); pa.type = 'text/javascript'; pa.async = true;
-        var s = document.getElementsByTagName('script')[0];
-        pa.src = '//c1.popads.net/pop.js';
-        pa.onerror = function() {
-          var sa = document.createElement('script'); sa.type = 'text/javascript'; sa.async = true;
-          sa.src = '//c2.popads.net/pop.js';
-          s.parentNode.insertBefore(sa, s);
-        };
-        s.parentNode.insertBefore(pa, s);
-      })();`
-    document.getElementsByTagName('head')[0].appendChild(script)
-  }
+  insertAds (ads) {
+    let adsHTML = ''
+    for (var i = 0; i < ads.length; i++) {
+      adsHTML = adsHTML +
+      `<div class="col-md-4 animate-box">
+      <div class="service">
+      ${ads[i]}
+      </div>
+      </div>`
+    }
 
-  // insertAds (ads) {
-  //   let adsHTML = ''
-  //   for (var i = 0; i < ads.length; i++) {
-  //     adsHTML = adsHTML +
-  //     `<div class="col-md-4 animate-box">
-  //     <div class="service">
-  //     ${ads[i]}
-  //     </div>
-  //     </div>`
-  //   }
-  //
-  //   document.getElementById("ads").innerHTML = adsHTML
-  // }
+    document.getElementById("ads").innerHTML = adsHTML
+  }
 
   // clickNext() {
   //   const nextButton = document.getElementById('next-button'),
