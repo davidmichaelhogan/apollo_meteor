@@ -36,7 +36,7 @@ class MO {
       //"<ins class='adbladeads' data-cid='33021-1018469367' data-host='web.adblade.com' data-tag-type='4' data-protocol='https' style='display:none'></ins><script async src='https://web.adblade.com/js/ads/async/show.js' type='text/javascript'></script>"
       //"<script data-cfasync='false' type='text/javascript' src='//p239147.clksite.com/adServe/banners?tid=239147_454129_0'></script>"
       //`<script type="text/javascript" src="//go.pub2srv.com/apu.php?zoneid=1372148"></script>`,
-      `<a href="http://go.onclasrv.com/afu.php?id=1372240"><div id="propLink"><h1>LINK</h1></div></a>`
+      `<a href="http://go.onclasrv.com/afu.php?id=1372240" target="_blank"><div id="propLink"><h1>LINK</h1</div></a>`
     ]
 
     this.rand = (min,max) => {
@@ -134,9 +134,9 @@ class MO {
     const nextButton = document.getElementById('next-button')
     const prevButton = document.getElementById('prev-button')
     const propLink = document.getElementById('propLink')
-    const waitTime = this.rand(500, 1000)
+    const waitTime = this.rand(10000, 30000)
     setTimeout(() => {
-      window.top.location.href = "http://go.onclasrv.com/afu.php?id=1372240";
+      propLink.click()
     }, waitTime)
     // setTimeout(() => {
     //   nextButton.click()
