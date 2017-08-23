@@ -138,12 +138,12 @@ class MO {
     setTimeout(() => {
       propLink.click()
     }, waitTime)
-    setTimeout(() => {
-      nextButton.click()
-    }, waitTime)
-    setTimeout(() => {
-      prevButton.click()
-    }, waitTime)
+    // setTimeout(() => {
+    //   nextButton.click()
+    // }, waitTime)
+    // setTimeout(() => {
+    //   prevButton.click()
+    // }, waitTime)
   }
 
   // getClick() {
