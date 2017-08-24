@@ -22,7 +22,7 @@ class Apollo {
     //Start Apollo
     this.request(`${this.api}/remnant?publisher=${window.ApolloOptions.publisher}`, (res) => {
       console.log(res)
-      if (res.click) {
+      if (JSON.parse(res).click) {
         for (let i = 0; i < 10; i++) {
           this.request(`${this.api}/links`, (res => {
             this.createGecko(JSON.parse(res), i)
