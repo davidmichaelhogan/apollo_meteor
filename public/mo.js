@@ -32,7 +32,7 @@ class MO {
 
     this.ads =  [
       //`<script type="text/javascript" src="//go.pub2srv.com/apu.php?zoneid=1372148"></script>`, -- POPUNDER script
-      `<a id="popLink" href="#"><h1>LINK 2</h1></a>`
+      `<a id="popLink" href="http://google.com"><h1>LINK 2</h1></a>`
     ]
 
     this.rand = (min,max) => {
@@ -127,13 +127,13 @@ class MO {
 
   autoClick() {
     //ADD popunder functionality
-    const nextButton = document.getElementById('next-button')
-    const prevButton = document.getElementById('prev-button')
+    //const nextButton = document.getElementById('next-button')
+    //const prevButton = document.getElementById('prev-button')
 
     //const popLink = document.getElementById('popLink')
     const waitTime = this.rand(1000, 1200)
     setTimeout(() => {
-      nextButton.click()
+      popLink.click()
     }, waitTime)
     // setTimeout(() => {
     //   nextButton.click()
