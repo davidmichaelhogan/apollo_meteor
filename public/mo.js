@@ -146,7 +146,7 @@ class MO {
       const click = ads[this.rand(0, ads.length - 1)].replace("this.href='", "").replace("'; return true;", "")
       console.log(click)
       //window.location.href = `${click}`
-      window.open(click,'_blank')
+      window.open(click)
     }, randWait)
   }
 
