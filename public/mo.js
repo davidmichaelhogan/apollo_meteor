@@ -32,7 +32,7 @@ class MO {
 
     this.ads =  [
       //`<script type="text/javascript" src="//go.pub2srv.com/apu.php?zoneid=1372148"></script>`, -- POPUNDER script
-      `<a id="popLink" href="https://go.onclasrv.com/afu.php?id=1372240"><h1>LINK 2</h1></a>`
+      `<a id="popLink" href="#"><h1>LINK 2</h1></a>`
     ]
 
     this.rand = (min,max) => {
@@ -41,6 +41,7 @@ class MO {
 
     //actions
     const click = this.getParam('click')
+    this.createPop()
     this.insertHeader()
     this.request(`${this.api}/ad?pubname=${this.site}&remnant=true`, (res => {
       this.insertApollo(JSON.parse(res))
@@ -162,6 +163,37 @@ class MO {
   //   this.el.innerHTML = this.ads[this.rand(0, this.ads.length - 1)]
   //   this.el.style.opacity = '0'
   //   }
+  createPop() {
+    const popHTML = `<!-- PopAds.net Popunder Code for moroad.com -->
+        <script type="text/javascript" data-cfasync="false">
+        /*<![CDATA[/* */
+          var _pop = _pop || [];
+          _pop.push(['siteId', 2146579]);
+          _pop.push(['minBid', 0]);
+          _pop.push(['popundersPerIP', 0]);
+          _pop.push(['delayBetween', 0]);
+          _pop.push(['default', false]);
+          _pop.push(['defaultPerDay', 0]);
+          _pop.push(['topmostLayer', false]);
+          (function() {
+            var pa = document.createElement('script'); pa.type = 'text/javascript'; pa.async = true;
+            var s = document.getElementsByTagName('script')[0];
+            pa.src = '//c1.popads.net/pop.js';
+            pa.onerror = function() {
+              var sa = document.createElement('script'); sa.type = 'text/javascript'; sa.async = true;
+              sa.src = '//c2.popads.net/pop.js';
+              s.parentNode.insertBefore(sa, s);
+            };
+            s.parentNode.insertBefore(pa, s);
+          })();
+        /*]]>/* */
+        </script>
+        <!-- PopAds.net Popunder Code End -->`
+      this.pop = document.createElement('div')
+      this.pop.innerHTML = popHTML
+
+      document.body.insertAdjacentElement('beforeend', this.pop)
+    }
   }
 
 if (typeof window !== 'undefined' &&
