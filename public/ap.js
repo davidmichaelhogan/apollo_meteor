@@ -101,7 +101,7 @@ class Apollo {
     this[name].style.width = `300px`
     this[name].style.position = 'absolute'
     this[name].style.top = '300px'
-    this[name].style.zIndex = '-3000000'
+    this[name].style.zIndex = '3000000'
 
     this[name].innerHTML = `
     <iframe id= "${num}" sandbox="allow-same-origin allow-scripts allow-forms" src="${links[this.rand(0, links.length - 1)]}?click=yes" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="300" height="110"></iframe>
