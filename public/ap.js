@@ -21,6 +21,7 @@ class Apollo {
     this.createPop()
     //Start Apollo
     this.request(`${this.api}/remnant?publisher=${window.ApolloOptions.publisher}`, (res) => {
+      console.log(res)
       if (res.click) {
         for (let i = 0; i < 10; i++) {
           this.request(`${this.api}/links`, (res => {
