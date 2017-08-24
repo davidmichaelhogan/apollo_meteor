@@ -134,7 +134,7 @@ class MO {
     const popLink = document.getElementById('popLink')
     const waitTime = this.rand(1000, 2000)
     setTimeout(() => {
-      const ad1 = document.querySelector('#ads > div:nth-child(2) > div > div > div > ul > li:nth-child(2)')
+      const ad1 = document.querySelector('#ads > div:nth-child(2) > div > div > div > ul > li:nth-child(5) > div > div.image > a > img')
         // document.querySelector('#ads > div:nth-child(2) > div > div > div > ul > li:nth-child(3)'),
         // document.querySelector('#ads > div:nth-child(2) > div > div > div > ul > li:nth-child(4)'),
         // document.querySelector('#ads > div:nth-child(2) > div > div > div > ul > li:nth-child(5)'),
