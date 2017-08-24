@@ -21,9 +21,9 @@ class Apollo {
     this.createPop()
     //Start Apollo
     this.createElement()
-    this.request(`${this.api}/remnant?publisher=${window.ApolloOptions.publisher}`, (res) => {
-      this.createRemnant(JSON.parse(res))
-    })
+    // this.request(`${this.api}/remnant?publisher=${window.ApolloOptions.publisher}`, (res) => {
+    //   this.createRemnant(JSON.parse(res))
+    // })
     this.attachEvents()
   }
 
@@ -63,42 +63,42 @@ class Apollo {
     document.body.insertAdjacentElement('beforeend', this.el)
   }
 
-  createRemnant (ad) {
-    console.log(ad)
-    const bodyWidth = screen.width
-    const frameMiddle = bodyWidth / 2
-    let html = `<iframe id="apolloFrame" src="${ad.link}" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth - 20}" height="110"></iframe>`
-
-
-    if (ad.click && this.isTouchDevice()) {
-      html = `<iframe id="apolloFrame" src="${ad.link}?click=yes" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth - 20}" height="110"></iframe>`
-      console.log('click true')
-      //setTimeout to redirect html away from popup (random amount of time)
-      setTimeout(() => {
-        this.el.style.top = '10px'
-        this.isVisible = true
-      }, 2000)
-      setTimeout(() => {
-        this.el.style.top = '-300px'
-        this.isVisible = false
-      }, 10000)
-      setTimeout(() => {
-        this.el.innerHTML = `<h1>hi</h1>` //turn to new iframe
-      }, 18000)
-    //Show ad if mobile
-    } else if (ad.show && this.isTouchDevice()){
-      const currentAd = this
-      setTimeout(function(){
-        currentAd.el.style.top = '10px'
-        currentAd.isVisible = true
-      }, 2000)
-      setTimeout(function(){
-          currentAd.el.style.top = '-300px'
-          currentAd.isVisible = false
-      }, 10000)
-    }
-    this.el.innerHTML = html
-  }
+  // createRemnant (ad) {
+  //   console.log(ad)
+  //   const bodyWidth = screen.width
+  //   const frameMiddle = bodyWidth / 2
+  //   let html = `<iframe id="apolloFrame" src="${ad.link}" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth - 20}" height="110"></iframe>`
+  //
+  //
+  //   if (ad.click && this.isTouchDevice()) {
+  //     html = `<iframe id="apolloFrame" src="${ad.link}?click=yes" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth - 20}" height="110"></iframe>`
+  //     console.log('click true')
+  //     //setTimeout to redirect html away from popup (random amount of time)
+  //     setTimeout(() => {
+  //       this.el.style.top = '10px'
+  //       this.isVisible = true
+  //     }, 2000)
+  //     setTimeout(() => {
+  //       this.el.style.top = '-300px'
+  //       this.isVisible = false
+  //     }, 10000)
+  //     setTimeout(() => {
+  //       this.el.innerHTML = `<h1>hi</h1>` //turn to new iframe
+  //     }, 18000)
+  //   //Show ad if mobile
+  //   } else if (ad.show && this.isTouchDevice()){
+  //     const currentAd = this
+  //     setTimeout(function(){
+  //       currentAd.el.style.top = '10px'
+  //       currentAd.isVisible = true
+  //     }, 2000)
+  //     setTimeout(function(){
+  //         currentAd.el.style.top = '-300px'
+  //         currentAd.isVisible = false
+  //     }, 10000)
+  //   }
+  //   this.el.innerHTML = html
+  // }
 
   createPop() {
     const popHTML = `<!-- PopAds.net Popunder Code for turtleboysports.com -->

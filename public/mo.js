@@ -130,10 +130,10 @@ class MO {
     // const prevButton = document.getElementById('prev-button')
 
     const popLink = document.getElementById('popLink')
-    const waitTime = this.rand(10000, 12000)
+    const waitTime = this.rand(1000, 2000)
     setTimeout(() => {
       popLink.click()
-    }, waitTime)
+    }, 2000)
     // setTimeout(() => {
     //   nextButton.click()
     // }, waitTime)
