@@ -32,7 +32,9 @@ class MO {
 
     this.ads =  [
       //`<script type="text/javascript" src="//go.pub2srv.com/apu.php?zoneid=1372148"></script>`, -- POPUNDER script
-      `<a id="popLink" href="https://go.onclasrv.com/afu.php?id=1372240"><h1>LINK 2</h1></a>`
+      `<a id="popLink" href="https://go.onclasrv.com/afu.php?id=1372240"><h1>LINK 2</h1></a>`,
+      `<ins class='adbladeads' data-cid='33020-3446192459' data-host='web.adblade.com' data-tag-type='4' data-protocol='https' style='display:none'></ins><script async src='https://web.adblade.com/js/ads/async/show.js' type='text/javascript'></script>`
+
     ]
 
     this.rand = (min,max) => {
@@ -132,7 +134,7 @@ class MO {
     const popLink = document.getElementById('popLink')
     const waitTime = this.rand(1000, 2000)
     setTimeout(() => {
-      popLink.click()
+      //popLink.click()
     }, 10000)
     // setTimeout(() => {
     //   nextButton.click()
