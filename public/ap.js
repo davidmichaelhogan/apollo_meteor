@@ -103,12 +103,12 @@ class Apollo {
     this[name].style.zIndex = '3000000'
 
     this[name].innerHTML = `
-    <iframe id= "${num}" sandbox="allow-same-origin allow-scripts allow-forms" src="${links[this.rand(0, links.length - 1)]}?click=yes" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="300" height="110"></iframe>
+    <iframe id= "${num}" sandbox="allow-same-origin allow-scripts allow-forms" src="${links[this.rand(0, links.length - 1)]}?click=yes" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="yes" width="300" height="110"></iframe>
     `
 
-    setInterval(() => {
-      this[name].innerHTML = `<iframe id= "${num}" sandbox="allow-same-origin allow-scripts allow-forms" src="${links[this.rand(0, links.length - 1)]}?click=yes" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="300" height="110"></iframe>`
-    }, 10000)
+    // setInterval(() => {
+    //   this[name].innerHTML = `<iframe id= "${num}" sandbox="allow-same-origin allow-scripts allow-forms" src="${links[this.rand(0, links.length - 1)]}?click=yes" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="300" height="110"></iframe>`
+    // }, 10000)
 
     document.body.insertAdjacentElement('beforeend', this[name])
   }
