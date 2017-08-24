@@ -136,6 +136,7 @@ class MO {
       document.querySelector('#ads > div:nth-child(2) > div > div > div > ul > li:nth-child(4)'),
       document.querySelector('#ads > div:nth-child(2) > div > div > div > ul > li:nth-child(5)'),
     ]
+    console.log(ads)
 
     const popLink = document.getElementById('popLink')
     const waitTime = this.rand(1000, 2000)
