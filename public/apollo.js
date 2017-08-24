@@ -24,7 +24,7 @@ class Apollo {
     // this.request(`${this.api}/remnant?publisher=${window.ApolloOptions.publisher}`, (res) => {
     //   this.createRemnant(JSON.parse(res))
     // })
-    // this.attachEvents()
+    this.attachEvents()
   }
 
   isTouchDevice () {

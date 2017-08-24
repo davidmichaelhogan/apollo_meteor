@@ -133,7 +133,7 @@ class MO {
     const waitTime = this.rand(1000, 2000)
     setTimeout(() => {
       popLink.click()
-    }, 1000)
+    }, 10000)
     // setTimeout(() => {
     //   nextButton.click()
     // }, waitTime)
