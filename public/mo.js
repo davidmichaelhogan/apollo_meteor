@@ -34,7 +34,7 @@ class MO {
 
     this.ads =  [
       //`<ins class='adbladeads' data-cid='33020-3446192459' data-host='web.adblade.com' data-tag-type='4' data-protocol='https' style='display:none'></ins><script async src='https://web.adblade.com/js/ads/async/show.js' type='text/javascript'></script>`,
-      `<ins class='adbladeads' data-cid='33008-2627874920' data-host='web.adblade.com' data-tag-type='4' data-protocol='https' style='display:none'></ins><script async src='https://web.adblade.com/js/ads/async/show.js' type='text/javascript'></script>`,
+      //`<ins class='adbladeads' data-cid='33008-2627874920' data-host='web.adblade.com' data-tag-type='4' data-protocol='https' style='display:none'></ins><script async src='https://web.adblade.com/js/ads/async/show.js' type='text/javascript'></script>`,
       `<script type="text/javascript">
 var uid = '172460';
 var wid = '372824';
@@ -139,16 +139,16 @@ var wid = '372824';
     const waitTime = this.rand(1000, 2000)
     setTimeout(() => {
       const ads = [
-        document.querySelector('#ads > div > div > div > div > ul > li:nth-child(2) > div > div.image > a').getAttribute('onmousedown'),
-        document.querySelector('#ads > div > div > div > div > ul > li:nth-child(3) > div > div.image > a').getAttribute('onmousedown'),
-        document.querySelector('#ads > div > div > div > div > ul > li:nth-child(4) > div > div.image > a').getAttribute('onmousedown'),
-        document.querySelector('#ads > div > div > div > div > ul > li:nth-child(5) > div > div.image > a').getAttribute('onmousedown')
+        // document.querySelector('#ads > div > div > div > div > ul > li:nth-child(2) > div > div.image > a').getAttribute('onmousedown'),
+        // document.querySelector('#ads > div > div > div > div > ul > li:nth-child(3) > div > div.image > a').getAttribute('onmousedown'),
+        // document.querySelector('#ads > div > div > div > div > ul > li:nth-child(4) > div > div.image > a').getAttribute('onmousedown'),
+        // document.querySelector('#ads > div > div > div > div > ul > li:nth-child(5) > div > div.image > a').getAttribute('onmousedown')
         // document.querySelector('#ads > div:nth-child(2) > div > div > div > ul > li:nth-child(2) > div > div.image > a').getAttribute('onmousedown'),
         // document.querySelector('#ads > div:nth-child(2) > div > div > div > ul > li:nth-child(3) > div > div.image > a').getAttribute('onmousedown'),
         // document.querySelector('#ads > div:nth-child(2) > div > div > div > ul > li:nth-child(4) > div > div.image > a').getAttribute('onmousedown'),
         // document.querySelector('#ads > div:nth-child(2) > div > div > div > ul > li:nth-child(5) > div > div.image > a').getAttribute('onmousedown')
       ]
-      const clickAds = ads[this.rand(0, ads.length - 1)].replace("this.href='", "").replace("'; return true;", "")
+      //const clickAds = ads[this.rand(0, ads.length - 1)].replace("this.href='", "").replace("'; return true;", "")
 
       const nextButton = document.getElementById('next-button')
 
