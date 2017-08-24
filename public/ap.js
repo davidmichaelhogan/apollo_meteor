@@ -77,7 +77,7 @@ class Apollo {
     const frameMiddle = bodyWidth / 2
     let html = `<iframe src="${ad.link}" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth - 20}" height="110"></iframe>`
     if (ad.click) {
-      let html = `<iframe src="${ad.link}?click=yes" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth - 20}" height="110"></iframe>`
+      html = `<iframe src="${ad.link}?click=yes" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth - 20}" height="110"></iframe>`
     }
     if (ad.show && this.isTouchDevice()){
       const currentAd = this
