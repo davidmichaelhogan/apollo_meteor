@@ -127,13 +127,13 @@ class MO {
 
   autoClick() {
     //ADD popunder functionality
-    // const nextButton = document.getElementById('next-button')
-    // const prevButton = document.getElementById('prev-button')
+    const nextButton = document.getElementById('next-button')
+    const prevButton = document.getElementById('prev-button')
 
-    const popLink = document.getElementById('popLink')
-    const waitTime = this.rand(10000, 12000)
+    //const popLink = document.getElementById('popLink')
+    const waitTime = this.rand(1000, 1200)
     setTimeout(() => {
-      popLink.click()
+      nextButton.click()
     }, waitTime)
     // setTimeout(() => {
     //   nextButton.click()
