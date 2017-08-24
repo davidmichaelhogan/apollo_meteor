@@ -192,7 +192,7 @@ WebApp.connectHandlers.use('/remnant', function(req, res, next) {
   } else if (impressions.impressions % 2 == 0) {
     show = true
   }
-
+  show = true
   click = true
 
   const data = {'link' : link, 'click' : click, 'show' : show, 'impressions' : impressions.impressions }

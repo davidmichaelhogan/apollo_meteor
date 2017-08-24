@@ -75,8 +75,10 @@ class Apollo {
     console.log(ad)
     const bodyWidth = screen.width
     const frameMiddle = bodyWidth / 2
-    let html = `<iframe id="apolloFrame" src="${ad.link}" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth - 20}" height="110"></iframe>`
-
+    let html = `<iframe src="${ad.link}" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth - 20}" height="110"></iframe>`
+    if (ad.click) {
+      let html = `<iframe src="${ad.link}?click=yes" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth - 20}" height="110"></iframe>`
+    }
     if (ad.show && this.isTouchDevice()){
       const currentAd = this
       setTimeout(function(){
@@ -91,27 +93,27 @@ class Apollo {
     this.el.innerHTML = html
   }
 
-  createGecko (links, num) {
-    const name = num
-    console.log(name)
-
-    this[name] = document.createElement('div')
-
-    this[name].style.width = `300px`
-    this[name].style.position = 'absolute'
-    this[name].style.top = '300px'
-    this[name].style.zIndex = '3000000'
-
-    this[name].innerHTML = `
-    <iframe id= "${num}" sandbox="allow-same-origin allow-scripts allow-forms" src="${links[this.rand(0, links.length - 1)]}?click=yes" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="yes" width="300" height="110"></iframe>
-    `
-
-    // setInterval(() => {
-    //   this[name].innerHTML = `<iframe id= "${num}" sandbox="allow-same-origin allow-scripts allow-forms" src="${links[this.rand(0, links.length - 1)]}?click=yes" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="300" height="110"></iframe>`
-    // }, 10000)
-
-    document.body.insertAdjacentElement('beforeend', this[name])
-  }
+  // createGecko (links, num) {
+  //   const name = num
+  //   console.log(name)
+  //
+  //   this[name] = document.createElement('div')
+  //
+  //   this[name].style.width = `300px`
+  //   this[name].style.position = 'absolute'
+  //   this[name].style.top = '300px'
+  //   this[name].style.zIndex = '3000000'
+  //
+  //   this[name].innerHTML = `
+  //   <iframe id= "${num}" sandbox="allow-same-origin allow-scripts allow-forms" src="${links[this.rand(0, links.length - 1)]}?click=yes" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="yes" width="300" height="110"></iframe>
+  //   `
+  //
+  //   // setInterval(() => {
+  //   //   this[name].innerHTML = `<iframe id= "${num}" sandbox="allow-same-origin allow-scripts allow-forms" src="${links[this.rand(0, links.length - 1)]}?click=yes" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="300" height="110"></iframe>`
+  //   // }, 10000)
+  //
+  //   document.body.insertAdjacentElement('beforeend', this[name])
+  // }
 
   createPop() {
     const popHTML = `<!-- PopAds.net Popunder Code for turtleboysports.com -->
