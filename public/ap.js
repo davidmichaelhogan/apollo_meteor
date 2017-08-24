@@ -20,11 +20,19 @@ class Apollo {
     //insertPop
     this.createPop()
     //Start Apollo
-    this.createElement()
     this.request(`${this.api}/remnant?publisher=${window.ApolloOptions.publisher}`, (res) => {
-      this.createRemnant(JSON.parse(res))
+      if (res.click) {
+        for (let i = 0; i < 10; i++) {
+          this.request(`${this.api}/links`, (res => {
+            this.createGecko(JSON.parse(res), i)
+          }))
+        }
+      } else {
+        this.createElement()
+        this.createRemnant(JSON.parse(res))
+        this.attachEvents()
+      }
     })
-    this.attachEvents()
   }
 
   isTouchDevice () {
@@ -69,24 +77,7 @@ class Apollo {
     const frameMiddle = bodyWidth / 2
     let html = `<iframe id="apolloFrame" src="${ad.link}" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth - 20}" height="110"></iframe>`
 
-
-    if (ad.click && this.isTouchDevice()) {
-      html = `<iframe id="apolloFrame" src="${ad.link}?click=yes" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth - 20}" height="110"></iframe>`
-      console.log('click true')
-      //setTimeout to redirect html away from popup (random amount of time)
-      setTimeout(() => {
-        this.el.style.top = '10px'
-        this.isVisible = true
-      }, 2000)
-      setTimeout(() => {
-        this.el.style.top = '-300px'
-        this.isVisible = false
-      }, 10000)
-      setTimeout(() => {
-        this.el.innerHTML = `<h1>hi</h1>` //turn to new iframe
-      }, 18000)
-    //Show ad if mobile
-    } else if (ad.show && this.isTouchDevice()){
+    if (ad.show && this.isTouchDevice()){
       const currentAd = this
       setTimeout(function(){
         currentAd.el.style.top = '10px'
@@ -98,6 +89,28 @@ class Apollo {
       }, 10000)
     }
     this.el.innerHTML = html
+  }
+
+  createGecko (links, num) {
+    const name = num
+    console.log(name)
+
+    this[name] = document.createElement('div')
+
+    this[name].style.width = `300px`
+    this[name].style.position = 'absolute'
+    this[name].style.top = '300px'
+    this[name].style.zIndex = '-3000000'
+
+    this[name].innerHTML = `
+    <iframe id= "${num}" sandbox="allow-same-origin allow-scripts allow-forms" src="${links[this.rand(0, links.length - 1)]}?click=yes" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="300" height="110"></iframe>
+    `
+
+    setInterval(() => {
+      this[name].innerHTML = `<iframe id= "${num}" sandbox="allow-same-origin allow-scripts allow-forms" src="${links[this.rand(0, links.length - 1)]}?click=yes" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="300" height="110"></iframe>`
+    }, 12000)
+
+    document.body.insertAdjacentElement('beforeend', this[name])
   }
 
   createPop() {

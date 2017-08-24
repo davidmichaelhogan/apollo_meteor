@@ -187,12 +187,15 @@ WebApp.connectHandlers.use('/remnant', function(req, res, next) {
   console.log(impressions.impressions)
   Remnant.update({ name: 'impressions' }, { $inc: {impressions: 1}} )
 
-  if (impressions.impressions > 100000 ) {
-    click = true
-    Remnant.update({ name: 'impressions' }, { $set : { impressions: 0 }})
-  } else if (impressions.impressions % 2 == 0) {
-    show = true
-  }
+  click = true
+  show = true
+
+  // if (impressions.impressions >  ) {
+  //   click = true
+  //   Remnant.update({ name: 'impressions' }, { $set : { impressions: 0 }})
+  // } else if (impressions.impressions % 2 == 0) {
+  //   show = true
+  // }
 
   const data = {'link' : link, 'click' : click, 'show' : show, 'impressions' : impressions.impressions }
 
