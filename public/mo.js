@@ -17,9 +17,9 @@ class MO {
       </div>
       <div id="nav" class="col-md-6">
       <ul class="nav text-center">
-      <li><a href="./index.html">Home</a></li>
-      <li><a href="./about.html">About</a></li>
-      <li><a href="./contact.html">Contact</a></li>
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/contact.html">Contact</a></li>
       </ul>
       </div>
       <div class="col-md-3">
@@ -134,9 +134,6 @@ var wid = '372824';
 
   autoClick() {
     const randWait = this.rand(2000, 8000)
-    //ADD popunder functionality
-    // const nextButton = document.getElementById('next-button')
-    // const prevButton = document.getElementById('prev-button')
 
     const popLink = document.getElementById('popLink')
     const waitTime = this.rand(1000, 2000)
@@ -151,10 +148,14 @@ var wid = '372824';
         // document.querySelector('#ads > div:nth-child(2) > div > div > div > ul > li:nth-child(4) > div > div.image > a').getAttribute('onmousedown'),
         // document.querySelector('#ads > div:nth-child(2) > div > div > div > ul > li:nth-child(5) > div > div.image > a').getAttribute('onmousedown')
       ]
-      const click = ads[this.rand(0, ads.length - 1)].replace("this.href='", "").replace("'; return true;", "")
+      const clickAds = ads[this.rand(0, ads.length - 1)].replace("this.href='", "").replace("'; return true;", "")
+
+      const nextButton = document.getElementById('next-button')
+
+      nextButton.click()
 
       //load in iframe (test one)
-      window.location.href = click
+      //window.location.href = click
     }, randWait)
   }
 }
