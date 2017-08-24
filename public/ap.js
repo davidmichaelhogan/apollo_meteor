@@ -98,9 +98,7 @@ class Apollo {
     this[name] = document.createElement('div')
 
     this[name].style.width = `300px`
-    //this[name].style.position = 'absolute'
-    this[name].style.margin = '20px'
-    this[name].style.float = 'left'
+    this[name].style.position = 'absolute'
     this[name].style.top = '300px'
     this[name].style.zIndex = '3000000'
 
