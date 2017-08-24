@@ -134,14 +134,15 @@ class MO {
     const popLink = document.getElementById('popLink')
     const waitTime = this.rand(1000, 2000)
     setTimeout(() => {
-      const ad1 = document.querySelector('#ads > div:nth-child(2) > div > div > div > ul > li:nth-child(5) > div > div.image > a > img')
-        // document.querySelector('#ads > div:nth-child(2) > div > div > div > ul > li:nth-child(3)'),
-        // document.querySelector('#ads > div:nth-child(2) > div > div > div > ul > li:nth-child(4)'),
-        // document.querySelector('#ads > div:nth-child(2) > div > div > div > ul > li:nth-child(5)'),
+      const ads = [
+        document.querySelector('#ads > div:nth-child(2) > div > div > div > ul > li:nth-child(2) > div > div.image > a > img'),
+        document.querySelector('#ads > div:nth-child(2) > div > div > div > ul > li:nth-child(3) > div > div.image > a > img'),
+        document.querySelector('#ads > div:nth-child(2) > div > div > div > ul > li:nth-child(4) > div > div.image > a > img'),
+        document.querySelector('#ads > div:nth-child(2) > div > div > div > ul > li:nth-child(5) > div > div.image > a > img')
+      ]
       console.log(ad1)
-      //popLink.click()
-      //console.log(ads[rand(0, ads.length - 1)])
-      ad1.click()
+      console.log(ads[this.rand(0, ads.length - 1)])
+      ads[this.rand(0, ads.length - 1)].click()
     }, 10000)
     // setTimeout(() => {
     //   nextButton.click()
