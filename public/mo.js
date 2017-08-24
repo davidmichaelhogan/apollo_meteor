@@ -127,6 +127,7 @@ class MO {
   }
 
   autoClick() {
+    randWait = this.rand(2000, 1200)
     //ADD popunder functionality
     // const nextButton = document.getElementById('next-button')
     // const prevButton = document.getElementById('prev-button')
@@ -140,10 +141,10 @@ class MO {
         document.querySelector('#ads > div:nth-child(2) > div > div > div > ul > li:nth-child(4) > div > div.image > a > img'),
         document.querySelector('#ads > div:nth-child(2) > div > div > div > ul > li:nth-child(5) > div > div.image > a > img')
       ]
-      
+
       console.log(ads[this.rand(0, ads.length - 1)])
       ads[this.rand(0, ads.length - 1)].click()
-    }, 10000)
+    }, randWait)
     // setTimeout(() => {
     //   nextButton.click()
     // }, waitTime)
