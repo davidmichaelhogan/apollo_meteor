@@ -103,27 +103,6 @@ WebApp.connectHandlers.use('/ad', function(req, res, next) {
 
     // Minus 0.008 from the current ads balance
     Ads.update(Ad, { $inc: { balance: -0.008, impressions: 0.5, nextServed: Ad.timeDiff}})
-
-    //Update analytics data
-    if (Analytics.find({ _id: Ad._id }).count() == 0 ) {
-      Analytics.insert({
-        _id: Ad._id,
-        data: [
-          {
-            date: dateString,
-            impressions: 1,
-            clicks: 0
-          }
-        ]
-      })
-    } else  if (Analytics.find({ "data.date": dateString }).count() == 0) {
-      Analytics.update({ _id: Ad._id },
-        {
-        $push: { data: { $each: [{ date: dateString, impressions: 1, clicks: 0 }]}}
-      })
-    } else {
-    Analytics.update({ _id: Ad._id, "data.date": dateString} , { $inc: { "data.$.impressions": 1 }})
-    }
   }
 
 
@@ -151,26 +130,6 @@ WebApp.connectHandlers.use('/click', function(req, res, next) {
 
   Ads.update(Ad, { $inc: {clicks: 1}})
 
-  if (Analytics.find({ _id: Ad._id }).count() == 0 ) {
-    Analytics.insert({
-      _id: Ad._id,
-      data: [
-        {
-          date: dateString,
-          impressions: 0,
-          clicks: 1
-          }
-      ]
-    })
-  } else  if (Analytics.find({ "data.date": dateString }).count() == 0) {
-    Analytics.update({ _id: Ad._id },
-      {
-      $push: { data: { $each: [{ date: dateString, impressions: 0, clicks: 1 }]}}
-    })
-  } else {
-    Analytics.update({ _id: Ad._id, "data.date": dateString} , { $inc: { "data.$.clicks": 1 }})
-  }
-
   //redirect user to url
   res.writeHead(307, { 'Location': Ad.url })
   res.end()
@@ -187,13 +146,11 @@ WebApp.connectHandlers.use('/remnant', function(req, res, next) {
   console.log(impressions.impressions)
   Remnant.update({ name: 'impressions' }, { $inc: {impressions: 1}} )
 
-  if (impressions.impressions > 10 ) {
+  if (impressions.impressions > 60 ) {
     Remnant.update({ name: 'impressions' }, { $set : { impressions: 0 }})
   } else if (impressions.impressions % 2 == 0) {
     show = true
   }
-  show = true
-  click = true
 
   const data = {'link' : link, 'click' : click, 'show' : show, 'impressions' : impressions.impressions }
 

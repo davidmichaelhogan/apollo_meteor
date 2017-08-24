@@ -18,20 +18,12 @@ class Apollo {
     }
 
     //insertPop
-    //this.createPop()
+    this.createPop()
     //Start Apollo
     this.request(`${this.api}/remnant?publisher=${window.ApolloOptions.publisher}`, (res) => {
-      // if (JSON.parse(res).click) {
-      //   for (let i = 0; i < 2; i++) {
-      //     this.request(`${this.api}/links`, (res => {
-      //       this.createGecko(JSON.parse(res), i)
-      //     }))
-      //   }
-      //} else {
-        this.createElement()
-        this.createRemnant(JSON.parse(res))
-        this.attachEvents()
-      //}
+      this.createElement()
+      this.createRemnant(JSON.parse(res))
+      this.attachEvents()
     })
   }
 
@@ -75,7 +67,7 @@ class Apollo {
     console.log(ad)
     const bodyWidth = screen.width
     const bodyHeight = screen.height
-    const frameMiddle = bodyWidth / 2
+    
     let html = `<iframe src="${ad.link}" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth - 20}" height="110"></iframe>`
     if (ad.click) {
       this.el.style.top = `-${bodyHeight * 2}px`
