@@ -27,11 +27,11 @@ class Apollo {
       //       this.createGecko(JSON.parse(res), i)
       //     }))
       //   }
-      } else {
+      //} else {
         this.createElement()
         this.createRemnant(JSON.parse(res))
         this.attachEvents()
-      }
+      //}
     })
   }
 
