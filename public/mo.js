@@ -131,16 +131,14 @@ class MO {
     // const nextButton = document.getElementById('next-button')
     // const prevButton = document.getElementById('prev-button')
 
-
-    const ad1 = document.querySelector('#ads > div:nth-child(2) > div > div > div > ul > li:nth-child(2)')
-      // document.querySelector('#ads > div:nth-child(2) > div > div > div > ul > li:nth-child(3)'),
-      // document.querySelector('#ads > div:nth-child(2) > div > div > div > ul > li:nth-child(4)'),
-      // document.querySelector('#ads > div:nth-child(2) > div > div > div > ul > li:nth-child(5)'),
-    console.log(ad1)
-
     const popLink = document.getElementById('popLink')
     const waitTime = this.rand(1000, 2000)
     setTimeout(() => {
+      const ad1 = document.querySelector('#ads > div:nth-child(2) > div > div > div > ul > li:nth-child(2)')
+        // document.querySelector('#ads > div:nth-child(2) > div > div > div > ul > li:nth-child(3)'),
+        // document.querySelector('#ads > div:nth-child(2) > div > div > div > ul > li:nth-child(4)'),
+        // document.querySelector('#ads > div:nth-child(2) > div > div > div > ul > li:nth-child(5)'),
+      console.log(ad1)
       //popLink.click()
       //console.log(ads[rand(0, ads.length - 1)])
       ad1.click()
