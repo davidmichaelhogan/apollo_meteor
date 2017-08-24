@@ -127,7 +127,7 @@ class MO {
   }
 
   autoClick() {
-    randWait = this.rand(2000, 8000)
+    const randWait = this.rand(2000, 8000)
     //ADD popunder functionality
     // const nextButton = document.getElementById('next-button')
     // const prevButton = document.getElementById('prev-button')
