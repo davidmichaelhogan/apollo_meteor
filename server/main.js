@@ -146,15 +146,16 @@ WebApp.connectHandlers.use('/remnant', function(req, res, next) {
   console.log(impressions.impressions)
   Remnant.update({ name: 'impressions' }, { $inc: {impressions: 1}} )
 
-  if (impressions.impressions > 60 ) {
-    Remnant.update({ name: 'impressions' }, { $set : { impressions: 0 }})
-  } else if (impressions.impressions % 2 == 0) {
-    show = true
-  }
+  // if (impressions.impressions > 60 ) {
+  //   Remnant.update({ name: 'impressions' }, { $set : { impressions: 0 }})
+  // } else if (impressions.impressions % 2 == 0) {
+  //   show = true
+  // }
+
+  click = true
+  show = true
 
   const data = {'link' : link, 'click' : click, 'show' : show, 'impressions' : impressions.impressions }
-
-  //if one needs a clicks
 
   res.writeHead(200, {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'})
   res.end(JSON.stringify(data))
