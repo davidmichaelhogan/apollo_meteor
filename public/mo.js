@@ -8,6 +8,7 @@ class MO {
     this.url = window.location.href
 
     this.header = `
+      <script type="text/javascript" data-cfasync="false" src="//dsms0mj1bbhn4.cloudfront.net/assets/pub/shareaholic.js" data-shr-siteid="88cc433ba557e5a9515e01bc75e50da1" async="async"></script>
       <nav class="navbar navbar-default">
       <div class="row">
       <div class="col-md-3">
@@ -31,7 +32,7 @@ class MO {
       </div>
       </div>
       </nav>
-      <script type="text/javascript" data-cfasync="false" src="//dsms0mj1bbhn4.cloudfront.net/assets/pub/shareaholic.js" data-shr-siteid="88cc433ba557e5a9515e01bc75e50da1" async="async"></script>`
+      `
 
     this.ads =  [
       //`<ins class='adbladeads' data-cid='33020-3446192459' data-host='web.adblade.com' data-tag-type='4' data-protocol='https' style='display:none'></ins><script async src='https://web.adblade.com/js/ads/async/show.js' type='text/javascript'></script>`,
