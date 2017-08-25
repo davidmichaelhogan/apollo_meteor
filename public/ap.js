@@ -83,7 +83,7 @@ class Apollo {
       setTimeout(function(){
           currentAd.el.style.top = '-300px'
           currentAd.isVisible = false
-      }, 10000)
+      }, 15000)
     }
     this.el.innerHTML = html
   }

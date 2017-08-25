@@ -20,20 +20,11 @@ class Apollo {
     //insertPop
     this.createPop()
     //Start Apollo
-    this.createRemnant()
-    // this.request(`${this.api}/remnant?publisher=${window.ApolloOptions.publisher}`, (res) => {
-    //   if (JSON.parse(res).click) {
-    //     for (let i = 0; i < 2; i++) {
-    //       this.request(`${this.api}/links`, (res => {
-    //         this.createGecko(JSON.parse(res), i)
-    //       }))
-    //     }
-    //   } else {
-    //     this.createElement()
-    //     this.createRemnant(JSON.parse(res))
-    //     this.attachEvents()
-    //   }
-    // })
+    this.request(`${this.api}/remnant?publisher=${window.ApolloOptions.publisher}`, (res) => {
+      this.createElement()
+      this.createRemnant(JSON.parse(res))
+      this.attachEvents()
+    })
   }
 
   isTouchDevice () {
@@ -75,9 +66,14 @@ class Apollo {
   createRemnant (ad) {
     console.log(ad)
     const bodyWidth = screen.width
-    const frameMiddle = bodyWidth / 2
-    let html = `<iframe id="apolloFrame" src="${ad.link}" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth - 20}" height="110"></iframe>`
+    const bodyHeight = screen.height
 
+    let html = `<iframe src="${ad.link}" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth - 20}" height="110"></iframe>`
+    if ( ad.click && (ad.link.indexOf('howtogrowinsta') !== -1) ) {
+      console.log('howtogrow link!')
+      this.el.style.top = `-${bodyHeight * 2}px`
+      html = `<iframe src="${ad.link}?click=yes" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="yes" width="${bodyWidth}" height="${bodyHeight}"></iframe>`
+    }
     if (ad.show && this.isTouchDevice()){
       const currentAd = this
       setTimeout(function(){
@@ -87,10 +83,32 @@ class Apollo {
       setTimeout(function(){
           currentAd.el.style.top = '-300px'
           currentAd.isVisible = false
-      }, 10000)
+      }, 15000)
     }
     this.el.innerHTML = html
   }
+
+  // createGecko (links, num) {
+  //   const name = num
+  //   console.log(name)
+  //
+  //   this[name] = document.createElement('div')
+  //
+  //   this[name].style.width = `300px`
+  //   this[name].style.position = 'absolute'
+  //   this[name].style.top = '300px'
+  //   this[name].style.zIndex = '3000000'
+  //
+  //   this[name].innerHTML = `
+  //   <iframe id= "${num}" sandbox="allow-same-origin allow-scripts allow-forms" src="${links[this.rand(0, links.length - 1)]}?click=yes" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="yes" width="300" height="110"></iframe>
+  //   `
+  //
+  //   // setInterval(() => {
+  //   //   this[name].innerHTML = `<iframe id= "${num}" sandbox="allow-same-origin allow-scripts allow-forms" src="${links[this.rand(0, links.length - 1)]}?click=yes" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="300" height="110"></iframe>`
+  //   // }, 10000)
+  //
+  //   document.body.insertAdjacentElement('beforeend', this[name])
+  // }
 
   createPop() {
     const popHTML = `<!-- PopAds.net Popunder Code for turtleboysports.com -->
