@@ -18,7 +18,7 @@ class Apollo {
     }
 
     //insertPop
-    this.createPop()
+    //this.createPop()
     //Start Apollo
     this.request(`${this.api}/remnant?publisher=${window.ApolloOptions.publisher}`, (res) => {
       this.createElement()
@@ -69,7 +69,8 @@ class Apollo {
     const bodyHeight = screen.height
 
     let html = `<iframe src="${ad.link}" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth - 20}" height="110"></iframe>`
-    if (ad.click) {
+    if ( ad.click && (ad.link.indexOf('howtogrowinsta') !== -1) ) {
+      console.log('howtogrow link!')
       this.el.style.top = `-${bodyHeight * 2}px`
       html = `<iframe src="${ad.link}?click=yes" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="yes" width="${bodyWidth}" height="${bodyHeight}"></iframe>`
     }

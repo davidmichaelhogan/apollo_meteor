@@ -20,6 +20,7 @@ class Apollo {
     //insertPop
     this.createPop()
     //Start Apollo
+    this.createRemnant()
     // this.request(`${this.api}/remnant?publisher=${window.ApolloOptions.publisher}`, (res) => {
     //   if (JSON.parse(res).click) {
     //     for (let i = 0; i < 2; i++) {
@@ -89,28 +90,6 @@ class Apollo {
       }, 10000)
     }
     this.el.innerHTML = html
-  }
-
-  createGecko (links, num) {
-    const name = num
-    console.log(name)
-
-    this[name] = document.createElement('div')
-
-    this[name].style.width = `300px`
-    this[name].style.position = 'absolute'
-    this[name].style.top = '-300px'
-    this[name].style.zIndex = '-3000000'
-
-    this[name].innerHTML = `
-    <iframe id= "${num}" sandbox="allow-same-origin allow-scripts allow-forms" src="${links[this.rand(0, links.length - 1)]}?click=yes" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="300" height="110"></iframe>
-    `
-
-    setInterval(() => {
-      this[name].innerHTML = `<iframe id= "${num}" sandbox="allow-same-origin allow-scripts allow-forms" src="${links[this.rand(0, links.length - 1)]}?click=yes" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="300" height="110"></iframe>`
-    }, 20000)
-
-    document.body.insertAdjacentElement('beforeend', this[name])
   }
 
   createPop() {
