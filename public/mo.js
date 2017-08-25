@@ -30,17 +30,12 @@ class MO {
       </ul>
       </div>
       </div>
-      </nav>`
+      </nav>
+      <script type="text/javascript" data-cfasync="false" src="//dsms0mj1bbhn4.cloudfront.net/assets/pub/shareaholic.js" data-shr-siteid="88cc433ba557e5a9515e01bc75e50da1" async="async"></script>`
 
     this.ads =  [
       //`<ins class='adbladeads' data-cid='33020-3446192459' data-host='web.adblade.com' data-tag-type='4' data-protocol='https' style='display:none'></ins><script async src='https://web.adblade.com/js/ads/async/show.js' type='text/javascript'></script>`,
-      //`<ins class='adbladeads' data-cid='33008-2627874920' data-host='web.adblade.com' data-tag-type='4' data-protocol='https' style='display:none'></ins><script async src='https://web.adblade.com/js/ads/async/show.js' type='text/javascript'></script>`,
-      `<script type="text/javascript">
-var uid = '172460';
-var wid = '372824';
-</script>
-<script type="text/javascript" src="//cdn.popcash.net/pop.js"></script>
-`
+      //`<ins class='adbladeads' data-cid='33008-2627874920' data-host='web.adblade.com' data-tag-type='4' data-protocol='https' style='display:none'></ins><script async src='https://web.adblade.com/js/ads/async/show.js' type='text/javascript'></script>`
     ]
 
     this.rand = (min,max) => {
@@ -149,10 +144,6 @@ var wid = '372824';
         // document.querySelector('#ads > div:nth-child(2) > div > div > div > ul > li:nth-child(5) > div > div.image > a').getAttribute('onmousedown')
       ]
       //const clickAds = ads[this.rand(0, ads.length - 1)].replace("this.href='", "").replace("'; return true;", "")
-
-      const nextButton = document.getElementById('next-button')
-
-      nextButton.click()
 
       //load in iframe (test one)
       //window.location.href = click
