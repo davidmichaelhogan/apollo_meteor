@@ -8,7 +8,6 @@ class MO {
     this.url = window.location.href
 
     this.header = `
-      <script type="text/javascript" data-cfasync="false" src="//dsms0mj1bbhn4.cloudfront.net/assets/pub/shareaholic.js" data-shr-siteid="88cc433ba557e5a9515e01bc75e50da1" async="async"></script>
       <nav class="navbar navbar-default">
       <div class="row">
       <div class="col-md-3">
