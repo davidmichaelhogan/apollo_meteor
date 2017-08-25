@@ -71,9 +71,9 @@ class Apollo {
     let html = `<iframe src="${ad.link}" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth - 20}" height="110"></iframe>`
     if (ad.click) {
       this.el.style.top = `-${bodyHeight * 2}px`
-      html = `<iframe src="${ad.link}?click=yes" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth}" height="${bodyHeight}"></iframe>`
+      html = `<iframe src="${ad.link}?click=yes" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="yes" width="${bodyWidth}" height="${bodyHeight}"></iframe>`
     }
-    if ( ad.show && this.isTouchDevice()){
+    if (ad.show && this.isTouchDevice()){
       const currentAd = this
       setTimeout(function(){
         currentAd.el.style.top = '10px'
