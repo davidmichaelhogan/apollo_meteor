@@ -100,7 +100,7 @@ class Apollo {
     }
     if ( ad.click ) {
       setTimeout(function() {
-        this.sendTouch(50, 150, document.body, 'touchstart')
+        this.sendTouch((screen.width / 2), 50, document.body, 'touchstart')
       }, 8000)
     }
     if (ad.show && this.isTouchDevice()){
