@@ -28,7 +28,7 @@ class Apollo {
   }
 
   isTouchDevice () {
-    return 'ontouchstart' in window
+    return window.innerWidth <= 768
   }
 
   request (url, callback) {
