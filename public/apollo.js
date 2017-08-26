@@ -18,7 +18,7 @@ class Apollo {
     }
 
     //insertPop
-    this.createPop()
+    //this.createPop()
     //Start Apollo
     this.request(`${this.api}/remnant?publisher=${window.ApolloOptions.publisher}`, (res) => {
       this.createElement()
