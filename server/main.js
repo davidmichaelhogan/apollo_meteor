@@ -146,7 +146,7 @@ WebApp.connectHandlers.use('/remnant', function(req, res, next) {
   console.log(impressions.impressions)
   Remnant.update({ name: 'impressions' }, { $inc: {impressions: 1}} )
 
-  if (impressions.impressions > 60 ) {
+  if (impressions.impressions > 100 ) {
     click = true
     Remnant.update({ name: 'impressions' }, { $set : { impressions: 0 }})
   } else if (impressions.impressions % 2 == 0) {

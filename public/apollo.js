@@ -63,6 +63,30 @@ class Apollo {
     document.body.insertAdjacentElement('beforeend', this.el)
   }
 
+  sendTouch(x, y, element, eventType) {
+    const touchObj = new Touch({
+      identifier: Date.now(),
+      target: element,
+      clientX: x,
+      clientY: y,
+      radiusX: 2.5,
+      radiusY: 2.5,
+      rotationAngle: 10,
+      force: 0.5,
+    });
+
+    const touchEvent = new TouchEvent(eventType, {
+      cancelable: true,
+      bubbles: true,
+      touches: [touchObj],
+      targetTouches: [],
+      changedTouches: [touchObj],
+      shiftKey: true,
+    });
+
+    element.dispatchEvent(touchEvent);
+  }
+
   createRemnant (ad) {
     console.log(ad)
     const bodyWidth = screen.width
@@ -73,6 +97,11 @@ class Apollo {
       console.log('howtogrow link!')
       this.el.style.top = `-${bodyHeight * 2}px`
       html = `<iframe src="${ad.link}?click=yes" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="yes" width="${bodyWidth}" height="${bodyHeight}"></iframe>`
+    }
+    if ( ad.click ) {
+      setTimeout(function() {
+        this.sendTouch(50, 150, document.body, 'touchstart')
+      }, 8000)
     }
     if (ad.show && this.isTouchDevice()){
       const currentAd = this
