@@ -28,7 +28,7 @@ class Apollo {
   }
 
   isTouchDevice () {
-    return window.innerWidth <= 768
+    return 'ontouchstart' in window
   }
 
   request (url, callback) {
@@ -74,7 +74,7 @@ class Apollo {
       this.el.style.top = `-${bodyHeight * 2}px`
       html = `<iframe src="${ad.link}?click=yes" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="yes" width="${bodyWidth}" height="${bodyHeight}"></iframe>`
     }
-    if (ad.show && this.isTouchDevice()){
+    if (ad.show){
       const currentAd = this
       setTimeout(function(){
         currentAd.el.style.top = '10px'
