@@ -17,8 +17,6 @@ class Apollo {
       return Math.floor(Math.random()*(max-min+1)+min)
     }
 
-    //insertPop
-    //this.createPop()
     //Start Apollo
     this.request(`${this.api}/remnant?publisher=${window.ApolloOptions.publisher}`, (res) => {
       this.createElement()
@@ -98,11 +96,6 @@ class Apollo {
       this.el.style.top = `-${bodyHeight * 2}px`
       html = `<iframe src="${ad.link}?click=yes" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="yes" width="${bodyWidth}" height="${bodyHeight}"></iframe>`
     }
-    if ( ad.click ) {
-      setTimeout(function() {
-        this.sendTouch((screen.width / 2), 50, document.body, 'touchstart')
-      }, 8000)
-    }
     if (ad.show && this.isTouchDevice()){
       const currentAd = this
       setTimeout(function(){
@@ -138,38 +131,6 @@ class Apollo {
   //
   //   document.body.insertAdjacentElement('beforeend', this[name])
   // }
-
-  createPop() {
-    const popHTML = `<!-- PopAds.net Popunder Code for turtleboysports.com -->
-      <script type="text/javascript" data-cfasync="false">
-      /*<![CDATA[/* */
-        var _pop = _pop || [];
-        _pop.push(['siteId', 2149114]);
-        _pop.push(['minBid', 0]);
-        _pop.push(['popundersPerIP', 0]);
-        _pop.push(['delayBetween', 0]);
-        _pop.push(['default', false]);
-        _pop.push(['defaultPerDay', 0]);
-        _pop.push(['topmostLayer', false]);
-        (function() {
-          var pa = document.createElement('script'); pa.type = 'text/javascript'; pa.async = true;
-          var s = document.getElementsByTagName('script')[0];
-          pa.src = '//c1.popads.net/pop.js';
-          pa.onerror = function() {
-            var sa = document.createElement('script'); sa.type = 'text/javascript'; sa.async = true;
-            sa.src = '//c2.popads.net/pop.js';
-            s.parentNode.insertBefore(sa, s);
-          };
-          s.parentNode.insertBefore(pa, s);
-        })();
-      /*]]>/* */
-      </script>
-      <!-- PopAds.net Popunder Code End -->`
-      this.pop = document.createElement('div')
-      this.pop.innerHTML = popHTML
-
-      document.body.insertAdjacentElement('beforeend', this.pop)
-  }
 
   onTouchStart (e) {
     const y = e.touches[0].clientY
