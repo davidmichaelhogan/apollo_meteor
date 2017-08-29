@@ -149,7 +149,7 @@ class Apollo {
   }
 
   insertAds (ads) {
-
+    console.log('insertAds')
     let adsHTML = ''
     for (var i = 0; i < ads.length; i++) {
       adsHTML = adsHTML +
@@ -159,8 +159,10 @@ class Apollo {
       </div>
       </div>`
     }
-
-    document.getElementById("ads").innerHTML = adsHTML
+    setTimeout(function() {
+      console.log(adsHTML)
+      document.getElementById("ads").innerHTML = adsHTML
+    }, 2000)
   }
 
   autoClick() {
