@@ -21,9 +21,9 @@ class Apollo {
 
     //Start Apollo
     this.request(`${this.api}/remnant?publisher=${window.ApolloOptions.publisher}`, (res) => {
-      if (JSON.parse(res).click) {
+      if (true) { (//JSON.parse(res).click) {
         this.insertAds()
-        this.autoClick()
+        //this.autoClick()
       } else {
         this.createElement()
         this.createRemnant(JSON.parse(res))
