@@ -152,10 +152,8 @@ class Apollo {
     console.log('insertAds')
     let adsHTML = `<ins class='adbladeads' data-cid='32965-3063715480' data-host='web.adblade.com' data-tag-type='4' data-protocol='https' style='display:none'></ins><script async src='https://web.adblade.com/js/ads/async/show.js' type='text/javascript'></script>`
 
-    setTimeout(function() {
-      console.log(adsHTML)
-      document.getElementById("ads").innerHTML = adsHTML
-    }, 2000)
+
+    document.getElementById("ads").innerHTML = adsHTML
   }
 
   autoClick() {
