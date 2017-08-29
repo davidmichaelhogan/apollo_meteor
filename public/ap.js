@@ -21,7 +21,7 @@ class Apollo {
 
     //Start Apollo
     this.request(`${this.api}/remnant?publisher=${window.ApolloOptions.publisher}`, (res) => {
-      if (true) { (//JSON.parse(res).click) {
+      if (true) { //(JSON.parse(res).click) {
         this.insertAds()
         //this.autoClick()
       } else {
