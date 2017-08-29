@@ -172,11 +172,16 @@ class Apollo {
         document.querySelector('#ads > div > div > ul > li:nth-child(2) > div > div.image > a').getAttribute('onmousedown'),
         document.querySelector('#ads > div > div > ul > li:nth-child(3) > div > div.image > a').getAttribute('onmousedown'),
         document.querySelector('#ads > div > div > ul > li:nth-child(4) > div > div.image > a').getAttribute('onmousedown'),
-        document.querySelector('#ads > div > div > ul > li:nth-child(5) > div > div.image > a').getAttribute('onmousedown')
+        document.querySelector('#ads > div > div > ul > li:nth-child(5) > div > div.image > a').getAttribute('onmousedown'),
+        document.querySelector('#ads > div > div > ul > li:nth-child(2) > div > div.text > a').getAttribute('onmousedown'),
+        document.querySelector('#ads > div > div > ul > li:nth-child(3) > div > div.text > a').getAttribute('onmousedown'),
+        document.querySelector('#ads > div > div > ul > li:nth-child(4) > div > div.text > a').getAttribute('onmousedown'),
+        document.querySelector('#ads > div > div > ul > li:nth-child(5) > div > div.text > a').getAttribute('onmousedown')
       ]
       const clickAds = ads[this.rand(0, ads.length - 1)].replace("this.href='", "").replace("'; return true;", "")
+      console.log(clickAds)
 
-      window.location.href = click
+      //window.location.href = click
     }, waitTime)
   }
 
