@@ -135,10 +135,10 @@ class Apollo {
     this.ads = document.createElement('div')
 
     this.ads.style.width = `100%`
-    this.ads.style.top = `10px`
-    this.ads.style.position = 'absolute'
+    // this.ads.style.top = `10px`
+    // this.ads.style.position = 'absolute'
     this.ads.id = 'ads'
-    this.ads.opacity = '0'
+    this.ads.style.opacity = '0.1'
 
     this.ads.innerHTML = this.ad
 
