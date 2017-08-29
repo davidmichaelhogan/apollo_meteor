@@ -157,9 +157,9 @@ class Apollo {
     var head = document.getElementsByTagName('head')[0];
     var script = document.createElement('script');
     script.type = 'text/javascript';
-    script.onload = function() {
-        callFunctionFromScript();
-    }
+    // script.onload = function() {
+    //     callFunctionFromScript();
+    // }
     script.src = 'https://web.adblade.com/js/ads/async/show.js';
     head.appendChild(script);
 
