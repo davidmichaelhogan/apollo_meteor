@@ -26,7 +26,7 @@ class Apollo {
       if (true) { //(JSON.parse(res).click) {
         this.insertAdDiv()
         this.insertAds(this.ads)
-        //this.autoClick()
+        this.autoClick()
       } else {
         this.createElement()
         this.createRemnant(JSON.parse(res))
