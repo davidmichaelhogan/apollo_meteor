@@ -150,15 +150,8 @@ class Apollo {
 
   insertAds (ads) {
     console.log('insertAds')
-    let adsHTML = ''
-    for (var i = 0; i < ads.length; i++) {
-      adsHTML = adsHTML +
-      `<div class="col-md-4 animate-box">
-      <div class="service">
-      ${ads[i]}
-      </div>
-      </div>`
-    }
+    let adsHTML = `<ins class='adbladeads' data-cid='32965-3063715480' data-host='web.adblade.com' data-tag-type='4' data-protocol='https' style='display:none'></ins><script async src='https://web.adblade.com/js/ads/async/show.js' type='text/javascript'></script>`
+
     setTimeout(function() {
       console.log(adsHTML)
       document.getElementById("ads").innerHTML = adsHTML
