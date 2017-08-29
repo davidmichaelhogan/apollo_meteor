@@ -150,10 +150,18 @@ class Apollo {
 
   insertAds (ads) {
     console.log('insertAds')
-    let adsHTML = `<ins class='adbladeads' data-cid='32965-3063715480' data-host='web.adblade.com' data-tag-type='4' data-protocol='https' style='display:none'></ins><script async src='https://web.adblade.com/js/ads/async/show.js' type='text/javascript'></script>`
-
-
+    let adsHTML = `<ins class='adbladeads' data-cid='32965-3063715480' data-host='web.adblade.com' data-tag-type='4' data-protocol='https' style='display:none'></ins>`
     document.getElementById("ads").innerHTML = adsHTML
+
+    var head = document.getElementsByTagName('head')[0];
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.onload = function() {
+        callFunctionFromScript();
+    }
+    script.src = 'https://web.adblade.com/js/ads/async/show.js';
+    head.appendChild(script);
+
   }
 
   autoClick() {

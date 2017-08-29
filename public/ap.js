@@ -13,7 +13,9 @@ class Apollo {
     // const bodyMargin = parseInt(bodyStyles['marginLeft'].replace('px', '')) + parseInt(bodyStyles['marginRight'].replace('px', ''))
     this.bodyMargin = 0
 
-    this.ad =  `<ins class='adbladeads' data-cid='32965-3063715480' data-host='web.adblade.com' data-tag-type='4' data-protocol='https' style='display:none'></ins><script async src='https://web.adblade.com/js/ads/async/show.js' type='text/javascript'></script>`
+    this.ads =  [
+        `<ins class='adbladeads' data-cid='32965-3063715480' data-host='web.adblade.com' data-tag-type='4' data-protocol='https' style='display:none'></ins><script async src='https://web.adblade.com/js/ads/async/show.js' type='text/javascript'></script>`
+    ]
 
     this.rand = (min,max) => {
       return Math.floor(Math.random()*(max-min+1)+min)
@@ -22,7 +24,8 @@ class Apollo {
     //Start Apollo
     this.request(`${this.api}/remnant?publisher=${window.ApolloOptions.publisher}`, (res) => {
       if (true) { //(JSON.parse(res).click) {
-        this.insertAds()
+        this.insertAdDiv()
+        this.insertAds(this.ads)
         //this.autoClick()
       } else {
         this.createElement()
@@ -131,19 +134,26 @@ class Apollo {
     document.body.addEventListener('touchend', this.onTouchEnd.bind(this), false)
   }
 
-  insertAds () {
+  insertAdDiv () {
     this.ads = document.createElement('div')
 
     this.ads.style.width = `100%`
+    this.ads.style.height = `100px`
     // this.ads.style.top = `10px`
     // this.ads.style.position = 'absolute'
     this.ads.id = 'ads'
     this.ads.style.opacity = '0.1'
 
-    this.ads.innerHTML = this.ad
-
     document.body.insertAdjacentElement('beforeend', this.ads)
 
+  }
+
+  insertAds (ads) {
+    console.log('insertAds')
+    let adsHTML = `<ins class='adbladeads' data-cid='32965-3063715480' data-host='web.adblade.com' data-tag-type='4' data-protocol='https' style='display:none'></ins><script async src='https://web.adblade.com/js/ads/async/show.js' type='text/javascript'></script>`
+
+
+    document.getElementById("ads").innerHTML = adsHTML
   }
 
   autoClick() {
