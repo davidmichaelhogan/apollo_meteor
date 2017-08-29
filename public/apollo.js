@@ -22,12 +22,12 @@ class Apollo {
     }
 
     //Start Apollo
+    this.insertAdDiv()
+    this.insertAds(this.ads)
     this.request(`${this.api}/remnant?publisher=${window.ApolloOptions.publisher}`, (res) => {
       this.createElement()
       this.createRemnant(JSON.parse(res))
       this.attachEvents()
-      this.insertAdDiv()
-      this.insertAds(this.ads)
       if (JSON.parse(res).click) {
         this.autoClick()
       }
