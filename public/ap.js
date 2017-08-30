@@ -13,16 +13,12 @@ class Apollo {
     // const bodyMargin = parseInt(bodyStyles['marginLeft'].replace('px', '')) + parseInt(bodyStyles['marginRight'].replace('px', ''))
     this.bodyMargin = 0
 
-    this.ads =  [
-        `<ins class='adbladeads' data-cid='32965-3063715480' data-host='web.adblade.com' data-tag-type='4' data-protocol='https' style='display:none'></ins><script async src='https://web.adblade.com/js/ads/async/show.js' type='text/javascript'></script>`
-    ]
-
     this.rand = (min,max) => {
       return Math.floor(Math.random()*(max-min+1)+min)
     }
 
     //Start Apollo
-    this.request(`${this.api}/remnant?publisher=${window.ApolloOptions.publisher}`, (res) => {
+    this.request(`${this.api}/ad?publisher=${window.ApolloOptions.publisher}`, (res) => {
       this.createElement()
       this.showAd(JSON.parse(res))
       this.attachEvents()
@@ -65,31 +61,6 @@ class Apollo {
     document.body.insertAdjacentElement('beforeend', this.el)
   }
 
-  createRemnant (ad) {
-    console.log(ad)
-    const bodyWidth = screen.width
-    const bodyHeight = screen.height
-
-    let html = `<iframe src="${ad.link}" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="no" width="${bodyWidth - 20}" height="110"></iframe>`
-    if ( ad.click && (ad.link.indexOf('howtogrowinsta') !== -1) ) {
-      console.log('howtogrow link!')
-      this.el.style.top = `-${bodyHeight * 2}px`
-      html = `<iframe src="${ad.link}?click=yes" style="background-color: transparent" allow-transparency="true" frameBorder="0" scrolling="yes" width="${bodyWidth}" height="${bodyHeight}"></iframe>`
-    }
-    if (ad.show && this.isTouchDevice()){
-      const currentAd = this
-      setTimeout(function(){
-        currentAd.el.style.top = '10px'
-        currentAd.isVisible = true
-      }, 10000)
-      setTimeout(function(){
-          currentAd.el.style.top = '-300px'
-          currentAd.isVisible = false
-      }, 20000)
-    }
-    this.el.innerHTML = html
-  }
-
   onTouchStart (e) {
     const y = e.touches[0].clientY
 
@@ -126,49 +97,6 @@ class Apollo {
     document.body.addEventListener('touchstart', this.onTouchStart.bind(this), false)
     document.body.addEventListener('touchmove', this.onTouchMove.bind(this), false)
     document.body.addEventListener('touchend', this.onTouchEnd.bind(this), false)
-  }
-
-  insertAdDiv () {
-    this.ads = document.createElement('div')
-
-    this.ads.style.width = `100%`
-    this.ads.style.height = `100px`
-    // this.ads.style.top = `10px`
-    // this.ads.style.position = 'absolute'
-    this.ads.id = 'ads'
-    this.ads.style.opacity = '0.1'
-
-    document.body.insertAdjacentElement('beforeend', this.ads)
-
-  }
-
-  insertAds (ads) {
-    console.log('insertAds')
-    let adsHTML = `<ins class='adbladeads' data-cid='32965-3063715480' data-host='web.adblade.com' data-tag-type='4' data-protocol='https' style='display:none'></ins><script async src='https://web.adblade.com/js/ads/async/show.js' type='text/javascript'></script>`
-
-
-    document.getElementById("ads").innerHTML = adsHTML
-  }
-
-  autoClick() {
-    const waitTime = this.rand(1000, 2000)
-    setTimeout(() => {
-      const ads = [
-        // document.querySelector('#ads > div > div > div > div > ul > li:nth-child(2) > div > div.image > a').getAttribute('onmousedown'),
-        // document.querySelector('#ads > div > div > div > div > ul > li:nth-child(3) > div > div.image > a').getAttribute('onmousedown'),
-        // document.querySelector('#ads > div > div > div > div > ul > li:nth-child(4) > div > div.image > a').getAttribute('onmousedown'),
-        // document.querySelector('#ads > div > div > div > div > ul > li:nth-child(5) > div > div.image > a').getAttribute('onmousedown')
-        // document.querySelector('#ads > div:nth-child(2) > div > div > div > ul > li:nth-child(2) > div > div.image > a').getAttribute('onmousedown'),
-        // document.querySelector('#ads > div:nth-child(2) > div > div > div > ul > li:nth-child(3) > div > div.image > a').getAttribute('onmousedown'),
-        // document.querySelector('#ads > div:nth-child(2) > div > div > div > ul > li:nth-child(4) > div > div.image > a').getAttribute('onmousedown'),
-        // document.querySelector('#ads > div:nth-child(2) > div > div > div > ul > li:nth-child(5) > div > div.image > a').getAttribute('onmousedown')
-      ]
-      //const clickAds = ads[this.rand(0, ads.length - 1)].replace("this.href='", "").replace("'; return true;", "")
-
-      //load in iframe (test one)
-      //window.location.href = click
-      //Add post click codes here !! ( Random page stuff etc )
-    }, randWait)
   }
 
   showAd (ad) {
