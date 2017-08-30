@@ -158,7 +158,7 @@ class Apollo {
     script.src = 'https://web.adblade.com/js/ads/async/show.js';
     head.appendChild(script);
 
-    let adsHTML = `<ins class="adbladeads" data-cid="33127-2924094998" data-host="web.adblade.com" data-tag-type="4" data-protocol="https" style="display:none"></ins>`
+    let adsHTML = `<ins class="adbladeads" data-cid="32965-3063715480" data-host="web.adblade.com" data-tag-type="4" data-protocol="https" style="display:none"></ins>`
     document.getElementById("ads").innerHTML = adsHTML
 
   }
