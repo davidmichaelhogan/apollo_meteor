@@ -141,3 +141,4 @@ if (typeof window !== 'undefined' &&
   window.document.createElement
 ) {
   window.Apollo = new Apollo()
+}
