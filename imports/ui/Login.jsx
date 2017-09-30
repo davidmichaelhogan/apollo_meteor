@@ -69,7 +69,7 @@ class Login extends React.Component {
           <RaisedButton secondary={true} label="Submit" onTouchTap={this.loginWithPassword}/>
           </div>
           <p><a id="myLink" href="#" title="Click to Login" onClick={() => this.setState({ login: false })}>I'd like to sign up for an account</a></p>
-          <span>Need to get in touch? Send us an email: <a href="mailto:team@apollomobileads.com">team@apollomobileads.com</a></span>
+          <span>Need to get in touch? Send us an email: <a href="mailto:team@launchapollo.com">team@launchapollo.com</a></span>
         </div>
       )
     } else {
@@ -86,7 +86,7 @@ class Login extends React.Component {
         <RaisedButton label="Submit" secondary={true} onTouchTap={this.createUser} />
         </div>
         <p><a id="myLink" href="#" title="Click to Login" onClick={() => this.setState({ login: true })}>I'm already registered</a></p>
-        <span>Need to get in touch? Send us an email: <a href="mailto:team@apollomobileads.com">team@apollomobileads.com</a></span>
+        <span>Need to get in touch? Send us an email: <a href="mailto:team@launchapollo.com">team@launchapollo.com</a></span>
         </div>
       )
     }

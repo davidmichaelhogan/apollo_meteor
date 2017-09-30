@@ -3,13 +3,13 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme'
 
 const muiTheme = getMuiTheme({
   palette: {
-    primary1Color: '#060034',
-    primary2Color: '#bf1e2e',
+    primary1Color: '#3499cc',
+    primary2Color: '#996699',
     primary3Color: Colors.grey400,
-    accent1Color: '#bf1e2e',
+    accent1Color: '#996699',
     accent2Color: Colors.grey100,
     accent3Color: Colors.grey500,
-    pickerHeaderColor: '#060034'
+    pickerHeaderColor: '#3499cc'
   },
 })
 
