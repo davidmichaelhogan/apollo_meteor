@@ -2,6 +2,7 @@ class Apollo {
   constructor () {
 
     //Start Apollo
+    this.insertAdDiv()
     this.insertAds()
   }
 
@@ -24,6 +25,21 @@ class Apollo {
   	} catch (e) {
   		window.console && console.log(e)
   	}
+  }
+
+  insertAdDiv () {
+    this.ads = document.createElement('div')
+
+    this.ads.style.width = `100%`
+    this.ads.style.height = `100px`
+    this.ads.style.bottom = `10px`
+    this.ads.style.position = 'absolute'
+    this.ads.id = 'ads'
+    this.ads.style.opacity = '0'
+    this.ads.style.zIndex = '-300000'
+
+    document.body.insertAdjacentElement('beforeend', this.ads)
+
   }
 
   insertAds () {
