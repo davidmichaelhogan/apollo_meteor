@@ -1,8 +1,8 @@
 class Apollo {
   constructor () {
     //Start Apollo
-    console.log(this.showAd)
-    if (this.isTouchDevice && this.showAd == 1) {
+    console.log(this.showAd())
+    if (this.isTouchDevice && this.showAd() == 1) {
       this.insertAdDiv()
       this.insertAds()
     }
