@@ -1,14 +1,23 @@
 class Apollo {
   constructor () {
     //Start Apollo
-    if (isTouchDevice && rand(0,5) == 1) {
+    console.log(this.showAd)
+    if (this.isTouchDevice && this.showAd == 1) {
       this.insertAdDiv()
       this.insertAds()
     }
   }
 
+  rand (min,max) {
+    return Math.floor(Math.random()*(max-min+1)+min)
+  }
+
   isTouchDevice () {
     return 'ontouchstart' in window
+  }
+
+  showAd() {
+    return rand(0,5)
   }
 
   request (url, callback) {
@@ -26,10 +35,6 @@ class Apollo {
   	} catch (e) {
   		window.console && console.log(e)
   	}
-  }
-
-  rand (min,max) {
-    return Math.floor(Math.random()*(max-min+1)+min)
   }
 
   insertAdDiv () {
