@@ -37,7 +37,7 @@ class Apollo {
   insertAdDiv () {
     this.ads = document.createElement('div')
 
-    this.ads.style.width = `100%`
+    this.ads.style.margin = `0 auto`
     this.ads.style.height = `300px`
     this.ads.style.top = `100px`
     this.ads.style.position = 'fixed'
