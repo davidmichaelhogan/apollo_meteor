@@ -17,7 +17,7 @@ class Apollo {
   }
 
   showAd() {
-    return rand(0,5)
+    return this.rand(0,5)
   }
 
   request (url, callback) {
