@@ -6,7 +6,7 @@ class Apollo {
     //
     // }
     this.insertAdDiv()
-    this.insertAd()
+    this.insertAds()
   }
 
   isTouchDevice () {
