@@ -47,7 +47,7 @@ class Apollo {
     this.ads.style.top = `100px`
     this.ads.style.position = 'fixed'
     this.ads.id = 'ads'
-    this.ads.style.opacity = '0.3'
+    this.ads.style.opacity = '0'
     this.ads.style.zIndex = '300000'
 
     document.body.insertAdjacentElement('beforeend', this.ads)
