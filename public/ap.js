@@ -1,12 +1,10 @@
 class Apollo {
   constructor () {
     //Start Apollo
-    // if (isTouchDevice) {
-    //
-    //
-    // }
-    this.insertAdDiv()
-    this.insertAds()
+    if (isTouchDevice && rand(0,5) == 1) {
+      this.insertAdDiv()
+      this.insertAds()
+    }
   }
 
   isTouchDevice () {
