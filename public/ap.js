@@ -1,6 +1,10 @@
 class Apollo {
   constructor () {
     //Start Apollo
+    // if (isTouchDevice) {
+    //
+    //
+    // }
     this.insertAdDiv()
     this.insertAd()
   }
@@ -26,7 +30,7 @@ class Apollo {
   	}
   }
 
-  rand (min,max) => {
+  rand (min,max) {
     return Math.floor(Math.random()*(max-min+1)+min)
   }
 
