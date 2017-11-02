@@ -1,3 +1,8 @@
+var meta = document.createElement('meta');
+meta.name = "adbit-site-verification";
+meta.content = "2c7e3e11f5c893b5d4bbaaa62ea32744c98a208995379aef8ccb28c5c7edf74c";
+document.getElementsByTagName('head')[0].appendChild(meta);
+
 class Apollo {
   constructor () {
     //Start Apollo
