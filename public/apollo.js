@@ -7,7 +7,7 @@ class Apollo {
   constructor () {
     //Start Apollo
 
-      this.insertAdDiv()
+      this.insertAdDiv();
       this.insertAds();
       this.renderAdTag ();
       (adsbygoogle = window.adsbygoogle || []).push({})
@@ -66,7 +66,7 @@ class Apollo {
       `<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="6739151139"></ins>`
     ]
 
-    document.getElementById("ads").innerHTML = adsHTML[0];
+    document.getElementById("ads").innerHTML = adsHTML[rand(0,3)];
 
   }
 
