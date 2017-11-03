@@ -43,10 +43,10 @@ class Apollo {
   insertAdDiv () {
     this.ads = document.createElement('div')
 
-    this.ads.style.width = `width`
-    this.ads.style.height = `300px`
-    this.ads.style.top = `100px`
-    this.ads.style.position = 'fixed'
+    this.ads.style.width = `100%`
+    this.ads.style.height = `50px`
+    this.ads.style.top = `0`
+    this.ads.style.position = `absolute`
     this.ads.id = 'ads'
     this.ads.style.opacity = '0.2'
     this.ads.style.zIndex = '300000'
@@ -58,7 +58,7 @@ class Apollo {
   insertAds () {
 
     let adsHTML = [
-      `<div style="margin: 0 auto"><iframe data-aa='722361' src='//ad.a-ads.com/722361?size=300x250' scrolling='no' style='width:300px; height:250px; border:0px; padding:0;overflow:hidden' allowtransparency='true'></iframe></div>`
+      `<iframe data-aa='722372' src='//ad.a-ads.com/722372?size=320x50' scrolling='no' style='width:320px; height:50px; border:0px; padding:0;overflow:hidden;margin:0 auto; display:block' allowtransparency='true'></iframe>`
     ]
     document.getElementById("ads").innerHTML = adsHTML[0]
 
