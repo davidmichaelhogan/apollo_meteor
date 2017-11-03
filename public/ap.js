@@ -52,7 +52,7 @@ class Apollo {
   insertAds () {
 
     let adsHTML = [
-      `<script src="//ap.lijit.com/www/delivery/fpi.js?z=530751&width=300&height=250"></script>`
+      `<script src="//ap.lijit.com/www/delivery/fp?z=530751"></script> `
     ]
     document.getElementById("ads").innerHTML = adsHTML[1]
 

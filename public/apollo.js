@@ -76,11 +76,10 @@ class Apollo {
     let adsHTML = [
       `<ins class="adsbygoogle" style="display:inline-block;margin:0 auto;width:320px;height:50px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="2586005900"></ins>`,
       `<ins class="adsbygoogle" style="display:inline-block;width:300px;height:600px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="9603217698"></ins>`,
-      `<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="6739151139"></ins>`,
-      `<script src="//ap.lijit.com/www/delivery/fpi.js?z=530751&width=300&height=250"></script> `
+      `<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="6739151139"></ins>`
     ]
 
-    document.getElementById("ads").innerHTML = adsHTML[3];
+    document.getElementById("ads").innerHTML = adsHTML[2];
 
   }
 }
