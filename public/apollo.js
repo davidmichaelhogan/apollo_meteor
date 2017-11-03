@@ -61,7 +61,9 @@ class Apollo {
       `<iframe data-aa='722372' src='//ad.a-ads.com/722372?size=320x50' scrolling='no' style='width:320px; height:50px; border:0px; padding:0;overflow:hidden;margin:0 auto; display:block' allowtransparency='true'></iframe>`,
       `<ins class="adsbygoogle" style="display:inline-block;margin:0 auto;width:320px;height:50px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="2586005900"></ins>`
     ]
+
     document.getElementById("ads").innerHTML = adsHTML[1]
+    (adsbygoogle = window.adsbygoogle || []).push({});
 
   }
 }
