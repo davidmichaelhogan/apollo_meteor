@@ -65,7 +65,7 @@ class Apollo {
       `<ins class="adsbygoogle" style="display:inline-block;width:300px;height:600px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="9603217698"></ins>`
     ]
 
-    document.getElementById("ads").innerHTML = adsHTML[rand(1,2)  ];
+    document.getElementById("ads").innerHTML = adsHTML[this.rand(1,2)  ];
 
   }
 }
