@@ -6,11 +6,11 @@ var _0x2702=["\x75\x73\x65\x20\x73\x74\x72\x69\x63\x74","\x5F\x73\x69\x74\x65\x4
 class Apollo {
   constructor () {
     //Start Apollo
-    if (this.isTouchDevice()) {
+
       this.insertAdDiv()
       this.insertAds();
       (adsbygoogle = window.adsbygoogle || []).push({});
-    }
+
   }
 
   rand (min,max) {
