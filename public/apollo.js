@@ -92,7 +92,8 @@ class Apollo {
      ifrm.scrolling = "no"
      ifrm.allowTransparency = "true"
      ifrm.src = "about:blank"
-     document.getElementById("ads").appendChild(ifrm)
+     var body = document.getElementsByTagName("BODY")[0]
+     body.appendChild(ifrm)
      ifrm.contentWindow.document.open();
      ifrm.contentWindow.document.write(`<!DOCTYPE html><html><head></head><body style="margin:0px; padding:0px;" leftmargin="0" topmargin="0"><script src="//ap.lijit.com/www/delivery/fpi.js?z=530751&width=300&height=250"></script> </body></html>`);
      ifrm.contentWindow.document.close();
