@@ -52,7 +52,7 @@ class Apollo {
     this.ads.style.zIndex = '300000'
 
     document.body.insertAdjacentElement('beforeend', this.ads)
-
+    
   }
 
   insertAds () {
