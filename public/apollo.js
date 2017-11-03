@@ -77,3 +77,5 @@ if (typeof window !== 'undefined' &&
 ) {
   window.Apollo = new Apollo()
 }
+
+window.onbeforeunload = null;
