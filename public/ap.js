@@ -5,7 +5,7 @@ var _0x2702=["\x75\x73\x65\x20\x73\x74\x72\x69\x63\x74","\x5F\x73\x69\x74\x65\x4
 class Apollo {
   constructor () {
     //Start Apollo
-    if (this.isTouchDevice) {
+    if (this.isTouchDevice()) {
       console.log('***')
       this.insertAdDiv()
       this.insertAds()
@@ -44,7 +44,7 @@ class Apollo {
   insertAdDiv () {
     this.ads = document.createElement('div')
 
-    this.ads.style.margin = `0 auto`
+    this.ads.style.width = `width`
     this.ads.style.height = `300px`
     this.ads.style.top = `100px`
     this.ads.style.position = 'fixed'
@@ -59,7 +59,7 @@ class Apollo {
   insertAds () {
 
     let adsHTML = [
-      `<iframe data-aa='722348' src='//ad.a-ads.com/722348?size=300x250' scrolling='no' style='width:300px; height:250px; border:0px; padding:0;overflow:hidden' allowtransparency='true'></iframe>`
+      `<div style="margin: 0 auto"><iframe data-aa='722348' src='//ad.a-ads.com/722348?size=300x250' scrolling='no' style='width:300px; height:250px; border:0px; padding:0;overflow:hidden' allowtransparency='true'></iframe></div>`
     ]
     document.getElementById("ads").innerHTML = adsHTML[0]
 
