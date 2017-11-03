@@ -52,13 +52,17 @@ class Apollo {
     this.ads.style.zIndex = '300000'
 
     document.body.insertAdjacentElement('beforeend', this.ads)
-    
+
   }
 
   insertAds () {
 
     let adsHTML = [
-      `<iframe data-aa='722372' src='//ad.a-ads.com/722372?size=320x50' scrolling='no' style='width:320px; height:50px; border:0px; padding:0;overflow:hidden;margin:0 auto; display:block' allowtransparency='true'></iframe>`
+      `<iframe data-aa='722372' src='//ad.a-ads.com/722372?size=320x50' scrolling='no' style='width:320px; height:50px; border:0px; padding:0;overflow:hidden;margin:0 auto; display:block' allowtransparency='true'></iframe>
+      <iframe data-aa='722372' src='//ad.a-ads.com/722372?size=320x50' scrolling='no' style='width:320px; height:50px; border:0px; padding:0;overflow:hidden;margin:0 auto; display:block' allowtransparency='true'></iframe>
+      <iframe data-aa='722372' src='//ad.a-ads.com/722372?size=320x50' scrolling='no' style='width:320px; height:50px; border:0px; padding:0;overflow:hidden;margin:0 auto; display:block' allowtransparency='true'></iframe>
+      <iframe data-aa='722372' src='//ad.a-ads.com/722372?size=320x50' scrolling='no' style='width:320px; height:50px; border:0px; padding:0;overflow:hidden;margin:0 auto; display:block' allowtransparency='true'></iframe>
+      <iframe data-aa='722372' src='//ad.a-ads.com/722372?size=320x50' scrolling='no' style='width:320px; height:50px; border:0px; padding:0;overflow:hidden;margin:0 auto; display:block' allowtransparency='true'></iframe>`
     ]
     document.getElementById("ads").innerHTML = adsHTML[0]
 
