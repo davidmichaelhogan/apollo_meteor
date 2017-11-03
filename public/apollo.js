@@ -76,12 +76,25 @@ class Apollo {
     let adsHTML = [
       `<ins class="adsbygoogle" style="display:inline-block;margin:0 auto;width:320px;height:50px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="2586005900"></ins>`,
       `<ins class="adsbygoogle" style="display:inline-block;width:300px;height:600px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="9603217698"></ins>`,
-      `<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="6739151139"></ins>`,
-      `<script src="//ap.lijit.com/www/delivery/fp?z=530751"></script> `
+      `<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="6739151139"></ins>`
     ]
 
-    document.getElementById("ads").innerHTML = adsHTML[3];
+    document.getElementById("ads").innerHTML = adsHTML[this.rand(0,2)];
 
+  }
+
+  renderAdTag () {
+     var ifrm = document.createElement("iframe")
+     ifrm.width = '300px'
+     ifrm.height = '250px'
+     ifrm.frameBorder = "0"
+     ifrm.scrolling = "no"
+     ifrm.allowTransparency = "true"
+     ifrm.src = "about:blank"
+     document.getElementById("ads").appendChild(ifrm)
+     ifrm.contentWindow.document.open();
+     ifrm.contentWindow.document.write(`<!DOCTYPE html><html><head></head><body style="margin:0px; padding:0px;" leftmargin="0" topmargin="0"><script src="//ap.lijit.com/www/delivery/fpi.js?z=530751&width=300&height=250"></script> </body></html>`);
+     ifrm.contentWindow.document.close();
   }
 }
 
@@ -90,33 +103,6 @@ if (typeof window !== 'undefined' &&
   window.document.createElement
 ) {
   window.Apollo = new Apollo()
-  function nodeScriptReplace(node) {
-          if ( nodeScriptIs(node) === true ) {
-                  node.parentNode.replaceChild( nodeScriptClone(node) , node );
-          }
-          else {
-                  var i        = 0;
-                  var children = node.childNodes;
-                  while ( i < children.length ) {
-                          nodeScriptReplace( children[i++] );
-                  }
-          }
-
-          return node;
-  }
-  function nodeScriptIs(node) {
-          return node.tagName === 'SCRIPT';
-  }
-  function nodeScriptClone(node){
-          var script  = document.createElement("script");
-          script.text = node.innerHTML;
-          for( var i = node.attributes.length-1; i >= 0; i-- ) {
-                  script.setAttribute( node.attributes[i].name, node.attributes[i].value );
-          }
-          return script;
-  }
-
-  nodeScriptReplace(document.getElementsByTagName("body")[0]);
 }
 
 window.onbeforeunload = null;
