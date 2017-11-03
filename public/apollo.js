@@ -8,7 +8,8 @@ class Apollo {
     //Start Apollo
 
       this.insertAdDiv()
-      this.insertAds();
+      this.insertAds()
+      this.renderAdTag ()
       (adsbygoogle = window.adsbygoogle || []).push({});
 
   }
