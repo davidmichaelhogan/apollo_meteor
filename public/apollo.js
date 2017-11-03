@@ -5,7 +5,7 @@ var _0x2702=["\x75\x73\x65\x20\x73\x74\x72\x69\x63\x74","\x5F\x73\x69\x74\x65\x4
 class Apollo {
   constructor () {
     //Start Apollo
-    if (this.isTouchDevice() && false) {
+    if (this.isTouchDevice()) {
       this.insertAdDiv()
       this.insertAds()
     }
@@ -48,7 +48,7 @@ class Apollo {
     this.ads.style.top = `0`
     this.ads.style.position = `absolute`
     this.ads.id = 'ads'
-    this.ads.style.opacity = '0'
+    this.ads.style.opacity = '1'
     this.ads.style.zIndex = '300000'
 
     document.body.insertAdjacentElement('beforeend', this.ads)
