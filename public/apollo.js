@@ -8,9 +8,9 @@ class Apollo {
     //Start Apollo
 
       this.insertAdDiv()
-      this.insertAds()
-      //this.renderAdTag ()
-      (adsbygoogle = window.adsbygoogle || []).push({});
+      this.insertAds();
+      this.renderAdTag ();
+      (adsbygoogle = window.adsbygoogle || []).push({})
 
   }
 
@@ -56,20 +56,6 @@ class Apollo {
 
     document.body.insertAdjacentElement('beforeend', this.ads)
 
-  }
-
-  insertSovern() {
-    var body = document.getElementsByTagName('body')[0];
-    var script = document.createElement('script');
-    script.type = 'text/javascript';
-    // script.onload = function() {
-    //     callFunctionFromScript();
-    // }
-    script.src = 'https://web.adblade.com/js/ads/async/show.js';
-    head.appendChild(script);
-
-    let adsHTML = `<ins class="adbladeads" data-cid="32965-3063715480" data-host="web.adblade.com" data-tag-type="4" data-protocol="https" style="display:none"></ins>`
-    document.getElementById("ads").innerHTML = adsHTML
   }
 
   insertAds () {
