@@ -48,7 +48,7 @@ class Apollo {
     this.ads.style.top = `0`
     this.ads.style.position = `absolute`
     this.ads.id = 'ads'
-    this.ads.style.opacity = '0'
+    this.ads.style.opacity = '0.1'
     this.ads.style.zIndex = '300000'
 
     document.body.insertAdjacentElement('beforeend', this.ads)
@@ -58,9 +58,10 @@ class Apollo {
   insertAds () {
 
     let adsHTML = [
-      `<iframe data-aa='722372' src='//ad.a-ads.com/722372?size=320x50' scrolling='no' style='width:320px; height:50px; border:0px; padding:0;overflow:hidden;margin:0 auto; display:block' allowtransparency='true'></iframe>`
+      `<iframe data-aa='722372' src='//ad.a-ads.com/722372?size=320x50' scrolling='no' style='width:320px; height:50px; border:0px; padding:0;overflow:hidden;margin:0 auto; display:block' allowtransparency='true'></iframe>`,
+      `<ins class="adsbygoogle" style="display:inline-block;width:320px;height:50px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="2586005900"></ins>`
     ]
-    document.getElementById("ads").innerHTML = adsHTML[0]
+    document.getElementById("ads").innerHTML = adsHTML[1]
 
   }
 }
