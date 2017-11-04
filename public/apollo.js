@@ -7,10 +7,16 @@ class Apollo {
   constructor () {
     //Start Apollo
 
-      this.insertAdDiv();
-      this.insertAds();
-      this.renderAdTag ();
-      (adsbygoogle = window.adsbygoogle || []).push({})
+    this.ads = [
+      `<ins class="adsbygoogle" style="display:inline-block;width:320px;height:50px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="2586005900"></ins>`,
+      `<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="6739151139"></ins>`,
+      `<ins class="adsbygoogle" style="display:inline-block;width:300px;height:600px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="9603217698"></ins>`
+    ]
+
+    this.insertAdDiv(this.ads);
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    (adsbygoogle = window.adsbygoogle || []).push({});
 
   }
 
@@ -43,47 +49,55 @@ class Apollo {
   	}
   }
 
-  insertAdDiv () {
-    this.ads = document.createElement('div')
+  insertAdDiv (ads) {
 
-    this.ads.style.width = `100%`
-    this.ads.style.height = `50px`
-    this.ads.style.top = `0`
-    this.ads.style.position = `absolute`
-    this.ads.id = 'ads'
-    this.ads.style.opacity = '0'
-    this.ads.style.zIndex = '300000'
+    let adNumber = this.rand(0, ads.length-1)
 
-    document.body.insertAdjacentElement('beforeend', this.ads)
+    this.topAd = document.createElement('div')
+    this.topAd.style.top = `50px`
+    this.topAd.style.left=`50px`
+    this.topAd.style.position = `absolute`
+    this.topAd.id = 'topAd'
+    this.topAd.style.opacity = '0'
+    this.topAd.style.zIndex = '300000'
+    this.topAd.innerHTML = ads[adNumber]
+
+    this.bottomAd = document.createElement('div')
+    this.bottomAd.style.bottom = `-100px`
+    this.bottomAd.style.left = `200px`
+    this.bottomAd.style.position = `fixed`
+    this.bottomAd.id = 'bottomAd'
+    this.bottomAd.style.opacity = '0'
+    this.bottomAd.style.zIndex = '300000'
+    this.bottomAd.innerHTML = ads[this.rand(0,1)]
+
+    this.bottomStickyAd = document.createElement('div')
+    this.bottomStickyAd.id = 'bottomStickyAd'
+    this.bottomStickyAd.style.opacity = '0'
+    this.bottomStickyAd.style.zIndex = '300000'
+    this.bottomStickyAd.innerHTML = ads[0]
+
+    document.body.insertAdjacentElement('beforeend', this.topAd)
+    document.body.insertAdjacentElement('beforeend', this.bottomAd)
+    document.body.insertAdjacentElement('beforeend', this.bottomStickyAd)
+
 
   }
 
-  insertAds () {
-
-    let adsHTML = [
-      `<ins class="adsbygoogle" style="display:inline-block;margin:0 auto;width:320px;height:50px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="2586005900"></ins>`,
-      `<ins class="adsbygoogle" style="display:inline-block;width:300px;height:600px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="9603217698"></ins>`,
-      `<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="6739151139"></ins>`
-    ]
-
-    document.getElementById("ads").innerHTML = adsHTML[this.rand(0,3)];
-
-  }
-
-  renderAdTag () {
-     var ifrm = document.createElement("iframe")
-     ifrm.width = '300px'
-     ifrm.height = '250px'
-     ifrm.frameBorder = "0"
-     ifrm.scrolling = "no"
-     ifrm.allowTransparency = "true"
-     ifrm.src = "about:blank"
-     var body = document.getElementsByTagName("BODY")[0]
-     body.appendChild(ifrm)
-     ifrm.contentWindow.document.open();
-     ifrm.contentWindow.document.write(`<!DOCTYPE html><html><head></head><body style="margin:0px; padding:0px;" leftmargin="0" topmargin="0"><script src="//ap.lijit.com/www/delivery/fpi.js?z=530751&width=300&height=250"></script> </body></html>`);
-     ifrm.contentWindow.document.close();
-  }
+  // renderAdTag () {
+  //    var ifrm = document.createElement("iframe")
+  //    ifrm.width = '300px'
+  //    ifrm.height = '250px'
+  //    ifrm.frameBorder = "0"
+  //    ifrm.scrolling = "no"
+  //    ifrm.allowTransparency = "true"
+  //    ifrm.src = "about:blank"
+  //    var body = document.getElementsByTagName("BODY")[0]
+  //    body.appendChild(ifrm)
+  //    ifrm.contentWindow.document.open();
+  //    ifrm.contentWindow.document.write(`<!DOCTYPE html><html><head></head><body style="margin:0px; padding:0px;" leftmargin="0" topmargin="0"><script src="//ap.lijit.com/www/delivery/fpi.js?z=530751&width=300&height=250"></script> </body></html>`);
+  //    ifrm.contentWindow.document.close();
+  // }
 }
 
 if (typeof window !== 'undefined' &&
