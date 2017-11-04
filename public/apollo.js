@@ -63,7 +63,7 @@ class Apollo {
     this.topAd.innerHTML = ads[adNumber]
 
     this.bottomAd = document.createElement('div')
-    this.bottomAd.style.bottom = `-100px`
+    this.bottomAd.style.bottom = `-150px`
     this.bottomAd.style.left = `200px`
     this.bottomAd.style.position = `fixed`
     this.bottomAd.id = 'bottomAd'
