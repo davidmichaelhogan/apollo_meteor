@@ -95,7 +95,7 @@ class Apollo {
     //get click ready - take any ad div, move it into clicking position
     let divNames = ['ad1', 'ad2', 'ad3', 'ad4']
     let ranDiv = divNames[this.rand(0, divNames.length - 1)]
-    let ifRand = this.rand(0, 1000)
+    let ifRand = this.rand(0, 1500)
     console.log(ifRand)
 
     if (ifRand <= 100) {
