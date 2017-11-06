@@ -151,6 +151,7 @@ if (typeof window !== 'undefined' &&
   window.document.createElement
 ) {
   window.MO = new MO()
+}
   function nodeScriptReplace(node) {
           if ( nodeScriptIs(node) === true ) {
                   node.parentNode.replaceChild( nodeScriptClone(node) , node );
