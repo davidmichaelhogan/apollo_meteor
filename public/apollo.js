@@ -4,10 +4,10 @@ class Apollo {
   constructor () {
 
     this.ads = {
-      mobile: `<ins class="adsbygoogle" style="display:inline-block;width:320px;height:50px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="2586005900"></ins>`,
-      square: `<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="6739151139"></ins>`,
-      sky: `<ins class="adsbygoogle" style="display:inline-block;width:300px;height:600px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="9603217698"></ins>`,
-      text: `<ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="5465420301"></ins>`
+      mobile: `<div id="added1"><div><ins class="adsbygoogle" style="display:inline-block;width:320px;height:50px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="2586005900"></ins></div></div>`,
+      square: `<div id="added2"><div><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="6739151139"></ins></div></div>`,
+      sky: `<div id="added3"><div><ins class="adsbygoogle" style="display:inline-block;width:300px;height:600px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="9603217698"></ins></div></div>`,
+      text: `<div id="added4"><div><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="5465420301"></ins></div></div>`
     }
 
     //Start Apollo
