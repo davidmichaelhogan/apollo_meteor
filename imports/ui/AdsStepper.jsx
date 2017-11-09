@@ -52,7 +52,7 @@ class AdsStepper extends React.Component {
     paymentOption: 0,
     open: false,
     advertiser: Meteor.user()._id,
-    category: '594016b0df931d10bc421f1a',
+    category: '594a7629c3b5a0d72c720571',
     headline: 'Apollo Ad Server Example',
     subline: 'Your subline will appear here. Click in the fields below to make your ad.',
     subline_display: ['Your subline will appear here. Click in the fields below to make your ad.', ''],
@@ -206,7 +206,7 @@ handleCurrentPaymentSubmit = () => {
           <div>
             <div className="left-title">Campaign Settings</div>
             <div className="clear"></div>
-            <div className="date">Please choose a site category:<br />
+            <div className="date">Please choose a site placement:<br />
               <DropDownMenu value={this.state.category} onChange={(x, y, category) => this.setState({category: category})}>
                 {this.props.categories.map((category) => (
                   <MenuItem key={category._id} value={category._id} primaryText={category.name} />
