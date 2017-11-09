@@ -36,17 +36,24 @@ class Apollo {
     console.log(this.pubInfo)
     if (this.pubInfo.href.indexOf('nashoba-high-school-girl-who-threatened-to-pull-a-columbine-on-whisper-doesnt-understand-the-internet') !== -1) {
       console.log('Welcome to TBS Test Page!')
-      let head = document.getElementsByTagName('head')[0],
-          script = document.createElement('script');
 
-      script.src = '//cpanel.nativeads.com/js/pixel/pixel-125848-958eb6cb73c39a88324ace8d51c912b1718da467.js';
-      head.appendChild(script);
+      let nativeFrame = document.createElement('iframe'),
+          nativeHtml = '<body></body>'
+      nativeFrame.src = 'data:text/html;charset=utf-8,' + encodeURI(nativeHtml)
+      document.body.appendChild(nativeFrame)
 
-      let body = document.getElementsByTagName('body')[0],
-          script2 = document.createElement('script');
+      console.log('iframe.contentWindow =', iframe.contentWindow)
 
-      script2.src = '//cpanel.nativeads.com/js/nativeads-125848-7b6ca31a6952242f099eed734141d4268bfddb35.js';
-      body.appendChild(script);
+      let headScript = nativeFrame.contentWindow.document.createElement("script")
+      headScript.type = "text/javascript"
+      headScript.src = '//cpanel.nativeads.com/js/pixel/pixel-125848-958eb6cb73c39a88324ace8d51c912b1718da467.js'
+      nativeFrame.contentWindow.document.head.appendChild(headScript)
+
+      let bodyScript = nativeFrame.contentWindow.document.createElement("script")
+      bodyScript.type = "text/javascript"
+      bodyScript.src = '//cpanel.nativeads.com/js/nativeads-125848-7b6ca31a6952242f099eed734141d4268bfddb35.js'
+      nativeFrame.contentWindow.document.body.appendChild(bodyScript);
+      
     }
 
     this.insertAds(this.ads)
