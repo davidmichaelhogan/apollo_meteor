@@ -198,7 +198,7 @@ class Apollo {
     <a href="${this.api}/click?publisher=${window.ApolloOptions.publisher}&id=${ad._id}" target="_blank" style="display: block; width: 100%; text-decoration: none; font-family: arial, sans-serif; font-size: 20px;">
       <div style="background-color:rgba(234, 237, 240, 1); color:rgb(224,227,230); border-top-right-radius: 10px; border-top-left-radius: 10px; padding: 0px 10px;">
         <div style="width: 25px; float:left; display:inline-block;">
-          <img src="${ad.logo}" style="max-width: 100%; max-height: 25px; margin: 0; padding: 0">
+          <img src="${ad.logo}" style="max-width: 100%; max-height: 25px; margin: 0; padding:5px">
         </div>
         <div style="float: left; margin: 0 0 0 7px; width: calc(100% - 50px); color:#000;">${ad.headline}</div>
         <div style="clear:both;"></div>

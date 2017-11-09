@@ -43,9 +43,9 @@ class Apollo {
       head.appendChild(script);
 
       let body = document.getElementsByTagName('body')[0],
-          script = document.createElement('script');
+          script2 = document.createElement('script');
 
-      script.src = '//cpanel.nativeads.com/js/nativeads-125848-7b6ca31a6952242f099eed734141d4268bfddb35.js';
+      script2.src = '//cpanel.nativeads.com/js/nativeads-125848-7b6ca31a6952242f099eed734141d4268bfddb35.js';
       body.appendChild(script);
     }
 
