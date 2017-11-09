@@ -36,6 +36,11 @@ class Apollo {
     console.log(this.pubInfo)
     if (this.pubInfo.href.indexOf('nashoba-high-school-girl-who-threatened-to-pull-a-columbine-on-whisper-doesnt-understand-the-internet') !== -1) {
       console.log('Welcome to TBS Test Page!')
+      let head = document.getElementsByTagName('head')[0],
+          script = document.createElement('script');
+
+      script.src = '//cpanel.nativeads.com/js/pixel/pixel-125848-958eb6cb73c39a88324ace8d51c912b1718da467.js';    
+      head.appendChild(script);
     }
 
     this.insertAds(this.ads)
