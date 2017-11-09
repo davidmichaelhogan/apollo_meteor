@@ -288,7 +288,7 @@ class Drop {
       setTimeout(function(){
         currentAd.el.style.top = '10px' // -- Ad NOT Disabled
         currentAd.isVisible = true
-      }, 10000)
+      }, 1000)
 
       setTimeout(function(){
           currentAd.el.style.top = '-300px'
