@@ -40,7 +40,7 @@ class Nav extends React.Component {
       selectedIndex: 0,
       dialogTitle: 'Add Funds to Account',
       paymentOption: 0,
-      setPage: 1,
+      setPage: 0,
       showFunds: false,
       balance: 5000
 
