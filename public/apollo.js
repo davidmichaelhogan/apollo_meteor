@@ -48,8 +48,8 @@ class Apollo {
           <!-- nativeads 125848-turtleboysports.com-128275 end -->`
 
       let ifrm = document.createElement("iframe");
-      ifm.width = `200px`
-      ifm.height = `300px`
+      ifrm.width = `200px`
+      ifrm.height = `300px`
       ifrm.frameBorder = "0";
       ifrm.scrolling = "no";
       ifrm.allowTransparency = "true";
