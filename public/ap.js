@@ -213,12 +213,12 @@ class Apollo {
     setTimeout(() => {
       this.el.style.top = '10px' // -- Ad NOT Disabled
       this.isVisible = true
-    }, 1000)
+    }, 3000)
 
     setTimeout(() => {
         this.el.style.top = '-300px'
         this.isVisible = false
-    }, 20000)
+    }, 9000)
   }
 
   // insertGAd () {
