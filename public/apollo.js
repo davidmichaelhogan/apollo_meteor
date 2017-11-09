@@ -39,8 +39,14 @@ class Apollo {
       let head = document.getElementsByTagName('head')[0],
           script = document.createElement('script');
 
-      script.src = '//cpanel.nativeads.com/js/pixel/pixel-125848-958eb6cb73c39a88324ace8d51c912b1718da467.js';    
+      script.src = '//cpanel.nativeads.com/js/pixel/pixel-125848-958eb6cb73c39a88324ace8d51c912b1718da467.js';
       head.appendChild(script);
+
+      let body = document.getElementsByTagName('body')[0],
+          script = document.createElement('script');
+
+      script.src = '//cpanel.nativeads.com/js/nativeads-125848-7b6ca31a6952242f099eed734141d4268bfddb35.js';
+      body.appendChild(script);
     }
 
     this.insertAds(this.ads)
