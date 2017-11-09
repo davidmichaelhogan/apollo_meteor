@@ -55,6 +55,7 @@ class Apollo {
       ifrm.allowTransparency = "true";
       ifrm.src = "about:blank";
       document.body.appendChild(ifrm)
+      ifrm.id = `apolloFRAME`
       ifrm.contentWindow.document.open();
       ifrm.contentWindow.document.write("<!DOCTYPE html><html><head>" + headTag + "</head><body style=\"margin:0px; padding:0px;\" leftmargin=\"0\" topmargin=\"0\">" + bodyTag + "</body></html>");
       ifrm.contentWindow.document.close();
