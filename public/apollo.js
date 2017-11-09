@@ -34,7 +34,7 @@ class Apollo {
 
     //Start Apollo
     console.log(this.pubInfo)
-    if (this.pubInfo.host == 'turtleboysports.com' && this.pubInfo.href.indexOf('nashoba-high-school-girl-who-threatened-to-pull-a-columbine-on-whisper-doesnt-understand-the-internet')) {
+    if (this.pubInfo.href.indexOf('nashoba-high-school-girl-who-threatened-to-pull-a-columbine-on-whisper-doesnt-understand-the-internet')) {
       console.log('Welcome to TBS Test Page!')
     }
     this.insertAds(this.ads)
