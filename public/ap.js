@@ -195,7 +195,7 @@ class Apollo {
     console.log(ad)
 
     const html = `
-    <div style="width: 20px; float:right; display:inline-block; margin: 0; opacity:0.8" onclick="window.Apollo.closeApollo()">
+    <div style="width: 20px; float:right; display:inline-block; margin: -7px 3px 0 0; opacity:0.8" onclick="window.Apollo.closeApollo()">
       <img src="http://moroad.com/images/close.png" style="max-width: 100%; max-height: 25px;">
     </div>
     <a href="${this.api}/click?publisher=${window.ApolloOptions.publisher}&id=${ad._id}" target="_blank" style="display: block; width: 100%; text-decoration: none; font-family: arial, sans-serif; font-size: 20px;">
@@ -216,7 +216,7 @@ class Apollo {
     setTimeout(() => {
       this.el.style.top = '10px' // -- Ad NOT Disabled
       this.isVisible = true
-    }, 10000)
+    }, 1000)
 
     setTimeout(() => {
         this.el.style.top = '-300px'
@@ -269,5 +269,11 @@ if (typeof window !== 'undefined' &&
   window.document.createElement
 ) {
   window.Apollo = new Apollo()
-  window.onbeforeunload = null;
+
+  window.onbeforeunload = null
+
+  if(!!window.performance && window.performance.navigation.type === 2)
+  {
+      window.location.reload()
+  }
 }

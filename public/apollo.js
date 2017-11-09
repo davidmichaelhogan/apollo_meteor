@@ -114,34 +114,10 @@ if (typeof window !== 'undefined' &&
   window.document.createElement
 ) {
   window.Apollo = new Apollo()
-}
+  window.onbeforeunload = null
 
-window.onbeforeunload = null;
-
-document.addEventListener('focus',function(e){console.log('bye')}, true);
-
-function addEvent(obj, evt, fn) {
-    if (obj.addEventListener) {
-        obj.addEventListener(evt, fn, false);
-    }
-    else if (obj.attachEvent) {
-        obj.attachEvent("on" + evt, fn);
-    }
-}
-addEvent(window,"load",function(e) {
-    addEvent(document, "mouseout", function(e) {
-        e = e ? e : window.event;
-        var from = e.relatedTarget || e.toElement;
-        if (!from || from.nodeName == "HTML") {
-            document.getElementById("ad1").style.zIndex = `-300000`;
-            document.getElementById("ad2").style.zIndex = `-300000`;
-            document.getElementById("ad3").style.zIndex = `-300000`;
-            document.getElementById("ad4").style.zIndex = `-300000`;
-        }
-    });
-});
-
-if(!!window.performance && window.performance.navigation.type === 2)
-{
-    window.location.reload();
+  // if(!!window.performance && window.performance.navigation.type === 2)
+  // {
+  //     window.location.reload();
+  // }
 }
