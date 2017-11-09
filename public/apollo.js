@@ -133,8 +133,6 @@ addEvent(window,"load",function(e) {
         e = e ? e : window.event;
         var from = e.relatedTarget || e.toElement;
         if (!from || from.nodeName == "HTML") {
-            // stop your drag event here
-            // for now we can just use an alert
             document.getElementById("ad1").style.zIndex = `-300000`;
             document.getElementById("ad2").style.zIndex = `-300000`;
             document.getElementById("ad3").style.zIndex = `-300000`;
