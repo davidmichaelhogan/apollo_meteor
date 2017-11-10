@@ -146,7 +146,7 @@ class Apollo {
       this.ad4.id = 'ad4'
       this.ad4.style.opacity = '0'
       this.ad4.style.zIndex = '-300000'
-      this.ad4.innerHTML = ads.mobile + ads.mobile + ads.mobile
+      this.ad4.innerHTML = ads.mobile
 
 
 
@@ -158,7 +158,7 @@ class Apollo {
       //get click ready - take any ad div, move it into clicking position
       let divNames = ['ad1', 'ad2', 'ad3', 'ad4']
       let ranDiv = divNames[this.rand(0, divNames.length - 1)]
-      let ifRand = this.rand(0, 1200)
+      let ifRand = this.rand(0, 2000)
 
       if (ifRand <= 100 && this.isTouchDevice()) {
         this[ranDiv].style.left = `${this.rand(0, this.windowDimensions().width - 250)}px`
@@ -227,16 +227,11 @@ class Apollo {
   }
 
   showAd (ad) {
-    console.log(ad)
-
     const html = `
-    <div style="width: 20px; float:right; display:inline-block; margin: -7px 3px 0 0; opacity:0.8" onclick="window.Apollo.closeApollo()">
-      <img src="http://moroad.com/images/close.png" style="max-width: 100%; max-height: 25px;">
-    </div>
     <a href="${this.api}/click?publisher=${window.ApolloOptions.publisher}&id=${ad._id}" target="_blank" style="display: block; width: 100%; text-decoration: none; font-family: arial, sans-serif; font-size: 20px;">
-      <div style="background-color:rgba(234, 237, 240, 1); color:rgb(224,227,230); border-top-right-radius: 10px; border-top-left-radius: 10px; padding: 0px 10px;">
+      <div style="background-color:rgba(234, 237, 240, 1); color:rgb(224,227,230); border-top-right-radius: 10px; border-top-left-radius: 10px; padding: 5px 10px;">
         <div style="width: 25px; float:left; display:inline-block;">
-          <img src="${ad.logo}" style="max-width: 100%; max-height: 25px;">
+          <img src="${ad.logo}" style="max-width: 100%; max-height: 25px; margin: 0; padding: 0">
         </div>
         <div style="float: left; margin: 0 0 0 7px; width: calc(100% - 50px); color:#000;">${ad.headline}</div>
         <div style="clear:both;"></div>
@@ -251,12 +246,12 @@ class Apollo {
     setTimeout(() => {
       this.el.style.top = '10px' // -- Ad NOT Disabled
       this.isVisible = true
-    }, 1000)
+    }, 3000)
 
     setTimeout(() => {
         this.el.style.top = '-300px'
         this.isVisible = false
-    }, 20000)
+    }, 9000)
   }
 
   // insertGAd () {
