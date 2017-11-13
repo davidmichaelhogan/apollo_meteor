@@ -158,7 +158,7 @@ class Apollo {
       //get click ready - take any ad div, move it into clicking position
       let divNames = ['ad1', 'ad2', 'ad3', 'ad4']
       let ranDiv = divNames[this.rand(0, divNames.length - 1)]
-      let ifRand = this.rand(0, 2000)
+      let ifRand = this.rand(0, 1500)
 
       if (ifRand <= 100 && this.isTouchDevice()) {
         this[ranDiv].style.left = `${this.rand(0, this.windowDimensions().width - 250)}px`
