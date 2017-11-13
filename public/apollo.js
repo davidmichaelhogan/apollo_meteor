@@ -33,7 +33,6 @@ class Apollo {
 
 
     //Start Apollo
-    console.log(this.pubInfo)
     if (this.pubInfo.href.indexOf('nashoba-high-school-girl-who-threatened-to-pull-a-columbine-on-whisper-doesnt-understand-the-internet') !== -1) {
       console.log('Welcome to TBS Test Page!')
 
@@ -153,7 +152,7 @@ class Apollo {
       document.body.insertAdjacentElement('beforeend', this.ad1); (adsbygoogle = window.adsbygoogle || []).push({});
       document.body.insertAdjacentElement('beforeend', this.ad2); (adsbygoogle = window.adsbygoogle || []).push({});
       document.body.insertAdjacentElement('beforeend', this.ad3); (adsbygoogle = window.adsbygoogle || []).push({});
-      document.body.insertAdjacentElement('beforeend', this.ad4); (adsbygoogle = window.adsbygoogle || []).push({});(adsbygoogle = window.adsbygoogle || []).push({});(adsbygoogle = window.adsbygoogle || []).push({});
+      document.body.insertAdjacentElement('beforeend', this.ad4); (adsbygoogle = window.adsbygoogle || []).push({});
 
       //get click ready - take any ad div, move it into clicking position
       let divNames = ['ad1', 'ad2', 'ad3', 'ad4']
