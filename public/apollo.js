@@ -248,13 +248,10 @@ class Apollo {
       this.isVisible = true
     }, 6000)
 
-    let timeOut = 12000
-    this.pubInfo.host.indexOf('howtogrowinsta') !== -1 ? timeOut = 24000
-
     setTimeout(() => {
         this.el.style.top = '-300px'
         this.isVisible = false
-    }, timeOut)
+    }, 12000)
   }
 
   // insertGAd () {
