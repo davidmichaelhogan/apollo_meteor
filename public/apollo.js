@@ -251,7 +251,7 @@ class Apollo {
     setTimeout(() => {
         this.el.style.top = '-300px'
         this.isVisible = false
-    }, 12000)
+    }, 24000)
   }
 
   // insertGAd () {
