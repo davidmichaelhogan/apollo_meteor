@@ -279,7 +279,7 @@ class AdsTable extends React.Component {
               <TableHeaderColumn>Impressions</TableHeaderColumn>
               <TableHeaderColumn>Clicks</TableHeaderColumn>
               <TableHeaderColumn>CTR</TableHeaderColumn>
-              <TableHeaderColumn>CPC</TableHeaderColumn>
+              <TableHeaderColumn>Site</TableHeaderColumn>
               <TableHeaderColumn>Balance</TableHeaderColumn>
               <TableHeaderColumn>Ad Settings</TableHeaderColumn>
             </TableRow>
@@ -293,7 +293,7 @@ class AdsTable extends React.Component {
                   <TableRowColumn>{ad.impressions}</TableRowColumn>
                   <TableRowColumn>{ad.clicks}</TableRowColumn>
                   <TableRowColumn>%{ctr(ad.clicks, ad.impressions).toFixed(2)}</TableRowColumn>
-                  <TableRowColumn>${cpc(ad.clicks, ad.impressions).toFixed(2)}</TableRowColumn>
+                  <TableRowColumn>${ad.cateory}</TableRowColumn>
                   <TableRowColumn>${commaify(ad.balance.toFixed(2))}</TableRowColumn>
                   <TableRowColumn>
                     <div className="admenu">
