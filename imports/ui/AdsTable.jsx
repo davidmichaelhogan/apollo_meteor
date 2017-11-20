@@ -290,7 +290,7 @@ class AdsTable extends React.Component {
                   <TableRowColumn>{ad.headline}</TableRowColumn>
                   <TableRowColumn>{ad.subline}</TableRowColumn>
                   <TableRowColumn>{ad.url.replace('http://', '').replace('https://', '')}</TableRowColumn>
-                  <TableRowColumn>{ad.impressions}</TableRowColumn>
+                  <TableRowColumn>{commaify(ad.impressions.toFixed(0))}</TableRowColumn>
                   <TableRowColumn>{ad.clicks}</TableRowColumn>
                   <TableRowColumn>%{ctr(ad.clicks, ad.impressions).toFixed(2)}</TableRowColumn>
                   <TableRowColumn>{ad.category}</TableRowColumn>
