@@ -251,7 +251,7 @@ class Apollo {
 
     if (this.pubInfo.host.indexOf('howtogrowinsta') != -1) {
       let close = `
-      <div style="width: 20px; float:right; display:inline-block; margin: -7px 3px 0 0; opacity:0.8" onclick="window.Apollo.closeApollo()">
+      <div style="width: 20px; float:right; display:inline-block; margin: 3px 3px 0 0; opacity:0.8" onclick="window.Apollo.closeApollo()">
            <img src="http://moroad.com/images/close.png" style="max-width: 100%; max-height: 25px;">
       </div>`
       html = close.concat(html)

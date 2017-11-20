@@ -293,7 +293,7 @@ class AdsTable extends React.Component {
                   <TableRowColumn>{ad.impressions}</TableRowColumn>
                   <TableRowColumn>{ad.clicks}</TableRowColumn>
                   <TableRowColumn>%{ctr(ad.clicks, ad.impressions).toFixed(2)}</TableRowColumn>
-                  <TableRowColumn>${ad.cateory}</TableRowColumn>
+                  <TableRowColumn>{ad.category}</TableRowColumn>
                   <TableRowColumn>${commaify(ad.balance.toFixed(2))}</TableRowColumn>
                   <TableRowColumn>
                     <div className="admenu">
