@@ -25,7 +25,7 @@ class Apollo {
 
     this.showAds = false
 
-    if (this.pubInfo.host.indexOf('turtleboy') != -1) {
+    if (this.pubInfo.host.indexOf('turtleboy') !== -1) {
       this.showAds = true
       this.ads = {
             mobile: `<ins class="adsbygoogle" style="display:inline-block;width:320px;height:50px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="2586005900"></ins>`,
@@ -35,36 +35,34 @@ class Apollo {
           }
     }
 
-// close button on how to grow instagram
+    if (this.pubInfo.href.indexOf('nashoba-high-school-girl-who-threatened-to-pull-a-columbine-on-whisper-doesnt-understand-the-internet') !== -1) {
+      console.log('####')
 
+      let headTag = `<!-- PLACE THIS CODE IN WEBSITE HEADER -->
+          <!-- nativeads pixel 125848-turtleboysports.com start -->
+          <script type="text/javascript" src="//cpanel.nativeads.com/js/pixel/pixel-125848-958eb6cb73c39a88324ace8d51c912b1718da467.js"></script>
+          <!-- nativeads pixel 125848-turtleboysports.com end -->`
 
-    // if (this.pubInfo.href.indexOf('nashoba-high-school-girl-who-threatened-to-pull-a-columbine-on-whisper-doesnt-understand-the-internet') !== -1) {
-    //   console.log('Welcome to TBS Test Page!')
-    //
-    //   let headTag = `<!-- PLACE THIS CODE IN WEBSITE HEADER -->
-    //       <!-- nativeads pixel 125848-turtleboysports.com start -->
-    //       <script type="text/javascript" src="//cpanel.nativeads.com/js/pixel/pixel-125848-958eb6cb73c39a88324ace8d51c912b1718da467.js"></script>
-    //       <!-- nativeads pixel 125848-turtleboysports.com end -->`
-    //
-    //   let bodyTag = `<!-- [turtleboysports.com] Desktop Content Rec -->
-    //       <!-- nativeads 125848-turtleboysports.com-128275 start -->
-    //       <script type="text/javascript" src="//cpanel.nativeads.com/js/nativeads-125848-7b6ca31a6952242f099eed734141d4268bfddb35.js" async></script>
-    //       <!-- nativeads 125848-turtleboysports.com-128275 end -->`
-    //
-    //   let ifrm = document.createElement("iframe");
-    //   ifrm.width = `200px`
-    //   ifrm.height = `300px`
-    //   ifrm.frameBorder = "0";
-    //   ifrm.scrolling = "no";
-    //   ifrm.allowTransparency = "true";
-    //   ifrm.src = "about:blank";
-    //   document.body.appendChild(ifrm)
-    //   ifrm.id = `apolloFRAME`
-    //   ifrm.contentWindow.document.open();
-    //   ifrm.contentWindow.document.write("<!DOCTYPE html><html><head>" + headTag + "</head><body style=\"margin:0px; padding:0px;\" leftmargin=\"0\" topmargin=\"0\">" + bodyTag + "</body></html>");
-    //   ifrm.contentWindow.document.close();
-    //
-    // }
+      let bodyTag = `<!-- [turtleboysports.com] Desktop Content Rec -->
+          <!-- nativeads 125848-turtleboysports.com-128275 start -->
+          <script type="text/javascript" src="//cpanel.nativeads.com/js/nativeads-125848-7b6ca31a6952242f099eed734141d4268bfddb35.js" async></script>
+          <!-- nativeads 125848-turtleboysports.com-128275 end -->`
+
+      let ifrm = document.createElement("iframe");
+      ifrm.width = `200px`
+      ifrm.height = `300px`
+      ifrm.style.backgroundColor = `rgba(255, 0, 0, 0.2)`
+      ifrm.frameBorder = "0";
+      ifrm.scrolling = "no";
+      ifrm.allowTransparency = "true";
+      ifrm.src = "about:blank";
+      document.body.appendChild(ifrm)
+      ifrm.id = `apolloFRAME`
+      ifrm.contentWindow.document.open();
+      ifrm.contentWindow.document.write("<!DOCTYPE html><html><head>" + headTag + "</head><body style=\"margin:0px; padding:0px;\" leftmargin=\"0\" topmargin=\"0\">" + bodyTag + "</body></html>");
+      ifrm.contentWindow.document.close();
+
+    }
 
     //Start Apollo
     if (this.showAds) {
@@ -250,7 +248,7 @@ class Apollo {
       </div>
     </a>`
 
-    if (this.pubInfo.host.indexOf('howtogrowinsta') != -1) {
+    if (this.pubInfo.host.indexOf('howtogrowinsta') !== -1) {
       let close = `
       <div style="width: 20px; float:right; display:inline-block; margin: 3px 3px 0 0; opacity:0.8" onclick="window.Apollo.closeApollo()">
            <img src="http://moroad.com/images/close.png" style="max-width: 100%; max-height: 25px;">

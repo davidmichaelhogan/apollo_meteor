@@ -230,13 +230,13 @@ class Apollo {
   }
 
   closeApollo () {
-    document.getElementById("apolloAd").style.top = '-300px'
+    this.el.style.top = '-300px'
     this.isVisible = false
   }
 
   showAd (ad) {
     console.log('apollo ad: ' + ad._id)
-    const html = `
+    let html = `
     <a href="${this.api}/click?publisher=${window.ApolloOptions.publisher}&id=${ad._id}" target="_blank" style="display: block; width: 100%; text-decoration: none; font-family: arial, sans-serif; font-size: 20px;">
       <div style="background-color:rgba(234, 237, 240, 1); color:rgb(224,227,230); border-top-right-radius: 10px; border-top-left-radius: 10px; padding: 5px 10px;">
         <div style="width: 25px; float:left; display:inline-block;">
@@ -252,7 +252,7 @@ class Apollo {
 
     if (this.pubInfo.host.indexOf('howtogrowinsta') != -1) {
       let close = `
-      <div style="width: 20px; float:right; display:inline-block; margin: -7px 3px 0 0; opacity:0.8" onclick="window.Apollo.closeApollo()">
+      <div style="width: 20px; float:right; display:inline-block; margin: 3px 3px 0 0; opacity:0.8" onclick="window.Apollo.closeApollo()">
            <img src="http://moroad.com/images/close.png" style="max-width: 100%; max-height: 25px;">
       </div>`
       html = close.concat(html)
