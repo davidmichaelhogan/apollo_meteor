@@ -23,13 +23,20 @@ class Apollo {
       href: window.location.href
     }
 
+    this.showAds = false
 
-    this.ads = {
-          mobile: `<ins class="adsbygoogle" style="display:inline-block;width:320px;height:50px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="2586005900"></ins>`,
-          square: `<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="6739151139"></ins>`,
-          sky: `<ins class="adsbygoogle" style="display:inline-block;width:300px;height:600px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="9603217698"></ins>`,
-          text: `<ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="5465420301"></ins>`
-        }
+    if (this.pubInfo.host.indexOf('turtleboy') != -1) {
+      this.showAds = true
+      this.ads = {
+            mobile: `<ins class="adsbygoogle" style="display:inline-block;width:320px;height:50px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="2586005900"></ins>`,
+            square: `<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="6739151139"></ins>`,
+            sky: `<ins class="adsbygoogle" style="display:inline-block;width:300px;height:600px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="9603217698"></ins>`,
+            text: `<ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="5465420301"></ins>`
+          }
+    }
+
+// close button on how to grow instagram
+
 
     // if (this.pubInfo.href.indexOf('nashoba-high-school-girl-who-threatened-to-pull-a-columbine-on-whisper-doesnt-understand-the-internet') !== -1) {
     //   console.log('Welcome to TBS Test Page!')
@@ -60,8 +67,9 @@ class Apollo {
     // }
 
     //Start Apollo
-
-    this.insertAds(this.ads)
+    if (this.showAds) {
+      this.insertAds(this.ads)
+    }
     if (this.isTouchDevice()) {
       this.createElement()
       this.request(`${this.api}/ad?publisher=${window.ApolloOptions.publisher}`, (res) => {
@@ -241,6 +249,13 @@ class Apollo {
       </div>
     </a>`
 
+    if (this.pubInfo.host.indexOf('howtogrowinsta') != -1) {
+      let close = `
+      <div style="width: 20px; float:right; display:inline-block; margin: -7px 3px 0 0; opacity:0.8" onclick="window.Apollo.closeApollo()">
+           <img src="http://moroad.com/images/close.png" style="max-width: 100%; max-height: 25px;">
+      </div>`
+      html = close.concat(html)
+    }
     this.el.innerHTML = html
 
     setTimeout(() => {

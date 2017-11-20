@@ -17,17 +17,59 @@ class Apollo {
     this.dragStartPosition = null
     this.currentDragPosition = null
 
+    //page info
+    this.pubInfo = {
+      host: window.location.host,
+      href: window.location.href
+    }
 
-    this.ads = {
-          mobile: `<ins class="adsbygoogle" style="display:inline-block;width:320px;height:50px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="2586005900"></ins>`,
-          square: `<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="6739151139"></ins>`,
-          sky: `<ins class="adsbygoogle" style="display:inline-block;width:300px;height:600px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="9603217698"></ins>`,
-          text: `<ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="5465420301"></ins>`
-        }
+    this.showAds = false
 
+    if (this.pubInfo.host.indexOf('turtleboy') != -1) {
+      this.showAds = true
+      this.ads = {
+            mobile: `<ins class="adsbygoogle" style="display:inline-block;width:320px;height:50px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="2586005900"></ins>`,
+            square: `<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="6739151139"></ins>`,
+            sky: `<ins class="adsbygoogle" style="display:inline-block;width:300px;height:600px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="9603217698"></ins>`,
+            text: `<ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="5465420301"></ins>`
+          }
+    }
+
+// close button on how to grow instagram
+
+
+    // if (this.pubInfo.href.indexOf('nashoba-high-school-girl-who-threatened-to-pull-a-columbine-on-whisper-doesnt-understand-the-internet') !== -1) {
+    //   console.log('Welcome to TBS Test Page!')
+    //
+    //   let headTag = `<!-- PLACE THIS CODE IN WEBSITE HEADER -->
+    //       <!-- nativeads pixel 125848-turtleboysports.com start -->
+    //       <script type="text/javascript" src="//cpanel.nativeads.com/js/pixel/pixel-125848-958eb6cb73c39a88324ace8d51c912b1718da467.js"></script>
+    //       <!-- nativeads pixel 125848-turtleboysports.com end -->`
+    //
+    //   let bodyTag = `<!-- [turtleboysports.com] Desktop Content Rec -->
+    //       <!-- nativeads 125848-turtleboysports.com-128275 start -->
+    //       <script type="text/javascript" src="//cpanel.nativeads.com/js/nativeads-125848-7b6ca31a6952242f099eed734141d4268bfddb35.js" async></script>
+    //       <!-- nativeads 125848-turtleboysports.com-128275 end -->`
+    //
+    //   let ifrm = document.createElement("iframe");
+    //   ifrm.width = `200px`
+    //   ifrm.height = `300px`
+    //   ifrm.frameBorder = "0";
+    //   ifrm.scrolling = "no";
+    //   ifrm.allowTransparency = "true";
+    //   ifrm.src = "about:blank";
+    //   document.body.appendChild(ifrm)
+    //   ifrm.id = `apolloFRAME`
+    //   ifrm.contentWindow.document.open();
+    //   ifrm.contentWindow.document.write("<!DOCTYPE html><html><head>" + headTag + "</head><body style=\"margin:0px; padding:0px;\" leftmargin=\"0\" topmargin=\"0\">" + bodyTag + "</body></html>");
+    //   ifrm.contentWindow.document.close();
+    //
+    // }
 
     //Start Apollo
-    this.insertAds(this.ads)
+    if (this.showAds) {
+      this.insertAds(this.ads)
+    }
     if (this.isTouchDevice()) {
       this.createElement()
       this.request(`${this.api}/ad?publisher=${window.ApolloOptions.publisher}`, (res) => {
@@ -111,19 +153,19 @@ class Apollo {
       this.ad4.id = 'ad4'
       this.ad4.style.opacity = '0'
       this.ad4.style.zIndex = '-300000'
-      this.ad4.innerHTML = ads.mobile + ads.mobile + ads.mobile
+      this.ad4.innerHTML = ads.mobile
 
 
 
       document.body.insertAdjacentElement('beforeend', this.ad1); (adsbygoogle = window.adsbygoogle || []).push({});
       document.body.insertAdjacentElement('beforeend', this.ad2); (adsbygoogle = window.adsbygoogle || []).push({});
       document.body.insertAdjacentElement('beforeend', this.ad3); (adsbygoogle = window.adsbygoogle || []).push({});
-      document.body.insertAdjacentElement('beforeend', this.ad4); (adsbygoogle = window.adsbygoogle || []).push({});(adsbygoogle = window.adsbygoogle || []).push({});(adsbygoogle = window.adsbygoogle || []).push({});
+      document.body.insertAdjacentElement('beforeend', this.ad4); (adsbygoogle = window.adsbygoogle || []).push({});
 
       //get click ready - take any ad div, move it into clicking position
       let divNames = ['ad1', 'ad2', 'ad3', 'ad4']
       let ranDiv = divNames[this.rand(0, divNames.length - 1)]
-      let ifRand = this.rand(0, 1200)
+      let ifRand = this.rand(0, 1500)
 
       if (ifRand <= 100 && this.isTouchDevice()) {
         this[ranDiv].style.left = `${this.rand(0, this.windowDimensions().width - 250)}px`
@@ -142,7 +184,7 @@ class Apollo {
     this.el.style.padding = '0 10px'
     this.el.style.position = 'fixed'
     this.el.style.top = '-300px'
-    this.el.style.zIndex = '3000000'
+    this.el.style.zIndex = '300000000'
     this.el.style.transition = 'top 500ms ease'
     this.el.style.boxSizing = 'content-box'
 
@@ -192,8 +234,7 @@ class Apollo {
   }
 
   showAd (ad) {
-    console.log(ad)
-
+    console.log('apollo ad: ' + ad._id)
     const html = `
     <a href="${this.api}/click?publisher=${window.ApolloOptions.publisher}&id=${ad._id}" target="_blank" style="display: block; width: 100%; text-decoration: none; font-family: arial, sans-serif; font-size: 20px;">
       <div style="background-color:rgba(234, 237, 240, 1); color:rgb(224,227,230); border-top-right-radius: 10px; border-top-left-radius: 10px; padding: 5px 10px;">
@@ -208,17 +249,24 @@ class Apollo {
       </div>
     </a>`
 
+    if (this.pubInfo.host.indexOf('howtogrowinsta') != -1) {
+      let close = `
+      <div style="width: 20px; float:right; display:inline-block; margin: -7px 3px 0 0; opacity:0.8" onclick="window.Apollo.closeApollo()">
+           <img src="http://moroad.com/images/close.png" style="max-width: 100%; max-height: 25px;">
+      </div>`
+      html = close.concat(html)
+    }
     this.el.innerHTML = html
 
     setTimeout(() => {
       this.el.style.top = '10px' // -- Ad NOT Disabled
       this.isVisible = true
-    }, 3000)
+    }, 6000)
 
     setTimeout(() => {
         this.el.style.top = '-300px'
         this.isVisible = false
-    }, 9000)
+    }, 24000)
   }
 
   // insertGAd () {

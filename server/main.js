@@ -42,6 +42,11 @@ const rand = (min,max) => {
   return Math.floor(Math.random()*(max-min+1)+min)
 }
 
+
+// ****    adjust impression to only count on drop
+// show publisher
+
+
 //Ad Api
 WebApp.connectHandlers.use('/ad', function(req, res, next) {
   const date = new Date()
@@ -81,7 +86,7 @@ WebApp.connectHandlers.use('/ad', function(req, res, next) {
           $gte: date
         },
         balance: {
-          $gte: 0.008
+          $gte: 0.001
         },
         nextServed: {
           $lte: date.getTime()
@@ -102,7 +107,7 @@ WebApp.connectHandlers.use('/ad', function(req, res, next) {
     // Create new impressions event
 
     // Minus 0.008 from the current ads balance
-    Ads.update(Ad, { $inc: { balance: -0.008, impressions: 1, nextServed: Ad.timeDiff}})
+    Ads.update(Ad, { $inc: { balance: -0.001, impressions: 1, nextServed: Ad.timeDiff}})
   }
 
 
