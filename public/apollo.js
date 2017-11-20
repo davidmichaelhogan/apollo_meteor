@@ -230,7 +230,7 @@ class Apollo {
   }
 
   closeApollo () {
-    document.getElementById("apolloAd").style.top = '-300px'
+    this.el.style.top = '-300px'
     this.isVisible = false
   }
 
