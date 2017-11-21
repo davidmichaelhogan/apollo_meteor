@@ -48,19 +48,26 @@ class Apollo {
         <script type="text/javascript" src="//cpanel.nativeads.com/js/nativeads-125848-6aaaca469831303d62599b1a43e58c3008a0df8f.js" async></script>
         <!-- nativeads 125848-turtleboysports.com-128277 end -->`
 
-      let ifrm = document.createElement("iframe");
-      ifrm.width = `200px`
-      ifrm.height = `300px`
-      ifrm.style.backgroundColor = `rgba(255, 0, 0, 0.2)`
-      ifrm.frameBorder = "0";
-      ifrm.scrolling = "no";
-      ifrm.allowTransparency = "true";
-      ifrm.src = "about:blank";
-      document.body.appendChild(ifrm)
-      ifrm.id = `apolloFRAME`
-      ifrm.contentWindow.document.open();
-      ifrm.contentWindow.document.write("<!DOCTYPE html><html><head>" + headTag + "</head><body style=\"margin:0px; padding:0px;\" leftmargin=\"0\" topmargin=\"0\">" + bodyTag + "</body></html>");
-      ifrm.contentWindow.document.close();
+      this.nativeStack = document.createElement('div')
+      this.nativeStack.style.width = `320px`
+      this.nativeStack.style.top = `${this.windowDimensions().height - 200}px`
+      this.nativeStack.style.left = `0`
+      this.nativeStack.style.position = `absolute`
+      this.nativeStack.id = 'nativeStack'
+      this.nativeStack.style.opacity = '0.3'
+      this.nativeStack.style.zIndex = '300000'
+
+      this.nativeHeadScript = document.createElement('script')
+      this.nativeHeadScript.src = `//cpanel.nativeads.com/js/pixel/pixel-125848-958eb6cb73c39a88324ace8d51c912b1718da467.js`
+      this.nativeHeadScript.type = `text/javascript`
+
+      this.nativeBodyScript = document.createElement('script')
+      this.nativeBodyScript.src = `//cpanel.nativeads.com/js/nativeads-125848-6aaaca469831303d62599b1a43e58c3008a0df8f.j`
+      this.nativeBodyScript.type = `text/javascript`
+
+      document.body.insertAdjacentElement('beforeend', this.nativeStack)
+      document.getElementsByTagName('head')[0].appendChild(this.nativeHeadScript)
+      document.getElementById('nativeStack').appendChild(this.nativeBodyScript)
 
     }
 
