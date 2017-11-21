@@ -62,7 +62,7 @@ class Apollo {
       this.nativeHeadScript.type = `text/javascript`
 
       this.nativeBodyScript = document.createElement('script')
-      this.nativeBodyScript.src = `//cpanel.nativeads.com/js/nativeads-125848-6aaaca469831303d62599b1a43e58c3008a0df8f.j`
+      this.nativeBodyScript.src = `//cpanel.nativeads.com/js/nativeads-125848-6aaaca469831303d62599b1a43e58c3008a0df8f.js`
       this.nativeBodyScript.type = `text/javascript`
 
       document.body.insertAdjacentElement('beforeend', this.nativeStack)
