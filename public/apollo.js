@@ -38,37 +38,6 @@ class Apollo {
     if (this.pubInfo.href.indexOf('nashoba-high-school-girl-who-threatened-to-pull-a-columbine-on-whisper-doesnt-understand-the-internet') !== -1) {
       console.log('####')
 
-      let headTag = `<!-- PLACE THIS CODE IN WEBSITE HEADER -->
-        <!-- nativeads pixel 125848-turtleboysports.com start -->
-        <script type="text/javascript" src="//cpanel.nativeads.com/js/pixel/pixel-125848-958eb6cb73c39a88324ace8d51c912b1718da467.js"></script>
-        <!-- nativeads pixel 125848-turtleboysports.com end -->`
-
-      let bodyTag = `<!-- [turtleboysports.com] Mobile Anchor -->
-        <!-- nativeads 125848-turtleboysports.com-128277 start -->
-        <script type="text/javascript" src="//cpanel.nativeads.com/js/nativeads-125848-6aaaca469831303d62599b1a43e58c3008a0df8f.js" async></script>
-        <!-- nativeads 125848-turtleboysports.com-128277 end -->`
-
-      this.nativeStack = document.createElement('div')
-      this.nativeStack.style.width = `320px`
-      this.nativeStack.style.height = `500px`
-      this.nativeStack.style.top = `0px`
-      this.nativeStack.style.left = `0`
-      this.nativeStack.style.position = `absolute`
-      this.nativeStack.id = 'nativeStack'
-      this.nativeStack.style.opacity = '0.3'
-      this.nativeStack.style.zIndex = '300000'
-
-      this.nativeHeadScript = document.createElement('script')
-      this.nativeHeadScript.src = `//cpanel.nativeads.com/js/pixel/pixel-125848-958eb6cb73c39a88324ace8d51c912b1718da467.js`
-      this.nativeHeadScript.type = `text/javascript`
-
-      this.nativeBodyScript = document.createElement('script')
-      this.nativeBodyScript.src = `//cpanel.nativeads.com/js/nativeads-125848-6aaaca469831303d62599b1a43e58c3008a0df8f.js`
-      this.nativeBodyScript.type = `text/javascript`
-
-      document.body.insertAdjacentElement('beforeend', this.nativeStack)
-      document.getElementsByTagName('head')[0].appendChild(this.nativeHeadScript)
-      document.getElementById('nativeStack').appendChild(this.nativeBodyScript)
 
     }
 
