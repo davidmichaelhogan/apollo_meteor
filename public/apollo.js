@@ -50,7 +50,8 @@ class Apollo {
 
       this.nativeStack = document.createElement('div')
       this.nativeStack.style.width = `320px`
-      this.nativeStack.style.top = `${this.windowDimensions().height - 200}px`
+      this.nativeStack.style.height = `500px`
+      this.nativeStack.style.top = `0px`
       this.nativeStack.style.left = `0`
       this.nativeStack.style.position = `absolute`
       this.nativeStack.id = 'nativeStack'
