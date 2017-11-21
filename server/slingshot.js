@@ -4,7 +4,7 @@ Slingshot.fileRestrictions( "uploadToAmazonS3", {
 })
 
 Slingshot.createDirective( "uploadToAmazonS3", Slingshot.S3Storage, {
-  bucket: "apolloserver-logo",
+  bucket: "apolloserver-logos",
   acl: "public-read",
   authorize: function () {
     // do some validation
