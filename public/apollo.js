@@ -27,12 +27,6 @@ class Apollo {
 
     if (this.pubInfo.host.indexOf('turtleboy') !== -1) {
 
-      //TMP Meta add
-      let meta = document.createElement('meta')
-      meta.name = "propeller"
-      meta.content = "0de011736c625f518dee6fbc0cb3980d"
-      document.getElementsByTagName('head')[0].appendChild(meta)
-
       this.showAds = true
       this.ads = {
             mobile: `<ins class="adsbygoogle" style="display:inline-block;width:320px;height:50px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="2586005900"></ins>`,
@@ -50,7 +44,7 @@ class Apollo {
 
     //Start Apollo
     if (this.showAds) {
-      this.insertAds(this.ads)
+      this.insertGAds(this.ads)
     }
     if (this.isTouchDevice()) {
       this.createElement()
@@ -99,7 +93,7 @@ class Apollo {
   	}
   }
 
-  insertAds (ads) {
+  insertGAds (ads) {
       this.ad1 = document.createElement('div')
       this.ad1.style.top = `50px`
       this.ad1.style.left = `${this.windowDimensions().width - 300 - 20}px`
