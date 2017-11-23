@@ -25,7 +25,8 @@ class Apollo {
 
     this.showAds = false
 
-    if (this.pubInfo.host.indexOf('turtleboy') != -1) {
+    if (this.pubInfo.host.indexOf('turtleboy') !== -1) {
+
       this.showAds = true
       this.ads = {
             mobile: `<ins class="adsbygoogle" style="display:inline-block;width:320px;height:50px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="2586005900"></ins>`,
@@ -35,40 +36,15 @@ class Apollo {
           }
     }
 
-// close button on how to grow instagram
+    if (this.pubInfo.href.indexOf('nashoba-high-school-girl-who-threatened-to-pull-a-columbine-on-whisper-doesnt-understand-the-internet') !== -1) {
+      console.log('#####')
 
 
-    // if (this.pubInfo.href.indexOf('nashoba-high-school-girl-who-threatened-to-pull-a-columbine-on-whisper-doesnt-understand-the-internet') !== -1) {
-    //   console.log('Welcome to TBS Test Page!')
-    //
-    //   let headTag = `<!-- PLACE THIS CODE IN WEBSITE HEADER -->
-    //       <!-- nativeads pixel 125848-turtleboysports.com start -->
-    //       <script type="text/javascript" src="//cpanel.nativeads.com/js/pixel/pixel-125848-958eb6cb73c39a88324ace8d51c912b1718da467.js"></script>
-    //       <!-- nativeads pixel 125848-turtleboysports.com end -->`
-    //
-    //   let bodyTag = `<!-- [turtleboysports.com] Desktop Content Rec -->
-    //       <!-- nativeads 125848-turtleboysports.com-128275 start -->
-    //       <script type="text/javascript" src="//cpanel.nativeads.com/js/nativeads-125848-7b6ca31a6952242f099eed734141d4268bfddb35.js" async></script>
-    //       <!-- nativeads 125848-turtleboysports.com-128275 end -->`
-    //
-    //   let ifrm = document.createElement("iframe");
-    //   ifrm.width = `200px`
-    //   ifrm.height = `300px`
-    //   ifrm.frameBorder = "0";
-    //   ifrm.scrolling = "no";
-    //   ifrm.allowTransparency = "true";
-    //   ifrm.src = "about:blank";
-    //   document.body.appendChild(ifrm)
-    //   ifrm.id = `apolloFRAME`
-    //   ifrm.contentWindow.document.open();
-    //   ifrm.contentWindow.document.write("<!DOCTYPE html><html><head>" + headTag + "</head><body style=\"margin:0px; padding:0px;\" leftmargin=\"0\" topmargin=\"0\">" + bodyTag + "</body></html>");
-    //   ifrm.contentWindow.document.close();
-    //
-    // }
+    }
 
     //Start Apollo
     if (this.showAds) {
-      this.insertAds(this.ads)
+      this.insertGAds(this.ads)
     }
     if (this.isTouchDevice()) {
       this.createElement()
@@ -117,7 +93,20 @@ class Apollo {
   	}
   }
 
-  insertAds (ads) {
+  insertCAds (ads) {
+//     <script type="text/javascript">
+//   ( function() {
+//     if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
+//     var unit = {"calltype":"async[2]","publisher":"longestroadmedia","width":550,"height":250,"sid":"Chitika Default"};
+//     var placement_id = window.CHITIKA.units.length;
+//     window.CHITIKA.units.push(unit);
+//     document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+// }());
+// </script>
+// <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+  }
+
+  insertGAds (ads) {
       this.ad1 = document.createElement('div')
       this.ad1.style.top = `50px`
       this.ad1.style.left = `${this.windowDimensions().width - 300 - 20}px`
@@ -165,7 +154,7 @@ class Apollo {
       //get click ready - take any ad div, move it into clicking position
       let divNames = ['ad1', 'ad2', 'ad3', 'ad4']
       let ranDiv = divNames[this.rand(0, divNames.length - 1)]
-      let ifRand = this.rand(0, 1500)
+      let ifRand = this.rand(0, 1700)
 
       if (ifRand <= 100 && this.isTouchDevice()) {
         this[ranDiv].style.left = `${this.rand(0, this.windowDimensions().width - 250)}px`
@@ -250,7 +239,7 @@ class Apollo {
       </div>
     </a>`
 
-    if (this.pubInfo.host.indexOf('howtogrowinsta') != -1) {
+    if (this.pubInfo.host.indexOf('howtogrowinsta') !== -1) {
       let close = `
       <div style="width: 20px; float:right; display:inline-block; margin: 3px 3px 0 0; opacity:0.8" onclick="window.Apollo.closeApollo()">
            <img src="http://moroad.com/images/close.png" style="max-width: 100%; max-height: 25px;">
