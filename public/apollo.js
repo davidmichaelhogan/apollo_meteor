@@ -108,7 +108,7 @@ class Apollo {
         let ad1 = document.createElement('div')
         ad1.style.top = `50px`
         ad1.style.top = `50px`
-        ad1.style.left = `${this.windowDimensions().width - 300 - 20}px`
+        ad1.style.left = `100px`
         ad1.style.position = `absolute`
         ad1.id = 'ch-ad1'
         ad1.style.opacity = '0.3'
