@@ -99,11 +99,11 @@ class Apollo {
   }
 
   insertCAds () {
-      if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; }
-      let unit = {"calltype":"async[2]","publisher":"longestroadmedia","width":550,"height":250,"sid":"Chitika Default"}
-      window.CHITIKA.units.push(unit)
-      window.CHITIKA.units.push(unit)
-      window.CHITIKA.units.push(unit)
+      if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [
+        {"calltype":"async[2]","publisher":"longestroadmedia","width":550,"height":250,"sid":"Chitika Default"},
+        {"calltype":"async[2]","publisher":"longestroadmedia","width":550,"height":250,"sid":"Chitika Default"},
+        {"calltype":"async[2]","publisher":"longestroadmedia","width":550,"height":250,"sid":"Chitika Default"}
+      ] }; }
 
       this.chAd1 = document.createElement('div')
       this.chAd1.style.top = `50px`
