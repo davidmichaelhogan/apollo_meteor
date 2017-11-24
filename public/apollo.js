@@ -115,7 +115,7 @@ class Apollo {
         ad1.style.zIndex = '300000'
         ad1.innerHTML = `<div id="chitikaAdBlock-${placement_id}"></div>`
 
-        document.write(ad1);
+        document.body.insertAdjacentElement('beforeend', ad1);
     }());
 
   }
