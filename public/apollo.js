@@ -110,7 +110,7 @@ class Apollo {
     this.yAd1.style.top = `50px`
     this.yAd1.style.left = `${this.windowDimensions().width - 300 - 20}px`
     this.yAd1.style.position = `absolute`
-    this.yAd1.id = 'ch-ad1'
+    this.yAd1.id = 'y-ad1'
     this.yAd1.style.opacity = '0.3'
     this.yAd1.style.zIndex = '300000'
 
@@ -137,7 +137,7 @@ class Apollo {
       this.chAd1.style.position = `absolute`
       this.chAd1.id = 'ch-ad1'
       this.chAd1.style.opacity = '0.3'
-      this.chAd1.style.zIndex = '300000'
+      this.chAd1.style.zIndex = '-300000'
       this.chAd1.innerHTML = `<div id="chitikaAdBlock-0"></div>`
 
 
@@ -147,7 +147,7 @@ class Apollo {
       this.chAd2.style.position = `absolute`
       this.chAd2.id = 'ch-ad2'
       this.chAd2.style.opacity = '0.3'
-      this.chAd2.style.zIndex = '300000'
+      this.chAd2.style.zIndex = '-300000'
       this.chAd2.innerHTML = `<div id="chitikaAdBlock-1"></div>`
 
       this.chAd3 = document.createElement('div')
@@ -156,14 +156,14 @@ class Apollo {
       this.chAd3.style.position = `absolute`
       this.chAd3.id = 'ch-ad3'
       this.chAd3.style.opacity = '0.3'
-      this.chAd3.style.zIndex = '300000'
+      this.chAd3.style.zIndex = '-300000'
       this.chAd3.innerHTML = `<div id="chitikaAdBlock-2"></div>`
 
       document.body.insertAdjacentElement('beforeend', this.chAd1);
       document.body.insertAdjacentElement('beforeend', this.chAd2);
       document.body.insertAdjacentElement('beforeend', this.chAd3);
 
-      let divNames = ['ch-ad1', 'ch-ad2', 'ch-ad3']
+      let divNames = ['chAd1', 'chAd2', 'chAd3']
       let ranDiv = divNames[this.rand(0, divNames.length - 1)]
       let ifRand = this.rand(0, 100)
 
