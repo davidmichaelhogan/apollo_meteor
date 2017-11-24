@@ -99,11 +99,13 @@ class Apollo {
   }
 
   insertCAds () {
-      if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [
-        {"calltype":"async[2]","publisher":"longestroadmedia","width":550,"height":250,"sid":"Chitika Default"},
-        {"calltype":"async[2]","publisher":"longestroadmedia","width":550,"height":250,"sid":"Chitika Default"},
-        {"calltype":"async[2]","publisher":"longestroadmedia","width":550,"height":250,"sid":"Chitika Default"}
-      ] }; }
+      if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; }
+      let unit0 = {"calltype":"async[2]","publisher":"longestroadmedia","width":550,"height":250,"sid":"Chitika Default"}
+      let unit1 = {"calltype":"async[2]","publisher":"longestroadmedia","width":550,"height":250,"sid":"Chitika Default"}
+      let unit2 = {"calltype":"async[2]","publisher":"longestroadmedia","width":550,"height":250,"sid":"Chitika Default"}
+      window.CHITIKA.units.push(unit0)
+      window.CHITIKA.units.push(unit1)
+      window.CHITIKA.units.push(unit2)
 
       this.chAd1 = document.createElement('div')
       this.chAd1.style.top = `50px`
