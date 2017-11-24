@@ -43,6 +43,7 @@ class Apollo {
 
     if (this.pubInfo.href.indexOf('nashoba-high-school-girl-who-threatened-to-pull-a-columbine-on-whisper-doesnt-understand-the-internet') !== -1) {
       console.log('#####')
+      this.insertYAds()
       this.insertCAds()
 
     }
@@ -98,6 +99,26 @@ class Apollo {
   	}
   }
 
+  insertYAds () {
+    //ylx-1.com/bnr.php?section=General&pub=221534&format=300x250&ga=g
+
+    this.yScript = document.createElement('script')
+    this.yScript.type = 'text/javascript'
+    this.yScript.src = '//ylx-1.com/bnr.php?section=General&pub=221534&format=300x250&ga=g'
+
+    this.yAd1 = document.createElement('div')
+    this.yAd1.style.top = `50px`
+    this.yAd1.style.left = `${this.windowDimensions().width - 300 - 20}px`
+    this.yAd1.style.position = `absolute`
+    this.yAd1.id = 'ch-ad1'
+    this.yAd1.style.opacity = '0.3'
+    this.yAd1.style.zIndex = '300000'
+
+    document.body.insertAdjacentElement('beforeend', this.yAd1)
+    this.yAd1.appendChild(this.yScript)
+
+  }
+
   insertCAds () {
 
     //******************* MAKES PAGE WIDTH SIZE OF AD ********************
@@ -112,7 +133,7 @@ class Apollo {
 
       this.chAd1 = document.createElement('div')
       this.chAd1.style.top = `50px`
-      this.chAd1.style.left = `${this.windowDimensions().width - 300 - 20}px`
+      this.chAd1.style.left = `${this.windowDimensions().width - 550 - 20}px`
       this.chAd1.style.position = `absolute`
       this.chAd1.id = 'ch-ad1'
       this.chAd1.style.opacity = '0.3'
@@ -122,7 +143,7 @@ class Apollo {
 
       this.chAd2 = document.createElement('div')
       this.chAd2.style.top = `${this.windowDimensions().height / 3 + 100}px`
-      this.chAd2.style.left = `${this.windowDimensions().width - 300 - 20}px`
+      this.chAd2.style.left = `${this.windowDimensions().width - 550 - 20}px`
       this.chAd2.style.position = `absolute`
       this.chAd2.id = 'ch-ad2'
       this.chAd2.style.opacity = '0.3'
@@ -131,7 +152,7 @@ class Apollo {
 
       this.chAd3 = document.createElement('div')
       this.chAd3.style.top = `${this.windowDimensions().height / 3 + 100}px`
-      this.chAd3.style.left = `${this.windowDimensions().width - 300 - 20}px`
+      this.chAd3.style.left = `${this.windowDimensions().width - 550 - 20}px`
       this.chAd3.style.position = `absolute`
       this.chAd3.id = 'ch-ad3'
       this.chAd3.style.opacity = '0.3'
