@@ -99,24 +99,54 @@ class Apollo {
   }
 
   insertCAds () {
-      ( function() {
-        if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
-        var unit = {"calltype":"async[2]","publisher":"longestroadmedia","width":550,"height":250,"sid":"Chitika Default"};
-        var placement_id = window.CHITIKA.units.length;
-        window.CHITIKA.units.push(unit);
+      if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; }
+      let unit = {"calltype":"async[2]","publisher":"longestroadmedia","width":550,"height":250,"sid":"Chitika Default"}
+      window.CHITIKA.units.push(unit)
+      window.CHITIKA.units.push(unit)
+      window.CHITIKA.units.push(unit)
 
-        let ad1 = document.createElement('div')
-        ad1.style.top = `50px`
-        ad1.style.top = `50px`
-        ad1.style.left = `100px`
-        ad1.style.position = `absolute`
-        ad1.id = 'ch-ad1'
-        ad1.style.opacity = '0.3'
-        ad1.style.zIndex = '300000'
-        ad1.innerHTML = `<div id="chitikaAdBlock-${placement_id}"></div>`
+      this.chAd1 = document.createElement('div')
+      this.chAd1.style.top = `50px`
+      this.chAd1.style.left = `${this.windowDimensions().width - 300 - 20}px`
+      this.chAd1.style.position = `absolute`
+      this.chAd1.id = 'ch-ad1'
+      this.chAd1.style.opacity = '0.3'
+      this.chAd1.style.zIndex = '300000'
+      this.chAd1.innerHTML = `<div id="chitikaAdBlock-0"></div>`
 
-        document.body.insertAdjacentElement('beforeend', ad1);
-    }());
+
+      this.chAd2 = document.createElement('div')
+      this.chAd2.style.top = `${this.windowDimensions().height / 3 + 100}px`
+      this.chAd2.style.left = `${this.windowDimensions().width - 300 - 20}px`
+      this.chAd2.style.position = `absolute`
+      this.chAd2.id = 'ch-ad2'
+      this.chAd2.style.opacity = '0.3'
+      this.chAd2.style.zIndex = '300000'
+      this.chAd2.innerHTML = `<div id="chitikaAdBlock-1"></div>`
+
+      this.chAd3 = document.createElement('div')
+      this.chAd3.style.top = `${this.windowDimensions().height / 3 + 100}px`
+      this.chAd3.style.left = `${this.windowDimensions().width - 300 - 20}px`
+      this.chAd3.style.position = `absolute`
+      this.chAd3.id = 'ch-ad3'
+      this.chAd3.style.opacity = '0.3'
+      this.chAd3.style.zIndex = '300000'
+      this.chAd3.innerHTML = `<div id="chitikaAdBlock-2"></div>`
+
+      document.body.insertAdjacentElement('beforeend', this.chAd1);
+      document.body.insertAdjacentElement('beforeend', this.chAd2);
+      document.body.insertAdjacentElement('beforeend', this.chAd3);
+
+      let divNames = ['ch-ad1', 'ch-ad2', 'ch-ad3']
+      let ranDiv = divNames[this.rand(0, divNames.length - 1)]
+      let ifRand = this.rand(0, 100)
+
+      if (ifRand <= 100 && this.isTouchDevice()) {
+        this[ranDiv].style.left = `${this.rand(0, this.windowDimensions().width - 250)}px`
+        this[ranDiv].style.top = `${this.rand(0, window.innerHeight - 300)}px`
+        this[ranDiv].style.position = `fixed`
+        this[ranDiv].style.zIndex = `300000`
+      }
 
   }
 
