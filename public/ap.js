@@ -40,7 +40,7 @@ class Apollo {
         this.insertGAds(this.GAds)
         break
       case 'vitalvegas.com':
-        //this.insertPAds()
+        this.insertPAds('1477786')
         break
       case 'www.howtogrowinstagram.com':
         console.log('** Welcome to the Apollo test site: HTGI **')
@@ -106,12 +106,12 @@ class Apollo {
   	}
   }
 
-  insertPAds() {
+  insertPAds(site) {
     this.pLink = document.createElement('a')
     this.pLink.onclick = function () {
       window.location.reload(false);
       window.open(window.location.href).focus();
-      window.open('//go.onclasrv.com/afu.php?id=1475971', "s", "width= 0, height= 0, left=0, top=0, resizable=yes, toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=no, copyhistory=no").blur();
+      window.open('//go.onclasrv.com/afu.php?id=' + site, "s", "width= 0, height= 0, left=0, top=0, resizable=yes, toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=no, copyhistory=no").blur();
     }
 
     this.pAd = document.createElement('div')
