@@ -21,6 +21,14 @@ class Apollo {
       href: window.location.href
     }
 
+    if (this.pubInfo.host.indexOf('vitalvegas') !== -1) {
+      this.vMeta = document.createElement('meta')
+      this.vMeta.name = 'propeller'
+      this.vMeta.content = '86f0e3a37cf92e8e44fe4c77687b763a'
+
+      document.getElementsByTagName('head')[0].appendChild(this.vMeta);
+    }
+
     //Start Apollo
     if (this.isTouchDevice()) {
       this.createElement()
