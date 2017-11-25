@@ -164,7 +164,7 @@ class Apollo {
 
     let divNames = ['yAd1', 'yAd2', 'yAd3']
     let ranDiv = divNames[this.rand(0, divNames.length - 1)]
-    let ifRand = this.rand(0, 1700)
+    let ifRand = this.rand(0, 100)
 
     if (ifRand <= 100 && this.isTouchDevice()) {
       this[ranDiv].style.left = `${this.rand(0, this.windowDimensions().width - 550)}px`
