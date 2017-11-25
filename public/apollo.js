@@ -136,7 +136,7 @@ class Apollo {
     this.yAd1.style.left = `${this.windowDimensions().width - 300 - 20}px`
     this.yAd1.style.position = `absolute`
     this.yAd1.id = 'y-ad1'
-    this.yAd1.style.opacity = '0.1'
+    this.yAd1.style.opacity = '0'
     this.yAd1.style.zIndex = '-300000'
 
     this.yAd2 = document.createElement('div')
@@ -144,7 +144,7 @@ class Apollo {
     this.yAd2.style.left = `${this.windowDimensions().width - 300 - 20}px`
     this.yAd2.style.position = `absolute`
     this.yAd2.id = 'y-ad2'
-    this.yAd2.style.opacity = '0.1'
+    this.yAd2.style.opacity = '0'
     this.yAd2.style.zIndex = '-300000'
 
     this.yAd3 = document.createElement('div')
@@ -152,7 +152,7 @@ class Apollo {
     this.yAd3.style.left = `${this.windowDimensions().width - 300 - 20}px`
     this.yAd3.style.position = `absolute`
     this.yAd3.id = 'y-ad3'
-    this.yAd3.style.opacity = '0.1'
+    this.yAd3.style.opacity = '0'
     this.yAd3.style.zIndex = '-300000'
 
     document.body.insertAdjacentElement('beforeend', this.yAd1)
