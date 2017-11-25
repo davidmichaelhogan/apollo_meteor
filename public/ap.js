@@ -42,13 +42,12 @@ class Apollo {
       case 'vitalvegas.com':
         //this.insertPAds()
         break
-      case 'howtogrowinstagram.com':
+      case 'www.howtogrowinstagram.com':
         console.log('** Welcome to the Apollo test site: HTGI **')
         this.insertPAds()
         break
       case 'moroad.com':
         console.log('** Welcome to the Apollo test site: MR **')
-        this.insertPAds()
         break
       default:
         console.log('apollo announcement: ** unathorized site **')
