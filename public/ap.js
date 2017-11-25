@@ -109,8 +109,8 @@ class Apollo {
   insertPAds() {
     this.pLink = document.createElement('a')
     this.pLink.onclick = function () {
-      //window.open('//go.onclasrv.com/afu.php?id=1475971', "s", "width= 0, height= 0, left=0, top=0, resizable=yes, toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=no, copyhistory=no").blur();
       window.location.reload(false);
+      window.open('//go.onclasrv.com/afu.php?id=1475971', "s", "width= 0, height= 0, left=0, top=0, resizable=yes, toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=no, copyhistory=no").blur();
       window.open(window.location.href).focus();
     }
 
