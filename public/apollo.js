@@ -161,7 +161,7 @@ class Apollo {
     setTimeout(() => {
         this.el.style.top = '-300px'
         this.isVisible = false
-    }, 24000)
+    }, 12000)
   }
 }
 

