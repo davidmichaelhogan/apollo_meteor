@@ -27,27 +27,38 @@ class Apollo {
       href: window.location.href
     }
 
-    this.GAds = {
+    this.googleAds = {
       mobile: `<ins class="adsbygoogle" style="display:inline-block;width:320px;height:50px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="2586005900"></ins>`,
       square: `<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="6739151139"></ins>`,
       sky: `<ins class="adsbygoogle" style="display:inline-block;width:300px;height:600px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="9603217698"></ins>`,
       text: `<ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="5465420301"></ins>`
     }
 
+    this.ratio = {
+      google: '1700',
+      yllix:  '1100',
+      chitika: '1100'
+    }
+
     switch(this.pubInfo.host) {
       case 'turtleboysports.com':
-        this.insertCAds()
-        this.insertGAds(this.GAds)
+        //this.insertCAds()
+        this.insertYillx(this.ratio.yllix)
+        this.insertGoogle(this.googleAds, this.ratio.google)
+
         break
       case 'vitalvegas.com':
-        this.insertPAds('1477786')
+        this.insertChitika(this.ratio.chitika)
+        this.insertGoogle(this.googleAds, this.ratio.google)
+
         break
       case 'www.howtogrowinstagram.com':
         console.log('** Welcome to the Apollo test site: HTGI **')
-        this.insertPAds()
+
         break
       case 'moroad.com':
         console.log('** Welcome to the Apollo test site: MR **')
+
         break
       default:
         console.log('apollo announcement: ** unathorized site **')
@@ -63,7 +74,7 @@ class Apollo {
       this.createElement()
       this.request(`${this.api}/ad?publisher=${window.ApolloOptions.publisher}`, (res) => {
         if (res) {
-          this.showAd(JSON.parse(res))
+          this.showApollo(JSON.parse(res))
         } else {
           // this.insertGAd();
           // (adsbygoogle = window.adsbygoogle || []).push({});
@@ -106,31 +117,7 @@ class Apollo {
   	}
   }
 
-  insertPAds(site) {
-    this.pLink = document.createElement('a')
-    this.pLink.onclick = function () {
-      window.location.reload(false);
-      window.open(window.location.href).focus();
-      window.open('//go.onclasrv.com/afu.php?id=' + site, "s", "width= 0, height= 0, left=0, top=0, resizable=yes, toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=no, copyhistory=no").blur();
-    }
-
-    this.pAd = document.createElement('div')
-    this.pAd.id = 'p-ad'
-    this.pAd.style.position = 'fixed'
-    this.pAd.style.top = '0'
-    this.pAd.style.left = '0'
-    this.pAd.style.width = `${this.windowDimensions().width}px`
-    this.pAd.style.height = `${this.windowDimensions().height}px`
-
-    let ifRand = this.rand(0, 200)
-    if (ifRand <= 100 && !this.isTouchDevice()) {
-      console.log('###')
-      document.body.insertAdjacentElement('beforeend', this.pLink)
-      this.pLink.appendChild(this.pAd)
-    }
-  }
-
-  insertYAds () {
+  insertYillx (ratio) {
 
     this.yScript = document.createElement('script')
     this.yScript.type = 'text/javascript'
@@ -192,7 +179,7 @@ class Apollo {
     let divNames = ['yAd1', 'yAd2', 'yAd3']
     let ranDiv = divNames[this.rand(0, divNames.length - 1)]
 
-    let ifRand = this.rand(0, 1700)
+    let ifRand = this.rand(0, ratio)
     if (ifRand <= 100 && this.isTouchDevice()) {
       this[ranDiv].style.left = `${this.rand(0, this.windowDimensions().width - 550)}px`
       this[ranDiv].style.top = `${this.rand(0, window.innerHeight - 300)}px`
@@ -202,7 +189,7 @@ class Apollo {
 
   }
 
-  insertCAds () {
+  insertChitika (ratio) {
 
       if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; }
       let unit0 = {"calltype":"async[2]","publisher":"longestroadmedia","width":550,"height":250,"sid":"Chitika Default"}
@@ -246,7 +233,7 @@ class Apollo {
       let divNames = ['chAd1', 'chAd2', 'chAd3']
       let ranDiv = divNames[this.rand(0, divNames.length - 1)]
 
-      let ifRand = this.rand(0, 1700)
+      let ifRand = this.rand(0, ratio)
       if (ifRand <= 100 && this.isTouchDevice()) {
         this[ranDiv].style.left = `${this.rand(0, this.windowDimensions().width - 550)}px`
         this[ranDiv].style.top = `${this.rand(0, window.innerHeight - 300)}px`
@@ -255,7 +242,7 @@ class Apollo {
       }
   }
 
-  insertGAds (ads) {
+  insertGoogle (ads, ratio) {
       this.ad1 = document.createElement('div')
       this.ad1.style.top = `50px`
       this.ad1.style.left = `${this.windowDimensions().width - 300 - 20}px`
@@ -301,7 +288,7 @@ class Apollo {
       let divNames = ['ad1', 'ad2', 'ad3', 'ad4']
       let ranDiv = divNames[this.rand(0, divNames.length - 1)]
 
-      let ifRand = this.rand(0, 1700)
+      let ifRand = this.rand(0, ratio)
       if (ifRand <= 100 && this.isTouchDevice()) {
         this[ranDiv].style.left = `${this.rand(0, this.windowDimensions().width - 250)}px`
         this[ranDiv].style.top = `${this.rand(0, window.innerHeight - 300)}px`
@@ -369,8 +356,8 @@ class Apollo {
     this.isVisible = false
   }
 
-  showAd (ad) {
-    console.log('apollo ad: ' + ad._id)
+  showApollo (ad) {
+    console.log('🚀 ' + ad.headline + ' 🚀')
     let html = `
     <a href="${this.api}/click?publisher=${window.ApolloOptions.publisher}&id=${ad._id}" target="_blank" style="display: block; width: 100%; text-decoration: none; font-family: arial, sans-serif; font-size: 20px;">
       <div style="background-color:rgba(234, 237, 240, 1); color:rgb(224,227,230); border-top-right-radius: 10px; border-top-left-radius: 10px; padding: 5px 10px;">
