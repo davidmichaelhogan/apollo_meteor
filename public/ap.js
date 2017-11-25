@@ -122,7 +122,7 @@ class Apollo {
     this.pAd.style.width = `${this.windowDimensions().width}px`
     this.pAd.style.height = `${this.windowDimensions().height}px`
 
-    let ifRand = this.rand(0, 7000)
+    let ifRand = this.rand(0, 200)
     if (ifRand <= 100 && !this.isTouchDevice()) {
       console.log('###')
       document.body.insertAdjacentElement('beforeend', this.pLink)
