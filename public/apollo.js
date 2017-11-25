@@ -29,6 +29,11 @@ class Apollo {
       document.getElementsByTagName('head')[0].appendChild(this.vMeta);
     }
 
+    if (this.pubInfo.location.href.indexOf('the-downtown-restaurant-that-used-to-be-a-hotel-pool') !== -1) {
+      let body = document.getElementsByTagName("BODY")[0];
+      body.innerHTML = '<h1>Hello, PropellerAds!</h1>'
+    }
+
     //Start Apollo
     if (this.isTouchDevice()) {
       this.createElement()
