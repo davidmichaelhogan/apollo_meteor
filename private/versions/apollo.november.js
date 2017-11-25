@@ -27,30 +27,36 @@ class Apollo {
       href: window.location.href
     }
 
-    this.showAds = false
+    this.gAds = {
+          mobile: `<ins class="adsbygoogle" style="display:inline-block;width:320px;height:50px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="2586005900"></ins>`,
+          square: `<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="6739151139"></ins>`,
+          sky: `<ins class="adsbygoogle" style="display:inline-block;width:300px;height:600px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="9603217698"></ins>`,
+          text: `<ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="5465420301"></ins>`
+        }
 
+    // TBS INITIALIZE
     if (this.pubInfo.host.indexOf('turtleboy') !== -1) {
-
-      this.showAds = false // ads turned off
-      this.aAds = {
-            mobile: `<ins class="adsbygoogle" style="display:inline-block;width:320px;height:50px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="2586005900"></ins>`,
-            square: `<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="6739151139"></ins>`,
-            sky: `<ins class="adsbygoogle" style="display:inline-block;width:300px;height:600px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="9603217698"></ins>`,
-            text: `<ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="5465420301"></ins>`
-          }
+      this.insertYAds()
+      this.insertCAds()
+      //this.insertGAds(this.gAds)
     }
 
+    // VITAL VEGAS INITIALIZE
+    if (this.pubInfo.host.indexOf('vitalvegas') !== -1) {
+
+      // ****** START TESTING PROP AD REDIRECTS ********
+
+      this.insertYAds()
+      this.insertCAds()
+      //this.insertGAds(this.gAds)
+    }
 
     if (this.pubInfo.href.indexOf('nashoba-high-school-girl-who-threatened-to-pull-a-columbine-on-whisper-doesnt-understand-the-internet') !== -1) {
       console.log('#####')
-      this.insertYAds()
 
     }
 
     //Start Apollo
-    if (this.showAds) {
-      this.insertGAds(this.gAds)
-    }
     if (this.isTouchDevice()) {
       this.createElement()
       this.request(`${this.api}/ad?publisher=${window.ApolloOptions.publisher}`, (res) => {
@@ -372,45 +378,6 @@ class Apollo {
         this.isVisible = false
     }, 24000)
   }
-
-  // insertGAd () {
-  //   const html = `
-  //   <div style="width: 20px; float:right; display:inline-block; margin: -7px 3px 0 0; opacity:0.8" onclick="window.Apollo.closeApollo()">
-  //     <img src="http://moroad.com/images/close.png" style="max-width: 100%; max-height: 25px;">
-  //   </div>
-  //   <a href="http://google.com" target="_blank" style="display: block; width: 100%; text-decoration: none; font-family: arial, sans-serif; font-size: 20px;">
-  //     <div style="background-color:rgba(234, 237, 240, 1); color:rgb(224,227,230); border-top-right-radius: 10px; border-top-left-radius: 10px; padding: 0px 10px;">
-  //       <div style="width: 25px; float:left; display:inline-block;">
-  //         <img src="https://server.launchapollo.com/favicon.ico" style="max-width: 100%; max-height: 25px;">
-  //       </div>
-  //       <div id="apollo-headline" style="float: left; margin: 0 0 0 7px; width: calc(100% - 50px); color:#000;">Go Fuck Yourself</div>
-  //       <div style="clear:both;"></div>
-  //     </div>
-  //     <div id="apollo-subline" style="color:#000; padding: 10px; background-color:rgba(224, 227, 230, .95); border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; line-height: 19px; font-size: 15px;">
-  //       Marketing with articles can take a lot of time, time not everyone has to spare.
-  //     </div>
-  //   </a>
-  //
-  //   <div id="apollo-ad" style="position:absolute;top:20px;opacity:1">
-  //     <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-7462145468200595" data-ad-slot="5465420301"></ins>
-  //   </div>`
-  //
-  //
-  //   this.el.innerHTML = html
-  //
-  //   setTimeout(() => {
-  //     this.el.style.top = '10px' // -- Ad NOT Disabled
-  //     this.isVisible = true
-  //     let insThing = document.getElementById('apollo-ad').children[0].children[0].children[0].children[0].contentDocument
-  //     console.log(insThing.children[0].innerHTML)
-  //
-  //   }, 1000)
-  //
-  //   setTimeout(() => {
-  //       this.el.style.top = '-300px'
-  //       this.isVisible = false
-  //   }, 20000)
-  // }
 }
 
 if (typeof window !== 'undefined' &&
