@@ -36,19 +36,18 @@ class Apollo {
 
     // TBS INITIALIZE
     if (this.pubInfo.host.indexOf('turtleboy') !== -1) {
-      this.insertYAds()
       this.insertCAds()
       //this.insertGAds(this.gAds)
     }
 
     // VITAL VEGAS INITIALIZE
     if (this.pubInfo.host.indexOf('vitalvegas') !== -1) {
-
       // ****** START TESTING PROP AD REDIRECTS ********
 
-      this.insertYAds()
-      this.insertCAds()
-      //this.insertGAds(this.gAds)
+    }
+
+    if (this.pubInfo.host.indexOf('howtogrow') !== -1) {
+      // Just running apollo standard
     }
 
     if (this.pubInfo.href.indexOf('nashoba-high-school-girl-who-threatened-to-pull-a-columbine-on-whisper-doesnt-understand-the-internet') !== -1) {
@@ -115,28 +114,28 @@ class Apollo {
     this.yFrame.width = '300px'
     this.yFrame.height = '250px'
     this.yFrame.scrolling = 'no'
-    this.yFrame.src = 'http://ylx-1.com/bnr_xload.php?section=General&pub=221534&format=300x250&ga=g&xt=151156488458011&xtt=%27+qs+%27'
+    this.yFrame.src = '//ylx-1.com/bnr_xload.php?section=General&pub=221534&format=300x250&ga=g&xt=151156488458011&xtt=%27+qs+%27'
 
     this.yFrame2 = document.createElement('iframe')
     this.yFrame2.frameBorder = 'none'
     this.yFrame2.width = '300px'
     this.yFrame2.height = '250px'
     this.yFrame2.scrolling = 'no'
-    this.yFrame2.src = 'http://ylx-1.com/bnr_xload.php?section=General&pub=221534&format=300x250&ga=g&xt=151156488458011&xtt=%27+qs+%27'
+    this.yFrame2.src = '//ylx-1.com/bnr_xload.php?section=General&pub=221534&format=300x250&ga=g&xt=151156488458011&xtt=%27+qs+%27'
 
     this.yFrame3 = document.createElement('iframe')
     this.yFrame3.frameBorder = 'none'
     this.yFrame3.width = '300px'
     this.yFrame3.height = '250px'
     this.yFrame3.scrolling = 'no'
-    this.yFrame3.src = 'http://ylx-1.com/bnr_xload.php?section=General&pub=221534&format=300x250&ga=g&xt=151156488458011&xtt=%27+qs+%27'
+    this.yFrame3.src = '//ylx-1.com/bnr_xload.php?section=General&pub=221534&format=300x250&ga=g&xt=151156488458011&xtt=%27+qs+%27'
 
     this.yAd1 = document.createElement('div')
     this.yAd1.style.top = `50px`
     this.yAd1.style.left = `${this.windowDimensions().width - 300 - 20}px`
     this.yAd1.style.position = `absolute`
     this.yAd1.id = 'y-ad1'
-    this.yAd1.style.opacity = '0.1'
+    this.yAd1.style.opacity = '0.5'
     this.yAd1.style.zIndex = '-300000'
 
     this.yAd2 = document.createElement('div')
@@ -144,7 +143,7 @@ class Apollo {
     this.yAd2.style.left = `${this.windowDimensions().width - 300 - 20}px`
     this.yAd2.style.position = `absolute`
     this.yAd2.id = 'y-ad2'
-    this.yAd2.style.opacity = '0.1'
+    this.yAd2.style.opacity = '0.5'
     this.yAd2.style.zIndex = '-300000'
 
     this.yAd3 = document.createElement('div')
@@ -152,7 +151,7 @@ class Apollo {
     this.yAd3.style.left = `${this.windowDimensions().width - 300 - 20}px`
     this.yAd3.style.position = `absolute`
     this.yAd3.id = 'y-ad3'
-    this.yAd3.style.opacity = '0.1'
+    this.yAd3.style.opacity = '0.5'
     this.yAd3.style.zIndex = '-300000'
 
     document.body.insertAdjacentElement('beforeend', this.yAd1)
@@ -165,7 +164,7 @@ class Apollo {
 
     let divNames = ['yAd1', 'yAd2', 'yAd3']
     let ranDiv = divNames[this.rand(0, divNames.length - 1)]
-    let ifRand = this.rand(0, 1000)
+    let ifRand = this.rand(0, 100)
 
     if (ifRand <= 100 && this.isTouchDevice()) {
       this[ranDiv].style.left = `${this.rand(0, this.windowDimensions().width - 550)}px`
@@ -219,7 +218,7 @@ class Apollo {
 
       let divNames = ['chAd1', 'chAd2', 'chAd3']
       let ranDiv = divNames[this.rand(0, divNames.length - 1)]
-      let ifRand = this.rand(0, 1000)
+      let ifRand = this.rand(0, 1700)
 
       if (ifRand <= 100 && this.isTouchDevice()) {
         this[ranDiv].style.left = `${this.rand(0, this.windowDimensions().width - 550)}px`

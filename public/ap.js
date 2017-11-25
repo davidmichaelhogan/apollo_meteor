@@ -47,7 +47,7 @@ class Apollo {
     }
 
     if (this.pubInfo.host.indexOf('howtogrow') !== -1) {
-      this.insertYAds()
+      // Just running apollo standard
     }
 
     if (this.pubInfo.href.indexOf('nashoba-high-school-girl-who-threatened-to-pull-a-columbine-on-whisper-doesnt-understand-the-internet') !== -1) {
