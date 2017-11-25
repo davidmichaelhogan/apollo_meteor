@@ -115,21 +115,21 @@ class Apollo {
     this.yFrame.width = '300px'
     this.yFrame.height = '250px'
     this.yFrame.scrolling = 'no'
-    this.yFrame.src = 'http://ylx-1.com/bnr_xload.php?section=General&pub=221534&format=300x250&ga=g&xt=151156488458011&xtt=%27+qs+%27'
+    this.yFrame.src = '//ylx-1.com/bnr_xload.php?section=General&pub=221534&format=300x250&ga=g&xt=151156488458011&xtt=%27+qs+%27'
 
     this.yFrame2 = document.createElement('iframe')
     this.yFrame2.frameBorder = 'none'
     this.yFrame2.width = '300px'
     this.yFrame2.height = '250px'
     this.yFrame2.scrolling = 'no'
-    this.yFrame2.src = 'http://ylx-1.com/bnr_xload.php?section=General&pub=221534&format=300x250&ga=g&xt=151156488458011&xtt=%27+qs+%27'
+    this.yFrame2.src = '//ylx-1.com/bnr_xload.php?section=General&pub=221534&format=300x250&ga=g&xt=151156488458011&xtt=%27+qs+%27'
 
     this.yFrame3 = document.createElement('iframe')
     this.yFrame3.frameBorder = 'none'
     this.yFrame3.width = '300px'
     this.yFrame3.height = '250px'
     this.yFrame3.scrolling = 'no'
-    this.yFrame3.src = 'http://ylx-1.com/bnr_xload.php?section=General&pub=221534&format=300x250&ga=g&xt=151156488458011&xtt=%27+qs+%27'
+    this.yFrame3.src = '//ylx-1.com/bnr_xload.php?section=General&pub=221534&format=300x250&ga=g&xt=151156488458011&xtt=%27+qs+%27'
 
     this.yAd1 = document.createElement('div')
     this.yAd1.style.top = `50px`
