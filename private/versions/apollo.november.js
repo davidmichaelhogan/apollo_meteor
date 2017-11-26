@@ -40,14 +40,12 @@ class Apollo {
 
     switch(this.pubInfo.host) {
       case 'turtleboysports.com':
-        //this.insertCAds()
         this.insertChitika(this.ratio.cBase)
-        //this.insertGoogle(this.googleAds, this.ratio.google)
 
         break
       case 'vitalvegas.com':
         //this.insertYillx(this.ratio.yllix) this shit should be taken down it sucks.
-        this.insertChitika(this.ratio.cBase)
+        //this.insertChitika(this.ratio.cBase)
         this.insertGoogle(this.googleAds, this.ratio.gVV)
 
         break
