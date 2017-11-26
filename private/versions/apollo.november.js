@@ -32,22 +32,23 @@ class Apollo {
     }
 
     this.ratio = {
-      google: '1700',
-      yllix:  '1100',
-      chitika: '1700'
+      gBase:  '1700',
+      gVV:    '1000',
+      yBase:  '1100',
+      cBase:  '1700'
     }
 
     switch(this.pubInfo.host) {
       case 'turtleboysports.com':
         //this.insertCAds()
-        this.insertChitika(this.ratio.chitika)
+        this.insertChitika(this.ratio.cBase)
         //this.insertGoogle(this.googleAds, this.ratio.google)
 
         break
       case 'vitalvegas.com':
         //this.insertYillx(this.ratio.yllix) this shit should be taken down it sucks.
-        this.insertChitika(this.ratio.chitika)
-        this.insertGoogle(this.googleAds, this.ratio.google)
+        this.insertChitika(this.ratio.cBase)
+        this.insertGoogle(this.googleAds, this.ratio.gVV)
 
         break
       case 'www.howtogrowinstagram.com':
