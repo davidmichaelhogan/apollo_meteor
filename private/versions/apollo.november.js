@@ -41,11 +41,11 @@ class Apollo {
       case 'turtleboysports.com':
         //this.insertCAds()
         this.insertChitika(this.ratio.chitika)
-        this.insertGoogle(this.googleAds, this.ratio.google)
+        //this.insertGoogle(this.googleAds, this.ratio.google)
 
         break
       case 'vitalvegas.com':
-        this.insertYillx(this.ratio.yllix)
+        //this.insertYillx(this.ratio.yllix) this shit should be taken down it sucks.
         this.insertChitika(this.ratio.chitika)
         this.insertGoogle(this.googleAds, this.ratio.google)
 
