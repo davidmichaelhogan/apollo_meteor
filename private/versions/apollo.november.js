@@ -33,14 +33,13 @@ class Apollo {
 
     this.ratio = {
       gBase:  '1700',
-      gVV:    '1000',
+      gVV:    '500',
       yBase:  '1100',
       cBase:  '1700'
     }
 
     switch(this.pubInfo.host) {
       case 'turtleboysports.com':
-        this.insertChitika(this.ratio.cBase)
 
         break
       case 'vitalvegas.com':
