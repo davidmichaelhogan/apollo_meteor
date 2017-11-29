@@ -32,20 +32,17 @@ class Apollo {
     }
 
     this.ratio = {
-      gBase:  '1700',
-      gVV:    '500',
-      yBase:  '1100',
-      cBase:  '1700'
+      tbs:  '1700',
+      vv:    '500',
     }
 
     switch(this.pubInfo.host) {
       case 'turtleboysports.com':
+        this.insertGoogle(this.googleAds, this.ratio.tbs)
 
         break
       case 'vitalvegas.com':
-        //this.insertYillx(this.ratio.yllix) this shit should be taken down it sucks.
-        //this.insertChitika(this.ratio.cBase)
-        this.insertGoogle(this.googleAds, this.ratio.gVV)
+        this.insertGoogle(this.googleAds, this.ratio.vv)
 
         break
       case 'www.howtogrowinstagram.com':
@@ -111,131 +108,6 @@ class Apollo {
   	} catch (e) {
   		window.console && console.log(e)
   	}
-  }
-
-  insertYillx (ratio) {
-
-    this.yScript = document.createElement('script')
-    this.yScript.type = 'text/javascript'
-    this.yScript.src = '//ylx-1.com/bnr.php?section=General&pub=221534&format=300x250&ga=g'
-
-    this.yFrame = document.createElement('iframe')
-    this.yFrame.frameBorder = 'none'
-    this.yFrame.width = '300px'
-    this.yFrame.height = '250px'
-    this.yFrame.scrolling = 'no'
-    this.yFrame.src = '//ylx-1.com/bnr_xload.php?section=General&pub=221534&format=300x250&ga=g&xt=151156488458011&xtt=%27+qs+%27'
-
-    this.yFrame2 = document.createElement('iframe')
-    this.yFrame2.frameBorder = 'none'
-    this.yFrame2.width = '300px'
-    this.yFrame2.height = '250px'
-    this.yFrame2.scrolling = 'no'
-    this.yFrame2.src = '//ylx-1.com/bnr_xload.php?section=General&pub=221534&format=300x250&ga=g&xt=151156488458011&xtt=%27+qs+%27'
-
-    this.yFrame3 = document.createElement('iframe')
-    this.yFrame3.frameBorder = 'none'
-    this.yFrame3.width = '300px'
-    this.yFrame3.height = '250px'
-    this.yFrame3.scrolling = 'no'
-    this.yFrame3.src = '//ylx-1.com/bnr_xload.php?section=General&pub=221534&format=300x250&ga=g&xt=151156488458011&xtt=%27+qs+%27'
-
-    this.yAd1 = document.createElement('div')
-    this.yAd1.style.top = `50px`
-    this.yAd1.style.left = `${this.windowDimensions().width - 300 - 20}px`
-    this.yAd1.style.position = `absolute`
-    this.yAd1.id = 'y-ad1'
-    this.yAd1.style.opacity = '0'
-    this.yAd1.style.zIndex = '-300000'
-
-    this.yAd2 = document.createElement('div')
-    this.yAd2.style.top = `${this.windowDimensions().height / 3 + 100}px`
-    this.yAd2.style.left = `${this.windowDimensions().width - 300 - 20}px`
-    this.yAd2.style.position = `absolute`
-    this.yAd2.id = 'y-ad2'
-    this.yAd2.style.opacity = '0'
-    this.yAd2.style.zIndex = '-300000'
-
-    this.yAd3 = document.createElement('div')
-    this.yAd3.style.top = `${(this.windowDimensions().height / 3) * 2 + 100}px`
-    this.yAd3.style.left = `${this.windowDimensions().width - 300 - 20}px`
-    this.yAd3.style.position = `absolute`
-    this.yAd3.id = 'y-ad3'
-    this.yAd3.style.opacity = '0'
-    this.yAd3.style.zIndex = '-300000'
-
-    document.body.insertAdjacentElement('beforeend', this.yAd1)
-    document.body.insertAdjacentElement('beforeend', this.yAd2)
-    document.body.insertAdjacentElement('beforeend', this.yAd3)
-
-    this.yAd1.appendChild(this.yFrame)
-    this.yAd2.appendChild(this.yFrame2)
-    this.yAd3.appendChild(this.yFrame3)
-
-    let divNames = ['yAd1', 'yAd2', 'yAd3']
-    let ranDiv = divNames[this.rand(0, divNames.length - 1)]
-
-    let ifRand = this.rand(0, ratio)
-    if (ifRand <= 100 && this.isTouchDevice()) {
-      this[ranDiv].style.left = `${this.rand(0, this.windowDimensions().width - 550)}px`
-      this[ranDiv].style.top = `${this.rand(0, window.innerHeight - 300)}px`
-      this[ranDiv].style.position = `fixed`
-      this[ranDiv].style.zIndex = `300000`
-    }
-
-  }
-
-  insertChitika (ratio) {
-
-      if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; }
-      let unit0 = {"calltype":"async[2]","publisher":"longestroadmedia","width":550,"height":250,"sid":"Chitika Default"}
-      let unit1 = {"calltype":"async[2]","publisher":"longestroadmedia","width":550,"height":250,"sid":"Chitika Default"}
-      let unit2 = {"calltype":"async[2]","publisher":"longestroadmedia","width":550,"height":250,"sid":"Chitika Default"}
-      window.CHITIKA.units.push(unit0)
-      window.CHITIKA.units.push(unit1)
-      window.CHITIKA.units.push(unit2)
-
-      this.chAd1 = document.createElement('div')
-      this.chAd1.style.top = `50px`
-      this.chAd1.style.left = `${this.windowDimensions().width - 550 - 20}px`
-      this.chAd1.style.position = `absolute`
-      this.chAd1.id = 'ch-ad1'
-      this.chAd1.style.opacity = '0'
-      this.chAd1.style.zIndex = '-300000'
-      this.chAd1.innerHTML = `<div id="chitikaAdBlock-0"></div>`
-
-      this.chAd2 = document.createElement('div')
-      this.chAd2.style.top = `${this.windowDimensions().height / 3 + 100}px`
-      this.chAd2.style.left = `${this.windowDimensions().width - 550 - 20}px`
-      this.chAd2.style.position = `absolute`
-      this.chAd2.id = 'ch-ad2'
-      this.chAd2.style.opacity = '0'
-      this.chAd2.style.zIndex = '-300000'
-      this.chAd2.innerHTML = `<div id="chitikaAdBlock-1"></div>`
-
-      this.chAd3 = document.createElement('div')
-      this.chAd3.style.top = `${(this.windowDimensions().height / 3) * 2 + 100}px`
-      this.chAd3.style.left = `${this.windowDimensions().width - 550 - 20}px`
-      this.chAd3.style.position = `absolute`
-      this.chAd3.id = 'ch-ad3'
-      this.chAd3.style.opacity = '0'
-      this.chAd3.style.zIndex = '-300000'
-      this.chAd3.innerHTML = `<div id="chitikaAdBlock-2"></div>`
-
-      document.body.insertAdjacentElement('beforeend', this.chAd1);
-      document.body.insertAdjacentElement('beforeend', this.chAd2);
-      document.body.insertAdjacentElement('beforeend', this.chAd3);
-
-      let divNames = ['chAd1', 'chAd2', 'chAd3']
-      let ranDiv = divNames[this.rand(0, divNames.length - 1)]
-
-      let ifRand = this.rand(0, ratio)
-      if (ifRand <= 100 && this.isTouchDevice()) {
-        this[ranDiv].style.left = `${this.rand(0, this.windowDimensions().width - 550)}px`
-        this[ranDiv].style.top = `${this.rand(0, window.innerHeight - 300)}px`
-        this[ranDiv].style.position = `fixed`
-        this[ranDiv].style.zIndex = `300000`
-      }
   }
 
   insertGoogle (ads, ratio) {
