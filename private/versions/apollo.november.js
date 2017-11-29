@@ -44,6 +44,7 @@ class Apollo {
         break
       case 'vitalvegas.com':
         this.insertGoogle(this.googleAds, this.ratio.vv)
+        this.insertMeta('coinzilla', 'coinzilla-641495a1e19eb12cfb')
 
         break
       case 'www.howtogrowinstagram.com':
@@ -109,6 +110,14 @@ class Apollo {
   	} catch (e) {
   		window.console && console.log(e)
   	}
+  }
+
+  insertMeta (name, tag) {
+    this.meta = document.createElement('meta')
+    this.meta.name = name
+    this.meta.content = tag
+
+    document.getElementsByTagName('head')[0].appendChild(this.meta)
   }
 
   insertGoogle (ads, ratio) {
