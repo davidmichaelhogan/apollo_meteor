@@ -39,7 +39,7 @@ class Apollo {
 
     this.ratio = {
       tbs:  '1700',
-      vv:    '500',
+      vv:    '500'
     }
 
     this.hour = new Date().getHours();
