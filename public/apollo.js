@@ -31,8 +31,7 @@ class Apollo {
         if (res) {
           this.showApollo(JSON.parse(res))
         } else {
-          // this.insertGAd();
-          // (adsbygoogle = window.adsbygoogle || []).push({});
+          //do nothing
         }
       })
       this.attachEvents()
