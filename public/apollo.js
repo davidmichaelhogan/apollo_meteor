@@ -43,6 +43,13 @@ class Apollo {
       tab:   '100'
     }
 
+    this.taboolaAd = {
+      href: '',
+      headline: 'HEY DUDE',
+      subline: '',
+      logo: ''
+    }
+
     switch(this.pubInfo.host) {
       case 'turtleboysports.com':
 
@@ -79,7 +86,7 @@ class Apollo {
         if (res) {
           this.showApollo(JSON.parse(res))
         } else {
-          //Do something if there is no server ad available
+          this.showApollo(this.taboolaAd)
         }
       })
       this.attachEvents()
@@ -287,8 +294,10 @@ class Apollo {
 
   showApollo (ad) {
     console.log('🚀 Ad Headline: ' + ad.headline + ' 🚀')
+    ad.href = `${this.api}/click?publisher=${window.ApolloOptions.publisher}&id=${ad._id}`
+
     let html = `
-    <a href="${this.api}/click?publisher=${window.ApolloOptions.publisher}&id=${ad._id}" target="_blank" style="display: block; width: 100%; text-decoration: none; font-family: arial, sans-serif; font-size: 20px;">
+    <a href="${ad.href}" target="_blank" style="display: block; width: 100%; text-decoration: none; font-family: arial, sans-serif; font-size: 20px;">
       <div style="background-color:rgba(234, 237, 240, 1); color:rgb(224,227,230); border-top-right-radius: 10px; border-top-left-radius: 10px; padding: 5px 10px;">
         <div style="width: 25px; float:left; display:inline-block;">
           <img src="${ad.logo}" style="max-width: 100%; max-height: 25px; margin: 0; padding: 0">
