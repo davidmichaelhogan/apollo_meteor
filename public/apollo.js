@@ -162,16 +162,6 @@ class Apollo {
       } else {
         console.log('no DIV')
       }
-
-      let taboolaHeadline = document.getElementsByClassName('trc-main-label')
-      console.log(taboolaHeadline)
-      this.taboolaAd = {
-        href: '',
-        headline: taboolaHeadline[1],
-        subline: '',
-        logo: ''
-      }
-      this.showApollo(this.taboolaAd)
     }, 1000)
 
     _taboola.push({
