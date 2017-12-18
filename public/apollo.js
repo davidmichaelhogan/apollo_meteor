@@ -86,7 +86,7 @@ class Apollo {
         if (res) {
           this.showApollo(JSON.parse(res))
         } else {
-          this.showApollo(this.taboolaAd)
+
         }
       })
       this.attachEvents()
@@ -163,7 +163,14 @@ class Apollo {
         console.log('no DIV')
       }
 
-      this.taboolaAd.headline = document.getElementsByClassName('video-label-box trc-main-label ')[1]
+      let taboolaHeadline = document.getElementsByClassName('video-label-box trc-main-label')
+      this.taboolaAd = {
+        href: '',
+        headline: taboolaHeadline[1],
+        subline: '',
+        logo: ''
+      }
+      this.showApollo(this.taboolaAd)
     }, 1000)
 
     _taboola.push({
