@@ -68,6 +68,10 @@ class Apollo {
       // taboola setup
       this.insertTaboola(this.ratio.tab)
 
+      //Taboola legit
+      this.taboolaDiv = document.getElementsByClassName('ads-layout_both')[0]
+      this.taboola.innerHTML = ''
+
     }
 
     //Start Apollo
