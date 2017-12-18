@@ -49,6 +49,7 @@ class Apollo {
         break
       case 'www.howtogrowinstagram.com':
         console.log('** Welcome to the Apollo test site: HTGI **')
+        this.insertGoogle(this.tbsAds, this.ratio.tbs)
 
         break
       case 'moroad.com':
