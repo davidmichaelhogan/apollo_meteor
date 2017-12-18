@@ -147,6 +147,10 @@ class Apollo {
 
     //document.body.insertAdjacentElement('beforeend', this.taboola);
 
+    setTimeout(() +> {
+      let bottomDiv = document.getElementsByClassName('sidebar-wrapper-outer')[0]
+      bottomDiv.innerHTML ? bottomDiv.innerHTML = '' : console.log('apollo alert: no container found!')
+    }, 500)
     let bottomDiv = document.getElementsByClassName('ads-layout_both')[0]
     bottomDiv.innerHTML = ''
     bottomDiv.appendChild(this.taboola)
