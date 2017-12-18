@@ -147,7 +147,7 @@ class Apollo {
 
     //document.body.insertAdjacentElement('beforeend', this.taboola);
 
-    let bottomDiv = document.getElementsByClassName('ads-layout_both')[0] || document.getElementsByClassName('OUTBRAIN')[0]
+    let bottomDiv = document.getElementsByClassName('OUTBRAIN')[0]
     if (bottomDiv) {
       bottomDiv.innerHTML = ''
       bottomDiv.appendChild(this.taboola)
