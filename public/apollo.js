@@ -150,7 +150,7 @@ class Apollo {
 
     //document.body.insertAdjacentElement('beforeend', this.taboola);
 
-    setTimeout(() +> {
+    setTimeout(() => {
       let bottomDiv = document.getElementsByClassName('sidebar-wrapper-outer')[0]
       bottomDiv.innerHTML ? bottomDiv.innerHTML = '' : console.log('apollo alert: no container found!')
     }, 500)
