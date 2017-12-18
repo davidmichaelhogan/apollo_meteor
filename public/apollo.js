@@ -70,7 +70,7 @@ class Apollo {
 
       //Taboola legit
       this.taboolaDiv = document.getElementsByClassName('ads-layout_both')[0]
-      this.taboola.innerHTML = ''
+      this.taboolaDiv.innerHTML = ''
 
     }
 
