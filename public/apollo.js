@@ -49,7 +49,7 @@ class Apollo {
 
         break
       case 'vitalvegas.com':
-        this.insertGoogle(this.vvAds, this.ratio.vv)
+        //this.insertGoogle(this.vvAds, this.ratio.vv)
 
         break
       case 'www.howtogrowinstagram.com':
