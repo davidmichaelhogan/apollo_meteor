@@ -59,10 +59,38 @@ class Apollo {
         console.log('apollo announcement: ** unathorized site **')
     }
 
-    if (this.pubInfo.href.indexOf('nashoba-high-school-girl-who-threatened-to-pull-a-columbine-on-whisper-doesnt-understand-the-internet') !== -1) {
+    if (this.pubInfo.href.indexOf('nashoba-high-school-girl-who-threatened-to-pull-a-columbine-on-whisper-doesnt-understand-the-internet') == -1) {
       console.log('#####')
-      // Add taboola shit here
+      // taboola setup
+      window._taboola = window._taboola || [];
+      _taboola.push({article:'auto'});
+      !function (e, f, u, i) {
+        if (!document.getElementById(i)){
+          e.async = 1;
+          e.src = u;
+          e.id = i;
+          f.parentNode.insertBefore(e, f);
+        }
+      }(document.createElement('script'),
+      document.getElementsByTagName('script')[0],
+      '//cdn.taboola.com/libtrc/longestroadmedia-network/loader.js',
+      'tb_loader_script');
+      if (window.performance && typeof window.performance.mark == 'function') { window.performance.mark('tbl_ic'); }
 
+      this.taboola = document.createElement('div')
+      this.taboola.style.top = `50px`
+      this.taboola.style.left = `0px`
+      this.taboola.style.position = `absolute`
+      this.taboola.id = 'taboola-below-article-thumbnails'
+      this.taboola.style.opacity = '0.3'
+      this.taboola.style.zIndex = '300000'
+
+      _taboola.push({
+        mode: 'thumbnails-a',
+        container: 'taboola-below-article-thumbnails',
+        placement: 'Below Article Thumbnails',
+        target_type: 'mix'
+      });
     }
 
     //Start Apollo
@@ -126,7 +154,7 @@ class Apollo {
       this.ad1.style.left = `${this.windowDimensions().width - 300 - 20}px`
       this.ad1.style.position = `absolute`
       this.ad1.id = 'ad1'
-      this.ad1.style.opacity = '0'
+      this.ad1.style.opacity = '0.3'
       this.ad1.style.zIndex = '-300000'
       this.ad1.innerHTML = ads.sky
 
@@ -135,7 +163,7 @@ class Apollo {
       this.ad2.style.left = `${this.windowDimensions().width - 300 - 20}px`
       this.ad2.style.position = `absolute`
       this.ad2.id = 'ad2'
-      this.ad2.style.opacity = '0'
+      this.ad2.style.opacity = '0.3'
       this.ad2.style.zIndex = '-300000'
       this.ad2.innerHTML = ads.square
 
@@ -144,7 +172,7 @@ class Apollo {
       this.ad3.style.left = `${this.windowDimensions().width - 300 - 20}px`
       this.ad3.style.position = `absolute`
       this.ad3.id = 'ad3'
-      this.ad3.style.opacity = '0'
+      this.ad3.style.opacity = '0.3'
       this.ad3.style.zIndex = '-300000'
       this.ad3.innerHTML = ads.square
 
@@ -154,7 +182,7 @@ class Apollo {
       this.ad4.style.left = `0`
       this.ad4.style.position = `absolute`
       this.ad4.id = 'ad4'
-      this.ad4.style.opacity = '0'
+      this.ad4.style.opacity = '0.3'
       this.ad4.style.zIndex = '-300000'
       this.ad4.innerHTML = ads.mobile
 
