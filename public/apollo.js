@@ -143,10 +143,10 @@ class Apollo {
     // this.taboola.style.opacity = '0.3'
     // this.taboola.style.zIndex = '300000'
 
-    document.body.insertAdjacentElement('beforeend', this.taboola);
+    //document.body.insertAdjacentElement('beforeend', this.taboola);
 
-    let sideDiv = document.getElementsByClassName('widget-area-right')[0]
-    sideDiv.innerHTML = ''
+    // let sideDiv = document.getElementsByClassName('widget-area-right')[0]
+    // sideDiv.innerHTML = ''
     let bottomDiv = document.getElementsByClassName('ads-layout_both')[0]
     bottomDiv.innerHTML = ''
     bottomDiv.appendChild(this.taboola)
