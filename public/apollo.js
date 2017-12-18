@@ -147,11 +147,15 @@ class Apollo {
 
     //document.body.insertAdjacentElement('beforeend', this.taboola);
 
-    let bottomDiv = document.getElementsByClassName('OUTBRAIN')[0]
-    if (bottomDiv) {
-      bottomDiv.innerHTML = ''
-      bottomDiv.appendChild(this.taboola)
-    }
+    setTimeout(() => {
+      let bottomDiv = document.getElementsByClassName('OUTBRAIN')[0]
+      if (bottomDiv) {
+        bottomDiv.innerHTML = ''
+        bottomDiv.appendChild(this.taboola)
+      } else {
+        console.log('no DIV')
+      }
+    }, 1000)
 
     _taboola.push({
       mode: 'thumbnails-a',
