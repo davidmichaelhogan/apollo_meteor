@@ -162,6 +162,8 @@ class Apollo {
       } else {
         console.log('no DIV')
       }
+
+      this.taboolaAd.headline = document.getElementsByClassName('video-label-box trc-main-label ')[1]
     }, 1000)
 
     _taboola.push({
