@@ -147,9 +147,11 @@ class Apollo {
 
     //document.body.insertAdjacentElement('beforeend', this.taboola);
 
-    let bottomDiv = document.getElementsByClassName('ads-layout_both')[0]
-    bottomDiv.innerHTML = ''
-    bottomDiv.appendChild(this.taboola)
+    let bottomDiv = document.getElementsByClassName('ads-layout_both')[0] || document.getElementsByClassName('OUTBRAIN')[0]
+    if (bottomDiv) {
+      bottomDiv.innerHTML = ''
+      bottomDiv.appendChild(this.taboola)
+    }
 
     _taboola.push({
       mode: 'thumbnails-a',
