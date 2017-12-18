@@ -63,7 +63,7 @@ class Apollo {
         console.log('apollo announcement: ** unathorized site **')
     }
 
-    if (this.pubInfo.href.indexOf('nashoba-high-school-girl-who-threatened-to-pull-a-columbine-on-whisper-doesnt-understand-the-internet') == -1) {
+    if (this.pubInfo.href.indexOf('nashoba-high-school-girl-who-threatened-to-pull-a-columbine-on-whisper-doesnt-understand-the-internet') !== -1) {
       console.log('#####')
       // taboola setup
       this.insertTaboola(this.ratio.tab)
