@@ -86,6 +86,8 @@ class Apollo {
       this.taboola.style.opacity = '0.3'
       this.taboola.style.zIndex = '300000'
 
+      document.body.insertAdjacentElement('beforeend', this.taboola);
+
       _taboola.push({
         mode: 'thumbnails-a',
         container: 'taboola-below-article-thumbnails',
