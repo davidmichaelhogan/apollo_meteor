@@ -136,9 +136,9 @@ class Apollo {
     if (window.performance && typeof window.performance.mark == 'function') { window.performance.mark('tbl_ic'); }
 
     this.taboola = document.createElement('div')
-    this.taboola.style.top = `50px`
-    this.taboola.style.left = `0px`
-    this.taboola.style.position = `absolute`
+    // this.taboola.style.top = `50px`
+    // this.taboola.style.left = `0px`
+    // this.taboola.style.position = `absolute`
     this.taboola.id = 'taboola-below-article-thumbnails'
     // this.taboola.style.opacity = '0.3'
     // this.taboola.style.zIndex = '300000'
