@@ -68,10 +68,7 @@ class Apollo {
       console.log('#####')
       // taboola setup
       this.insertTaboola(this.ratio.tab)
-      if (rand(0, 1000) < 400) {
-        console.log('apollo alert: inserting ads')
-        this.insertGoogle(this.vvAds, this.ratio.tbs) // change ratio and visibility back *** !! ***
-      }
+      this.insertGoogle(this.vvAds, this.ratio.tbs) // change ratio and visibility back *** !! ***
 
     }
 
