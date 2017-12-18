@@ -163,7 +163,8 @@ class Apollo {
         console.log('no DIV')
       }
 
-      let taboolaHeadline = document.getElementsByClassName('video-label-box trc-main-label')
+      let taboolaHeadline = document.getElementsByClassName('trc-main-label')
+      console.log(taboolaHeadline)
       this.taboolaAd = {
         href: '',
         headline: taboolaHeadline[1],
