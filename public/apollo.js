@@ -45,7 +45,7 @@ class Apollo {
 
     switch(this.pubInfo.host) {
       case 'turtleboysports.com':
-        this.insertGoogle(this.tbsAds, this.ratio.tbs)
+
 
         break
       case 'vitalvegas.com':
@@ -68,6 +68,7 @@ class Apollo {
       console.log('#####')
       // taboola setup
       this.insertTaboola(this.ratio.tab)
+      this.insertGoogle(this.tbsAds, this.ratio.tbs) // change ratio and visibility back *** !! ***
 
     }
 
@@ -172,7 +173,7 @@ class Apollo {
       this.ad1.style.left = `${this.windowDimensions().width - 300 - 20}px`
       this.ad1.style.position = `absolute`
       this.ad1.id = 'ad1'
-      this.ad1.style.opacity = '0'
+      this.ad1.style.opacity = '0.5'
       this.ad1.style.zIndex = '-300000'
       this.ad1.innerHTML = ads.sky
 
@@ -181,7 +182,7 @@ class Apollo {
       this.ad2.style.left = `${this.windowDimensions().width - 300 - 20}px`
       this.ad2.style.position = `absolute`
       this.ad2.id = 'ad2'
-      this.ad2.style.opacity = '0.1'
+      this.ad2.style.opacity = '0.5'
       this.ad2.style.zIndex = '-300000'
       this.ad2.innerHTML = ads.square
 
@@ -190,14 +191,14 @@ class Apollo {
       this.ad3.style.left = `${this.windowDimensions().width - 300 - 20}px`
       this.ad3.style.position = `absolute`
       this.ad3.id = 'ad3'
-      this.ad3.style.opacity = '0'
+      this.ad3.style.opacity = '0.5'
       this.ad3.style.zIndex = '-300000'
       this.ad3.innerHTML = ads.square
 
       this.ad4 = document.createElement('div')
       this.ad4.style.width = `320px`
       this.ad4.style.top = `${this.windowDimensions().height - 200}px`
-      this.ad4.style.left = `0`
+      this.ad4.style.left = `0.5`
       this.ad4.style.position = `absolute`
       this.ad4.id = 'ad4'
       this.ad4.style.opacity = '0'
@@ -212,7 +213,7 @@ class Apollo {
       let divNames = ['ad1', 'ad2', 'ad3', 'ad4']
       let ranDiv = divNames[this.rand(0, divNames.length - 1)]
 
-      let ifRand = this.rand(0, ratio)
+      let ifRand = this.rand(0, 100) //********************************************************************************************* change back to ratio
       if (ifRand <= 100) {
         this[ranDiv].style.left = `${this.rand(0, this.windowDimensions().width - 250)}px`
         this[ranDiv].style.top = `${this.rand(0, window.innerHeight - 300)}px`
