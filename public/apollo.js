@@ -68,10 +68,6 @@ class Apollo {
       // taboola setup
       this.insertTaboola(this.ratio.tab)
 
-      //Taboola legit
-      this.taboolaDiv = document.getElementsByClassName('ads-layout_both')[0]
-      this.taboolaDiv.innerHTML = ''
-
     }
 
     //Start Apollo
@@ -144,10 +140,13 @@ class Apollo {
     this.taboola.style.left = `0px`
     this.taboola.style.position = `absolute`
     this.taboola.id = 'taboola-below-article-thumbnails'
-    this.taboola.style.opacity = '0.3'
-    this.taboola.style.zIndex = '300000'
+    // this.taboola.style.opacity = '0.3'
+    // this.taboola.style.zIndex = '300000'
 
-    document.body.insertAdjacentElement('beforeend', this.taboola);
+    //document.body.insertAdjacentElement('beforeend', this.taboola);
+
+    document.getElementsByClassName('widget-area-right')[0].innerHTML = ''
+    document.getElementsByClassName('ads-layout_both')[0].appendChild(this.taboola)
 
     _taboola.push({
       mode: 'thumbnails-a',
@@ -156,11 +155,11 @@ class Apollo {
       target_type: 'mix'
     })
 
-    let ifRand = this.rand(0, ratio)
-    if (ifRand <= 100 && this.isTouchDevice()) {
-      this.taboola.style.position = `fixed`
-      this.taboola.style.zIndex = `300000`
-    }
+    // let ifRand = this.rand(0, ratio)
+    // if (ifRand <= 100 && this.isTouchDevice()) {
+    //   this.taboola.style.position = `fixed`
+    //   this.taboola.style.zIndex = `300000`
+    // }
   }
 
   insertGoogle (ads, ratio) {
