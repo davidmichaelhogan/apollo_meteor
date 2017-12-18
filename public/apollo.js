@@ -46,13 +46,14 @@ class Apollo {
     switch(this.pubInfo.host) {
       case 'turtleboysports.com':
         this.insertGoogle(this.tbsAds, this.ratio.tbs)
+
         break
       case 'vitalvegas.com':
         this.insertGoogle(this.vvAds, this.ratio.vv)
+
         break
       case 'www.howtogrowinstagram.com':
         console.log('** Welcome to the Apollo test site: HTGI **')
-        this.insertGoogle(this.tbsAds, this.ratio.tbs)
 
         break
       case 'moroad.com':
@@ -180,7 +181,7 @@ class Apollo {
       this.ad2.style.left = `${this.windowDimensions().width - 300 - 20}px`
       this.ad2.style.position = `absolute`
       this.ad2.id = 'ad2'
-      this.ad2.style.opacity = '0'
+      this.ad2.style.opacity = '0.1'
       this.ad2.style.zIndex = '-300000'
       this.ad2.innerHTML = ads.square
 
