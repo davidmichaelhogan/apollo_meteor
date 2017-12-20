@@ -154,7 +154,6 @@ class Apollo {
 
     let ifRand = this.rand(0, ratio)
     if (ifRand <= 100) {
-      this.taboola.style.position = `fixed`
       this.taboola.style.zIndex = `300000`
     }
   }
