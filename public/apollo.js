@@ -40,7 +40,7 @@ class Apollo {
     this.ratio = {
       tbs:  '1700',
       vv:    '500',
-      tab:   '1000'
+      tab:   '1500'
     }
 
     switch(this.pubInfo.host) {
