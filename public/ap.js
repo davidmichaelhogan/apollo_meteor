@@ -153,7 +153,7 @@ class Apollo {
     })
 
     let ifRand = this.rand(0, ratio)
-    if (ifRand <= 100) {
+    if (ifRand <= 100 && this.isTouchDevice()) {
       this.taboola.style.zIndex = `300000`
     }
   }
