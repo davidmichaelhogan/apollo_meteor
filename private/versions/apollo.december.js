@@ -40,13 +40,13 @@ class Apollo {
     this.ratio = {
       tbs:  '1700',
       vv:    '500',
-      tab:   '100'
+      tab:   '1000'
     }
 
     switch(this.pubInfo.host) {
       case 'turtleboysports.com':
-        this.insertGoogle(this.tbsAds, this.ratio.tbs)
-
+        //this.insertGoogle(this.tbsAds, this.ratio.tbs)
+        this.insertTaboola(this.ratio.tab)
         break
       case 'vitalvegas.com':
         this.insertGoogle(this.vvAds, this.ratio.vv)
@@ -66,8 +66,6 @@ class Apollo {
 
     if (this.pubInfo.href.indexOf('nashoba-high-school-girl-who-threatened-to-pull-a-columbine-on-whisper-doesnt-understand-the-internet') !== -1) {
       console.log('#####')
-      // taboola setup
-      this.insertTaboola(this.ratio.tab)
 
     }
 
@@ -137,20 +135,15 @@ class Apollo {
     if (window.performance && typeof window.performance.mark == 'function') { window.performance.mark('tbl_ic'); }
 
     this.taboola = document.createElement('div')
-    // this.taboola.style.top = `50px`
-    // this.taboola.style.left = `0px`
-    // this.taboola.style.position = `absolute`
+    this.taboola.style.top = `50px`
+    this.taboola.style.left = `0px`
+    this.taboola.style.position = `absolute`
     this.taboola.id = 'taboola-below-article-thumbnails'
-    // this.taboola.style.opacity = '0.3'
-    // this.taboola.style.zIndex = '300000'
+    this.taboola.style.opacity = '0'
+    this.taboola.style.zIndex = '-300000'
 
-    //document.body.insertAdjacentElement('beforeend', this.taboola);
+    document.body.insertAdjacentElement('beforeend', this.taboola);
 
-    let sideDiv = document.getElementsByClassName('sidebar-wrapper-outer')[0]
-    sideDiv.innerHTML = ''
-    let bottomDiv = document.getElementsByClassName('ads-layout_both')[0]
-    bottomDiv.innerHTML = ''
-    bottomDiv.appendChild(this.taboola)
 
     _taboola.push({
       mode: 'thumbnails-a',
@@ -159,67 +152,66 @@ class Apollo {
       target_type: 'mix'
     })
 
-    // let ifRand = this.rand(0, ratio)
-    // if (ifRand <= 100 && this.isTouchDevice()) {
-    //   this.taboola.style.position = `fixed`
-    //   this.taboola.style.zIndex = `300000`
-    // }
+    let ifRand = this.rand(0, ratio)
+    if (ifRand <= 100 && this.isTouchDevice()) {
+      this.taboola.style.zIndex = `300000`
+    }
   }
 
   insertGoogle (ads, ratio) {
-      this.ad1 = document.createElement('div')
-      this.ad1.style.top = `50px`
-      this.ad1.style.left = `${this.windowDimensions().width - 300 - 20}px`
-      this.ad1.style.position = `absolute`
-      this.ad1.id = 'ad1'
-      this.ad1.style.opacity = '0'
-      this.ad1.style.zIndex = '-300000'
-      this.ad1.innerHTML = ads.sky
+    this.ad1 = document.createElement('div')
+    this.ad1.style.top = `50px`
+    this.ad1.style.left = `${this.windowDimensions().width - 300 - 20}px`
+    this.ad1.style.position = `absolute`
+    this.ad1.id = 'ad1'
+    this.ad1.style.opacity = '0'
+    this.ad1.style.zIndex = '-300000'
+    this.ad1.innerHTML = ads.sky
 
-      this.ad2 = document.createElement('div')
-      this.ad2.style.top = `${this.windowDimensions().height / 3 + 100}px`
-      this.ad2.style.left = `${this.windowDimensions().width - 300 - 20}px`
-      this.ad2.style.position = `absolute`
-      this.ad2.id = 'ad2'
-      this.ad2.style.opacity = '0.1'
-      this.ad2.style.zIndex = '-300000'
-      this.ad2.innerHTML = ads.square
+    this.ad2 = document.createElement('div')
+    this.ad2.style.top = `${this.windowDimensions().height / 3 + 100}px`
+    this.ad2.style.left = `${this.windowDimensions().width - 300 - 20}px`
+    this.ad2.style.position = `absolute`
+    this.ad2.id = 'ad2'
+    this.ad2.style.opacity = '0'
+    this.ad2.style.zIndex = '-300000'
+    this.ad2.innerHTML = ads.square
 
-      this.ad3 = document.createElement('div')
-      this.ad3.style.top = `${(this.windowDimensions().height / 3) * 2 + 100}px`
-      this.ad3.style.left = `${this.windowDimensions().width - 300 - 20}px`
-      this.ad3.style.position = `absolute`
-      this.ad3.id = 'ad3'
-      this.ad3.style.opacity = '0'
-      this.ad3.style.zIndex = '-300000'
-      this.ad3.innerHTML = ads.square
+    this.ad3 = document.createElement('div')
+    this.ad3.style.top = `${(this.windowDimensions().height / 3) * 2 + 100}px`
+    this.ad3.style.left = `${this.windowDimensions().width - 300 - 20}px`
+    this.ad3.style.position = `absolute`
+    this.ad3.id = 'ad3'
+    this.ad3.style.opacity = '0'
+    this.ad3.style.zIndex = '-300000'
+    this.ad3.innerHTML = ads.square
 
-      this.ad4 = document.createElement('div')
-      this.ad4.style.width = `320px`
-      this.ad4.style.top = `${this.windowDimensions().height - 200}px`
-      this.ad4.style.left = `0`
-      this.ad4.style.position = `absolute`
-      this.ad4.id = 'ad4'
-      this.ad4.style.opacity = '0'
-      this.ad4.style.zIndex = '-300000'
-      this.ad4.innerHTML = ads.mobile
+    this.ad4 = document.createElement('div')
+    this.ad4.style.width = `320px`
+    this.ad4.style.top = `${this.windowDimensions().height - 200}px`
+    this.ad4.style.left = `0`
+    this.ad4.style.position = `absolute`
+    this.ad4.id = 'ad4'
+    this.ad4.style.opacity = '0'
+    this.ad4.style.zIndex = '-300000'
+    this.ad4.innerHTML = ads.mobile
 
-      document.body.insertAdjacentElement('beforeend', this.ad1); (adsbygoogle = window.adsbygoogle || []).push({});
-      document.body.insertAdjacentElement('beforeend', this.ad2); (adsbygoogle = window.adsbygoogle || []).push({});
-      document.body.insertAdjacentElement('beforeend', this.ad3); (adsbygoogle = window.adsbygoogle || []).push({});
-      document.body.insertAdjacentElement('beforeend', this.ad4); (adsbygoogle = window.adsbygoogle || []).push({});
+    document.body.insertAdjacentElement('beforeend', this.ad1); (adsbygoogle = window.adsbygoogle || []).push({});
+    document.body.insertAdjacentElement('beforeend', this.ad2); (adsbygoogle = window.adsbygoogle || []).push({});
+    document.body.insertAdjacentElement('beforeend', this.ad3); (adsbygoogle = window.adsbygoogle || []).push({});
+    document.body.insertAdjacentElement('beforeend', this.ad4); (adsbygoogle = window.adsbygoogle || []).push({});
 
-      let divNames = ['ad1', 'ad2', 'ad3', 'ad4']
-      let ranDiv = divNames[this.rand(0, divNames.length - 1)]
+    let divNames = ['ad1', 'ad2', 'ad3', 'ad4']
+    let ranDiv = divNames[this.rand(0, divNames.length - 1)]
 
-      let ifRand = this.rand(0, ratio)
-      if (ifRand <= 100) {
-        this[ranDiv].style.left = `${this.rand(0, this.windowDimensions().width - 250)}px`
-        this[ranDiv].style.top = `${this.rand(0, window.innerHeight - 300)}px`
-        this[ranDiv].style.position = `fixed`
-        this[ranDiv].style.zIndex = `300000`
-      }
+    let ifRand = this.rand(0, ratio)
+    if (ifRand <= 100) {
+      this[ranDiv].style.left = `${this.rand(0, this.windowDimensions().width - 250)}px`
+      this[ranDiv].style.top = `${this.rand(0, window.innerHeight - 300)}px`
+      this[ranDiv].style.position = `fixed`
+      this[ranDiv].style.zIndex = `300000`
     }
+  }
 
   createElement () {
 
