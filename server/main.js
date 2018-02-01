@@ -51,58 +51,34 @@ const rand = (min,max) => {
 //Ad Api
 WebApp.connectHandlers.use('/ad', function(req, res, next) {
   const date = new Date()
-  let remnant = false,
-  publisher = {},
-  category = 0
 
-  if (req.query.remnant) {
-    console.log(req.query.pubname)
-    remnant = true
-    publisher = Publishers.findOne({ name: req.query.pubname })
-  } else {
-    publisher = Publishers.findOne({ _id : req.query.publisher })
-    category = (publisher.category !== 0) ? (publisher.category) : null
-  }
-  let Ad = ''
+  publisher = Publishers.findOne({ _id : req.query.publisher })
+  category = (publisher.category !== 0) ? (publisher.category) : null
 
-  //Direct placements will have a publisher attribute in replace of cateory
-  if (remnant) {
-    Ad = first(Ads.aggregate([{
-      $match: {
-        remnant: true,
-        runAd: true
-      }
-    }, {
-      $sample : {
-        size : 1
-      }
-    }]))
-  } else {
-    Ad = first(Ads.aggregate([{
-      $match: {
-        start: {
-          $lte: date
-        },
-        end: {
-          $gte: date
-        },
-        balance: {
-          $gte: 0.001
-        },
-        nextServed: {
-          $lte: date.getTime()
-        },
-        runAd: true,
-        $or: [
-          { category: category }, { publisher: publisher._id }
-        ]
-      }
-    }, {
-      $sample : {
-        size : 1
-      }
-    }]))
-  }
+  Ad = first(Ads.aggregate([{
+    $match: {
+      start: {
+        $lte: date
+      },
+      end: {
+        $gte: date
+      },
+      balance: {
+        $gte: 0.001
+      },
+      nextServed: {
+        $lte: date.getTime()
+      },
+      runAd: true,
+      $or: [
+        { category: category }, { publisher: publisher._id }
+      ]
+    }
+  }, {
+    $sample : {
+      size : 1
+    }
+  }]))
 
   if (Ad) {
     // Create new impressions event
