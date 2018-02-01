@@ -55,7 +55,7 @@ WebApp.connectHandlers.use('/ad', function(req, res, next) {
   const publisher = Publishers.findOne({ _id : req.query.publisher })
   const category = (publisher.category !== 0) ? (publisher.category) : null
 
-  Ad = first(Ads.aggregate([{
+  let Ad = first(Ads.aggregate([{
     $match: {
       start: {
         $lte: date
