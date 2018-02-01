@@ -52,8 +52,8 @@ const rand = (min,max) => {
 WebApp.connectHandlers.use('/ad', function(req, res, next) {
   const date = new Date()
 
-  publisher = Publishers.findOne({ _id : req.query.publisher })
-  category = (publisher.category !== 0) ? (publisher.category) : null
+  const publisher = Publishers.findOne({ _id : req.query.publisher })
+  const category = (publisher.category !== 0) ? (publisher.category) : null
 
   Ad = first(Ads.aggregate([{
     $match: {
