@@ -27,7 +27,7 @@ class Apollo {
       this.request(`${this.api}/ad?publisher=${window.ApolloOptions.publisher}`, (res) => {
         if (res) {
           this.showApollo(JSON.parse(res))
-      })
+      }
       this.attachEvents()
     }
   }
