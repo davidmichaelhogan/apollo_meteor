@@ -12,7 +12,7 @@ import { first } from 'lodash'
 import { Advertisers } from '../../api/advertisers.js'
 
 const ctr = (clicks, impressions) => clicks / impressions
-const impressions = (money) => money / 8 * 1000
+const impressions = (money) => money / 1 * 1000
 const commaify = (number) => number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 
 const style = {

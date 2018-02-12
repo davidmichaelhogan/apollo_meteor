@@ -13,7 +13,7 @@ import { Tabs, Tab } from 'material-ui/Tabs'
 import { first } from 'lodash'
 
 const ctr = (clicks, impressions) => clicks / impressions
-const impressions = (money) => money / 8 * 1000
+const impressions = (money) => money / 1 * 1000
 const commaify = (number) => number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 
 import { Ads } from '../api/ads.js'
@@ -149,7 +149,7 @@ handleCurrentPaymentSubmit = () => {
 }
 
   timesUpdate = (balance, start, end) => {
-    let impressions = balance / .008
+    let impressions = balance / .001
     let amount = (end.getTime() - start.getTime()) / impressions
     return amount
   }
