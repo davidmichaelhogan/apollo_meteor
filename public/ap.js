@@ -1,3 +1,4 @@
+// Apollo Ad Script
 class Apollo {
   constructor () {
 
@@ -22,11 +23,14 @@ class Apollo {
     }
 
     //Start Apollo
+    console.log('apollo loaded')
     if (this.isTouchDevice()) {
+      console.log('is touch device')
       this.createElement()
       this.request(`${this.api}/ad?publisher=${window.ApolloOptions.publisher}`, (res) => {
         if (res) {
           this.showApollo(JSON.parse(res))
+          console.log(res)
         }
       })
       this.attachEvents()
