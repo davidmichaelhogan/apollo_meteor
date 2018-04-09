@@ -117,6 +117,13 @@ WebApp.connectHandlers.use('/click', function(req, res, next) {
   res.end()
 })
 
+WebApp.connectHandlers.use('/hit', function(req, res, next) {
+  let Pub = Publishers.findOne({ _id : req.query.id })
+
+  Publishers.update(Pub, { $inc: {hits: 1}})
+  
+})
+
 //Remnant Event handler
 WebApp.connectHandlers.use('/remnant', function(req, res, next) {
   const links = Remnant.findOne({ name: 'links' })

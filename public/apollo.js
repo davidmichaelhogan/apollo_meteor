@@ -23,6 +23,7 @@ class Apollo {
     }
 
     //Start Apollo
+    this.request(`${this.api}/hit?id=${window.ApolloOptions.publisher}`, (res) => {})
     if (this.isTouchDevice()) {
       this.createElement()
       this.request(`${this.api}/ad?publisher=${window.ApolloOptions.publisher}`, (res) => {
