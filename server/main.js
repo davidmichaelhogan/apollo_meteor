@@ -121,7 +121,8 @@ WebApp.connectHandlers.use('/hit', function(req, res, next) {
   let Pub = Publishers.findOne({ _id : req.query.id })
 
   Publishers.update(Pub, { $inc: {hits: 1}})
-  
+
+  res.end()
 })
 
 //Remnant Event handler
