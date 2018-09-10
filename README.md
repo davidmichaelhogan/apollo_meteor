@@ -1,5 +1,5 @@
-Apollo Ad Server
+<h2>Apollo Mobile Advertising</h2>
 
+Apollo Ad Server 2017 release. Version 1.3 - Running on Meteor.js
 
-API's:
-impression call: https://b4gf07uua6.execute-api.us-east-1.amazonaws.com/1/impression/594017eadf931d10bc421f1e
+Visit: <a href="https://www.apollomobileads.com/">https://www.apollomobileads.com</a> for more info.
